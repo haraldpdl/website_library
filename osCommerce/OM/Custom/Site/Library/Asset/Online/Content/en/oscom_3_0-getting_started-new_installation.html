@@ -1,0 +1,88 @@
+<h2>New Installation</h2>
+
+<p>The web based installation procedure configures the online store and imports the configuration data into the database. This is necessary to create a fully functional online store and to create an administrator that administrates the online store through the Administration Tool.</p>
+
+<p>The configuration values provided by default are safe to use but may need to be changed depending on the setup of the web server.</p>
+
+<div class="alert">Please review the Pre-Installation Steps before continuing with the installation procedure, and the Post-Installation Steps after the installation procedure has been successfully performed.</div>
+
+<h3>Installing a New Online Store</h3>
+
+<p>The web based installation procedure is automatically started when accessing the online store through a web browser. This can be achieved by entering the WWW address of osCommerce installation in your browser.</p>
+
+<p>For example:</p>
+
+<pre>{escape}
+http://www.example.com/oscommerce/
+{escape}</pre>
+
+<p>The osCommerce installation detects if the installation has already been completed and redirects to the installation procedure if it has not yet been performed.</p>
+
+<p>The welcome page shown in <em>Figure 1</em> displays the recommended configuration settings for PHP.</p>
+
+<p align="center">
+  <img src="{publiclink}images/Asset/Online/en/install-01.jpg{publiclink}" /><br />
+  <small><strong><em>Figure 1. Welcome Page</em></strong></small>
+</p>
+
+<p>It is recommended to update a PHP configuration value, or to install and activate a PHP extension, if it is marked as incorrect or unavailable.</p>
+
+<div class="alert alert-info">When making PHP configuration changes, or when installing and activating a PHP extension, don't forget to restart the web server service for the changes to take effect. Once restarted, refreshing the welcome installation page and viewing the <em>Server Capabilities</em> listing can confirm if the PHP configuration changes have taken place and if it meets the recommended settings.</div>
+
+<h4>Step 1: Database Server</h4>
+
+<p>The first step shown in <em>Figure 2a</em> sets the database connection parameters to successfully connect to the database server, to import the database table structure, and to import required data.</p>
+
+<p align="center">
+  <img src="{publiclink}images/Asset/Online/en/install-02a.jpg{publiclink}" /><br />
+  <small><strong><em>Figure 2a. Database Server Configuration</em></strong></small>
+</p>
+
+<div class="alert alert-success">It is recommended to use a database table prefix if the osCommerce database is to be shared with other applications. This avoids conflicts where database tables of the same name may already exist in the database.</div>
+
+<p>The installation procedure verifies the values entered before proceeding to the next step. If there is a problem connecting to the database server an error message is shown similar to the message shown in <em>Figure 2b</em>.</p>
+
+<p align="center">
+  <img src="{publiclink}images/Asset/Online/en/install-02b.jpg{publiclink}" /><br />
+  <small><strong><em>Figure 2b. Database Server Connection Error Message</em></strong></small>
+</p>
+
+<h4>Step 2: Web Server</h4>
+
+<p>The second step shown in <em>Figure 3</em> sets the web server parameters to successfully serve the online store to users.</p>
+
+<p align="center">
+  <img src="{publiclink}images/Asset/Online/en/install-03.jpg{publiclink}" /><br />
+  <small><strong><em>Figure 3. Web Server Configuration</em></strong></small>
+</p>
+
+<p>The work directory is used for storing temporary files on the web server such as session files and database queries that are cached. This directory must be writable by the web server and is checked by the installation procedure when proceeding to the next step.</p>
+
+<div class="alert alert-error">For security reasons the work directory should be located outside the public HTML directory so it is not accessible to the public.</div>
+
+<h4>Step 3: Online Store Settings</h4>
+
+<p>The third step shown in <em>Figure 4</em> sets the store owner and administrator settings for the online store.</p>
+
+<p align="center">
+  <img src="{publiclink}images/Asset/Online/en/install-04.jpg{publiclink}" /><br />
+  <small><strong><em>Figure 4. Store Owner Settings</em></strong></small>
+</p>
+
+<p>It is important to keep note of the administrator username and password as these are used to login and to access the Administration Tool. Additional administrators can be created in the Administration Tool after the installation procedure has been successfully completed.</p>
+
+<h4>Step 4: Finished!</h4>
+
+<p>The last step in the installation procedure stores the database server and web server parameters to the configuration file on the web server. On successfully saving the configuration file, the installation procedure is finalized and the online store is ready to be used as shown on <em>Figure 5a</em>.</p>
+
+<p align="center">
+  <img src="{publiclink}images/Asset/Online/en/install-05a.jpg{publiclink}" /><br />
+  <small><strong><em>Figure 5a. Successful Installation Confirmation</em></strong></small>
+</p>
+
+<p>If the configuration file is not writable by the web server a warning is presented as shown in <em>Figure 5b</em> where it describes how to fix the problem and allows you to manually copy the configuration file via FTP.</p>
+
+<p align="center">
+  <img src="{publiclink}images/Asset/Online/en/install-05b.jpg{publiclink}" /><br />
+  <small><strong><em>Figure 5b. No Permissions to Save the Configuration File</em></strong></small>
+</p>

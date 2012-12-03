@@ -1,0 +1,12 @@
+<h2>Post-Installation Steps</h2>
+
+<p>Upon successful installation of osCommerce, the following steps need to be performed to secure the installation of the online store.</p>
+
+<ol>
+  <li>Delete the <em>oscommerce/install</em> directory.</li>
+  <li>Reset the file permissions on <em>oscommerce/includes/configure.php</em> so the web server is only able to read it and not write to it. This is commonly performed by setting the permission flag to <em>444</em>.</li>
+  <li>Create a directory called <em>backups</em> under <em>oscommerce/admin/</em> and set the permission flag so the web server is able to write to it.</li>
+  <li>To additionally protect the Administration Tool, consider password protecting the <em>oscommerce/admin/</em> directory through the web server. The Administration Tool has its own login mechanism which still should not be made available to the public. A general username and password can be used for all store administrators to access the Administration Tool login page where they can personally log into.</li>
+</ol>
+
+<div class="alert">If the Administration Tool is not password protected through the web server, it is recommended to move the <em>oscommerce/admin/backups</em> directory outside the public html directory otherwise public access to the backup files would be possible. The location of the backup directory must be correctly defined in <em>oscommerce/includes/configure.php</em>.</div>

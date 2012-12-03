@@ -1,0 +1,383 @@
+<h2>osCommerce Online Merchant v3.0.1</h2>
+
+<p>osCommerce Online Merchant v3.0.1 is a minor release focusing on bug fixes and framework improvements.</p>
+
+<h3>New Installations - Quick Start</h3>
+
+<p>Copy the <em>oscommerce</em> directory to your web server htdocs directory and open the location with your browser. Setup will automatically launch and guide you through the installation and configuration of your new online store.</p>
+
+<div class="alert alert-info">Please note that a new or existing database in MySQL must already be prepared for the installation.</div>
+
+<p>After installation is complete and the configuration settings have been saved, the Shop frontend and Admin dashboard can be opened with:</p>
+
+<pre>{escape}
+http://www.your-server.com/oscommerce/index.php
+http://www.your-server.com/oscommerce/index.php?Admin
+{escape}</pre>
+
+<div class="alert alert-error">Please delete the Setup routine after installation has completed. This can be done by removing the following directory:<br /><br />/path to/oscommerce/osCommerce/OM/Core/Site/Setup</div>
+
+<h3>Upgrading from v3.0.0</h3>
+
+<div class="alert">New configuration settings have been introduced in this release that must be manually added to existing installations after performing an upgrade.</div>
+
+<h4>CoreUpdate - Automatic Upgrade</h4>
+
+<p>Upgrades can be easily performed through CoreUpdate, located in the Admin Dashboard -> Applications -> Tools -> Core Update menu. Here, a list of available update packages are shown with the ability to read release announcements and to browse the contents of the packages. New update packages may take up to 6 hours to become available.</p>
+
+<div class="alert alert-error">CoreUpdate may show a successful message after performing an upgrade when no upgrade has in fact been performed. The failure to perform an upgrade occurs under certain server environments and can be seen when v3.0.1 is still listed as a CoreUpdate update package. If you experience this, please perform a manual upgrade with a ZIP package as described below. This error is due to not correctly detecting sufficient file permissions and has been fixed, and improved, in v3.0.1.</div>
+
+<h4>ZIP Package - Manual Upgrade</h4>
+
+<p>A manual upgrade can be performed by extracting the update package contents and copying and overwriting the files to the <em>osCommerce/OM</em> and <em>public/</em> directories. This can be performed directly on the server or via FTP.</p>
+
+<h4>New Configuration Settings</h4>
+
+<p>New configuration settings have been introduced in this release and must be inserted in <em>osCommerce/OM/Config/settings.ini</em>.</p>
+
+<p>Please insert the following settings to the <em>[OSCOM]</em> group:</p>
+
+<pre>{escape}
+[OSCOM]
+time_zone = "UTC"
+dir_fs_public = ""
+{escape}</pre>
+
+<p>For <em>time_zone</em>, a list of time zones are available at: <a href="http://php.net/manual/en/timezones.php" target="_blank">http://php.net/manual/en/timezones.php</a>. Example settings are:</p>
+
+<pre>{escape}
+time_zone = "Europe/Berlin"
+time_zone = "America/New_York"
+time_zone = "Australia/Sydney"
+{escape}</pre>
+
+<p>For <em>dir_fs_public</em>, a full filesystem directory path to the public directory is required with a trailing slash. Example settings are:</p>
+
+<pre>{escape}
+dir_fs_public = "/home/user/public_html/oscommerce/public/"
+dir_fs_public = "/var/www/domain.com/httpdocs/oscommerce/public/"
+{escape}</pre>
+
+<p>The complete <em>[OSCOM]</em> setting group should be similar to:</p>
+
+<pre>{escape}
+[OSCOM]
+bootstrap_file = "index.php"
+default_site = "Shop"
+time_zone = "Europe/Berlin"
+dir_fs_public = "/opt/local/apache/htdocs/oscommerce/public/"
+{escape}</pre>
+
+<h3>Changelog</h3>
+
+<h4>Bug Fixes</h4>
+
+<p>The following bug fixes have been applied:</p>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Bug</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Set default PHP time zone</td>
+      <td>PHP displays a warning when no default time zone has been defined in php.ini. A time zone setting is now added to the configuration to set the time zone to.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-239-no-default-time-zone-set/" target="_blank">239</a></td>
+    </tr>
+    <tr>
+      <td>MySQL STRICT_ALL_TABLES</td>
+      <td>The MySQL STRICT_ALL_TABLES sql mode was first introduced in MySQL v5.0.2. The setting of this sql mode has been moved from the MySQL\Standard driver to MySQL\V5.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-237-strict-all-tables-not-supported-in-mysql-41/" target="_blank">237</a></td>
+    </tr>
+    <tr>
+      <td>Configuration Batch Editing</td>
+      <td>A problem with batch editing configuration parameters in the Admin\Configuration Application has been fixed.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-232-configuration-batch-edit/" target="_blank">232</a></td>
+    </tr>
+    <tr>
+      <td>Admin Menu in IE9</td>
+      <td>The Admin Dashboard menu did not show correctly in Internet Exploder 9 and has been fixed.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-240-menu-not-showing-correctly-on-ie/" target="_blank">240</a></td>
+    </tr>
+    <tr>
+      <td>RecentlyVisited Search Links, Advanced Search</td>
+      <td>Fix Shop\Module\Content\RecentlyVisited search result links. Fix advanced search results (PDO::bindValue() cannot share the same bind parameter names as was defined in Shop\Search::execute())</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-238-recent-searches-and-advanced-search-doesn%c2%b4t-work-correctly/" target="_blank">238</a></td>
+    </tr>
+    <tr>
+      <td>Product Info Javascript</td>
+      <td>Fix the path to public/sites/Shop/javascript/products/info.js.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-233-on-the-site-url-products-availability/" target="_blank">233</a></td>
+    </tr>
+    <tr>
+      <td>Shop\NavigationHistory</td>
+      <td>The NavigationHistory class now properly keeps track of pages visited and to redirect back to on certain actions.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-242-navigationhistory-issues/" target="_blank">242</a></td>
+    </tr>
+    <tr>
+      <td>Duplicate Shopping Cart Contents</td>
+      <td>Prevent duplicate products being listed separately in the shopping cart.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-243-shopping-cart-duplicate-product-listing-issue/" target="_blank">243</a></td>
+    </tr>
+    <tr>
+      <td>Product Variant Prices</td>
+      <td>Add the correct product variant price to the shopping cart.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-241-product-variants-price-calculation-in-cart/" target="_blank">241</a></td>
+    </tr>
+    <tr>
+      <td>Currency Prices</td>
+      <td>Show correct prices when changing the currency.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-229-error-when-changing-currency/" target="_blank">229</a></td>
+    </tr>
+    <tr>
+      <td>Language Import</td>
+      <td>Fix new languages being imported.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-236-cant-import-new-language/" target="_blank">236</a></td>
+    </tr>
+    <tr>
+      <td>Multi-Line Language Definitions</td>
+      <td>Admin language definitions are now properly parsed with line breaks.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-248-multi-line-language-definitions-missing-linebreaks/" target="_blank">248</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h4>Improvements</h4>
+
+<p>The following improvements have been applied:</p>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Class</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Autoloader</td>
+      <td>The Autoloader class has been generally improved.</td>
+    </tr>
+    <tr>
+      <td>Registry</td>
+      <td>The Registry class has been generally optimized.</td>
+    </tr>
+    <tr>
+      <td>Admin\Application\ServerInfo</td>
+      <td>ServerInfo::getAll() now uses php_uname() instead of exec('uname -a') to retrieve server information.</td>
+    </tr>
+    <tr>
+      <td>Cache</td>
+      <td>Check to see if write permissions exist for osCommerce/OM/Work/Cache before attempting to save or delete cache files.</td>
+    </tr>
+    <tr>
+      <td>ErrorHandler</td>
+      <td>ErrorHandler now sets the PHP display_errors configuration value to false. Errors are set to be logged to osCommerce/OM/Work/Logs/errors.txt.</td>
+    </tr>
+    <tr>
+      <td>Admin\Module\Dashboard\ErrorLog</td>
+      <td>Display a message if osCommerce/OM/Work/Database is not writable.</td>
+    </tr>
+    <tr>
+      <td>OSCOM</td>
+      <td>OSCOM::setCookie() now uses setcookie() instead of header() to set cookies.</td>
+    </tr>
+    <tr>
+      <td>Admin\Application\CoreUpdate</td>
+      <td>CoreUpdate has been optimized and improved to support the public directory. Support to delete redundant files during the upgrade procedure has also been added. Updates are now performed in a non-destructive manner; if an error occurs the original state will be restored.</td>
+    </tr>
+    <tr>
+      <td>MessageStack</td>
+      <td>MessageStack::add() now prevents duplicate messages from being added to the stack.</td>
+    </tr>
+    <tr>
+      <td>Admin\Application\Login</td>
+      <td>The session ID is now regenerated on successful logins.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4>API Changes</h4>
+
+<table class="table table-striped table-hover">
+  <tbody>
+    <tr>
+      <td>New</td>
+      <td>time_zone added to [OSCOM] in settings.ini</td>
+    </tr>
+    <tr>
+      <td>New</td>
+      <td>dir_fs_public added to [OSCOM] in settings.ini</td>
+    </tr>
+    <tr>
+      <td>New</td>
+      <td>DateTime::setTimeZone()</td>
+    </tr>
+    <tr>
+      <td>New</td>
+      <td>DateTime::getTimeZones()</td>
+    </tr>
+    <tr>
+      <td>New</td>
+      <td>HTML::timeZoneSelectMenu()</td>
+    </tr>
+    <tr>
+      <td>Changed</td>
+      <td>OSCOM::setCookie() now returns boolean</td>
+    </tr>
+    <tr>
+      <td>Removed</td>
+      <td>Site\Shop\Search::$_number_of_entries</td>
+    </tr>
+    <tr>
+      <td>Added</td>
+      <td>Site\Shop\Search::$_result</td>
+    </tr>
+    <tr>
+      <td>Changed</td>
+      <td>Site\Shop\Search::execute() now stores $_result instead of returning it</td>
+    </tr>
+    <tr>
+      <td>New</td>
+      <td>Site\Shop\Search::getResult()</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4>Language Definitions</h4>
+
+<table class="table table-striped table-hover">
+  <tbody>
+    <tr>
+      <td>New</td>
+      <td>Site/Admin/languages/en_US/modules/Dashboard/ErrorLog.php</td>
+      <td>admin_dashboard_module_errorlog_not_writable</td>
+    </tr>
+    <tr>
+      <td>Changed</td>
+      <td>Site/Admin/languages/en_US.php</td>
+      <td>header_title_online_catalog</td>
+    </tr>
+    <tr>
+      <td>New</td>
+      <td>Site/Admin/languages/en_US.php</td>
+      <td>
+        ms_warning_time_zone_not_defined<br />
+        ms_warning_dir_fs_public_not_defined
+      </td>
+    </tr>
+    <tr>
+      <td>Deleted</td>
+      <td>Site/Admin/languages/en_US/CoreUpdate.php</td>
+      <td>table_heading_file_replace</td>
+    </tr>
+    <tr>
+      <td>New</td>
+      <td>Site/Admin/languages/en_US/CoreUpdate.php</td>
+      <td>
+        table_heading_file_custom<br />
+        legend_new<br />
+        legend_modified<br />
+        legend_to_delete<br />
+        up_to_date
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h4>PHPUnit Tests</h4>
+
+<p>PHPUnit tests are available in <em>osCommerce/OM/Tests/</em>.</p>
+
+<table class="table table-striped table-hover">
+  <tbody>
+    <tr>
+      <td>New</td>
+      <td>HTML</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>PHPUnit tests are not included in our releases and are only available in our <a href="https://github.com/osCommerce/oscommerce/" target="_blank">GitHub repository</a>.</em></p>
+
+<h3>Thank You!</h3>
+
+<p>We'd like to thank the community for their feedback on our releases. In addition, we thank the following people who participated in the development of this release.</p>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Code Contributors</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=199907" target="_blank">dannyhenderson</a> (<a href="https://github.com/dannyhenderson" target="_blank">dannyhenderson</a>)</td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=241134" target="_blank">Gergely</a> (<a href="https://github.com/tgely" target="_blank">tgely</a>)</td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=287540" target="_blank">Niko_E</a> (<a href="https://github.com/ne704" target="_blank">ne704</a>)</td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Bug Reporters</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=67147" target="_blank">bluesbrother</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=290724" target="_blank">daemonus</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=68771" target="_blank">FWR Media</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=122078" target="_blank">GemRock</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=290540" target="_blank">jynxy</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=285279" target="_blank">Luyso</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=236732" target="_blank">meddiecap</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=290750" target="_blank">Merlin3</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=227409" target="_blank">nielss</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=100342" target="_blank">peteruittilburg</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=267436" target="_blank">quetevendo</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=88" target="_blank">syscon</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=290796" target="_blank">xsion</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Reference</h3>
+
+<p>A full list of source code changes can be seen at:</p>
+
+<p><a href="https://github.com/osCommerce/oscommerce/compare/v3.0...v3.0.1" target="_blank">https://github.com/osCommerce/oscommerce/compare/v3.0...v3.0.1</a></p>

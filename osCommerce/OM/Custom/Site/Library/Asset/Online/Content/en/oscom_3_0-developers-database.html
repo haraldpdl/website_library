@@ -1,0 +1,520 @@
+<h2>Database Connections and Queries</h2>
+
+<p>Connecting to and communication with databases is handled through the PHP Data Objects (PDO) extension, a lightweight and consistent interface for accessing databases in PHP. Each instance of the PDO class opens a new connection to a database server and provides a consistent API for communication regardless of the system used (MySQL, PostgreSQL, MS SQL Server, SQLite, etc.).</p>
+
+<p>PDO not only manages database connections, it also supports transactions, prepared statements, stored procedures, and error handling. Our database class extends the base PHP PDO class to also provide support for caching query result sets.</p>
+
+<h3>Connecting to a Database Server</h3>
+
+<p>Connecting to a database server is performed through the <em>osCommerce\OM\Core\PDO::initialize()</em> class method as follows:</p>
+
+<pre class="prettyprint">{escape}
+<?php
+  use osCommerce\OM\Core\PDO;
+
+  $PDO = PDO::initialize();
+?>
+{escape}</pre>
+
+<p>The initialize class method accepts the following parameters:</p>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>$server</td>
+      <td>The database server address name, IP address, or socket.</td>
+      <td><em>db_server</em> configuration value</td>
+    </tr>
+    <tr>
+      <td>$username</td>
+      <td>The user to connect as.</td>
+      <td><em>db_server_username</em> configuration value</td>
+    </tr>
+    <tr>
+      <td>$password</td>
+      <td>The user password to connect with.</td>
+      <td><em>db_server_password</em> configuration value</td>
+    </tr>
+    <tr>
+      <td>$database</td>
+      <td>The name of the database to connect to.</td>
+      <td><em>db_database</em> configuration value</td>
+    </tr>
+    <tr>
+      <td>$port</td>
+      <td>The port number of the database server to connect to.</td>
+      <td><em>db_server_port</em> configuration value</td>
+    </tr>
+    <tr>
+      <td>$driver</td>
+      <td>The database driver to use.</td>
+      <td><em>db_driver</em> configuration value</td>
+    </tr>
+    <tr>
+      <td>$driver_options</td>
+      <td>Database driver specific options to use on the connection.</td>
+      <td>
+        ATTR_ERRMODE = ERRMODE_WARNING<br />
+        ATTR_DEFAULT_FETCH_MODE = FETCH_ASSOC<br />
+        ATTR_STATEMENT_CLASS = osCommerce\OM\Core\PDOStatement
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h4>Database Drivers</h4>
+
+<p>Supported database drivers are located in <em>osCommerce/OM/Core/PDO/</em> and are used to connect to the database server.</p>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Supported Drivers</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>MySQL\Standard (MyISAM)</td>
+    </tr>
+    <tr>
+      <td>MySQL\V5 (InnoDB)</td>
+    </tr>
+    <tr>
+      <td>SQLite3</td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Drivers in Development</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Microsoft\SqlServer</td>
+    </tr>
+    <tr>
+      <td>PostgreSQL</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="alert alert-info">Both <em>Admin</em> and <em>Shop</em> sites register an instance of the <em>osCommerce\OM\Core\PDO</em> class in the registry as <em>PDO</em> that is used to communicate to the database system.</div>
+
+<h3>Abstract Queries</h3>
+
+<p>SQL queries are abstracted into modules to not only support various database systems, but to also optimize each query with the unique features of the database system to gain the best performance possible. This allows us to take advantage of stored procedures, views, and database system specific optimizations to perform queries as fast and efficiently as the database system allows.</p>
+
+<p>Abstract queries are called through the <em>OSCOM::callDB()</em> class method with the following parameters:</p>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>$procedure</td>
+      <td>The abstracted query module to call.</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>$data</td>
+      <td>Parameters to pass to the procedure.</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>$type</td>
+      <td>The level the procedure is located in.</td>
+      <td>Application</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The <em>$type</em> parameter informs the method where the procedure is located in the namespace level and parses a shortened namespace version for the Core, Site, and Application levels. A shortened namespace version is used to avoid the necessity of passing the full namespace level as a function parameter.</p>
+
+<p>The following examples show how <em>$procedure</em> and <em>$type</em> are internally used to build the full namespace level of the procedure:</p>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>$procedure</th>
+      <th>$type</th>
+      <th>Full Namespace</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>GetLanguages</td>
+      <td>Core</td>
+      <td>osCommerce\OM\Core\SQL\[Driver]\<strong>GetLanguages</strong></td>
+    </tr>
+    <tr>
+      <td>Shop\GetConfiguration</td>
+      <td>Site</td>
+      <td>osCommerce\OM\Core\Site\<strong>Shop</strong>\SQL\[Driver]\<strong>GetConfiguration</strong></td>
+    </tr>
+    <tr>
+      <td>Admin\Countries\Get</td>
+      <td>Application</td>
+      <td>osCommerce\OM\Core\Site\<strong>Admin</strong>\Application\<strong>Countries</strong>\SQL\[Driver]\<strong>Get</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Abstract queries are stored in the following directories:</p>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Level</th>
+      <th>Directory</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Core</td>
+      <td>osCommerce/OM/Core/SQL/[Driver]/</td>
+    </tr>
+    <tr>
+      <td>Site</td>
+      <td>osCommerce/OM/Core/Site/[Site]/SQL/[Driver]/</td>
+    </tr>
+    <tr>
+      <td>Application</td>
+      <td>osCommerce/OM/Core/Site/[Site]/Application/[Application]/SQL/[Driver]/</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="alert alert-info"><em>OSCOM::callDB()</em> first checks if an abstract query module exists in the <em>SQL/[Driver]/</em> directory to execute a database system optimized version of the query. If no optimized version is found, it executes an SQL ANSI standard version of the query in the <em>SQL/ANSI/</em> directory.</div>
+
+<h4>Executing Abstract Queries</h4>
+
+<p>The following examples show how abstract queries are executed:</p>
+
+<p><em>Retrieve and set configuration parameters</em></p>
+
+<pre class="prettyprint">{escape}
+<?php
+  use osCommerce\OM\Core\OSCOM;
+
+  foreach ( OSCOM::callDB('Shop\GetConfiguration', null, 'Site') as $param ) {
+    define($param['cfgkey'], $param['cfgvalue']);
+  }
+?>
+{escape}</pre>
+
+<p><em>Return a country entry with the ID value of 1</em></p>
+
+<pre class="prettyprint">{escape}
+<?php
+  use osCommerce\OM\Core\OSCOM;
+
+  $data = array('id' => '1');
+
+  $result = OSCOM::callDB('Admin\Countries\Get', $data); // uses the default $type parameter value of Application
+
+  echo $result['countries_name'];
+?>
+{escape}</pre>
+
+<h3>SQL Queries</h3>
+
+<p>SQL queries can be performed through an instance of the <em>osCommerce\OM\Core\PDO</em> class.</p>
+
+<p>The following query methods are available:</p>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>exec()</td>
+      <td>Execute the query and return the number of affected rows.</td>
+    </tr>
+    <tr>
+      <td>query()</td>
+      <td>Execute the query and return a result set.</td>
+    </tr>
+    <tr>
+      <td>prepare()</td>
+      <td>Securely pass parameters to and execute the query and return a result set.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="alert alert-info">In all three methods, references to table names in the form of <em>:table_[table_name]</em> are automatically replaced with the <em>db_table_prefix</em> database table name prefix value defined in the configuration.</div>
+
+<h4>exec()</h4>
+
+<p><em>exec()</em> is used to execute simple sql queries where no parameters are passed to the query and no returned result set is needed.</p>
+
+<p>The following example shows how <em>exec()</em> is used:</p>
+
+<pre class="prettyprint">{escape}
+<?php
+  use osCommerce\OM\Core\Registry;
+
+  $OSCOM_PDO = Registry::get('PDO');
+
+  $affected_rows = $OSCOM_PDO->exec('delete from :table_customers where customers_id = 1');
+
+  if ( $affected_rows === 1 ) {
+    echo 'Customer record deleted.';
+  } else {
+    echo 'Customer record not deleted.';
+  }
+?>
+{escape}</pre>
+
+<h4>query()</h4>
+
+<p><em>query()</em> is used to execute simple sql queries where no parameters are passed and a returned result set is needed.</p>
+
+<p>The following example shows how <em>query()</em> is used:</p>
+
+<pre class="prettyprint">{escape}
+<?php
+  use osCommerce\OM\Core\Registry;
+
+  $OSCOM_PDO = Registry::get('PDO');
+
+  $Qcustomer = $OSCOM_PDO->query('select customers_firstname, customers_lastname from :table_customers where customers_id = 1');
+  $Qcustomer->execute();
+
+  echo 'Welcome back ' . $Qcustomer->valueProtected('customers_firstname') . ' ' . $Qcustomer->valueProtected('customers_lastname') . '!';
+?>
+{escape}</pre>
+
+<h4>prepare()</h4>
+
+<p><em>prepare()</em> is used to execute simple sql queries where parameters are passed to the query and a returned result set is needed.</p>
+
+<p>The following example shows how <em>prepare()</em> is used:</p>
+
+<pre class="prettyprint">{escape}
+<?php
+  use osCommerce\OM\Core\Registry;
+
+  $OSCOM_PDO = Registry::get('PDO');
+
+  $customer_id = $_GET['cid'];
+
+  $Qcustomer = $OSCOM_PDO->prepare('select customers_firstname, customers_lastname from :table_customers where customers_id = :customers_id');
+  $Qcustomer->bindInt(':customers_id', $customer_id);
+  $Qcustomer->execute();
+
+  echo 'Welcome back ' . $Qcustomer->valueProtected('customers_firstname') . ' ' . $Qcustomer->valueProtected('customers_lastname') . '!';
+?>
+{escape}</pre>
+
+<p>Parameters can be securely passed to the sql query with the following methods:</p>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>bindValue()</td>
+      <td>Pass a string value to the query.</td>
+    </tr>
+    <tr>
+      <td>bindInt()</td>
+      <td>Pass an integer value to the query.</td>
+    </tr>
+    <tr>
+      <td>bindBool()</td>
+      <td>Pass a boolean value to the query.</td>
+    </tr>
+    <tr>
+      <td>bindNull()</td>
+      <td>Pass a null value to the query.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="alert alert-success">It is highly recommended to use the <em>bind*()</em> methods when passing parameters to the sql query to protect against SQL Injection attacks.</div>
+
+<h4>Caching Result Sets</h4>
+
+<p>Result sets can be cached for a defined period to greatly improve the performance of the web and database server.</p>
+
+<p>SQL queries can be cached by using the <em>setCache()</em> method as follows:</p>
+
+<pre class="prettyprint">{escape}
+<?php
+  use osCommerce\OM\Core\Registry;
+
+  $OSCOM_PDO = Registry::get('PDO');
+
+  $Qcfg = $OSCOM_PDO->query('select configuration_key as cfgkey, configuration_value cfgvalue from :table_configuration');
+  $Qcfg->setCache('configuration', 60);
+  $Qcfg->execute();
+
+  foreach ( $Qcfg->fetch() as $param ) {
+    define($param['cfgkey'], $param['cfgvalue']);
+  }
+?>
+{escape}</pre>
+
+<p>A key value is defined to identify the cached result set and a period in minutes is defined to keep using the cached result before it is refreshed. If no period is defined, the cached result set is used until it has been deleted manually.</p>
+
+<p>Cached result sets are stored in the <em>osCommerce/OM/Work/Cache</em> directory.</p>
+
+<h4>Transactions</h4>
+
+<p>Transactions allow multiple queries to be grouped where actual changes to the database are performed after the last query is executed and no errors previously occurred, or cancels the changes from the first query if an error has occurred. This allows multiple database records to be changed in a safe manner.</p>
+
+<p>Transactions are controlled with the following methods:</p>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>beginTransaction()</td>
+      <td>Start a transaction.</td>
+    </tr>
+    <tr>
+      <td>commit()</td>
+      <td>Save the database changes.</td>
+    </tr>
+    <tr>
+      <td>rollBack()</td>
+      <td>Cancel the database changes.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The following is an example transaction:</p>
+
+<pre class="prettyprint">{escape}
+<?php
+  use osCommerce\OM\Core\Registry;
+
+  $OSCOM_PDO = Registry::get('PDO');
+
+  try {
+    $OSCOM_PDO->beginTransaction();
+
+    $data = array('parent_id' => 1,
+                          'language_id' => 1,
+                          'name' => 'Electronics');
+
+    $Qcat = $OSCOM_PDO->prepare('insert into :table_categories (parent_id, date_added) values (:parent_id, now())');
+    $Qcat->bindInt(':parent_id', $data['parent_id']);
+    $Qcat->execute();
+
+    $category_id = $OSCOM_PDO->lastInsertId();
+
+    $Qcd = $OSCOM_PDO->prepare('insert into :table_categories_description (categories_id, language_id, categories_name) values (:categories_id, :language_id, :categories_name)');
+    $Qcd->bindInt(':categories_id', $category_id);
+    $Qcd->bindInt(':language_id', $data['language_id']);
+    $Qcd->bindValue(':categories_name', $data['name']);
+    $Qcd->execute();
+
+    $OSCOM_PDO->commit();
+  } catch ( PDOException $e ) { // an error has occurred
+    $OSCOM_PDO->rollBack();
+  }
+?>
+{escape}</pre>
+
+<div class="alert alert-error">The MySQL\Standard database driver <strong>does not</strong> support and ignores transactions due to it not being a feature of MySQL MyISAM tables. The MySQL\V5 driver does however support transactions as it uses InnoDB tables.</div>
+
+<h3>Foreign Key Relationships (MySQL MyISAM Compatibility)</h3>
+
+<p>An additional optimization we are utilizing is the use of Foreign Key relationships in the database schema structure. This strengthens the relationships between tables where records in multiple tables are linked together and have certain rules applied.</p>
+
+<p>The constraints between a parent and child relationship are:</p>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>ON DELETE or ON UPDATE Constraint</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>RESTRICT</td>
+      <td>Rejects the delete or update operation for the parent table.</td>
+    </tr>
+    <tr>
+      <td>CASCADE</td>
+      <td>Delete or update the row from the parent table, and automatically delete or update the matching rows in the child table.</td>
+    </tr>
+    <tr>
+      <td>SET NULL</td>
+      <td>Delete or update the row from the parent table, and set the foreign key column or columns in the child table to NULL.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>For an example, a Foreign Key constraint is set on the customers table linking the primary key customer_id field to other tables holding additional customer information. Deleting a customer record with the following sql query:</p>
+
+<pre class="prettyprint">{escape}
+delete from osc_customers where customers_id = 1;
+{escape}</pre>
+
+<p>would not only delete the record from the customers table, but with a <em>CASCADE</em> constraint would also automatically delete the customer records from the linked tables using that one sql query.</p>
+
+<p>This brings an enormous benefit when Add-Ons are installed as the records in any additional tables created can be defined to be automatically managed through Foreign Key restraints.</p>
+
+<h4>MySQL MyISAM Compatibility</h4>
+
+<div class="alert alert-error">The <em>MySQL\Standard</em> driver <string>does not</string> enforce Foreign Key relationship constraints due to it not being a feature of MySQL MyISAM tables. To work around this, Foreign Key relationships are also defined in the <em>[prefix]_fk_relationships</em> table.</div>
+
+<p>An example relationship that is defined in the table is:</p>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>from_table</th>
+      <th>to_table</th>
+      <th>from_field</th>
+      <th>to_field</th>
+      <th>on_update</th>
+      <th>on_delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>address_book</td>
+      <td>customers</td>
+      <td>customers_id</td>
+      <td>customers_id</td>
+      <td>cascade</td>
+      <td>cascade</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>This automatically deletes the customers record from the <em>[prefix]_address_book</em> table when the customer is deleted from the <em>[prefix]_customers</em> table.</p>
+
+<p>The <em>MySQL\Standard</em> driver automatically checks and performs the constraint actions each time an update or delete sql query is executed.</p>

@@ -1,0 +1,2347 @@
+<span id="upgtop"></span>
+
+<h2>osCommerce Online Merchant v2.3.3</h2>
+
+<p>osCommerce Online Merchant v2.3.3 is a general maintenance release improving over 30 features.</p>
+
+<p>This release also introduces new Robot NoIndex and Canonical Header Tag Modules, and Google+ +1, Google+ Share, and Pinterest Social Bookmark Modules.</p>
+
+<h3>Code Changes</h3>
+
+<p>The following changes have been applied:</p>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Bug</th>
+      <th>Severity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="success">
+      <td><a href="#upg1">Administration Tool -> Tools -> Send E-Mail</a> (1 file)</td>
+      <td>Convert HTML e-mail to plain-text if HTML E-Mails is disabled.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-309-adminmailphp/">309</a></td>
+      <td>Low</td>
+    </tr>
+    <tr class="warning">
+      <td><a href="#upg2">tep_redirect()</a> (2 files)</td>
+      <td>Fix URL encoding by replacing '&amp;amp;' with '&amp;'.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-314-malformed-url-issue/">314</a></td>
+      <td>Medium</td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg3">Administration Tool -> Tools -> Define Languages</a> (1 file)</td>
+      <td>Keep the selected language in the language selection pull down menu.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-289-define-languagephp-language-selector-error/">289</a></td>
+      <td>Low</td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg4">Checkout Process</a> (1 file)</td>
+      <td>Improve checking of shopping cart product attributes.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-246-undefined-index-attributes-file-checkout-processphp/">246</a></td>
+      <td>Low</td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg5">Shopping Cart</a> (2 files)</td>
+      <td>Replace hardcoded text with new TEXT_OR and TEXT_REMOVE language definitions.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-204-hardcoded-language-in-shopping-cartphp/">204</a></td>
+      <td>Low</td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg6">Product Info</a> (3 files)</td>
+      <td>Redirect to store index if no product ID exists in the request URL.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-202-product-info/">202</a></td>
+      <td>Low</td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg7">Administration Tool Dashboard Modules</a> (3 files)</td>
+      <td>Properly close HTML links.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-223-missing-end-tag-link/">223</a></td>
+      <td>Low</td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg8">New Products Module</a> (1 file)</td>
+      <td>Fix check on new products existing.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-214-new-productsphp/">214</a></td>
+      <td>Low</td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg9">Administration Tool -> Catalog -> Reviews</a> (1 file)</td>
+      <td>Fix typo in table width.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-178-spelling-errors-for-format-in-adminreviews/">178</a></td>
+      <td>Low</td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg10">tep_image()</a> (2 files)</td>
+      <td>Remove extra space in image title.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-148-spaces-in-titles/">148</a></td>
+      <td>Low</td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg11">Administration Tool -> Tools -> Action Recorder</a> (1 file)</td>
+      <td>Fix paging of action recorder listing.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-336-page-not-set-in-action-recorder-php/">336</a></td>
+      <td>Low</td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg12">Administration Tool -> Catalog -> Categories/Products</a> (1 file)</td>
+      <td>Fix casing of onkeyup HTML attribute.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-343-onkeyup-is-misspelled/">343</a></td>
+      <td>Low</td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg13">Administration Tool -> Catalog -> Categories/Products</a> (1 file)</td>
+      <td>Remove legacy product preview code.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-221-found-a-small-issue-in-categoriesphp-and-fixed/">221</a></td>
+      <td>Low</td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg14">Checkout Confirmation</a> (1 file)</td>
+      <td>Improve checking of order comments.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-245-undefined-indexes-comments-fields-in-file-checkout-confirmationphp/">245</a></td>
+      <td>Low</td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg15">Shopping Cart</a> (1 file)</td>
+      <td>Remove legacy TABLE_HEADING_REMOVE, TABLE_HEADING_QUANTITY, TABLE_HEADING_MODEL, and TABLE_HEADING_TOTAL language definitions.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-157-unused-constants-in-catalogincludeslanguagesenglishshopping-cartphp/">157</a></td>
+      <td>Low</td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg16">Manufacturers</a> (1 file)</td>
+      <td>Improve filtering of manufacturers.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-195-cant-find-manufacturers-id/">195</a></td>
+      <td>Low</td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg17">Product Information</a> (1 file)</td>
+      <td>Fix the total number of product reviews to count only the reviews in the selected language.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-138-no-reviews-other-than-english/">138</a></td>
+      <td>Low</td>
+    </tr>
+    <tr class="warning">
+      <td><a href="#upg18">Sessions - tep_session_register()</a> (2 files)</td>
+      <td>Also reference and keep track of null variables in the session. This general bug fix also addresses a compatibility issue with PHP 5.4.0.</td>
+      <td></td>
+      <td>Medium</td>
+    </tr>
+    <tr class="warning">
+      <td><a href="#upg19">Sessions - tep_session_recreate()</a> (1 file)</td>
+      <td>Replace internal logic to use session_regenerate_id() for PHP 5.1+ servers. If $SID is defined, also update its value with the new session ID.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-465-session-error-recreate-session-ssl/">465</a></td>
+      <td>Medium</td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg20">Product Information</a> (1 file)</td>
+      <td>Prevent the session ID being added to product images.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-445-enlarged-image-not-displayed-upon-direct-web-request-with-search-engine-friendly-urls/">445</a></td>
+      <td>Low</td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg21">Payment Class</a> (1 file)</td>
+      <td>Remove legacy PHP 3 code.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-377-deprecated-function-public-htmlincludesclassespaymentphp/">377</a></td>
+      <td>Low</td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg22">GZIP Compression</a> (1 file)</td>
+      <td>Automatically disable if PHP 5.4.0 to PHP 5.4.5 is used due to PHP bug #55544.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-468-php-54-ob-gzhandler-and-zlib-output-compression-conflict/">468</a></td>
+      <td>Low</td>
+    </tr>
+    <tr class="error">
+      <td><a href="#upg23">Checkout Shipping</a> (2 files)</td>
+      <td>Improve checking of the shopping cart ID.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-473-improve-shopping-cart-id-detection/">473</a></td>
+      <td>High</td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg24">Time Zone Compatibility</a> (2 files)</td>
+      <td>Improve PHP 5.2 Time Zone compatibility by setting the time zone to CFG_TIME_ZONE or to the default time zone if it is not defined.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-447-timezone/">447</a></td>
+      <td>Low</td>
+    </tr>
+    <tr class="warning">
+      <td><a href="#upg25">General</a> (6 files)</td>
+      <td>Typecast remaining variables used in SQL queries.</td>
+      <td></td>
+      <td>Medium</td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg26">Administration Tool -> Modules</a> (1 file)</td>
+      <td>Fix edit button link containing the module code.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-475-we-lost-name-of-module-when-first-module-is-selected-by-default/">475</a></td>
+      <td>Low</td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg27">Administration Tool -> Tools -> Banner Manager</a> (1 file)</td>
+      <td>Properly delete banner image when the banner is being deleted.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-477-adminbanner-managerphp-misspelled-variable/">477</a></td>
+      <td>Low</td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg28">Social Bookmark Modules</a> (4 files)</td>
+      <td>Replace hardcoded 'images/' path with DIR_WS_IMAGES.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-476-images-directory-is-hardcoded-in-the-social-bookmarks-modules/">476</a></td>
+      <td>Low</td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg29">Version Update</a> (1 file)</td>
+      <td>Update version to v2.3.3.</td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>New Modules</h3>
+
+<p>The following modules have been added:</p>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="#upg30">Robot NoIndex Header Tag Module</a></td>
+      <td>Adds a noindex meta tag to specified pages.</td>
+    </tr>
+    <tr>
+      <td><a href="#upg31">Google+ +1 Button and Google+ Share Social Bookmark Modules</a></td>
+      <td>Adds Google+ +1 and Google+ Share buttons to the product information page.</td>
+    </tr>
+    <tr>
+      <td><a href="#upg32">Canonical Header Tag Module</a></td>
+      <td>Adds canonical meta links to the product information and category listing pages.</td>
+    </tr>
+    <tr>
+      <td><a href="#upg33">Pinterest Social Bookmark Module</a></td>
+      <td>Adds Pinterest share button to the product information page.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>External Library Updates</h3>
+
+<p>The following external libraries have been updated:</p>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="#upg34">960.gs</a></td>
+      <td>Updated to latest version.</td>
+    </tr>
+    <tr>
+      <td><a href="#upg35">jQuery</a></td>
+      <td>1.4.2 to 1.8.0.</td>
+    </tr>
+    <tr>
+      <td><a href="#upg36">jQuery UI</a></td>
+      <td>1.8.6 to 1.8.22.</td>
+    </tr>
+    <tr>
+      <td><a href="#upg37">bxGallery</a></td>
+      <td>Compatibility changes for jQuery 1.8.0.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>API Changes</h3>
+
+<p>The following API changes have been applied:</p>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Time Zone</td>
+      <td>Added new CFG_TIME_ZONE configuration parameter to set the default time zone to. (Active for PHP 5.2+ servers)</td>
+    </tr>
+    <tr>
+      <td>Sessions - tep_session_recreate()</td>
+      <td>This function is now only active on PHP 5.1+ servers.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Language Definitions</h3>
+
+<p>The following languages definitions have been modified:</p>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Language File</th>
+      <th>Definitions</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>modules/header_tags/ht_canonical.php</td>
+      <td>MODULE_HEADER_TAGS_CANONICAL_TITLE<br />
+          MODULE_HEADER_TAGS_CANONICAL_DESCRIPTION</td>
+      <td>New<br />
+          New</td>
+    </tr>
+    <tr>
+      <td>modules/header_tags/ht_robot_noindex.php</td>
+      <td>MODULE_HEADER_TAGS_ROBOT_NOINDEX_TITLE<br />
+          MODULE_HEADER_TAGS_ROBOT_NOINDEX_DESCRIPTION</td>
+      <td>New<br />
+          New</td>
+    </tr>
+    <tr>
+      <td>modules/social_bookmarks/sb_google_plus_one.php</td>
+      <td>MODULE_SOCIAL_BOOKMARKS_GOOGLE_PLUS_ONE_TITLE<br />
+          MODULE_SOCIAL_BOOKMARKS_GOOGLE_PLUS_ONE_DESCRIPTION<br />
+          MODULE_SOCIAL_BOOKMARKS_GOOGLE_PLUS_ONE_PUBLIC_TITLE</td>
+      <td>New<br />
+          New<br />
+          New</td>
+    </tr>
+    <tr>
+      <td>modules/social_bookmarks/sb_google_plus_share.php</td>
+      <td>MODULE_SOCIAL_BOOKMARKS_GOOGLE_PLUS_SHARE_TITLE<br />
+          MODULE_SOCIAL_BOOKMARKS_GOOGLE_PLUS_SHARE_DESCRIPTION<br />
+          MODULE_SOCIAL_BOOKMARKS_GOOGLE_PLUS_SHARE_PUBLIC_TITLE</td>
+      <td>New<br />
+          New<br />
+          New</td>
+    </tr>
+    <tr>
+      <td>modules/social_bookmarks/sb_pinterest.php</td>
+      <td>MODULE_SOCIAL_BOOKMARKS_PINTEREST_TITLE<br />
+          MODULE_SOCIAL_BOOKMARKS_PINTEREST_DESCRIPTION<br />
+          MODULE_SOCIAL_BOOKMARKS_PINTEREST_PUBLIC_TITLE</td>
+      <td>New<br />
+          New<br />
+          New</td>
+    </tr>
+    <tr>
+      <td>shopping_cart.php</td>
+      <td>TEXT_OR<br />
+          TEXT_REMOVE<br />
+          TABLE_HEADING_REMOVE<br />
+          TABLE_HEADING_QUANTITY<br />
+          TABLE_HEADING_MODEL<br />
+          TABLE_HEADING_TOTAL</td>
+      <td>New<br />
+          New<br />
+          Deleted<br />
+          Deleted<br />
+          Deleted<br />
+          Deleted</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Upgrading from v2.3.2</h3>
+
+<h4>Modified Files</h4>
+
+<p>Files that have been modified in this release include:</p>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Modified Files</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>admin/action_recorder.php</td>
+    </tr>
+    <tr>
+      <td>admin/banner_manager.php</td>
+    </tr>
+    <tr>
+      <td>admin/categories.php</td>
+    </tr>
+    <tr>
+      <td>admin/define_language.php</td>
+    </tr>
+    <tr>
+      <td>admin/includes/functions/compatibility.php</td>
+    </tr>
+    <tr>
+      <td>admin/includes/functions/general.php</td>
+    </tr>
+    <tr>
+      <td>admin/includes/functions/html_output.php</td>
+    </tr>
+    <tr>
+      <td>admin/includes/functions/sessions.php</td>
+    </tr>
+    <tr>
+      <td>admin/includes/modules/dashboard/d_customers.php</td>
+    </tr>
+    <tr>
+      <td>admin/includes/modules/dashboard/d_orders.php</td>
+    </tr>
+    <tr>
+      <td>admin/includes/modules/dashboard/d_reviews.php</td>
+    </tr>
+    <tr>
+      <td>admin/includes/template_top.php</td>
+    </tr>
+    <tr>
+      <td>admin/mail.php</td>
+    </tr>
+    <tr>
+      <td>admin/modules.php</td>
+    </tr>
+    <tr>
+      <td>admin/reviews.php</td>
+    </tr>
+    <tr>
+      <td>checkout_confirmation.php</td>
+    </tr>
+    <tr>
+      <td>checkout_payment_address.php</td>
+    </tr>
+    <tr>
+      <td>checkout_process.php</td>
+    </tr>
+    <tr>
+      <td>checkout_shipping.php</td>
+    </tr>
+    <tr>
+      <td>download.php</td>
+    </tr>
+    <tr>
+      <td>includes/application_top.php</td>
+    </tr>
+    <tr>
+      <td>includes/classes/payment.php</td>
+    </tr>
+    <tr>
+      <td>includes/classes/shopping_cart.php</td>
+    </tr>
+    <tr>
+      <td>includes/functions/banner.php</td>
+    </tr>
+    <tr>
+      <td>includes/functions/compatibility.php</td>
+    </tr>
+    <tr>
+      <td>includes/functions/general.php</td>
+    </tr>
+    <tr>
+      <td>includes/functions/html_output.php</td>
+    </tr>
+    <tr>
+      <td>includes/functions/sessions.php</td>
+    </tr>
+    <tr>
+      <td>includes/functions/specials.php</td>
+    </tr>
+    <tr>
+      <td>includes/languages/english/shopping_cart.php</td>
+    </tr>
+    <tr>
+      <td>includes/modules/new_products.php</td>
+    </tr>
+    <tr>
+      <td>includes/modules/social_bookmarks/sb_digg.php</td>
+    </tr>
+    <tr>
+      <td>includes/modules/social_bookmarks/sb_email.php</td>
+    </tr>
+    <tr>
+      <td>includes/modules/social_bookmarks/sb_facebook.php</td>
+    </tr>
+    <tr>
+      <td>includes/modules/social_bookmarks/sb_twitter.php</td>
+    </tr>
+    <tr>
+      <td>includes/template_top.php</td>
+    </tr>
+    <tr>
+      <td>includes/version.php</td>
+    </tr>
+    <tr>
+      <td>index.php</td>
+    </tr>
+    <tr>
+      <td>product_info.php</td>
+    </tr>
+    <tr>
+      <td>product_reviews.php</td>
+    </tr>
+    <tr>
+      <td>product_reviews_write.php</td>
+    </tr>
+    <tr>
+      <td>shopping_cart.php</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4>New Files</h4>
+
+<p>Files that have been added to this release include:</p>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>New Files</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>includes/languages/english/modules/header_tags/ht_canonical.php</td>
+    </tr>
+    <tr>
+      <td>includes/languages/english/modules/header_tags/ht_robot_noindex.php</td>
+    </tr>
+    <tr>
+      <td>includes/languages/english/modules/social_bookmarks/sb_google_plus_one.php</td>
+    </tr>
+    <tr>
+      <td>includes/languages/english/modules/social_bookmarks/sb_google_plus_share.php</td>
+    </tr>
+    <tr>
+      <td>includes/languages/english/modules/social_bookmarks/sb_pinterest.php</td>
+    </tr>
+    <tr>
+      <td>includes/modules/header_tags/ht_canonical.php</td>
+    </tr>
+    <tr>
+      <td>includes/modules/header_tags/ht_robot_noindex.php</td>
+    </tr>
+    <tr>
+      <td>includes/modules/social_bookmarks/sb_google_plus_one.php</td>
+    </tr>
+    <tr>
+      <td>includes/modules/social_bookmarks/sb_google_plus_share.php</td>
+    </tr>
+    <tr>
+      <td>includes/modules/social_bookmarks/sb_pinterest.php</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>File Changes</h3>
+
+<span id="upg1"></span>
+
+<h4>Administration Tool -> Tools -> Send E-Mail (1 file)</h4>
+
+<p><i class="icon-file"></i> <strong>admin/mail.php</strong></p>
+
+<p>around line 44, change:</p>
+
+<pre class="prettyprint">{escape}
+if (EMAIL_USE_HTML == 'true') {
+  $mimemessage->add_html($message, $text);
+} else {
+  $mimemessage->add_text($message);
+}
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+if (EMAIL_USE_HTML == 'true') {
+  $mimemessage->add_html($message, $text);
+} else {
+  $mimemessage->add_text($text);
+}
+{escape}</pre>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/e552969b871732dc3f5315e7c9c51f1ce6ca1175" target="_blank">View online at GitHub</a></p>
+
+<span id="upg2"></span>
+
+<h4>tep_redirect() (2 files)</h4>
+
+<p><i class="icon-file"></i> <strong>admin/includes/functions/general.php</strong></p>
+
+<p>change tep_redirect() from:</p>
+
+<pre class="prettyprint">{escape}
+function tep_redirect($url) {
+  global $logger;
+
+  if ( (strstr($url, "\n") != false) || (strstr($url, "\r") != false) ) {
+    tep_redirect(tep_href_link(FILENAME_DEFAULT, '', 'NONSSL', false));
+  }
+
+  header('Location: ' . $url);
+
+  if (STORE_PAGE_PARSE_TIME == 'true') {
+    if (!is_object($logger)) $logger = new logger;
+    $logger->timer_stop();
+  }
+
+  exit;
+}
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+function tep_redirect($url) {
+  global $logger;
+
+  if ( (strstr($url, "\n") != false) || (strstr($url, "\r") != false) ) {
+    tep_redirect(tep_href_link(FILENAME_DEFAULT, '', 'NONSSL', false));
+  }
+
+  if ( strpos($url, '&amp;') !== false ) {
+    $url = str_replace('&amp;', '&', $url);
+  }
+
+  header('Location: ' . $url);
+
+  if (STORE_PAGE_PARSE_TIME == 'true') {
+    if (!is_object($logger)) $logger = new logger;
+    $logger->timer_stop();
+  }
+
+  exit;
+}
+{escape}</pre>
+
+<p><i class="icon-file"></i> <strong>includes/functions/general.php</strong></p>
+
+<p>change tep_redirect() from:</p>
+
+<pre class="prettyprint">{escape}
+function tep_redirect($url) {
+  if ( (strstr($url, "\n") != false) || (strstr($url, "\r") != false) ) {
+    tep_redirect(tep_href_link(FILENAME_DEFAULT, '', 'NONSSL', false));
+  }
+
+  if ( (ENABLE_SSL == true) && (getenv('HTTPS') == 'on') ) { // We are loading an SSL page
+    if (substr($url, 0, strlen(HTTP_SERVER)) == HTTP_SERVER) { // NONSSL url
+      $url = HTTPS_SERVER . substr($url, strlen(HTTP_SERVER)); // Change it to SSL
+    }
+  }
+
+  header('Location: ' . $url);
+
+  tep_exit();
+}
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+function tep_redirect($url) {
+  if ( (strstr($url, "\n") != false) || (strstr($url, "\r") != false) ) {
+    tep_redirect(tep_href_link(FILENAME_DEFAULT, '', 'NONSSL', false));
+  }
+
+  if ( (ENABLE_SSL == true) && (getenv('HTTPS') == 'on') ) { // We are loading an SSL page
+    if (substr($url, 0, strlen(HTTP_SERVER)) == HTTP_SERVER) { // NONSSL url
+      $url = HTTPS_SERVER . substr($url, strlen(HTTP_SERVER)); // Change it to SSL
+    }
+  }
+
+  if ( strpos($url, '&amp;') !== false ) {
+    $url = str_replace('&amp;', '&', $url);
+  }
+
+  header('Location: ' . $url);
+
+  tep_exit();
+}
+{escape}</pre>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/885d311bcf134342a16ef6c4ead75cd1de8feadc" target="_blank">View online at GitHub</a></p>
+
+<span id="upg3"></span>
+
+<h4>Administration Tool -> Tools -> Define Languages (1 file)</h4>
+
+<p><i class="icon-file"></i> <strong>admin/define_language.php</strong></p>
+
+<p>around line 97, change from:</p>
+
+<pre class="prettyprint">{escape}
+<td class="pageHeading" align="right"><?php echo tep_draw_pull_down_menu('lngdir', $languages_array, $language, 'onchange="this.form.submit();"'); ?></td>
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+<td class="pageHeading" align="right"><?php echo tep_draw_pull_down_menu('lngdir', $languages_array, $HTTP_GET_VARS['lngdir'], 'onchange="this.form.submit();"'); ?></td>
+{escape}</pre>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/54f1574c2959e2cae88e58858d3c2ee21b1c71ec" target="_blank">View online at GitHub</a></p>
+
+<span id="upg4"></span>
+
+<h4>Checkout Process (1 file)</h4>
+
+<p><i class="icon-file"></i> <strong>checkout_process.php</strong></p>
+
+<p>around line 156, change from:</p>
+
+<pre class="prettyprint">{escape}
+// Will work with only one option for downloadable products
+// otherwise, we have to build the query dynamically with a loop
+$products_attributes = $order->products[$i]['attributes'];
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+// Will work with only one option for downloadable products
+// otherwise, we have to build the query dynamically with a loop
+$products_attributes = (isset($order->products[$i]['attributes'])) ? $order->products[$i]['attributes'] : '';
+{escape}</pre>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/e136c8bd4510477486408658778c1ec1d3b96791" target="_blank">View online at GitHub</a></p>
+
+<span id="upg5"></span>
+
+<h4>Shopping Cart (2 files)</h4>
+
+<p><i class="icon-file"></i> <strong>includes/languages/english/shopping_cart.php</strong></p>
+
+<p>add the following language definitions:</p>
+
+<pre class="prettyprint">{escape}
+define('TEXT_OR', 'or ');
+define('TEXT_REMOVE', 'remove');
+{escape}</pre>
+
+<div class="alert">Please perform the same changes to other languages you may have installed.</div>
+
+<p><i class="icon-file"></i> <strong>shopping_cart.php</strong></p>
+
+<p>around line 97, change from:</p>
+
+<pre class="prettyprint">{escape}
+$products_name .= '<br /><br />' . tep_draw_input_field('cart_quantity[]', $products[$i]['quantity'], 'size="4"') . tep_draw_hidden_field('products_id[]', $products[$i]['id']) . tep_draw_button(IMAGE_BUTTON_UPDATE, 'refresh') . '   or <a href="' . tep_href_link(FILENAME_SHOPPING_CART, 'products_id=' . $products[$i]['id'] . '&action=remove_product') . '">remove</a>';
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+$products_name .= '<br /><br />' . tep_draw_input_field('cart_quantity[]', $products[$i]['quantity'], 'size="4"') . tep_draw_hidden_field('products_id[]', $products[$i]['id']) . tep_draw_button(IMAGE_BUTTON_UPDATE, 'refresh') . '   ' . TEXT_OR . '<a href="' . tep_href_link(FILENAME_SHOPPING_CART, 'products_id=' . $products[$i]['id'] . '&action=remove_product') . '">' . TEXT_REMOVE . '</a>';
+{escape}</pre>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/83dff5989ae5082c585097df700ff5915043f266" target="_blank">View online at GitHub</a></p>
+
+<span id="upg6"></span>
+
+<h4>Product Info (3 files)</h4>
+
+<p><i class="icon-file"></i> <strong>product_info.php</strong></p>
+
+<p>around line 13, change from:</p>
+
+<pre class="prettyprint">{escape}
+require('includes/application_top.php');
+
+require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_PRODUCT_INFO);
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+require('includes/application_top.php');
+
+if (!isset($HTTP_GET_VARS['products_id'])) {
+  tep_redirect(tep_href_link(FILENAME_DEFAULT));
+}
+
+require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_PRODUCT_INFO);
+{escape}</pre>
+
+<p><i class="icon-file"></i> <strong>product_reviews.php</strong></p>
+
+<p>around line 13, change from:</p>
+
+<pre class="prettyprint">{escape}
+require('includes/application_top.php');
+
+if (!isset($HTTP_GET_VARS['products_id']) || !is_numeric($HTTP_GET_VARS['products_id'])) {
+  tep_redirect(tep_href_link(FILENAME_REVIEWS));
+}
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+require('includes/application_top.php');
+
+if (!isset($HTTP_GET_VARS['products_id'])) {
+  tep_redirect(tep_href_link(FILENAME_REVIEWS));
+}
+{escape}</pre>
+
+<p><i class="icon-file"></i> <strong>product_reviews_write.php</strong></p>
+
+<p>around line 17, change from:</p>
+
+<pre class="prettyprint">{escape}
+if (!tep_session_is_registered('customer_id')) {
+  $navigation->set_snapshot();
+  tep_redirect(tep_href_link(FILENAME_LOGIN, '', 'SSL'));
+}
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+if (!tep_session_is_registered('customer_id')) {
+  $navigation->set_snapshot();
+  tep_redirect(tep_href_link(FILENAME_LOGIN, '', 'SSL'));
+}
+
+if (!isset($HTTP_GET_VARS['products_id'])) {
+  tep_redirect(tep_href_link(FILENAME_PRODUCT_REVIEWS, tep_get_all_get_params(array('action'))));
+}
+{escape}</pre>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/4de15e0980049cdd34f0e5abefbd9860c5a55a51" target="_blank">View online at GitHub</a></p>
+
+<span id="upg7"></span>
+
+<h4>Administration Tool Dashboard Modules (3 files)</h4>
+
+<p><i class="icon-file"></i> <strong>admin/includes/modules/dashboard/d_customers.php</strong></p>
+
+<p>around line 40, change from:</p>
+
+<pre class="prettyprint">{escape}
+' <td class="dataTableContent"><a href="' . tep_href_link(FILENAME_CUSTOMERS, 'cID=' . (int)$customers['customers_id'] . '&action=edit') . '">' . tep_output_string_protected($customers['customers_firstname'] . ' ' . $customers['customers_lastname']) . '</td>' .
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+' <td class="dataTableContent"><a href="' . tep_href_link(FILENAME_CUSTOMERS, 'cID=' . (int)$customers['customers_id'] . '&action=edit') . '">' . tep_output_string_protected($customers['customers_firstname'] . ' ' . $customers['customers_lastname']) . '</a></td>' .
+{escape}</pre>
+
+<p><i class="icon-file"></i> <strong>admin/includes/modules/dashboard/d_orders.php</strong></p>
+
+<p>around line 44, change from:</p>
+
+<pre class="prettyprint">{escape}
+' <td class="dataTableContent"><a href="' . tep_href_link(FILENAME_ORDERS, 'oID=' . (int)$orders['orders_id'] . '&action=edit') . '">' . tep_output_string_protected($orders['customers_name']) . '</td>' .
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+' <td class="dataTableContent"><a href="' . tep_href_link(FILENAME_ORDERS, 'oID=' . (int)$orders['orders_id'] . '&action=edit') . '">' . tep_output_string_protected($orders['customers_name']) . '</a></td>' .
+{escape}</pre>
+
+<p><i class="icon-file"></i> <strong>admin/includes/modules/dashboard/d_reviews.php</strong></p>
+
+<p>around line 46, change from:</p>
+
+<pre class="prettyprint">{escape}
+' <td class="dataTableContent"><a href="' . tep_href_link(FILENAME_REVIEWS, 'rID=' . (int)$reviews['reviews_id'] . '&action=edit') . '">' . $reviews['products_name'] . '</td>' .
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+' <td class="dataTableContent"><a href="' . tep_href_link(FILENAME_REVIEWS, 'rID=' . (int)$reviews['reviews_id'] . '&action=edit') . '">' . $reviews['products_name'] . '</a></td>' .
+{escape}</pre>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/d3611254872cf2de1216452245ba8a5bc812310d" target="_blank">View online at GitHub</a></p>
+
+<span id="upg8"></span>
+
+<h4>New Products Module (1 file)</h4>
+
+<p><i class="icon-file"></i> <strong>includes/modules/new_products.php</strong></p>
+
+<p>around line 21, change from:</p>
+
+<pre class="prettyprint">{escape}
+if ($new_products_query > 0) {
+$counter = 0;
+$col = 0;
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+if ($num_new_products > 0) {
+$counter = 0;
+$col = 0;
+{escape}</pre>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/ca5f18bf7ef093745ddf080ce0a365439689f4e0" target="_blank">View online at GitHub</a></p>
+
+<span id="upg9"></span>
+
+<h4>Administration Tool -> Catalog -> Reviews (1 file)</h4>
+
+<p><i class="icon-file"></i> <strong>admin/reviews.php</strong></p>
+
+<p>around line 100, change from:</p>
+
+<pre class="prettyprint">{escape}
+<td><table witdh="100%" border="0" cellspacing="0" cellpadding="0">
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+<td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+{escape}</pre>
+
+<p>around line 150, change from:</p>
+
+<pre class="prettyprint">{escape}
+<td><table witdh="100%" border="0" cellspacing="0" cellpadding="0">
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+<td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+{escape}</pre>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/b34925faf0294eb78321be8ebd7909f306438f21" target="_blank">View online at GitHub</a></p>
+
+<span id="upg10"></span>
+
+<h4>tep_image() (2 files)</h4>
+
+<p><i class="icon-file"></i> <strong>admin/includes/functions/html_output.php</strong></p>
+
+<p>in the tep_image() function, change the following code block from:</p>
+
+<pre class="prettyprint">{escape}
+if (tep_not_null($alt)) {
+  $image .= ' title=" ' . tep_output_string($alt) . ' "';
+}
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+if (tep_not_null($alt)) {
+  $image .= ' title="' . tep_output_string($alt) . '"';
+}
+{escape}</pre>
+
+<p><i class="icon-file"></i> <strong>includes/functions/html_output.php</strong></p>
+
+<p>in the tep_image() function, change the following code block from:</p>
+
+<pre class="prettyprint">{escape}
+if (tep_not_null($alt)) {
+  $image .= ' title=" ' . tep_output_string($alt) . ' "';
+}
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+if (tep_not_null($alt)) {
+  $image .= ' title="' . tep_output_string($alt) . '"';
+}
+{escape}</pre>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/af4e5226fc7497fc76366125524d269ee83b1199" target="_blank">View online at GitHub</a></p>
+
+<span id="upg11"></span>
+
+<h4>Administration Tool -> Tools -> Action Recorder (1 file)</h4>
+
+<p><i class="icon-file"></i> <strong>admin/action_recorder.php</strong></p>
+
+<p>around line 161, change from:</p>
+
+<pre class="prettyprint">{escape}
+echo ' <tr class="dataTableRow" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" onclick="document.location.href=\'' . tep_href_link(FILENAME_ACTION_RECORDER, 'aID=' . $actions['id']) . '\'">' . "\n";
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+echo ' <tr class="dataTableRow" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" onclick="document.location.href=\'' . tep_href_link(FILENAME_ACTION_RECORDER, tep_get_all_get_params(array('aID')) . 'aID=' . $actions['id']) . '\'">' . "\n";
+{escape}</pre>
+
+<p>around line 168, change from:</p>
+
+<pre class="prettyprint">{escape}
+<td class="dataTableContent" align="right"><?php if ( (isset($aInfo) && is_object($aInfo)) && ($actions['id'] == $aInfo->id) ) { echo tep_image(DIR_WS_IMAGES . 'icon_arrow_right.gif', ''); } else { echo '<a href="' . tep_href_link(FILENAME_ACTION_RECORDER, 'aID=' . $actions['id']) . '">' . tep_image(DIR_WS_IMAGES . 'icon_info.gif', IMAGE_ICON_INFO) . '</a>'; } ?> </td>
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+<td class="dataTableContent" align="right"><?php if ( (isset($aInfo) && is_object($aInfo)) && ($actions['id'] == $aInfo->id) ) { echo tep_image(DIR_WS_IMAGES . 'icon_arrow_right.gif', ''); } else { echo '<a href="' . tep_href_link(FILENAME_ACTION_RECORDER, tep_get_all_get_params(array('aID')) . 'aID=' . $actions['id']) . '">' . tep_image(DIR_WS_IMAGES . 'icon_info.gif', IMAGE_ICON_INFO) . '</a>'; } ?> </td>
+{escape}</pre>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/19d9b4a0e4660806ba6f81154a4c61220116a7ab" target="_blank">View online at GitHub</a></p>
+
+<span id="upg12"></span>
+
+<h4>Administration Tool -> Catalog -> Categories/Products (1 file)</h4>
+
+<p><i class="icon-file"></i> <strong>admin/categories.php</strong></p>
+
+<p>around line 548, change from:</p>
+
+<pre class="prettyprint">{escape}
+<td class="main"><?php echo tep_draw_separator('pixel_trans.gif', '24', '15') . ' ' . tep_draw_input_field('products_price', $pInfo->products_price, 'onKeyUp="updateGross()"'); ?></td>
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+<td class="main"><?php echo tep_draw_separator('pixel_trans.gif', '24', '15') . ' ' . tep_draw_input_field('products_price', $pInfo->products_price, 'onkeyup="updateGross()"'); ?></td>
+{escape}</pre>
+
+<p>around line 552, change from:</p>
+
+<pre class="prettyprint">{escape}
+<td class="main"><?php echo tep_draw_separator('pixel_trans.gif', '24', '15') . ' ' . tep_draw_input_field('products_price_gross', $pInfo->products_price, 'OnKeyUp="updateNet()"'); ?></td>
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+<td class="main"><?php echo tep_draw_separator('pixel_trans.gif', '24', '15') . ' ' . tep_draw_input_field('products_price_gross', $pInfo->products_price, 'onkeyup="updateNet()"'); ?></td>
+{escape}</pre>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/b374f8e3c7313fdbecf70866d5e070fe45d2b338" target="_blank">View online at GitHub</a></p>
+
+<span id="upg13"></span>
+
+<h4>Administration Tool -> Catalog -> Categories/Products (1 file)</h4>
+
+<p><i class="icon-file"></i> <strong>admin/categories.php</strong></p>
+
+<p>around line 534, change from:</p>
+
+<pre class="prettyprint">{escape}
+<td class="main"><?php echo tep_image(DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . ' ' . tep_draw_input_field('products_name[' . $languages[$i]['id'] . ']', (isset($products_name[$languages[$i]['id']]) ? stripslashes($products_name[$languages[$i]['id']]) : tep_get_products_name($pInfo->products_id, $languages[$i]['id']))); ?></td>
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+<td class="main"><?php echo tep_image(DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . ' ' . tep_draw_input_field('products_name[' . $languages[$i]['id'] . ']', (empty($pInfo->products_id) ? '' : tep_get_products_name($pInfo->products_id, $languages[$i]['id']))); ?></td>
+{escape}</pre>
+
+<p>around line 568, change from:</p>
+
+<pre class="prettyprint">{escape}
+<td class="main"><?php echo tep_draw_textarea_field('products_description[' . $languages[$i]['id'] . ']', 'soft', '70', '15', (isset($products_description[$languages[$i]['id']]) ? stripslashes($products_description[$languages[$i]['id']]) : tep_get_products_description($pInfo->products_id, $languages[$i]['id']))); ?></td>
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+<td class="main"><?php echo tep_draw_textarea_field('products_description[' . $languages[$i]['id'] . ']', 'soft', '70', '15', (empty($pInfo->products_id) ? '' : tep_get_products_description($pInfo->products_id, $languages[$i]['id']))); ?></td>
+{escape}</pre>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/7f8466f5c58983082709ff022c35806dd21ec4fd" target="_blank">View online at GitHub</a></p>
+
+<span id="upg14"></span>
+
+<h4>Checkout Confirmation (1 file)</h4>
+
+<p><i class="icon-file"></i> <strong>checkout_confirmation.php</strong></p>
+
+<p>around line 41, change from:</p>
+
+<pre class="prettyprint">{escape}
+if (!tep_session_is_registered('comments')) tep_session_register('comments');
+if (tep_not_null($HTTP_POST_VARS['comments'])) {
+  $comments = tep_db_prepare_input($HTTP_POST_VARS['comments']);
+}
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+if (!tep_session_is_registered('comments')) tep_session_register('comments');
+if (isset($HTTP_POST_VARS['comments']) && tep_not_null($HTTP_POST_VARS['comments'])) {
+  $comments = tep_db_prepare_input($HTTP_POST_VARS['comments']);
+}
+{escape}</pre>
+
+<p>around line 241, change from:</p>
+
+<pre class="prettyprint">{escape}
+<?php
+  for ($i=0, $n=sizeof($confirmation['fields']); $i<$n; $i++) {
+?>
+
+<tr>
+  <td><?php echo tep_draw_separator('pixel_trans.gif', '10', '1'); ?></td>
+  <td class="main"><?php echo $confirmation['fields'][$i]['title']; ?></td>
+  <td><?php echo tep_draw_separator('pixel_trans.gif', '10', '1'); ?></td>
+  <td class="main"><?php echo $confirmation['fields'][$i]['field']; ?></td>
+</tr>
+
+<?php
+  }
+?>
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+<?php
+  if (isset($confirmation['fields'])) {
+    for ($i=0, $n=sizeof($confirmation['fields']); $i<$n; $i++) {
+?>
+
+<tr>
+  <td><?php echo tep_draw_separator('pixel_trans.gif', '10', '1'); ?></td>
+  <td class="main"><?php echo $confirmation['fields'][$i]['title']; ?></td>
+  <td><?php echo tep_draw_separator('pixel_trans.gif', '10', '1'); ?></td>
+  <td class="main"><?php echo $confirmation['fields'][$i]['field']; ?></td>
+</tr>
+
+<?php
+    }
+  }
+?>
+{escape}</pre>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/8d55b4200a029d9a44f40eed410d71283c29a6de" target="_blank">View online at GitHub</a></p>
+
+<span id="upg15"></span>
+
+<h4>Shopping Cart (1 file)</h4>
+
+<p><i class="icon-file"></i> <strong>includes/languages/english/shopping_cart.php</strong></p>
+
+<p>remove the following language definitions:</p>
+
+<pre class="prettyprint">{escape}
+define('TABLE_HEADING_REMOVE', 'Remove');
+define('TABLE_HEADING_QUANTITY', 'Qty.');
+define('TABLE_HEADING_MODEL', 'Model');
+define('TABLE_HEADING_TOTAL', 'Total');
+{escape}</pre>
+
+<div class="alert">Please perform the same changes to other languages you may have installed.</div>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/61e1c443955d4ab7f768d1b9f16f3472cb9eb3c4" target="_blank">View online at GitHub</a></p>
+
+<span id="upg16"></span>
+
+<h4>Manufacturers (1 file)</h4>
+
+<p><i class="icon-file"></i> <strong>index.php</strong></p>
+
+<p>around line 94, change from:</p>
+
+<pre class="prettyprint">{escape}
+} elseif ($category_depth == 'products' || isset($HTTP_GET_VARS['manufacturers_id'])) {
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+} elseif ($category_depth == 'products' || (isset($HTTP_GET_VARS['manufacturers_id']) && !empty($HTTP_GET_VARS['manufacturers_id']))) {
+{escape}</pre>
+
+<p>around line 139, change from:</p>
+
+<pre class="prettyprint">{escape}
+if (isset($HTTP_GET_VARS['manufacturers_id'])) {
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+if (isset($HTTP_GET_VARS['manufacturers_id']) && !empty($HTTP_GET_VARS['manufacturers_id'])) {
+{escape}</pre>
+
+<p>around line 196, change from:</p>
+
+<pre class="prettyprint">{escape}
+if (isset($HTTP_GET_VARS['manufacturers_id'])) {
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+if (isset($HTTP_GET_VARS['manufacturers_id']) && !empty($HTTP_GET_VARS['manufacturers_id'])) {
+{escape}</pre>
+
+<p>around line 214, change from:</p>
+
+<pre class="prettyprint">{escape}
+if (isset($HTTP_GET_VARS['manufacturers_id'])) {
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+if (isset($HTTP_GET_VARS['manufacturers_id']) && !empty($HTTP_GET_VARS['manufacturers_id'])) {
+{escape}</pre>
+
+<p>around line 222, change from:</p>
+
+<pre class="prettyprint">{escape}
+if (isset($HTTP_GET_VARS['manufacturers_id'])) {
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+if (isset($HTTP_GET_VARS['manufacturers_id']) && !empty($HTTP_GET_VARS['manufacturers_id'])) {
+{escape}</pre>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/ac4b409148cbf95ad5a43648ee831569848fe468" target="_blank">View online at GitHub</a></p>
+
+<span id="upg17"></span>
+
+<h4>Product Information (1 file)</h4>
+
+<p><i class="icon-file"></i> <strong>product_info.php</strong></p>
+
+<p>around line 193, change from:</p>
+
+<pre class="prettyprint">{escape}
+$reviews_query = tep_db_query("select count(*) as count from " . TABLE_REVIEWS . " where products_id = '" . (int)$HTTP_GET_VARS['products_id'] . "' and reviews_status = 1");
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+$reviews_query = tep_db_query("select count(*) as count from " . TABLE_REVIEWS . " r, " . TABLE_REVIEWS_DESCRIPTION . " rd where r.products_id = '" . (int)$HTTP_GET_VARS['products_id'] . "' and r.reviews_id = rd.reviews_id and rd.languages_id = '" . (int)$languages_id . "' and reviews_status = 1");
+{escape}</pre>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/a2e262c42be5b25adfcd7f080cb236ccdf173830" target="_blank">View online at GitHub</a></p>
+
+<span id="upg18"></span>
+
+<h4>Sessions - tep_session_register() (2 files)</h4>
+
+<p><i class="icon-file"></i> <strong>admin/includes/functions/sessions.php</strong></p>
+
+<p>in tep_session_register(), change from:</p>
+
+<pre class="prettyprint">{escape}
+function tep_session_register($variable) {
+  if (PHP_VERSION < 4.3) {
+    return session_register($variable);
+  } else {
+    if (isset($GLOBALS[$variable])) {
+      $_SESSION[$variable] =& $GLOBALS[$variable];
+    } else {
+      $_SESSION[$variable] = null;
+    }
+  }
+
+  return false;
+}
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+function tep_session_register($variable) {
+  if (PHP_VERSION < 4.3) {
+    return session_register($variable);
+  } else {
+    if (!isset($GLOBALS[$variable])) {
+      $GLOBALS[$variable] = null;
+    }
+
+    $_SESSION[$variable] =& $GLOBALS[$variable];
+  }
+
+  return false;
+}
+{escape}</pre>
+
+<p><i class="icon-file"></i> <strong>includes/functions/sessions.php</strong></p>
+
+<p>in tep_session_register(), change from:</p>
+
+<pre class="prettyprint">{escape}
+function tep_session_register($variable) {
+  global $session_started;
+
+  if ($session_started == true) {
+    if (PHP_VERSION < 4.3) {
+      return session_register($variable);
+    } else {
+      if (isset($GLOBALS[$variable])) {
+        $_SESSION[$variable] =& $GLOBALS[$variable];
+      } else {
+        $_SESSION[$variable] = null;
+      }
+    }
+  }
+
+  return false;
+}
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+function tep_session_register($variable) {
+  global $session_started;
+
+  if ($session_started == true) {
+    if (PHP_VERSION < 4.3) {
+      return session_register($variable);
+    } else {
+      if (!isset($GLOBALS[$variable])) {
+        $GLOBALS[$variable] = null;
+      }
+
+      $_SESSION[$variable] =& $GLOBALS[$variable];
+    }
+  }
+
+  return false;
+}
+{escape}</pre>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/355c2b6d4ad57b9ced20b8359ca4d5078f66c7f4" target="_blank">View online at GitHub</a></p>
+
+<span id="upg19"></span>
+
+<h4>Sessions - tep_session_recreate() (1 file)</h4>
+
+<p><i class="icon-file"></i> <strong>includes/functions/sessions.php</strong></p>
+
+<p>in tep_session_recreate(), change from:</p>
+
+<pre class="prettyprint">{escape}
+function tep_session_recreate() {
+  if (PHP_VERSION >= 4.1) {
+    $session_backup = $_SESSION;
+
+    unset($_COOKIE[tep_session_name()]);
+
+    tep_session_destroy();
+
+    if (STORE_SESSIONS == 'mysql') {
+      session_set_save_handler('_sess_open', '_sess_close', '_sess_read', '_sess_write', '_sess_destroy', '_sess_gc');
+    }
+
+    tep_session_start();
+
+    $_SESSION = $session_backup;
+    unset($session_backup);
+  }
+}
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+function tep_session_recreate() {
+  global $SID;
+
+  if (PHP_VERSION >= 5.1) {
+    session_regenerate_id(true);
+
+    if (!empty($SID)) {
+      $SID = tep_session_name() . '=' . tep_session_id();
+    }
+  }
+}
+{escape}</pre>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/4db1171398aa42f72fcf236b38d5d11814c07cbf" target="_blank">View online at GitHub</a></p>
+
+<span id="upg20"></span>
+
+<h4>Product Information (1 file)</h4>
+
+<p><i class="icon-file"></i> <strong>product_info.php</strong></p>
+
+<p>around line 89, change from:</p>
+
+<pre class="prettyprint">{escape}
+$pi_entry .= tep_href_link(DIR_WS_IMAGES . $pi['image']);
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+$pi_entry .= tep_href_link(DIR_WS_IMAGES . $pi['image'], '', 'NONSSL', false);
+{escape}</pre>
+
+<p>around line 122, change from:</p>
+
+<pre class="prettyprint">{escape}
+<?php echo '<a href="' . tep_href_link(DIR_WS_IMAGES . $product_info['products_image']) . '" target="_blank" rel="fancybox">' . tep_image(DIR_WS_IMAGES . $product_info['products_image'], addslashes($product_info['products_name']), null, null, 'hspace="5" vspace="5"') . '</a>'; ?>
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+<?php echo '<a href="' . tep_href_link(DIR_WS_IMAGES . $product_info['products_image'], '', 'NONSSL', false) . '" target="_blank" rel="fancybox">' . tep_image(DIR_WS_IMAGES . $product_info['products_image'], addslashes($product_info['products_name']), null, null, 'hspace="5" vspace="5"') . '</a>'; ?>
+{escape}</pre>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/23660dcce03ab9046372c86520169560302bf64c" target="_blank">View online at GitHub</a></p>
+
+<span id="upg21"></span>
+
+<h4>Payment Class (1 file)</h4>
+
+<p><i class="icon-file"></i> <strong>includes/classes/payment.php</strong></p>
+
+<p>change update_status() from:</p>
+
+<pre class="prettyprint">{escape}
+function update_status() {
+  if (is_array($this->modules)) {
+    if (is_object($GLOBALS[$this->selected_module])) {
+      if (function_exists('method_exists')) {
+        if (method_exists($GLOBALS[$this->selected_module], 'update_status')) {
+          $GLOBALS[$this->selected_module]->update_status();
+        }
+      } else { // PHP3 compatibility
+        @call_user_method('update_status', $GLOBALS[$this->selected_module]);
+      }
+    }
+  }
+}
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+function update_status() {
+  if (is_array($this->modules)) {
+    if (is_object($GLOBALS[$this->selected_module])) {
+      if (method_exists($GLOBALS[$this->selected_module], 'update_status')) {
+        $GLOBALS[$this->selected_module]->update_status();
+      }
+    }
+  }
+}
+{escape}</pre>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/90e64ef754323befe6f3fba5a84ae0f630792337" target="_blank">View online at GitHub</a></p>
+
+<span id="upg22"></span>
+
+<h4>GZIP Compression (1 file)</h4>
+
+<p><i class="icon-file"></i> <strong>includes/application_top.php</strong></p>
+
+<p>around line 74, change from:</p>
+
+<pre class="prettyprint">{escape}
+if ( (GZIP_COMPRESSION == 'true') && ($ext_zlib_loaded = extension_loaded('zlib')) && (PHP_VERSION >= '4') ) {
+  if (($ini_zlib_output_compression = (int)ini_get('zlib.output_compression')) < 1) {
+    if (PHP_VERSION >= '4.0.4') {
+      ob_start('ob_gzhandler');
+    } else {
+      include(DIR_WS_FUNCTIONS . 'gzip_compression.php');
+      ob_start();
+      ob_implicit_flush();
+    }
+  } else {
+    ini_set('zlib.output_compression_level', GZIP_LEVEL);
+  }
+}
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+if ( (GZIP_COMPRESSION == 'true') && ($ext_zlib_loaded = extension_loaded('zlib')) && !headers_sent() ) {
+  if (($ini_zlib_output_compression = (int)ini_get('zlib.output_compression')) < 1) {
+    if (PHP_VERSION < '5.4' || PHP_VERSION > '5.4.5') { // see PHP bug 55544
+      if (PHP_VERSION >= '4.0.4') {
+        ob_start('ob_gzhandler');
+      } elseif (PHP_VERSION >= '4.0.1') {
+        include(DIR_WS_FUNCTIONS . 'gzip_compression.php');
+        ob_start();
+        ob_implicit_flush();
+      }
+    }
+  } elseif (function_exists('ini_set')) {
+    ini_set('zlib.output_compression_level', GZIP_LEVEL);
+  }
+}
+{escape}</pre>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/a9cfae950088c7ab6214433395abe930371adb93" target="_blank">View online at GitHub</a></p>
+
+<span id="upg23"></span>
+
+<h4>Checkout Shipping (2 files)</h4>
+
+<p><i class="icon-file"></i> <strong>checkout_shipping.php</strong></p>
+
+<p>around line 49, change from:</p>
+
+<pre class="prettyprint">{escape}
+if (!tep_session_is_registered('cartID')) tep_session_register('cartID');
+$cartID = $cart->cartID;
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+if (!tep_session_is_registered('cartID')) {
+  tep_session_register('cartID');
+} elseif (($cartID != $cart->cartID) && tep_session_is_registered('shipping')) {
+  tep_session_unregister('shipping');
+}
+
+$cartID = $cart->cartID = $cart->generate_cart_id();
+{escape}</pre>
+
+<p><i class="icon-file"></i> <strong>includes/classes/shopping_cart.php</strong></p>
+
+<p>change update_quantity() from:</p>
+
+<pre class="prettyprint">{escape}
+function update_quantity($products_id, $quantity = '', $attributes = '') {
+  global $customer_id;
+
+  $products_id_string = tep_get_uprid($products_id, $attributes);
+  $products_id = tep_get_prid($products_id_string);
+
+  if (defined('MAX_QTY_IN_CART') && (MAX_QTY_IN_CART > 0) && ((int)$quantity > MAX_QTY_IN_CART)) {
+    $quantity = MAX_QTY_IN_CART;
+  }
+
+  $attributes_pass_check = true;
+
+  if (is_array($attributes)) {
+    reset($attributes);
+    while (list($option, $value) = each($attributes)) {
+      if (!is_numeric($option) || !is_numeric($value)) {
+        $attributes_pass_check = false;
+        break;
+      }
+    }
+  }
+
+  if (is_numeric($products_id) && isset($this->contents[$products_id_string]) && is_numeric($quantity) && ($attributes_pass_check == true)) {
+    $this->contents[$products_id_string] = array('qty' => (int)$quantity);
+// update database
+    if (tep_session_is_registered('customer_id')) tep_db_query("update " . TABLE_CUSTOMERS_BASKET . " set customers_basket_quantity = '" . (int)$quantity . "' where customers_id = '" . (int)$customer_id . "' and products_id = '" . tep_db_input($products_id_string) . "'");
+
+    if (is_array($attributes)) {
+      reset($attributes);
+      while (list($option, $value) = each($attributes)) {
+        $this->contents[$products_id_string]['attributes'][$option] = $value;
+// update database
+        if (tep_session_is_registered('customer_id')) tep_db_query("update " . TABLE_CUSTOMERS_BASKET_ATTRIBUTES . " set products_options_value_id = '" . (int)$value . "' where customers_id = '" . (int)$customer_id . "' and products_id = '" . tep_db_input($products_id_string) . "' and products_options_id = '" . (int)$option . "'");
+      }
+    }
+  }
+}
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+function update_quantity($products_id, $quantity = '', $attributes = '') {
+  global $customer_id;
+
+  $products_id_string = tep_get_uprid($products_id, $attributes);
+  $products_id = tep_get_prid($products_id_string);
+
+  if (defined('MAX_QTY_IN_CART') && (MAX_QTY_IN_CART > 0) && ((int)$quantity > MAX_QTY_IN_CART)) {
+    $quantity = MAX_QTY_IN_CART;
+  }
+
+  $attributes_pass_check = true;
+
+  if (is_array($attributes)) {
+    reset($attributes);
+    while (list($option, $value) = each($attributes)) {
+      if (!is_numeric($option) || !is_numeric($value)) {
+        $attributes_pass_check = false;
+        break;
+      }
+    }
+  }
+
+  if (is_numeric($products_id) && isset($this->contents[$products_id_string]) && is_numeric($quantity) && ($attributes_pass_check == true)) {
+    $this->contents[$products_id_string] = array('qty' => (int)$quantity);
+// update database
+    if (tep_session_is_registered('customer_id')) tep_db_query("update " . TABLE_CUSTOMERS_BASKET . " set customers_basket_quantity = '" . (int)$quantity . "' where customers_id = '" . (int)$customer_id . "' and products_id = '" . tep_db_input($products_id_string) . "'");
+
+    if (is_array($attributes)) {
+      reset($attributes);
+      while (list($option, $value) = each($attributes)) {
+        $this->contents[$products_id_string]['attributes'][$option] = $value;
+// update database
+        if (tep_session_is_registered('customer_id')) tep_db_query("update " . TABLE_CUSTOMERS_BASKET_ATTRIBUTES . " set products_options_value_id = '" . (int)$value . "' where customers_id = '" . (int)$customer_id . "' and products_id = '" . tep_db_input($products_id_string) . "' and products_options_id = '" . (int)$option . "'");
+      }
+    }
+
+// assign a temporary unique ID to the order contents to prevent hack attempts during the checkout procedure
+    $this->cartID = $this->generate_cart_id();
+  }
+}
+{escape}</pre>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/f4bafd9a17978546ce076f8108cb722a6bd8e14a" target="_blank">View online at GitHub</a></p>
+
+<span id="upg24"></span>
+
+<h4>Time Zone Compatibility (2 files)</h4>
+
+<p><i class="icon-file"></i> <strong>admin/includes/functions/compatibility.php</strong></p>
+
+<p>around line 53, change from:</p>
+
+<pre class="prettyprint">{escape}
+if ((strlen(ini_get('date.timezone')) < 1) && function_exists('date_default_timezone_set')) {
+  date_default_timezone_set(@date_default_timezone_get());
+}
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+if (PHP_VERSION >= '5.2') {
+  date_default_timezone_set(defined('CFG_TIME_ZONE') ? CFG_TIME_ZONE : date_default_timezone_get());
+}
+{escape}</pre>
+
+<p><i class="icon-file"></i> <strong>includes/functions/compatibility.php</strong></p>
+
+<p>around line 53, change from:</p>
+
+<pre class="prettyprint">{escape}
+if ((strlen(ini_get('date.timezone')) < 1) && function_exists('date_default_timezone_set')) {
+  date_default_timezone_set(@date_default_timezone_get());
+}
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+if (PHP_VERSION >= '5.2') {
+  date_default_timezone_set(defined('CFG_TIME_ZONE') ? CFG_TIME_ZONE : date_default_timezone_get());
+}
+{escape}</pre>
+
+<div class="alert"><p>If you would like to set the correct time zone on your server and your PHP version is 5.2+, add the following parameter to admin/includes/configure.php and includes/configure.php with the correct time zone setting:</p>
+<pre class="prettyprint">{escape}
+define('CFG_TIME_ZONE', 'Europe/Berlin');
+{escape}</pre>
+
+<p>A list of PHP time zones can be viewed at:<br /><br /><a href="http://php.net/manual/en/timezones.php" target="_blank">http://php.net/manual/en/timezones.php</a></p></div>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/893a7563f9c885fdc3ba1c0f86599583075570b6" target="_blank">View online at GitHub</a></p>
+
+<span id="upg25"></span>
+
+<h4>General (6 files)</h4>
+
+<p><i class="icon-file"></i> <strong>checkout_payment_address.php</strong></p>
+
+<p>around line 300, change from:</p>
+
+<pre class="prettyprint">{escape}
+$addresses_query = tep_db_query("select address_book_id, entry_firstname as firstname, entry_lastname as lastname, entry_company as company, entry_street_address as street_address, entry_suburb as suburb, entry_city as city, entry_postcode as postcode, entry_state as state, entry_zone_id as zone_id, entry_country_id as country_id from " . TABLE_ADDRESS_BOOK . " where customers_id = '" . $customer_id . "'");
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+$addresses_query = tep_db_query("select address_book_id, entry_firstname as firstname, entry_lastname as lastname, entry_company as company, entry_street_address as street_address, entry_suburb as suburb, entry_city as city, entry_postcode as postcode, entry_state as state, entry_zone_id as zone_id, entry_country_id as country_id from " . TABLE_ADDRESS_BOOK . " where customers_id = '" . (int)$customer_id . "'");
+{escape}</pre>
+
+<p><i class="icon-file"></i> <strong>checkout_process.php</strong></p>
+
+<p>around line 160, change from:</p>
+
+<pre class="prettyprint">{escape}
+$stock_query_raw .= " AND pa.options_id = '" . $products_attributes[0]['option_id'] . "' AND pa.options_values_id = '" . $products_attributes[0]['value_id'] . "'";
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+$stock_query_raw .= " AND pa.options_id = '" . (int)$products_attributes[0]['option_id'] . "' AND pa.options_values_id = '" . (int)$products_attributes[0]['value_id'] . "'";
+{escape}</pre>
+
+<p>around line 174, change from:</p>
+
+<pre class="prettyprint">{escape}
+tep_db_query("update " . TABLE_PRODUCTS . " set products_quantity = '" . $stock_left . "' where products_id = '" . tep_get_prid($order->products[$i]['id']) . "'");
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+tep_db_query("update " . TABLE_PRODUCTS . " set products_quantity = '" . (int)$stock_left . "' where products_id = '" . tep_get_prid($order->products[$i]['id']) . "'");
+{escape}</pre>
+
+<p>around line 202, change from:</p>
+
+<pre class="prettyprint">{escape}
+$attributes_query = "select popt.products_options_name, poval.products_options_values_name, pa.options_values_price, pa.price_prefix, pad.products_attributes_maxdays, pad.products_attributes_maxcount , pad.products_attributes_filename
+                     from " . TABLE_PRODUCTS_OPTIONS . " popt, " . TABLE_PRODUCTS_OPTIONS_VALUES . " poval, " . TABLE_PRODUCTS_ATTRIBUTES . " pa
+                     left join " . TABLE_PRODUCTS_ATTRIBUTES_DOWNLOAD . " pad
+                     on pa.products_attributes_id=pad.products_attributes_id
+                     where pa.products_id = '" . $order->products[$i]['id'] . "'
+                     and pa.options_id = '" . $order->products[$i]['attributes'][$j]['option_id'] . "'
+                     and pa.options_id = popt.products_options_id
+                     and pa.options_values_id = '" . $order->products[$i]['attributes'][$j]['value_id'] . "'
+                     and pa.options_values_id = poval.products_options_values_id
+                     and popt.language_id = '" . $languages_id . "'
+                     and poval.language_id = '" . $languages_id . "'";
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+$attributes_query = "select popt.products_options_name, poval.products_options_values_name, pa.options_values_price, pa.price_prefix, pad.products_attributes_maxdays, pad.products_attributes_maxcount , pad.products_attributes_filename
+                     from " . TABLE_PRODUCTS_OPTIONS . " popt, " . TABLE_PRODUCTS_OPTIONS_VALUES . " poval, " . TABLE_PRODUCTS_ATTRIBUTES . " pa
+                     left join " . TABLE_PRODUCTS_ATTRIBUTES_DOWNLOAD . " pad
+                     on pa.products_attributes_id=pad.products_attributes_id
+                     where pa.products_id = '" . (int)$order->products[$i]['id'] . "'
+                     and pa.options_id = '" . (int)$order->products[$i]['attributes'][$j]['option_id'] . "'
+                     and pa.options_id = popt.products_options_id
+                     and pa.options_values_id = '" . (int)$order->products[$i]['attributes'][$j]['value_id'] . "'
+                     and pa.options_values_id = poval.products_options_values_id
+                     and popt.language_id = '" . (int)$languages_id . "'
+                     and poval.language_id = '" . (int)$languages_id . "'";
+{escape}</pre>
+
+<p>around line 215, change from:</p>
+
+<pre class="prettyprint">{escape}
+$attributes = tep_db_query("select popt.products_options_name, poval.products_options_values_name, pa.options_values_price, pa.price_prefix from " . TABLE_PRODUCTS_OPTIONS . " popt, " . TABLE_PRODUCTS_OPTIONS_VALUES . " poval, " . TABLE_PRODUCTS_ATTRIBUTES . " pa where pa.products_id = '" . $order->products[$i]['id'] . "' and pa.options_id = '" . $order->products[$i]['attributes'][$j]['option_id'] . "' and pa.options_id = popt.products_options_id and pa.options_values_id = '" . $order->products[$i]['attributes'][$j]['value_id'] . "' and pa.options_values_id = poval.products_options_values_id and popt.language_id = '" . $languages_id . "' and poval.language_id = '" . $languages_id . "'");
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+$attributes = tep_db_query("select popt.products_options_name, poval.products_options_values_name, pa.options_values_price, pa.price_prefix from " . TABLE_PRODUCTS_OPTIONS . " popt, " . TABLE_PRODUCTS_OPTIONS_VALUES . " poval, " . TABLE_PRODUCTS_ATTRIBUTES . " pa where pa.products_id = '" . (int)$order->products[$i]['id'] . "' and pa.options_id = '" . (int)$order->products[$i]['attributes'][$j]['option_id'] . "' and pa.options_id = popt.products_options_id and pa.options_values_id = '" . (int)$order->products[$i]['attributes'][$j]['value_id'] . "' and pa.options_values_id = poval.products_options_values_id and popt.language_id = '" . (int)$languages_id . "' and poval.language_id = '" . (int)$languages_id . "'");
+{escape}</pre>
+
+<p><i class="icon-file"></i> <strong>download.php</strong></p>
+
+<p>around line 23, change from:</p>
+
+<pre class="prettyprint">{escape}
+$downloads_query = tep_db_query("select date_format(o.date_purchased, '%Y-%m-%d') as date_purchased_day, opd.download_maxdays, opd.download_count, opd.download_maxdays, opd.orders_products_filename from " . TABLE_ORDERS . " o, " . TABLE_ORDERS_PRODUCTS . " op, " . TABLE_ORDERS_PRODUCTS_DOWNLOAD . " opd, " . TABLE_ORDERS_STATUS . " os where o.customers_id = '" . $customer_id . "' and o.orders_id = '" . (int)$HTTP_GET_VARS['order'] . "' and o.orders_id = op.orders_id and op.orders_products_id = opd.orders_products_id and opd.orders_products_download_id = '" . (int)$HTTP_GET_VARS['id'] . "' and opd.orders_products_filename != '' and o.orders_status = os.orders_status_id and os.downloads_flag = '1' and os.language_id = '" . (int)$languages_id . "'");
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+$downloads_query = tep_db_query("select date_format(o.date_purchased, '%Y-%m-%d') as date_purchased_day, opd.download_maxdays, opd.download_count, opd.download_maxdays, opd.orders_products_filename from " . TABLE_ORDERS . " o, " . TABLE_ORDERS_PRODUCTS . " op, " . TABLE_ORDERS_PRODUCTS_DOWNLOAD . " opd, " . TABLE_ORDERS_STATUS . " os where o.customers_id = '" . (int)$customer_id . "' and o.orders_id = '" . (int)$HTTP_GET_VARS['order'] . "' and o.orders_id = op.orders_id and op.orders_products_id = opd.orders_products_id and opd.orders_products_download_id = '" . (int)$HTTP_GET_VARS['id'] . "' and opd.orders_products_filename != '' and o.orders_status = os.orders_status_id and os.downloads_flag = '1' and os.language_id = '" . (int)$languages_id . "'");
+{escape}</pre>
+
+<p><i class="icon-file"></i> <strong>includes/application_top.php</strong></p>
+
+<p>around line 369, change from:</p>
+
+<pre class="prettyprint">{escape}
+$check_query = tep_db_query("select count(*) as count from " . TABLE_PRODUCTS_NOTIFICATIONS . " where products_id = '" . $notify[$i] . "' and customers_id = '" . $customer_id . "'");
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+$check_query = tep_db_query("select count(*) as count from " . TABLE_PRODUCTS_NOTIFICATIONS . " where products_id = '" . (int)$notify[$i] . "' and customers_id = '" . (int)$customer_id . "'");
+{escape}</pre>
+
+<p>around line 372, change from:</p>
+
+<pre class="prettyprint">{escape}
+tep_db_query("insert into " . TABLE_PRODUCTS_NOTIFICATIONS . " (products_id, customers_id, date_added) values ('" . $notify[$i] . "', '" . $customer_id . "', now())");
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+tep_db_query("insert into " . TABLE_PRODUCTS_NOTIFICATIONS . " (products_id, customers_id, date_added) values ('" . (int)$notify[$i] . "', '" . (int)$customer_id . "', now())");
+{escape}</pre>
+
+<p>around line 382, change from:</p>
+
+<pre class="prettyprint">{escape}
+$check_query = tep_db_query("select count(*) as count from " . TABLE_PRODUCTS_NOTIFICATIONS . " where products_id = '" . $HTTP_GET_VARS['products_id'] . "' and customers_id = '" . $customer_id . "'");
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+$check_query = tep_db_query("select count(*) as count from " . TABLE_PRODUCTS_NOTIFICATIONS . " where products_id = '" . (int)$HTTP_GET_VARS['products_id'] . "' and customers_id = '" . (int)$customer_id . "'");
+{escape}</pre>
+
+<p>around line 385, change from:</p>
+
+<pre class="prettyprint">{escape}
+tep_db_query("delete from " . TABLE_PRODUCTS_NOTIFICATIONS . " where products_id = '" . $HTTP_GET_VARS['products_id'] . "' and customers_id = '" . $customer_id . "'");
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+tep_db_query("delete from " . TABLE_PRODUCTS_NOTIFICATIONS . " where products_id = '" . (int)$HTTP_GET_VARS['products_id'] . "' and customers_id = '" . (int)$customer_id . "'");
+{escape}</pre>
+
+<p><i class="icon-file"></i> <strong>includes/functions/banner.php</strong></p>
+
+<p>around line 61, change from:</p>
+
+<pre class="prettyprint">{escape}
+$banners_query = tep_db_query("select count(*) as count from " . TABLE_BANNERS . " where status = '1' and banners_group = '" . $identifier . "'");
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+$banners_query = tep_db_query("select count(*) as count from " . TABLE_BANNERS . " where status = '1' and banners_group = '" . tep_db_input($identifier) . "'");
+{escape}</pre>
+
+<p>around line 64, change from:</p>
+
+<pre class="prettyprint">{escape}
+$banner = tep_random_select("select banners_id, banners_title, banners_image, banners_html_text from " . TABLE_BANNERS . " where status = '1' and banners_group = '" . $identifier . "'");
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+$banner = tep_random_select("select banners_id, banners_title, banners_image, banners_html_text from " . TABLE_BANNERS . " where status = '1' and banners_group = '" . tep_db_input($identifier) . "'");
+{escape}</pre>
+
+<p>around line 98, change from:</p>
+
+<pre class="prettyprint">{escape}
+return tep_random_select("select banners_id, banners_title, banners_image, banners_html_text from " . TABLE_BANNERS . " where status = '1' and banners_group = '" . $identifier . "'");
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+return tep_random_select("select banners_id, banners_title, banners_image, banners_html_text from " . TABLE_BANNERS . " where status = '1' and banners_group = '" . tep_db_input($identifier) . "'");
+{escape}</pre>
+
+<p><i class="icon-file"></i> <strong>includes/functions/specials.php</strong></p>
+
+<p>around line 16, change from:</p>
+
+<pre class="prettyprint">{escape}
+return tep_db_query("update " . TABLE_SPECIALS . " set status = '" . $status . "', date_status_change = now() where specials_id = '" . (int)$specials_id . "'");
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+return tep_db_query("update " . TABLE_SPECIALS . " set status = '" . (int)$status . "', date_status_change = now() where specials_id = '" . (int)$specials_id . "'");
+{escape}</pre>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/47ca3c5009c6e040366bd311d3b862acc587bc8d" target="_blank">View online at GitHub</a></p>
+
+<span id="upg26"></span>
+
+<h4>Administration Tool -> Modules (1 file)</h4>
+
+<p><i class="icon-file"></i> <strong>admin/modules.php</strong></p>
+
+<p>around line 273, change from:</p>
+
+<pre class="prettyprint">{escape}
+$contents[] = array('align' => 'center', 'text' => tep_draw_button(IMAGE_EDIT, 'document', tep_href_link(FILENAME_MODULES, 'set=' . $set . (isset($HTTP_GET_VARS['module']) ? '&module=' . $HTTP_GET_VARS['module'] : '') . '&action=edit')) . tep_draw_button(IMAGE_MODULE_REMOVE, 'minus', tep_href_link(FILENAME_MODULES, 'set=' . $set . '&module=' . $mInfo->code . '&action=remove')));
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+$contents[] = array('align' => 'center', 'text' => tep_draw_button(IMAGE_EDIT, 'document', tep_href_link(FILENAME_MODULES, 'set=' . $set . '&module=' . $mInfo->code . '&action=edit')) . tep_draw_button(IMAGE_MODULE_REMOVE, 'minus', tep_href_link(FILENAME_MODULES, 'set=' . $set . '&module=' . $mInfo->code . '&action=remove')));
+{escape}</pre>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/682528a4409873a5c05367fa9e50d18b7d925a5c" target="_blank">View online at GitHub</a></p>
+
+<span id="upg27"></span>
+
+<h4>Administration Tool -> Tools -> Banner Manager (1 file)</h4>
+
+<p><i class="icon-file"></i> <strong>admin/banner_manager.php</strong></p>
+
+<p>around line 136, change from:</p>
+
+<pre class="prettyprint">{escape}
+if (function_exists('imagecreate') && tep_not_null($banner_extensio)) {
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+if (function_exists('imagecreate') && tep_not_null($banner_extension)) {
+{escape}</pre>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/33ad3835ef46b01cf500196b3115393f26a2b16c" target="_blank">View online at GitHub</a></p>
+
+<span id="upg28"></span>
+
+<h4>Social Bookmark Modules (4 files)</h4>
+
+<p><i class="icon-file"></i> <strong>includes/modules/social_bookmarks/sb_digg.php</strong></p>
+
+<p>around line 35, change from:</p>
+
+<pre class="prettyprint">{escape}
+return '<a href="http://digg.com/submit?url=' . urlencode(tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $HTTP_GET_VARS['products_id'], 'NONSSL', false)) . '" target="_blank"><img src="images/social_bookmarks/' . $this->icon . '" border="0" title="' . tep_output_string_protected($this->public_title) . '" alt="' . tep_output_string_protected($this->public_title) . '"/></a>';
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+return '<a href="http://digg.com/submit?url=' . urlencode(tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $HTTP_GET_VARS['products_id'], 'NONSSL', false)) . '" target="_blank"><img src="' . DIR_WS_IMAGES . 'social_bookmarks/' . $this->icon . '" border="0" title="' . tep_output_string_protected($this->public_title) . '" alt="' . tep_output_string_protected($this->public_title) . '"/></a>';
+{escape}</pre>
+
+<p><i class="icon-file"></i> <strong>includes/modules/social_bookmarks/sb_email.php</strong></p>
+
+<p>around line 35, change from:</p>
+
+<pre class="prettyprint">{escape}
+return '<a href="' . tep_href_link(FILENAME_TELL_A_FRIEND, 'products_id=' . $HTTP_GET_VARS['products_id']) . '"><img src="images/social_bookmarks/' . $this->icon . '" border="0" title="' . tep_output_string_protected($this->public_title) . '" alt="' . tep_output_string_protected($this->public_title) . '" /></a>';
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+return '<a href="' . tep_href_link(FILENAME_TELL_A_FRIEND, 'products_id=' . $HTTP_GET_VARS['products_id']) . '"><img src="' . DIR_WS_IMAGES . 'social_bookmarks/' . $this->icon . '" border="0" title="' . tep_output_string_protected($this->public_title) . '" alt="' . tep_output_string_protected($this->public_title) . '" /></a>';
+{escape}</pre>
+
+<p><i class="icon-file"></i> <strong>includes/modules/social_bookmarks/sb_facebook.php</strong></p>
+
+<p>around line 35, change from:</p>
+
+<pre class="prettyprint">{escape}
+return '<a href="http://www.facebook.com/share.php?u=' . urlencode(tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $HTTP_GET_VARS['products_id'], 'NONSSL', false)) . '" target="_blank"><img src="images/social_bookmarks/' . $this->icon . '" border="0" title="' . tep_output_string_protected($this->public_title) . '" alt="' . tep_output_string_protected($this->public_title) . '" /></a>';
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+return '<a href="http://www.facebook.com/share.php?u=' . urlencode(tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $HTTP_GET_VARS['products_id'], 'NONSSL', false)) . '" target="_blank"><img src="' . DIR_WS_IMAGES . 'social_bookmarks/' . $this->icon . '" border="0" title="' . tep_output_string_protected($this->public_title) . '" alt="' . tep_output_string_protected($this->public_title) . '" /></a>';
+{escape}</pre>
+
+<p><i class="icon-file"></i> <strong>includes/modules/social_bookmarks/sb_twitter.php</strong></p>
+
+<p>around line 35, change from:</p>
+
+<pre class="prettyprint">{escape}
+return '<a href="http://twitter.com/home?status=' . urlencode(tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $HTTP_GET_VARS['products_id'], 'NONSSL', false)) . '" target="_blank"><img src="images/social_bookmarks/' . $this->icon . '" border="0" title="' . tep_output_string_protected($this->public_title) . '" alt="' . tep_output_string_protected($this->public_title) . '" /></a>';
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+return '<a href="http://twitter.com/home?status=' . urlencode(tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $HTTP_GET_VARS['products_id'], 'NONSSL', false)) . '" target="_blank"><img src="' . DIR_WS_IMAGES . 'social_bookmarks/' . $this->icon . '" border="0" title="' . tep_output_string_protected($this->public_title) . '" alt="' . tep_output_string_protected($this->public_title) . '" /></a>';
+{escape}</pre>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/66385e5c0b288afba5deea1b73110d84c3d56338" target="_blank">View online at GitHub</a></p>
+
+<span id="upg29"></span>
+
+<h4>Version Update (1 file)</h4>
+
+<p><i class="icon-file"></i> <strong>includes/version.php</strong></p>
+
+<p>change line 1 from:</p>
+
+<pre class="prettyprint">{escape}
+2.3.2
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+2.3.3
+{escape}</pre>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/3567270aacad5521998bc1396ac1c608f1619191" target="_blank">View online at GitHub</a></p>
+
+<span id="upg30"></span>
+
+<h4>Robot NoIndex Header Tag Module</h4>
+
+<p>Copy the following files to their respective directories:</p>
+
+<p>
+  <i class="icon-file"></i> <strong>includes/languages/english/modules/header_tags/ht_robot_noindex.php</strong><br />
+  <i class="icon-file"></i> <strong>includes/modules/header_tags/ht_robot_noindex.php</strong>
+</p>
+
+<div class="alert alert-info">The module can be enabled at the Administration Tool -> Modules -> Header Tags -> Install Modules page.</div>
+
+<div class="alert">Please also copy and update the language definition file to the other languages you have installed.</div>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/28cfbda451752cfbe713185d5782783294c4e16b" target="_blank">View online at GitHub</a></p>
+
+<span id="upg31"></span>
+
+<h4>Google+ +1 Button and Google+ Share Social Bookmark Modules</h4>
+
+<p>Copy the following files to their respective directories:</p>
+
+<p>
+  <i class="icon-file"></i> <strong>includes/languages/english/modules/social_bookmarks/sb_google_plus_one.php</strong><br />
+  <i class="icon-file"></i> <strong>includes/languages/english/modules/social_bookmarks/sb_google_plus_share.php</strong><br />
+  <i class="icon-file"></i> <strong>includes/modules/social_bookmarks/sb_google_plus_one.php</strong><br />
+  <i class="icon-file"></i> <strong>includes/modules/social_bookmarks/sb_google_plus_share.php</strong>
+</p>
+
+<div class="alert alert-info">The modules can be enabled at the Administration Tool -> Modules -> Social Bookmarks -> Install Modules page.</div>
+
+<div class="alert">Please also copy and update the language definition file to the other languages you have installed.</div>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/69847e2111c4ce7cfb3ec025f2c43adf9d7b068e" target="_blank">View online at GitHub</a></p>
+
+<span id="upg32"></span>
+
+<h4>Canonical Header Tag Module</h4>
+
+<p>Copy the following files to their respective directories:</p>
+
+<p>
+  <i class="icon-file"></i> <strong>includes/languages/english/modules/header_tags/ht_canonical.php</strong><br />
+  <i class="icon-file"></i> <strong>includes/modules/header_tags/ht_canonical.php</strong>
+</p>
+
+<div class="alert alert-info">The module can be enabled at the Administration Tool -> Modules -> Header Tags -> Install Modules page.</div>
+
+<div class="alert">Please also copy and update the language definition file to the other languages you have installed.</div>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/4de149c16f1cfded58b5b67c8266e6d78df03e34" target="_blank">View online at GitHub</a></p>
+
+<span id="upg33"></span>
+
+<h4>Pinterest Social Bookmark Module</h4>
+
+<p>Copy the following files to their respective directories:</p>
+
+<p>
+  <i class="icon-file"></i> <strong>includes/languages/english/modules/social_bookmarks/sb_pinterest.php</strong><br />
+  <i class="icon-file"></i> <strong>includes/modules/social_bookmarks/sb_pinterest.php</strong>
+</p>
+
+<div class="alert alert-info">The modules can be enabled at the Administration Tool -> Modules -> Social Bookmarks -> Install Modules page.</div>
+
+<div class="alert">Please also copy and update the language definition file to the other languages you have installed.</div>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/f52a8b4d9cad0e69e74c1032f35ec60a6115aa80" target="_blank">View online at GitHub</a></p>
+
+<span id="upg34"></span>
+
+<h4>960.gs</h4>
+
+<p>Replace the following files in its respective directory:</p>
+
+<p>
+  <i class="icon-file"></i> <strong>ext/960gs/960.css</strong><br />
+  <i class="icon-file"></i> <strong>ext/960gs/960_24_col.css</strong><br />
+  <i class="icon-file"></i> <strong>ext/960gs/rtl_960.css</strong><br />
+  <i class="icon-file"></i> <strong>ext/960gs/rtl_960_24_col.css</strong>
+</p>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/c454ea2305812b59cce48bdb4c29f421ff836531" target="_blank">View online at GitHub</a></p>
+
+<span id="upg35"></span>
+
+<h4>jQuery</h4>
+
+<p>Delete the following file:</p>
+
+<p><i class="icon-file"></i> <strong>ext/jquery/jquery-1.4.2.min.js</strong></p>
+
+<p>Copy the following file to its respective directory:</p>
+
+<p><i class="icon-file"></i> <strong>ext/jquery/jquery-1.8.0.min.js</strong></p>
+
+<p>In:</p>
+
+<p><i class="icon-file"></i> <strong>admin/includes/template_top.php</strong></p>
+
+<p>around line 22, change from:</p>
+
+<pre class="prettyprint">{escape}
+<script type="text/javascript" src="<?php echo tep_catalog_href_link('ext/jquery/jquery-1.4.2.min.js'); ?>"></script>
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+<script type="text/javascript" src="<?php echo tep_catalog_href_link('ext/jquery/jquery-1.8.0.min.js'); ?>"></script>
+{escape}</pre>
+
+<p><i class="icon-file"></i> <strong>includes/template_top.php</strong></p>
+
+<p>around line 30, change from:</p>
+
+<pre class="prettyprint">{escape}
+<script type="text/javascript" src="ext/jquery/jquery-1.4.2.min.js"></script>
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+<script type="text/javascript" src="ext/jquery/jquery-1.8.0.min.js"></script>
+{escape}</pre>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/c454ea2305812b59cce48bdb4c29f421ff836531" target="_blank">View online at GitHub</a></p>
+
+<span id="upg36"></span>
+
+<h4>jQuery UI</h4>
+
+<p>Delete the following directories and files:</p>
+
+<p>
+  <i class="icon-folder-open"></i> <strong>ext/jquery/ui/i18n</strong><br />
+  <i class="icon-file"></i> <strong>ext/jquery/ui/jquery-ui-1.8.6.min.js</strong><br />
+  <i class="icon-folder-open"></i> <strong>ext/jquery/ui/redmond</strong>
+</p>
+
+<p>Copy the following directories and files to their respective directory:</p>
+
+<p>
+  <i class="icon-folder-open"></i> <strong>ext/jquery/ui/i18n</strong><br />
+  <i class="icon-file"></i> <strong>ext/jquery/ui/jquery-ui-1.8.22.min.js</strong><br />
+  <i class="icon-folder-open"></i> <strong>ext/jquery/ui/redmond</strong>
+</p>
+
+<p>In:</p>
+
+<p><i class="icon-file"></i> <strong>admin/includes/template_top.php</strong></p>
+
+<p>around line 21, change from:</p>
+
+<pre class="prettyprint">{escape}
+<link rel="stylesheet" type="text/css" href="<?php echo tep_catalog_href_link('ext/jquery/ui/redmond/jquery-ui-1.8.6.css'); ?>">
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+<link rel="stylesheet" type="text/css" href="<?php echo tep_catalog_href_link('ext/jquery/ui/redmond/jquery-ui-1.8.22.css'); ?>">
+{escape}</pre>
+
+<p>around line 23, change from:</p>
+
+<pre class="prettyprint">{escape}
+<script type="text/javascript" src="<?php echo tep_catalog_href_link('ext/jquery/ui/jquery-ui-1.8.6.min.js'); ?>"></script>
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+<script type="text/javascript" src="<?php echo tep_catalog_href_link('ext/jquery/ui/jquery-ui-1.8.22.min.js'); ?>"></script>
+
+<script type="text/javascript">
+// fix jQuery 1.8.0 and jQuery UI 1.8.22 bug with dialog buttons; http://bugs.jqueryui.com/ticket/8484
+if ( $.attrFn ) { $.attrFn.text = true; }
+</script>
+{escape}</pre>
+
+<p><i class="icon-file"></i> <strong>includes/template_top.php</strong></p>
+
+<p>around line 29, change from:</p>
+
+<pre class="prettyprint">{escape}
+<link rel="stylesheet" type="text/css" href="ext/jquery/ui/redmond/jquery-ui-1.8.6.css" />
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+<link rel="stylesheet" type="text/css" href="ext/jquery/ui/redmond/jquery-ui-1.8.22.css" />
+{escape}</pre>
+
+<p>around line 31, change from:</p>
+
+<pre class="prettyprint">{escape}
+<script type="text/javascript" src="ext/jquery/ui/jquery-ui-1.8.6.min.js"></script>
+{escape}</pre>
+
+<p>to:</p>
+
+<pre class="prettyprint">{escape}
+<script type="text/javascript" src="ext/jquery/ui/jquery-ui-1.8.22.min.js"></script>
+<script type="text/javascript">
+// fix jQuery 1.8.0 and jQuery UI 1.8.22 bug with dialog buttons; http://bugs.jqueryui.com/ticket/8484
+if ( $.attrFn ) { $.attrFn.text = true; }
+</script>
+{escape}</pre>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/c454ea2305812b59cce48bdb4c29f421ff836531" target="_blank">View online at GitHub</a></p>
+
+<span id="upg37"></span>
+
+<h4>bxGallery</h4>
+
+<p>Replace the following file in its respective directory:</p>
+
+<p><i class="icon-file"></i> <strong>ext/jquery/bxGallery/jquery.bxGallery.1.1.min.js</strong></p>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/c454ea2305812b59cce48bdb4c29f421ff836531" target="_blank">View online at GitHub</a></p>
+
+<h3>Thank You!</h3>
+
+<p>We'd like to thank the community for their feedback on our releases. In addition, we thank the following people who participated in the development of this release.</p>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Code Contributors</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=2862" target="_blank">acidvertigo</a> (<a href="https://github.com/acidvertigo" target="_blank">acidvertigo</a>)</td>
+      <td>bxGallery fix for jQuery 1.6.0.</td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=69" target="_blank">burt</a> (<a href="https://github.com/gburton" target="_blank">gburton</a>)</td>
+      <td>Canonical Header Tag for manufacturer listings<br />Pinterest Social Bookmark Module</td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=68771" target="_blank">FWR Media</a> (<a href="https://github.com/FwrMedia" target="_blank">FwrMedia</a>)</td>
+      <td>GZIP Compression PHP 5.4 Compatibility</td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Bug Reporters</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=33440" target="_blank">bruyndoncx</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=69" target="_blank">burt</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=396" target="_blank">cannuck1964</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=289459" target="_blank">Denre</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=286131" target="_blank">eXcaliburN</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=174255" target="_blank">faaliyet</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=276376" target="_blank">foxp2</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=267259" target="_blank">francois01</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=68771" target="_blank">FWR Media</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=241134" target="_blank">Gergely</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=288838" target="_blank">HanV</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=259142" target="_blank">Juto</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=163842" target="_blank">Ken44</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=297133" target="_blank">Matjaz</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=227413" target="_blank">multimixer</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=281748" target="_blank">pdcelec</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=309917" target="_blank">peter3</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=234330" target="_blank">wrwrwr</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=150307" target="_blank">www-in-no</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=68072" target="_blank">yansfung</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Reference</h3>
+
+<p>A full list of source code changes can be seen at:</p>
+
+<p><a href="https://github.com/osCommerce/oscommerce2/compare/v2.3.2...upgrade233" target="_blank">https://github.com/osCommerce/oscommerce2/compare/v2.3.2...upgrade233</a></p>

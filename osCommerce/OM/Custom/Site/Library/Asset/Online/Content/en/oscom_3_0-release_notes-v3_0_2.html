@@ -1,0 +1,762 @@
+<h2>osCommerce Online Merchant v3.0.2</h2>
+
+<p>osCommerce Online Merchant v3.0.2 is a minor release focusing on bug fixes, framework improvements, and introduction of new Applications.</p>
+
+<h3>New Installations - Quick Start</h3>
+
+<p>Copy the <em>oscommerce</em> directory to your web server htdocs directory and open the location with your browser. Setup will automatically launch and guide you through the installation and configuration of your new online store.</p>
+
+<p>After installation is complete and the configuration settings have been saved, the Shop frontend and Administration Dashboard can be opened with:</p>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Site</th>
+      <th>URL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Shop</td>
+      <td>http://www.your-server.com/oscommerce/index.php?Shop</td>
+    </tr>
+    <tr>
+      <td>Admin</td>
+      <td>http://www.your-server.com/oscommerce/index.php?Admin</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="alert alert-error">Although the Setup site is locked after a new installation, it is recommended to delete the site after installation has completed to prevent outside access to it. This can be done by removing the following directory:<br /><br />/path to/oscommerce/osCommerce/OM/Core/Site/Setup</div>
+
+<h3>Upgrading from v3.0.1</h3>
+
+<div class="alert">Old configuration settings have been removed in this release that must be manually deleted in existing installations.</div>
+
+<h4>CoreUpdate - Automatic Upgrade</h4>
+
+<p>Upgrades can be easily performed through CoreUpdate, located in the Administration Dashboard -> Applications -> Tools -> Core Update menu. Here, a list of available update packages are shown with the ability to read release announcements and to browse the contents of the packages. New update packages may take up to 6 hours to become available.</p>
+
+<p>A log file is saved as <em>osCommerce/OM/Work/Logs/update-*.txt</em> during the process of applying a CoreUpdate update package, which describes the file and directory changes that were made.</p>
+
+<p>If a problem occurs during a CoreUpdate update, file and directory changes made to the point of failure are reverted and returns the installation back to its original state.</p>
+
+<div class="alert alert-info">After applying a CoreUpdate update package, log out and back into the Admin Site to have access to new Applications introduced in the update. This step will be performed automatically with the next CoreUpdate update.</div>
+
+<h4>ZIP Package - Manual Upgrade</h4>
+
+<p>A manual upgrade can be performed by extracting the update package contents and copying and overwriting the files to the <em>osCommerce/OM</em> and <em>public/</em> directories. This can be performed directly on the server or via FTP.</p>
+
+<h4>Removal of Old Configuration Settings</h4>
+
+<p>Old configuration settings have been removed in this release and must be manually deleted from <em>osCommerce/OM/Config/settings.ini</em>.</p>
+
+<p>Please remove the entire <em>[RPC]</em> group:</p>
+
+<pre>{escape}
+[RPC]
+enable_ssl = "false"
+http_server = ""
+dir_ws_http_server = ""
+http_cookie_domain = ""
+http_cookie_path = ""
+{escape}</pre>
+
+<p>This will leave <em>OSCOM</em>, <em>Admin</em>, and <em>Shop</em> as the remaining groups in the settings file.</p>
+
+<h3>Changelog</h3>
+
+<h4>Security</h4>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Level</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>High</td>
+      <td>Fix XSS vulnerability in OSCOM::getLink() and OSCOM::getPublicSiteLink().</td>
+    </tr>
+    <tr>
+      <td>High</td>
+      <td>Deny access to osCommerce/OM with a .htaccess file when the directory is left in the public html directory.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4>General</h4>
+
+<ul>
+  <li>New Admin Applications:
+    <ul>
+      <li>Categories</li>
+      <li>Customers</li>
+      <li>Services</li>
+    </ul>
+  </li>
+  <li>Verify Session IDs - if requested Session ID does not exist, create and use a new Session ID.</li>
+  <li>Only call for Administration Dashboard Shortcut Notifications when shortcuts exist.</li>
+  <li>Support sub-domain URLs for Sites.</li>
+  <li>ErrorHandler messages now formated in UTF-8.</li>
+  <li>Allow configuration parameters to be retrieved by their key.</li>
+  <li>New Administration Dashboard Customers module.</li>
+  <li>New jQuery Plugins:
+    <ul>
+      <li>Buttonset Tabs - UI widget</li>
+      <li>BlockUI - to use on modal forms</li>
+      <li>SafetyNet - to warn when leaving a form with unsaved modifications.</li>
+      <li>Image Selector - to show images to choose from.</li>
+    </ul>
+  </li>
+  <li>Update jQuery to 1.6.1</li>
+  <li>Update jQuery UI to 1.8.13</li>
+  <li>Replace Admin ErrorLog delete page with a modal dialog.</li>
+  <li>Update DataTable to support draggable rows.</li>
+  <li>New public/upload directory where files and images can be manually copied to.</li>
+  <li>New Javascript File Uploader script to handle single and multiple file uploads.</li>
+  <li>New Upload class supports PUT and POST file uploads.</li>
+  <li>After a CoreUpdate update package has been applied, refresh the administrator's session access list to show new Applications.</li>
+  <li>Allow CoreUpdate to run code after an update package has been applied (incl. SQL queries).</li>
+  <li>Show CoreUpdate logs.</li>
+  <li>Also seek new Applications and Languages in the Custom directory.</li>
+  <li>Remove case-sensitivity when filtering extensions in DirectoryListing.</li>
+  <li>Allow PDO_MySQL to connect to sockets.</li>
+  <li>Lock the Setup Site after a new installation has been performed.</li>
+</ul>
+
+<h4>Applications</h4>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Status</th>
+      <th>Site</th>
+      <th>Application</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>New</td>
+      <td>Admin</td>
+      <td>
+        Categories<br />
+        Customers<br />
+        Services
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h4>Bug Fixes</h4>
+
+<p>The following bug fixes have been applied:</p>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Bug</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Language Translations</td>
+      <td>Translate hardcoded text.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-231-translation-hard-coded-text/" target="_blank">231</a></td>
+    </tr>
+    <tr>
+      <td>Product Availability</td>
+      <td>Fix javascript that displays product variants.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-233-on-the-site-url-products-availability/" target="_blank">233</a></td>
+    </tr>
+    <tr>
+      <td>Fix Site\Shop\ShoppingCart::isInStock()</td>
+      <td>Pass a check in isInStock() correctly.</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Bug Reports Link</td>
+      <td>Change the Bug Reports link to point to the v3.x bug reports section.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-265-update-bug-reporter-address/" target="_blank">265</a></td>
+    </tr>
+    <tr>
+      <td>France, Metropolitan Flag</td>
+      <td>Add missing France, Metropolitan (FX) flag.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-253-missing-fx-flag/" target="_blank">253</a></td>
+    </tr>
+    <tr>
+      <td>exec() Check</td>
+      <td>Check if exec() is available before calling it.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-257-server-uptime-error-preventing/" target="_blank">257</a></td>
+    </tr>
+    <tr>
+      <td>HttpRequest::setRawPostData() Deprecated</td>
+      <td>Replace usage of the deprecated HttpRequest::setRawPostData() method.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-256-function-httprequestsetrawpostdata-is-deprecated/" target="_blank">256</a></td>
+    </tr>
+    <tr>
+      <td>CURLOPT_FOLLOWLOCATION safe_mode Replacement</td>
+      <td>Replace usage of CURLOPT_FOLLOWLOCATION for safe_mode environments.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-272-curlopt-followlocation-cannot-be-activated-when-safe-mode-is-enabled-or-an-open-basedir-is-set/" target="_blank">272</a></td>
+    </tr>
+    <tr>
+      <td>Escape Special Characters During Setup</td>
+      <td>Escape database server and store configuration parameters during installation.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-275-special-characters-not-escaped-during-setup/" target="_blank">275</a></td>
+    </tr>
+    <tr>
+      <td>Fix HTML::selectionField() Label</td>
+      <td>Correct HTML::selectionField() labels.</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Prevent XSS</td>
+      <td>Prevent XSS in OSCOM::getLink().</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-310-cross-site-scripting-in-search-field/" target="_blank">310</a></td>
+    </tr>
+    <tr>
+      <td>Fix Customer Address Warnings</td>
+      <td>Fix warnings when editing or entering new customer addresses.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-267-my-address-book-edit-existing-address/" target="_blank">267</a> <a href="http://forums.oscommerce.com/tracker/issue-285-e-mail-address-or-sign-in-to-process-this-order/" target="_blank">285</a></td>
+    </tr>
+    <tr>
+      <td>Fix Zone Groups</td>
+      <td>Fix Foreign Key constraint when editing Zone Groups.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-293-not-able-to-change-zone-groups/" target="_blank">293</a></td>
+    </tr>
+    <tr>
+      <td>Fix Curl HttpRequest Namespace Collision</td>
+      <td>Fix Curl HttpRequest namespace collision.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-292-coreupdate-fails-with-fatal-error/" target="_blank">292</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h4>Improvements</h4>
+
+<p>The following improvements have been applied:</p>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Class</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SessionAbstract</td>
+      <td>
+        Check if session ID exists otherwise generate a new ID.<br />
+        Check for session ID in GET/POST/COOKIE separately so POST and COOKIE are not skipped.
+      </td>
+    </tr>
+    <tr>
+      <td>OSCOM</td>
+      <td>Support Site subdomains (eg, http://shop.your-server.com can load the Shop Site).</td>
+    </tr>
+    <tr>
+      <td>ErrorHandler</td>
+      <td>Set php.ini html_errors to false.</td>
+    </tr>
+    <tr>
+      <td>HttpRequest\HttpRequest</td>
+      <td>Replace deprecated usage of \HttpRequest::setRawPostData() with \HttpRequest::setPostFields().</td>
+    </tr>
+    <tr>
+      <td>
+        ErrorHandler<br />
+        Language
+      </td>
+      <td>Force ErrorHandler messages to UTF-8.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4>API Changes</h4>
+
+<table class="table table-striped table-hover">
+  <tbody>
+    <tr>
+      <td>New</td>
+      <td>
+        Session\Database::exists()<br />
+        Session\Database\SQL\MySQL\Standard\Check<br />
+        Session\File::exists()</td>
+    </tr>
+    <tr>
+      <td>New</td>
+      <td>
+        Language::toUTF8()<br />
+        Language::isUTF8()</td>
+    </tr>
+    <tr>
+      <td>New</td>
+      <td>Site\Shop\Address::hasZones()</td>
+    </tr>
+    <tr>
+      <td>New</td>
+      <td>HTML::fileField()</td>
+    </tr>
+    <tr>
+      <td>New</td>
+      <td>Site\Admin\CategoryTree</td>
+    </tr>
+    <tr>
+      <td>Changed</td>
+      <td>Site\Shop\CategoryTree::getData() added $key parameter</td>
+    </tr>
+    <tr>
+      <td>New</td>
+      <td>Site\Shop\CategoryTree::getParentID()</td>
+    </tr>
+    <tr>
+      <td>New</td>
+      <td>Upload</td>
+    </tr>
+    <tr>
+      <td>Changed</td>
+      <td>Site\Shop\AddressBook::getEntry() now returns an array (previously a database query result set)</td>
+    </tr>
+    <tr>
+      <td>Changed</td>
+      <td>HTML::selectMenu() now accepts "params" parameter in $values entries array</td>
+    </tr>
+    <tr>
+      <td>New</td>
+      <td>PDOStatement::getQuery()</td>
+    </tr>
+    <tr>
+      <td>New</td>
+      <td>Site\Admin\Application\Services\Services</td>
+    </tr>
+    <tr>
+      <td>New</td>
+      <td>Site\Admin\Application\Customers\Customers</td>
+    </tr>
+    <tr>
+      <td>New</td>
+      <td>Site\Admin\Application\Categories\Categories</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4>Language Definitions</h4>
+
+<table class="table table-striped table-hover">
+  <tbody>
+    <tr>
+      <td>New</td>
+      <td>Site/Admin/languages/en_US.php</td>
+      <td>
+        button_add<br />
+        button_upload_new_file<br />
+        button_reset<br />
+        icon_progress_ani<br />
+        icon_undo<br />
+        ms_error_upload_directory_non_existant<br />
+        ms_error_upload_directory_not_writable<br />
+        ms_error_work_directories_not_writable<br />
+        placeholder_search
+      </td>
+    </tr>
+    <tr>
+      <td>New</td>
+      <td>Site/Admin/languages/en_US/Categories.php</td>
+      <td>
+        app_title<br />
+        heading_title<br />
+        table_heading_categories<br />
+        table_heading_action<br />
+        action_heading_new_category<br />
+        action_heading_batch_move_categories<br />
+        field_parent_category<br />
+        field_name<br />
+        field_image<br />
+        field_image_browser<br />
+        top_category<br />
+        dialog_delete_category_title<br />
+        dialog_delete_category_desc<br />
+        dialog_batch_delete_category_title<br />
+        dialog_batch_delete_category_desc<br />
+        introduction_batch_move_categories<br />
+        ms_error_image_directory_not_writable<br />
+        ms_error_image_directory_non_existant
+      </td>
+    </tr>
+    <tr>
+      <td>New</td>
+      <td>Site/Admin/languages/en_US/modules/access/groups/products.php</td>
+      <td>access_group_products_title</td>
+    </tr>
+    <tr>
+      <td>New</td>
+      <td>Site/Admin/languages/en_US/CoreUpdate.php</td>
+      <td>
+        table_heading_log_date<br />
+        table_heading_log_message<br />
+        select_log_to_view<br />
+        ms_error_log_file_does_not_exist
+      </td>
+    </tr>
+    <tr>
+      <td>New</td>
+      <td>Site/Admin/languages/en_US/Customers.php</td>
+      <td>
+        app_title<br />
+        heading_title<br />
+        table_heading_customers<br />
+        table_heading_date_created<br />
+        table_heading_action<br />
+        action_heading_new_customer<br />
+        section_personal<br />
+        section_password<br />
+        section_address_book<br />
+        section_newsletters<br />
+        section_map<br />
+        section_social<br />
+        field_gender<br />
+        field_first_name<br />
+        field_last_name<br />
+        field_date_of_birth<br />
+        field_email_address<br />
+        field_newsletter_subscription<br />
+        field_new_password<br />
+        field_new_password_confirmation<br />
+        field_status<br />
+        field_company<br />
+        field_street_address<br />
+        field_suburb<br />
+        field_post_code<br />
+        field_city<br />
+        field_state<br />
+        field_country<br />
+        field_telephone_number<br />
+        field_fax_number<br />
+        field_set_as_primary<br />
+        primary_address<br />
+        dialog_delete_customer_title<br />
+        dialog_delete_customer_desc<br />
+        dialog_batch_delete_customer_title<br />
+        dialog_batch_delete_customer_desc<br />
+        dialog_delete_address_title<br />
+        dialog_delete_address_desc<br />
+        dialog_delete_new_address_title<br />
+        dialog_delete_new_address_desc<br />
+        dialog_delete_default_address_title<br />
+        dialog_delete_default_address_desc<br />
+        ms_error_gender<br />
+        ms_error_first_name<br />
+        ms_error_last_name<br />
+        ms_error_date_of_birth<br />
+        ms_error_email_address<br />
+        ms_error_email_address_invalid<br />
+        ms_error_email_address_exists<br />
+        ms_error_password<br />
+        ms_error_password_confirmation_invalid<br />
+        ms_error_company<br />
+        ms_error_street_address<br />
+        ms_error_suburb<br />
+        ms_error_post_code<br />
+        ms_error_city<br />
+        ms_error_state<br />
+        ms_error_country<br />
+        ms_error_telephone_number<br />
+        ms_error_fax_number
+      </td>
+    </tr>
+    <tr>
+      <td>Deleted</td>
+      <td>Site/Admin/languages/en_US/ErrorLog.php</td>
+      <td>
+        title_delete_error_log<br />
+        introduction_delete_error_log<br />
+        number_of_error_log_file_entries
+      </td>
+    </tr>
+    <tr>
+      <td>New</td>
+      <td>Site/Admin/languages/en_US/ErrorLog.php</td>
+      <td>
+        dialog_delete_error_log_title<br />
+        dialog_delete_error_log_desc
+      </td>
+    </tr>
+    <tr>
+      <td>New</td>
+      <td>Site/Admin/languages/en_US/Services.php</td>
+      <td>
+        app_title<br />
+        heading_title<br />
+        table_heading_service_modules<br />
+        table_heading_action<br />
+        introduction_edit_service_module<br />
+        dialog_uninstall_module_title<br />
+        dialog_uninstall_module_desc
+      </td>
+    </tr>
+    <tr>
+      <td>New</td>
+      <td>Site/Admin/languages/en_US/modules/Service/Banner.php</td>
+      <td>
+        services_banner_title<br />
+        services_banner_description
+      </td>
+    </tr>
+    <tr>
+      <td>New</td>
+      <td>Site/Admin/languages/en_US/modules/Service/Breadcrumb.php</td>
+      <td>
+        services_breadcrumb_title<br />
+        services_breadcrumb_description
+      </td>
+    </tr>
+    <tr>
+      <td>New</td>
+      <td>Site/Admin/languages/en_US/modules/Service/CategoryPath.php</td>
+      <td>
+        services_category_path_title<br />
+        services_category_path_description
+      </td>
+    </tr>
+    <tr>
+      <td>New</td>
+      <td>Site/Admin/languages/en_US/modules/Service/Core.php</td>
+      <td>
+        services_core_title<br />
+        services_core_description
+      </td>
+    </tr>
+    <tr>
+      <td>New</td>
+      <td>Site/Admin/languages/en_US/modules/Service/Currencies.php</td>
+      <td>
+        services_currencies_title<br />
+        services_currencies_description
+      </td>
+    </tr>
+    <tr>
+      <td>New</td>
+      <td>Site/Admin/languages/en_US/modules/Service/Debug.php</td>
+      <td>
+        services_debug_title<br />
+        services_debug_description
+      </td>
+    </tr>
+    <tr>
+      <td>New</td>
+      <td>Site/Admin/languages/en_US/modules/Service/Language.php</td>
+      <td>
+        services_language_title<br />
+        services_language_description
+      </td>
+    </tr>
+    <tr>
+      <td>New</td>
+      <td>Site/Admin/languages/en_US/modules/Service/OutputCompression.php</td>
+      <td>
+        services_output_compression_title<br />
+        services_output_compression_description
+      </td>
+    </tr>
+    <tr>
+      <td>New</td>
+      <td>Site/Admin/languages/en_US/modules/Service/RecentlyVisited.php</td>
+      <td>
+        services_recently_visited_title<br />
+        services_recently_visited_description
+      </td>
+    </tr>
+    <tr>
+      <td>New</td>
+      <td>Site/Admin/languages/en_US/modules/Service/Reviews.php</td>
+      <td>
+        services_reviews_title<br />
+        services_reviews_description
+      </td>
+    </tr>
+    <tr>
+      <td>New</td>
+      <td>Site/Admin/languages/en_US/modules/Service/SEFU.php</td>
+      <td>
+        services_sefu_title<br />
+        services_sefu_description
+      </td>
+    </tr>
+    <tr>
+      <td>New</td>
+      <td>Site/Admin/languages/en_US/modules/Service/Session.php</td>
+      <td>
+        services_session_title<br />
+        services_session_description
+      </td>
+    </tr>
+    <tr>
+      <td>New</td>
+      <td>Site/Admin/languages/en_US/modules/Service/SimpleCounter.php</td>
+      <td>
+        services_simple_counter_title<br />
+        services_simple_counter_description
+      </td>
+    </tr>
+    <tr>
+      <td>New</td>
+      <td>Site/Admin/languages/en_US/modules/Service/Specials.php</td>
+      <td>
+        services_specials_title<br />
+        services_specials_description
+      </td>
+    </tr>
+    <tr>
+      <td>New</td>
+      <td>Site/Admin/languages/en_US/modules/Service/WhosOnline.php</td>
+      <td>
+        services_whos_online_title<br />
+        services_whos_online_description
+      </td>
+    </tr>
+    <tr>
+      <td>Deleted</td>
+      <td>Site/Setup/Languages/en_US/Index.php</td>
+      <td>box_server_magic_quotes</td>
+    </tr>
+    <tr>
+      <td>New</td>
+      <td>Site/Setup/Languages/en_US/Index.php</td>
+      <td>box_server_magic_quotes_gpc</td>
+    </tr>
+    <tr>
+      <td>New</td>
+      <td>Site/Setup/Languages/en_US/Install.php</td>
+      <td>
+        rpc_database_store_configuration<br />
+        rpc_database_store_configuration_error
+      </td>
+    </tr>
+    <tr>
+      <td>New</td>
+      <td>Site/Setup/Languages/en_US/Offline.php</td>
+      <td>
+        page_title_authorization_required<br />
+        page_heading_access_disabled<br />
+        title_language<br />
+        text_access_disabled<br />
+        button_continue
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h4>Dependencies</h4>
+
+<table class="table table-striped table-hover">
+  <tbody>
+    <tr>
+      <td>New</td>
+      <td>HTML5 Placeholder jQuery Plugin v1.8.2.</td>
+    </tr>
+    <tr>
+      <td>New</td>
+      <td>jQuery blockUI Plugin v2.39</td>
+    </tr>
+    <tr>
+      <td>New</td>
+      <td>
+        jQuery.safetynet v0.9.4<br />
+        jQuery.netchanger v0.9.2
+      </td>
+    </tr>
+    <tr>
+      <td>New</td>
+      <td>Buttonset Tabs jQuery Plugin</td>
+    </tr>
+    <tr>
+      <td>New</td>
+      <td>Equal Resize jQuery Plugin</td>
+    </tr>
+    <tr>
+      <td>Changed</td>
+      <td>Updated jQuery UI 1.8.11 to 1.8.13</td>
+    </tr>
+    <tr>
+      <td>New</td>
+      <td>jQuery MD5 Plugin 1.2.1</td>
+    </tr>
+    <tr>
+      <td>Changed</td>
+      <td>Updated jQuery 1.5.1 to 1.6.1</td>
+    </tr>
+    <tr>
+      <td>New</td>
+      <td>File Uploader Javascript</td>
+    </tr>
+    <tr>
+      <td>New</td>
+      <td>Image Selector jQuery Plugin (based on Image JSON Pagination v1.0)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Thank You!</h3>
+
+<p>We'd like to thank the community for their feedback on our releases. In addition, we thank the following people who participated in the development of this release.</p>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Code Contributors</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=199907" target="_blank">dannyhenderson</a> (<a href="https://github.com/dannyhenderson" target="_blank">dannyhenderson</a>)</td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=276376" target="_blank">foxp2</a> (<a href="https://github.com/foxp2" target="_blank">foxp2</a>)</td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=241134" target="_blank">Gergely</a> (<a href="https://github.com/tgely" target="_blank">tgely</a>)</td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Bug Reporters</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=164050" target="_blank">bodistanciu</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=48794" target="_blank">capte</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=276376" target="_blank">foxp2</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=241134" target="_blank">Gergely</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=203279" target="_blank">Mystefyer</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=294608" target="_blank">nopslider</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=295286" target="_blank">obnoxious_easiness</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Reference</h3>
+
+<p>A full list of source code changes can be seen at:</p>
+
+<p><a href="https://github.com/osCommerce/oscommerce/compare/v3.0.1...v3.0.2" target="_blank">https://github.com/osCommerce/oscommerce/compare/v3.0.1...v3.0.2</a></p>

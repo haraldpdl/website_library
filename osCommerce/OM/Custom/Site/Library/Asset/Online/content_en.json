@@ -1,0 +1,42 @@
+{
+  "oscom_2_3": {
+    "title": "Online Merchant v2.3",
+    "chapters": {
+      "release_notes": {
+        "title": "Release Notes",
+        "pages": {
+          "v2_3_3": "osCommerce Online Merchant v2.3.3",
+          "v2_3_2": "osCommerce Online Merchant v2.3.2"
+        }
+      }
+    }
+  },
+  "oscom_3_0": {
+    "title": "Online Merchant v3.0",
+    "chapters": {
+      "getting_started": {
+        "title": "Getting Started",
+        "pages": {
+          "requirements": "Requirements",
+          "pre_installation": "Pre-Installation Steps",
+          "new_installation": "New Installation",
+          "post_installation": "Post-Installation Steps"
+        }
+      },
+      "developers": {
+        "title": "Developers",
+        "pages": {
+          "database": "Database Connections and Queries"
+        }
+      },
+      "release_notes": {
+        "title": "Release Notes",
+        "pages": {
+          "v3_0_2": "osCommerce Online Merchant v3.0.2",
+          "v3_0_1": "osCommerce Online Merchant v3.0.1",
+          "v3_0_0": "osCommerce Online Merchant v3.0.0"
+        }
+      }
+    }
+  }
+}

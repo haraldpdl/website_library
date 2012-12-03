@@ -1,0 +1,121 @@
+<h2>Requirements</h2>
+
+<p>osCommerce Online Merchant can be installed on any web server that has PHP installed and has access to a database server. This includes shared servers, dedicated servers, cloud instances, and local installations running on Linux, Unix, BSD, Mac OS X, and Microsoft Windows operating systems.</p>
+
+<h3>Web Server</h3>
+
+<p>The web server must support PHP either as a module or allow execution of CGI scripts. For performance reasons FastCGI is recommended over CGI.</p>
+
+<h3>PHP</h3>
+
+<p>The minimum PHP version required is v5.3.0. It is recommended to use the latest PHP version on the web server.</p>
+
+<p>The following PHP settings are recommended to be set in the php.ini configuration file:</p>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>PHP Setting</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="http://www.php.net/manual/en/ini.core.php#ini.register-globals" target="_blank">register_globals</a></td>
+      <td><span class="badge badge-important">Off</span></td>
+    </tr>
+    <tr>
+      <td><a href="http://www.php.net/manual/en/ref.info.php#ini.magic-quotes-gpc" target="_blank">magic_quotes_gpc</a></td>
+      <td><span class="badge badge-important">Off</span></td>
+    </tr>
+    <tr>
+      <td><a href="http://www.php.net/manual/en/ini.core.php#ini.file-uploads" target="_blank">file_uploads</a></td>
+      <td><span class="badge badge-success">On</span></td>
+    </tr>
+    <tr>
+      <td><a href="http://www.php.net/manual/en/ref.session.php#ini.session.auto-start" target="_blank">session.auto_start</a></td>
+      <td><span class="badge badge-important">Off</span></td>
+    </tr>
+    <tr>
+      <td><a href="http://www.php.net/manual/en/ref.session.php#ini.session.use-trans-sid" target="_blank">session.use_trans_sid</a></td>
+      <td><span class="badge badge-important">Off</span></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The following PHP extensions are mandatory:</p>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Extension</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="http://www.php.net/manual/en/ref.pdo-mysql.php" target="_blank">PDO_MYSQL</a></td>
+      <td>PDO MySQL database driver.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The following PHP extensions are recommended:</p>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Extension</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="http://www.php.net/manual/en/ref.pdo-sqlite.php" target="_blank">PDO_SQLITE</a></td>
+      <td>PDO SQLite database driver.</td>
+    </tr>
+    <tr>
+      <td><a href="http://www.php.net/manual/en/book.phar.php" target="_blank">Phar</a></td>
+      <td>PHP Archive extension.</td>
+    </tr>
+    <tr>
+      <td><a href="http://www.php.net/manual/en/book.image.php" target="_blank">GD</a></td>
+      <td>Image processing extension.</td>
+    </tr>
+    <tr>
+      <td><a href="http://www.php.net/manual/en/book.curl.php" target="_blank">cURL</a></td>
+      <td>Network communication library.</td>
+    </tr>
+    <tr>
+      <td><a href="http://www.php.net/manual/en/book.openssl.php" target="_blank">OpenSSL</a></td>
+      <td>Encryption library.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>MySQL Database Server</h3>
+
+<p>The minimum MySQL Server version required is v4.1.13+ or v5.0.7+. It is recommended to use the latest MySQL Server version on the database server.</p>
+
+<p>The following MySQL Server storage engines are supported:</p>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Storage Engine</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="http://dev.mysql.com/doc/refman/5.1/en/myisam-storage-engine.html" target="_blank">MyISAM</a></td>
+      <td>Standard storage engine.</td>
+    </tr>
+    <tr>
+      <td><a href="http://dev.mysql.com/doc/refman/5.1/en/innodb-storage-engine.html" target="_blank">InnoDB</a></td>
+      <td>Transaction-safe storage engine.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>osCommerce Online Merchant utilizes <a href="http://dev.mysql.com/doc/refman/5.1/en/innodb-foreign-key-constraints.html" target="_blank">Foreign Key Constraints</a> which is supported natively by InnoDB. A compatibility layer for the MyISAM storage engine exists where foreign key relationships are defined in the <em>osc_fk_relationships</em> database table.</p>

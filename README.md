@@ -10,6 +10,12 @@ frontend design is licensed and some graphics will not be available on Github.
 No installation routine is present however setup instructions are available for
 those interested in helping out.
 
+The actual documentation content is Copyright (c) osCommerce. All rights
+reserved. The content may be reproduced for personal use only. Documentation
+authors grant osCommerce the ability to use the documentation as described in:
+
+http://www.oscommerce.com/cla.txt
+
 Installation
 ------------
 

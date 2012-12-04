@@ -52,11 +52,13 @@
       $OSCOM_Template->setValue('current_page', $page);
 
       if ( isset($book) ) {
+        $OSCOM_Template->setValue('book_title', Online::getBookTitle($book));
         $OSCOM_Template->setValue('book_chapters', Online::getChapters($book));
 
         if ( isset($chapter) ) {
           $this->_page_contents = 'pages.html';
 
+          $OSCOM_Template->setValue('chapter_title', Online::getChapterTitle($chapter, $book));
           $OSCOM_Template->setValue('book_chapter_pages', Online::getPages($chapter, $book));
 
           if ( isset($page) ) {

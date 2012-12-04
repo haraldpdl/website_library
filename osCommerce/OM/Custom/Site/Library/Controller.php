@@ -19,16 +19,15 @@
       Registry::set('Language', new Language());
       Registry::set('Template', new Template());
 
-      Online::load();
+      $OSCOM_Language = Registry::get('Language');
+      $OSCOM_Template = Registry::get('Template');
+
+      Online::load($OSCOM_Language->getCode());
 
       $application = 'osCommerce\\OM\\Core\\Site\\Library\\Application\\' . OSCOM::getSiteApplication() . '\\Controller';
       Registry::set('Application', new $application());
 
-      $OSCOM_Template = Registry::get('Template');
-
       $OSCOM_Template->setApplication(Registry::get('Application'));
-
-      $OSCOM_Language = Registry::get('Language');
 
       $OSCOM_Template->setValue('html_text_direction', $OSCOM_Language->getTextDirection());
       $OSCOM_Template->setValue('html_lang', OSCOM::getDef('html_lang_code')); // HPDL A better solution is to define the ISO 639-1 value at the language level

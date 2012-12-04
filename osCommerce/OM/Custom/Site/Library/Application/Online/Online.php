@@ -12,9 +12,12 @@
 
   class Online {
     static $_content = array();
+    static $_language;
 
-    public static function load() {
-      static::$_content = json_decode(file_get_contents(OSCOM::BASE_DIRECTORY . 'Custom/Site/Library/Asset/Online/content_en.json'), true);
+    public static function load($language) {
+      static::$_language = $language;
+
+      static::$_content = json_decode(file_get_contents(OSCOM::BASE_DIRECTORY . 'Custom/Site/Library/Asset/Online/content_' . static::$_language . '.json'), true);
     }
 
     public static function getContent() {
@@ -30,7 +33,7 @@
     }
 
     public static function pageExists($page, $chapter, $book) {
-      return file_exists(OSCOM::BASE_DIRECTORY . 'Custom/Site/Library/Asset/Online/Content/en/' . basename($book) . '-' . basename($chapter) . '-' . basename($page) . '.html');
+      return file_exists(OSCOM::BASE_DIRECTORY . 'Custom/Site/Library/Asset/Online/Content/' . static::$_language . '/' . basename($book) . '-' . basename($chapter) . '-' . basename($page) . '.html');
     }
 
     public static function getChapters($book) {
@@ -56,7 +59,7 @@
     }
 
     public static function getPageFile($page, $chapter, $book) {
-      return OSCOM::BASE_DIRECTORY . 'Custom/Site/Library/Asset/Online/Content/en/' . basename($book) . '-' . basename($chapter) . '-' . basename($page) . '.html';
+      return OSCOM::BASE_DIRECTORY . 'Custom/Site/Library/Asset/Online/Content/' . static::$_language . '/' . basename($book) . '-' . basename($chapter) . '-' . basename($page) . '.html';
     }
   }
 ?>

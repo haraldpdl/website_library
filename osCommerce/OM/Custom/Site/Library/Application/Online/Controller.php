@@ -23,20 +23,20 @@
       $keys = array_keys($_GET);
       $position = array_search(OSCOM::getSiteApplication(), $keys);
 
-      if ( isset($keys[$position + 1]) ) {
-        $requested_book = $keys[$position + 1];
+      if ( isset($keys[$position + 2]) ) {
+        $requested_book = $keys[$position + 2];
 
         if ( Online::bookExists($requested_book) ) {
           $book = $requested_book;
 
-          if ( isset($keys[$position + 2]) ) {
-            $requested_chapter = $keys[$position + 2];
+          if ( isset($keys[$position + 3]) ) {
+            $requested_chapter = $keys[$position + 3];
 
             if ( Online::chapterExists($requested_chapter, $book) ) {
               $chapter = $requested_chapter;
 
-              if ( isset($keys[$position + 3]) ) {
-                $requested_page = $keys[$position + 3];
+              if ( isset($keys[$position + 4]) ) {
+                $requested_page = $keys[$position + 4];
 
                 if ( Online::pageExists($requested_page, $chapter, $book) ) {
                   $page = $requested_page;

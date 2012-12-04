@@ -15,6 +15,7 @@
   class Controller extends \osCommerce\OM\Core\Template\WidgetAbstract {
     static public function execute($param = null) {
       $OSCOM_Template = Registry::get('Template');
+      $OSCOM_Language = Registry::get('Language');
 
       $current_book = $OSCOM_Template->valueExists('current_book') ? $OSCOM_Template->getValue('current_book') : null;
       $current_chapter = $OSCOM_Template->valueExists('current_chapter') ? $OSCOM_Template->getValue('current_chapter') : null;
@@ -28,7 +29,7 @@
           $online_books_list .= ' class="active"';
         }
 
-        $online_books_list .= '><a href="' . OSCOM::getLink(null, 'Online', $key) . '">' . $book['title'] . '</a>';
+        $online_books_list .= '><a href="' . OSCOM::getLink(null, 'Online', $OSCOM_Language->getCode() . '&' . $key) . '">' . $book['title'] . '</a>';
 
         if ( isset($current_book) && ($current_book == $key) ) {
           $online_books_list .= '<ul class="nav nav-list">';
@@ -40,7 +41,7 @@
               $online_books_list .= ' class="active"';
             }
 
-            $online_books_list .= '><a href="' . OSCOM::getLink(null, 'Online', $key . '&' . $ckey) . '">' . $chapter['title'] . '</a></li>';
+            $online_books_list .= '><a href="' . OSCOM::getLink(null, 'Online', $OSCOM_Language->getCode() . '&' . $key . '&' . $ckey) . '">' . $chapter['title'] . '</a></li>';
           }
 
           $online_books_list .= '</ul>';

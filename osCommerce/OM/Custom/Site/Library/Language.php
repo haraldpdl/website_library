@@ -33,7 +33,16 @@
 
       unset($lang);
 
-      $language = (isset($_GET['language']) && !empty($_GET['language']) ? $_GET['language'] : '');
+      $language = (isset($_GET['ll']) && !empty($_GET['ll']) && $this->exists($_GET['ll'])) ? $_GET['ll'] : null;
+
+      if ( empty($language) && isset($_GET['Online']) ) {
+        $keys = array_keys($_GET);
+        $position = array_search('Online', $keys);
+
+        if ( isset($keys[$position + 1]) && $this->exists($keys[$position + 1]) ) {
+          $language = $keys[$position + 1];
+        }
+      }
 
       $this->set($language);
 

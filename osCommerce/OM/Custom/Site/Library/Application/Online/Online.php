@@ -28,12 +28,35 @@
       return array_key_exists($book, static::$_content);
     }
 
+    public static function getBookTitle($code) {
+      return static::$_content[$code]['title'];
+    }
+
+    public static function getChapterTitle($code, $book) {
+      return static::$_content[$book]['chapters'][$code]['title'];
+    }
+
+    public static function getPageTitle($code, $chapter, $book) {
+      return static::$_content[$book]['chapters'][$chapter]['pages'][$code];
+    }
+
     public static function chapterExists($chapter, $book) {
       return array_key_exists($chapter, static::$_content[$book]['chapters']);
     }
 
     public static function pageExists($page, $chapter, $book) {
       return file_exists(OSCOM::BASE_DIRECTORY . 'Custom/Site/Library/Asset/Online/Content/' . static::$_language . '/' . basename($book) . '/' . basename($chapter) . '/' . basename($page) . '.html');
+    }
+
+    public static function getBooks() {
+      $books = array();
+
+      foreach ( static::$_content as $key => $book ) {
+        $books[] = array('code' => $key,
+                         'title' => $book['title']);
+      }
+
+      return $books;
     }
 
     public static function getChapters($book) {

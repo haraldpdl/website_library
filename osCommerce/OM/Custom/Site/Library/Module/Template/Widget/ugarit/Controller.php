@@ -19,35 +19,41 @@
 
       $current_book = $OSCOM_Template->valueExists('current_book') ? $OSCOM_Template->getValue('current_book') : null;
       $current_chapter = $OSCOM_Template->valueExists('current_chapter') ? $OSCOM_Template->getValue('current_chapter') : null;
+      $current_page = $OSCOM_Template->valueExists('current_page') ? $OSCOM_Template->getValue('current_page') : null;
+
+      $books = Online::getContent();
 
       $online_books_list = '';
 
-      foreach ( Online::getContent() as $key => $book ) {
-        $online_books_list .= '<li';
+      $online_books_list .= '<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">' . (isset($current_book) ? Online::getBookTitle($current_book) : OSCOM::getDef('books_title')) . '<b class="caret"></b></a>
+                               <ul class="dropdown-menu">';
 
-        if ( isset($current_book) && ($current_book == $key) ) {
-          $online_books_list .= ' class="active"';
+      foreach ( $books as $key => $book ) {
+        $online_books_list .= '<li><a href="' . OSCOM::getLink(null, 'Online', $OSCOM_Language->getCode() . '&' . $key) . '">' . $book['title'] . '</a></li>';
+      }
+
+      $online_books_list .= '</ul></li>';
+
+      if ( isset($current_chapter) ) {
+        $online_books_list .= '<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">' . Online::getChapterTitle($current_chapter, $current_book) . '<b class="caret"></b></a>
+                                 <ul class="dropdown-menu">';
+
+        foreach ( $books[$current_book]['chapters'] as $ckey => $chapter ) {
+          $online_books_list .= '<li><a href="' . OSCOM::getLink(null, 'Online', $OSCOM_Language->getCode() . '&' . $current_book . '&' . $ckey) . '">' . $chapter['title'] . '</a></li>';
         }
 
-        $online_books_list .= '><a href="' . OSCOM::getLink(null, 'Online', $OSCOM_Language->getCode() . '&' . $key) . '">' . $book['title'] . '</a>';
+        $online_books_list .= '</ul></li>';
 
-        if ( isset($current_book) && ($current_book == $key) ) {
-          $online_books_list .= '<ul class="nav nav-list">';
+        if ( isset($current_page) ) {
+          $online_books_list .= '<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">' . Online::getPageTitle($current_page, $current_chapter, $current_book) . '<b class="caret"></b></a>
+                                   <ul class="dropdown-menu">';
 
-          foreach ( $book['chapters'] as $ckey => $chapter ) {
-            $online_books_list .= '<li';
-
-            if ( isset($current_chapter) && ($current_chapter == $ckey) ) {
-              $online_books_list .= ' class="active"';
-            }
-
-            $online_books_list .= '><a href="' . OSCOM::getLink(null, 'Online', $OSCOM_Language->getCode() . '&' . $key . '&' . $ckey) . '">' . $chapter['title'] . '</a></li>';
+          foreach ( $books[$current_book]['chapters'][$current_chapter]['pages'] as $pkey => $page_title ) {
+            $online_books_list .= '<li><a href="' . OSCOM::getLink(null, 'Online', $OSCOM_Language->getCode() . '&' . $current_book . '&' . $current_chapter . '&' . $pkey) . '">' . $page_title . '</a></li>';
           }
 
-          $online_books_list .= '</ul>';
+         $online_books_list .= '</ul></li>';
         }
-
-        $online_books_list .= '</li>';
       }
 
       $OSCOM_Template->setValue('online_books_list', $online_books_list);

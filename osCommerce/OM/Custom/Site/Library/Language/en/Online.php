@@ -5,7 +5,5 @@
 
 html_page_title = osCommerce Library
 
-page_title = osCommerce Library
-page_subtitle = Online Documentation
-
-heading_books = Books
+heading_chapters = Chapters
+heading_pages = Pages

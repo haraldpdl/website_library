@@ -1,0 +1,9 @@
+<h1>{lang}page_title{lang} <small>{lang}page_subtitle{lang}</small></h1>
+
+<ul class="nav nav-list">
+  <li class="nav-header">{lang}heading_books{lang}</li>
+
+{loop book_list}
+  <li><a href="{link}Online|Library|{raw}html_lang{raw}&%code%{link}">#title#</a></li>
+{loop}
+</ul>

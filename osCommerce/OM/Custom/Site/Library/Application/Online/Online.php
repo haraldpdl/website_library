@@ -33,7 +33,7 @@
     }
 
     public static function pageExists($page, $chapter, $book) {
-      return file_exists(OSCOM::BASE_DIRECTORY . 'Custom/Site/Library/Asset/Online/Content/' . static::$_language . '/' . basename($book) . '-' . basename($chapter) . '-' . basename($page) . '.html');
+      return file_exists(OSCOM::BASE_DIRECTORY . 'Custom/Site/Library/Asset/Online/Content/' . static::$_language . '/' . basename($book) . '/' . basename($chapter) . '/' . basename($page) . '.html');
     }
 
     public static function getChapters($book) {
@@ -59,7 +59,7 @@
     }
 
     public static function getPageFile($page, $chapter, $book) {
-      return OSCOM::BASE_DIRECTORY . 'Custom/Site/Library/Asset/Online/Content/' . static::$_language . '/' . basename($book) . '-' . basename($chapter) . '-' . basename($page) . '.html';
+      return OSCOM::BASE_DIRECTORY . 'Custom/Site/Library/Asset/Online/Content/' . static::$_language . '/' . basename($book) . '/' . basename($chapter) . '/' . basename($page) . '.html';
     }
   }
 ?>

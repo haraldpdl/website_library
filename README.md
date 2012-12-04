@@ -65,7 +65,7 @@ Feedback
 Please review the following forum topic for discussions on the documentation
 website.
 
-http://forums.oscommerce.com/topic/XXXXX COMING SOON
+http://forums.oscommerce.com/topic/390596-oscommerce-library-new-documentation-site/
 
 Discussions for our new website platform are held in:
 

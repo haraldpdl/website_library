@@ -1,9 +1,11 @@
 <h2>{value}book_title{value}</h2>
 
-<ul class="nav nav-list">
-  <li class="nav-header">{lang}heading_chapters{lang}</li>
+<h3>{lang}heading_chapters{lang}</h3>
 
-{loop book_chapters}
-  <li><a href="{link}Online|Library|{raw}html_lang{raw}&{raw}current_book{raw}&%code%{link}">#title#</a></li>
-{loop}
+<ul class="nav nav-list">
+  {loop book_chapters}
+    <li><a href="{link}Online|Library|{raw}html_lang{raw}&{raw}current_book{raw}&%code%{link}">#title#</a></li>
+  {loop}
 </ul>
+
+{import}{value}book_info_file{value}{import}

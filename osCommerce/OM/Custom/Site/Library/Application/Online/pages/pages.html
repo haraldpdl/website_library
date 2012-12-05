@@ -1,9 +1,9 @@
 <h2>{value}chapter_title{value}</h2>
 
-<ul class="nav nav-list">
-  <li class="nav-header">{lang}heading_pages{lang}</li>
+<h3>{lang}heading_pages{lang}</h3>
 
-{loop book_chapter_pages}
-  <li><a href="{link}Online|Library|{raw}html_lang{raw}&{raw}current_book{raw}&{raw}current_chapter{raw}&%code%{link}">#title#</a></li>
-{loop}
+<ul class="nav nav-list">
+  {loop book_chapter_pages}
+    <li><a href="{link}Online|Library|{raw}html_lang{raw}&{raw}current_book{raw}&{raw}current_chapter{raw}&%code%{link}">#title#</a></li>
+  {loop}
 </ul>

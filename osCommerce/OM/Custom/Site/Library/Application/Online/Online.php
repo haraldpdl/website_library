@@ -81,6 +81,10 @@
       return $pages;
     }
 
+    public static function getBookInfoFile($book) {
+      return OSCOM::BASE_DIRECTORY . 'Custom/Site/Library/Asset/Online/Content/' . static::$_language . '/' . basename($book) . '/info.html';
+    }
+
     public static function getPageFile($page, $chapter, $book) {
       return OSCOM::BASE_DIRECTORY . 'Custom/Site/Library/Asset/Online/Content/' . static::$_language . '/' . basename($book) . '/' . basename($chapter) . '/' . basename($page) . '.html';
     }

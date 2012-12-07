@@ -21,10 +21,10 @@
 
 <p>The following database queries must be performed:</p>
 
-<pre class="prettyprint">{escape}
+{code}
 alter table customers_info add password_reset_key char(40);
 alter table customers_info add password_reset_date datetime;
-{escape}</pre>
+{code}
 
 <p>In addition, the Customer Password Reset Action Recorder module must be enabled as described below.</p>
 
@@ -191,7 +191,7 @@ alter table customers_info add password_reset_date datetime;
 
 <p>Replace, in both files, the following class method:</p>
 
-<pre class="prettyprint">{escape}
+{code}
     function get_random_bytes($count)
     {
         $output = '';
@@ -214,11 +214,11 @@ alter table customers_info add password_reset_date datetime;
 
         return $output;
     }
-{escape}</pre>
+{code}
 
 <p>with:</p>
 
-<pre class="prettyprint">{escape}
+{code}
     function get_random_bytes($count)
     {
         $output = '';
@@ -252,13 +252,13 @@ alter table customers_info add password_reset_date datetime;
 
         return $output;
     }
-{escape}</pre>
+{code}
 
 <p><i class="icon-file"></i> <strong>admin/includes/functions/general.php</strong></p>
 
 <p>Replace the following function:</p>
 
-<pre class="prettyprint">{escape}
+{code}
   function tep_rand($min = null, $max = null) {
     static $seeded;
 
@@ -277,11 +277,11 @@ alter table customers_info add password_reset_date datetime;
       return mt_rand();
     }
   }
-{escape}</pre>
+{code}
 
 <p>with:</p>
 
-<pre class="prettyprint">{escape}
+{code}
   function tep_rand($min = null, $max = null) {
     static $seeded;
 
@@ -303,21 +303,21 @@ alter table customers_info add password_reset_date datetime;
       return mt_rand();
     }
   }
-{escape}</pre>
+{code}
 
 <p><i class="icon-file"></i> <strong>includes/filenames.php</strong></p>
 
 <p>Add the following filename definition:</p>
 
-<pre class="prettyprint">{escape}
+{code}
   define('FILENAME_PASSWORD_RESET', 'password_reset.php');
-{escape}</pre>
+{code}
 
 <p><i class="icon-file"></i> <strong>includes/functions/general.php</strong></p>
 
 <p>Replace the following function:</p>
 
-<pre class="prettyprint">{escape}
+{code}
   function tep_create_random_value($length, $type = 'mixed') {
     if ( ($type != 'mixed') && ($type != 'chars') && ($type != 'digits')) return false;
 
@@ -339,11 +339,11 @@ alter table customers_info add password_reset_date datetime;
 
     return $rand_value;
   }
-{escape}</pre>
+{code}
 
 <p>with:</p>
 
-<pre class="prettyprint">{escape}
+{code}
   function tep_create_random_value($length, $type = 'mixed') {
     if ( ($type != 'mixed') && ($type != 'chars') && ($type != 'digits')) $type = 'mixed';
 
@@ -386,11 +386,11 @@ alter table customers_info add password_reset_date datetime;
 
     return $value;
   }
-{escape}</pre>
+{code}
 
 <p>Replace the following function:</p>
 
-<pre class="prettyprint">{escape}
+{code}
   function tep_rand($min = null, $max = null) {
     static $seeded;
 
@@ -409,11 +409,11 @@ alter table customers_info add password_reset_date datetime;
       return mt_rand();
     }
   }
-{escape}</pre>
+{code}
 
 <p>with:</p>
 
-<pre class="prettyprint">{escape}
+{code}
   function tep_rand($min = null, $max = null) {
     static $seeded;
 
@@ -435,7 +435,7 @@ alter table customers_info add password_reset_date datetime;
       return mt_rand();
     }
   }
-{escape}</pre>
+{code}
 
 <p><i class="icon-file"></i> <strong>includes/languages/english/modules/action_recorder/ar_reset_password.php</strong></p>
 
@@ -445,35 +445,35 @@ alter table customers_info add password_reset_date datetime;
 
 <p>Replace the definition of TEXT_MAIN:</p>
 
-<pre class="prettyprint">{escape}
+{code}
 define('TEXT_MAIN', 'If you\'ve forgotten your password, enter your e-mail address below and we\'ll send you an e-mail message containing your new password.');
-{escape}</pre>
+{code}
 
 <p>with:</p>
 
-<pre class="prettyprint">{escape}
+{code}
 define('TEXT_MAIN', 'If you\'ve forgotten your password, enter your e-mail address below and we\'ll send you instructions on how to securely change your password.');
-{escape}</pre>
+{code}
 
 <p>Delete the following definitions:</p>
 
-<pre class="prettyprint">{escape}
+{code}
 define('EMAIL_PASSWORD_REMINDER_SUBJECT', STORE_NAME . ' - New Password');
 define('EMAIL_PASSWORD_REMINDER_BODY', 'A new password was requested from ' . tep_get_ip_address() . '.' . "\n\n" . 'Your new password to \'' . STORE_NAME . '\' is:' . "\n\n" . '   %s' . "\n\n");
 
 define('SUCCESS_PASSWORD_SENT', 'Success: A new password has been sent to your e-mail address.');
-{escape}</pre>
+{code}
 
 <p>Add the following definitions:</p>
 
-<pre class="prettyprint">{escape}
+{code}
 define('TEXT_PASSWORD_RESET_INITIATED', 'Please check your e-mail for instructions on how to change your password. The instructions contain a link that is valid only for 24 hours or until your password has been updated.');
 
 define('EMAIL_PASSWORD_RESET_SUBJECT', STORE_NAME . ' - New Password');
 define('EMAIL_PASSWORD_RESET_BODY', 'A new password has been requested for your account at ' . STORE_NAME . '.' . "\n\n" . 'Please follow this personal link to securely change your password:' . "\n\n" . '%s' . "\n\n" . 'This link will be automatically discarded after 24 hours or after your password has been changed.' . "\n\n" . 'For help with any of our online services, please email the store-owner: ' . STORE_OWNER_EMAIL_ADDRESS . '.' . "\n\n");
 
 define('ERROR_ACTION_RECORDER', 'Error: A password reset link has already been sent. Please try again in %s minutes.');
-{escape}</pre>
+{code}
 
 <p><i class="icon-file"></i> <strong>includes/languages/english/password_reset.php</strong></p>
 
@@ -487,35 +487,35 @@ define('ERROR_ACTION_RECORDER', 'Error: A password reset link has already been s
 
 <p>Replace the content:</p>
 
-<pre class="prettyprint">{escape}
+{code}
 2.3.1
-{escape}</pre>
+{code}
 
 <p>with:</p>
 
-<pre class="prettyprint">{escape}
+{code}
 2.3.2
-{escape}</pre>
+{code}
 
 <p><i class="icon-file"></i> <strong>login.php</strong></p>
 
 <p>Replace the following line:</p>
 
-<pre class="prettyprint">{escape}
+{code}
         tep_db_query("update " . TABLE_CUSTOMERS_INFO . " set customers_info_date_of_last_logon = now(), customers_info_number_of_logons = customers_info_number_of_logons+1 where customers_info_id = '" . (int)$customer_id . "'");
-{escape}</pre>
+{code}
 
 <p>with:</p>
 
-<pre class="prettyprint">{escape}
+{code}
         tep_db_query("update " . TABLE_CUSTOMERS_INFO . " set customers_info_date_of_last_logon = now(), customers_info_number_of_logons = customers_info_number_of_logons+1, password_reset_key = null, password_reset_date = null where customers_info_id = '" . (int)$customer_id . "'");
-{escape}</pre>
+{code}
 
 <p><i class="icon-file"></i> <strong>password_forgotten.php</strong></p>
 
 <p>Replace the following content:</p>
 
-<pre class="prettyprint">{escape}
+{code}
   if (isset($HTTP_GET_VARS['action']) && ($HTTP_GET_VARS['action'] == 'process') && isset($HTTP_POST_VARS['formid']) && ($HTTP_POST_VARS['formid'] == $sessiontoken)) {
     $email_address = tep_db_prepare_input($HTTP_POST_VARS['email_address']);
 
@@ -537,11 +537,11 @@ define('ERROR_ACTION_RECORDER', 'Error: A password reset link has already been s
       $messageStack->add('password_forgotten', TEXT_NO_EMAIL_ADDRESS_FOUND);
     }
   }
-{escape}</pre>
+{code}
 
 <p>with:</p>
 
-<pre class="prettyprint">{escape}
+{code}
   $password_reset_initiated = false;
 
   if (isset($HTTP_GET_VARS['action']) && ($HTTP_GET_VARS['action'] == 'process') && isset($HTTP_POST_VARS['formid']) && ($HTTP_POST_VARS['formid'] == $sessiontoken)) {
@@ -578,11 +578,11 @@ define('ERROR_ACTION_RECORDER', 'Error: A password reset link has already been s
       $messageStack->add('password_forgotten', TEXT_NO_EMAIL_ADDRESS_FOUND);
     }
   }
-{escape}</pre>
+{code}
 
 <p>Replace the following code:</p>
 
-<pre class="prettyprint">{escape}
+{code}
 <?php echo tep_draw_form('password_forgotten', tep_href_link(FILENAME_PASSWORD_FORGOTTEN, 'action=process', 'SSL'), 'post', '', true); ?>
 
 <div class="contentContainer">
@@ -605,11 +605,11 @@ define('ERROR_ACTION_RECORDER', 'Error: A password reset link has already been s
 </div>
 
 </form>
-{escape}</pre>
+{code}
 
 <p>with:</p>
 
-<pre class="prettyprint">{escape}
+{code}
 <?php
   if ($password_reset_initiated == true) {
 ?>
@@ -650,7 +650,7 @@ define('ERROR_ACTION_RECORDER', 'Error: A password reset link has already been s
 <?php
   }
 ?>
-{escape}</pre>
+{code}
 
 <p><i class="icon-file"></i> <strong>password_reset.php</strong></p>
 

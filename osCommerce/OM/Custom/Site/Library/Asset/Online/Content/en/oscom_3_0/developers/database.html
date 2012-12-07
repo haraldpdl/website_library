@@ -8,13 +8,13 @@
 
 <p>Connecting to a database server is performed through the <em>osCommerce\OM\Core\PDO::initialize()</em> class method as follows:</p>
 
-<pre class="prettyprint">{escape}
+{code}
 <?php
   use osCommerce\OM\Core\PDO;
 
   $PDO = PDO::initialize();
 ?>
-{escape}</pre>
+{code}
 
 <p>The initialize class method accepts the following parameters:</p>
 
@@ -207,7 +207,7 @@
 
 <p><em>Retrieve and set configuration parameters</em></p>
 
-<pre class="prettyprint">{escape}
+{code}
 <?php
   use osCommerce\OM\Core\OSCOM;
 
@@ -215,11 +215,11 @@
     define($param['cfgkey'], $param['cfgvalue']);
   }
 ?>
-{escape}</pre>
+{code}
 
 <p><em>Return a country entry with the ID value of 1</em></p>
 
-<pre class="prettyprint">{escape}
+{code}
 <?php
   use osCommerce\OM\Core\OSCOM;
 
@@ -229,7 +229,7 @@
 
   echo $result['countries_name'];
 ?>
-{escape}</pre>
+{code}
 
 <h3>SQL Queries</h3>
 
@@ -268,7 +268,7 @@
 
 <p>The following example shows how <em>exec()</em> is used:</p>
 
-<pre class="prettyprint">{escape}
+{code}
 <?php
   use osCommerce\OM\Core\Registry;
 
@@ -282,7 +282,7 @@
     echo 'Customer record not deleted.';
   }
 ?>
-{escape}</pre>
+{code}
 
 <h4>query()</h4>
 
@@ -290,7 +290,7 @@
 
 <p>The following example shows how <em>query()</em> is used:</p>
 
-<pre class="prettyprint">{escape}
+{code}
 <?php
   use osCommerce\OM\Core\Registry;
 
@@ -301,7 +301,7 @@
 
   echo 'Welcome back ' . $Qcustomer->valueProtected('customers_firstname') . ' ' . $Qcustomer->valueProtected('customers_lastname') . '!';
 ?>
-{escape}</pre>
+{code}
 
 <h4>prepare()</h4>
 
@@ -309,7 +309,7 @@
 
 <p>The following example shows how <em>prepare()</em> is used:</p>
 
-<pre class="prettyprint">{escape}
+{code}
 <?php
   use osCommerce\OM\Core\Registry;
 
@@ -323,7 +323,7 @@
 
   echo 'Welcome back ' . $Qcustomer->valueProtected('customers_firstname') . ' ' . $Qcustomer->valueProtected('customers_lastname') . '!';
 ?>
-{escape}</pre>
+{code}
 
 <p>Parameters can be securely passed to the sql query with the following methods:</p>
 
@@ -362,7 +362,7 @@
 
 <p>SQL queries can be cached by using the <em>setCache()</em> method as follows:</p>
 
-<pre class="prettyprint">{escape}
+{code}
 <?php
   use osCommerce\OM\Core\Registry;
 
@@ -376,7 +376,7 @@
     define($param['cfgkey'], $param['cfgvalue']);
   }
 ?>
-{escape}</pre>
+{code}
 
 <p>A key value is defined to identify the cached result set and a period in minutes is defined to keep using the cached result before it is refreshed. If no period is defined, the cached result set is used until it has been deleted manually.</p>
 
@@ -413,7 +413,7 @@
 
 <p>The following is an example transaction:</p>
 
-<pre class="prettyprint">{escape}
+{code}
 <?php
   use osCommerce\OM\Core\Registry;
 
@@ -443,7 +443,7 @@
     $OSCOM_PDO->rollBack();
   }
 ?>
-{escape}</pre>
+{code}
 
 <div class="alert alert-error">The MySQL\Standard database driver <strong>does not</strong> support and ignores transactions due to it not being a feature of MySQL MyISAM tables. The MySQL\V5 driver does however support transactions as it uses InnoDB tables.</div>
 
@@ -478,9 +478,9 @@
 
 <p>For an example, a Foreign Key constraint is set on the customers table linking the primary key customer_id field to other tables holding additional customer information. Deleting a customer record with the following sql query:</p>
 
-<pre class="prettyprint">{escape}
+{code}
 delete from osc_customers where customers_id = 1;
-{escape}</pre>
+{code}
 
 <p>would not only delete the record from the customers table, but with a <em>CASCADE</em> constraint would also automatically delete the customer records from the linked tables using that one sql query.</p>
 

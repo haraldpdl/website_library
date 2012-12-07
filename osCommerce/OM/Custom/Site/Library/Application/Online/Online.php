@@ -82,7 +82,15 @@
     }
 
     public static function getBookInfoFile($book) {
-      return OSCOM::BASE_DIRECTORY . 'Custom/Site/Library/Asset/Online/Content/' . static::$_language . '/' . basename($book) . '/info.html';
+      return OSCOM::BASE_DIRECTORY . 'Custom/Site/Library/Asset/Online/Content/' . static::$_language . '/' . basename($book) . '/_info.html';
+    }
+
+    public static function hasChapterInfoFile($chapter, $book) {
+      return file_exists(static::getChapterInfoFile($chapter, $book));
+    }
+
+    public static function getChapterInfoFile($chapter, $book) {
+      return OSCOM::BASE_DIRECTORY . 'Custom/Site/Library/Asset/Online/Content/' . static::$_language . '/' . basename($book) . '/' . basename($chapter) . '/_info.html';
     }
 
     public static function getPageFile($page, $chapter, $book) {

@@ -54,14 +54,12 @@
       if ( isset($book) ) {
         $OSCOM_Template->setValue('book_title', Online::getBookTitle($book));
         $OSCOM_Template->setValue('book_chapters', Online::getChapters($book));
-        $OSCOM_Template->setValue('book_info_file', Online::getBookInfoFile($book));
 
         if ( isset($chapter) ) {
           $this->_page_contents = 'pages.html';
 
           $OSCOM_Template->setValue('chapter_title', Online::getChapterTitle($chapter, $book));
           $OSCOM_Template->setValue('book_chapter_pages', Online::getPages($chapter, $book));
-          $OSCOM_Template->setValue('chapter_info_file', Online::hasChapterInfoFile($chapter, $book) ? Online::getChapterInfoFile($chapter, $book) : null);
 
           if ( isset($page) ) {
             $this->_page_contents = 'page.html';

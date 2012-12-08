@@ -35,6 +35,20 @@
       return static::$_content[$code]['title'];
     }
 
+    public static function getBookCopyright($book) {
+      return static::$_content[$book]['copyright'];
+    }
+
+    public static function getBookAuthors($book) {
+      $authors = array();
+
+      foreach ( static::$_content[$book]['authors'] as $author ) {
+        $authors[] = array('name' => $author['name']);
+      }
+
+      return $authors;
+    }
+
     public static function getChapterTitle($code, $book) {
       return static::$_content[$book]['chapters'][$code]['title'];
     }
@@ -82,18 +96,6 @@
       }
 
       return $pages;
-    }
-
-    public static function getBookInfoFile($book) {
-      return static::$_asset_path . 'Online/Content/' . static::$_language . '/' . basename($book) . '/_info.html';
-    }
-
-    public static function hasChapterInfoFile($chapter, $book) {
-      return file_exists(static::getChapterInfoFile($chapter, $book));
-    }
-
-    public static function getChapterInfoFile($chapter, $book) {
-      return static::$_asset_path . 'Online/Content/' . static::$_language . '/' . basename($book) . '/' . basename($chapter) . '/_info.html';
     }
 
     public static function getPageFile($page, $chapter, $book) {

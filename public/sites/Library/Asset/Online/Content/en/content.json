@@ -1,6 +1,15 @@
 {
   "oscom_2_3": {
     "title": "Online Merchant v2.3",
+    "copyright": "Copyright (c) 2006-2012 osCommerce. All rights reserved. Content may be reproduced for personal use only.",
+    "authors": [
+      {
+        "name": "Melinda Odom"
+      },
+      {
+        "name": "Harald Ponce de Leon"
+      }
+    ],
     "chapters": {
       "release_notes": {
         "title": "Release Notes",
@@ -13,6 +22,12 @@
   },
   "oscom_3_0": {
     "title": "Online Merchant v3.0",
+    "copyright": "Copyright (c) 2006-2012 osCommerce. All rights reserved. Content may be reproduced for personal use only.",
+    "authors": [
+      {
+        "name": "Harald Ponce de Leon"
+      }
+    ],
     "chapters": {
       "getting_started": {
         "title": "Getting Started",

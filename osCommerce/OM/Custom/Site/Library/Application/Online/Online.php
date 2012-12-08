@@ -11,13 +11,16 @@
   use osCommerce\OM\Core\OSCOM;
 
   class Online {
+    static $_asset_path;
     static $_content = array();
     static $_language;
 
     public static function load($language) {
+      static::$_asset_path = OSCOM_PUBLIC_BASE_DIRECTORY . 'public/sites/Library/Asset/';
+
       static::$_language = $language;
 
-      static::$_content = json_decode(file_get_contents(OSCOM::BASE_DIRECTORY . 'Custom/Site/Library/Asset/Online/content_' . static::$_language . '.json'), true);
+      static::$_content = json_decode(file_get_contents(static::$_asset_path . 'Online/content_' . static::$_language . '.json'), true);
     }
 
     public static function getContent() {
@@ -45,7 +48,7 @@
     }
 
     public static function pageExists($page, $chapter, $book) {
-      return file_exists(OSCOM::BASE_DIRECTORY . 'Custom/Site/Library/Asset/Online/Content/' . static::$_language . '/' . basename($book) . '/' . basename($chapter) . '/' . basename($page) . '.html');
+      return file_exists(static::$_asset_path . 'Online/Content/' . static::$_language . '/' . basename($book) . '/' . basename($chapter) . '/' . basename($page) . '.html');
     }
 
     public static function getBooks() {
@@ -82,7 +85,7 @@
     }
 
     public static function getBookInfoFile($book) {
-      return OSCOM::BASE_DIRECTORY . 'Custom/Site/Library/Asset/Online/Content/' . static::$_language . '/' . basename($book) . '/_info.html';
+      return static::$_asset_path . 'Online/Content/' . static::$_language . '/' . basename($book) . '/_info.html';
     }
 
     public static function hasChapterInfoFile($chapter, $book) {
@@ -90,11 +93,11 @@
     }
 
     public static function getChapterInfoFile($chapter, $book) {
-      return OSCOM::BASE_DIRECTORY . 'Custom/Site/Library/Asset/Online/Content/' . static::$_language . '/' . basename($book) . '/' . basename($chapter) . '/_info.html';
+      return static::$_asset_path . 'Online/Content/' . static::$_language . '/' . basename($book) . '/' . basename($chapter) . '/_info.html';
     }
 
     public static function getPageFile($page, $chapter, $book) {
-      return OSCOM::BASE_DIRECTORY . 'Custom/Site/Library/Asset/Online/Content/' . static::$_language . '/' . basename($book) . '/' . basename($chapter) . '/' . basename($page) . '.html';
+      return static::$_asset_path . 'Online/Content/' . static::$_language . '/' . basename($book) . '/' . basename($chapter) . '/' . basename($page) . '.html';
     }
   }
 ?>

@@ -20,7 +20,7 @@
 
       static::$_language = $language;
 
-      static::$_content = json_decode(file_get_contents(static::$_asset_path . 'Online/content_' . static::$_language . '.json'), true);
+      static::$_content = json_decode(file_get_contents(static::$_asset_path . 'Online/Content/' . static::$_language . '/content.json'), true);
     }
 
     public static function getContent() {

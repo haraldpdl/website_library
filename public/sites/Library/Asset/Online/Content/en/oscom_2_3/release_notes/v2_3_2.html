@@ -1,6 +1,6 @@
 <span id="upgtop"></span>
 
-<h2>osCommerce Online Merchant v2.3.2</h2>
+<h1>osCommerce Online Merchant v2.3.2</h1>
 
 <p>osCommerce Online Merchant v2.3.2 is a security improvement release which improves the customer password forgotten routine and generation of random strings.</p>
 
@@ -8,7 +8,7 @@
 
 <p>The customer password forgotten routine is also now protected with a new Customer Password Reset Action Recorder module which, by default, limits the generation of personal password reset links to once every 5 minutes.</p>
 
-<h3>Changelog</h3>
+<h2>Changelog</h2>
 
 <ul>
   <li>Changed customer password forgotten feature to e-mail a personal link to the customer where they can change their password up to 24 hours, instead of directly changing the password to a random string and e-mailing it to the customer.<br /><br />Added new password_reset.php page to manage personal password reset links.<br /><br />Added new ar_password_reset.php Action Recorder module to log and limit the request of personal password reset links to once every 5 minutes.</li>
@@ -17,7 +17,7 @@
   <li>Only seed the random number generator if PHP < 4.2 is used.</li>
 </ul>
 
-<h3>Upgrading from v2.3.1</h3>
+<h2>Upgrading from v2.3.1</h2>
 
 <p>The following database queries must be performed:</p>
 
@@ -28,7 +28,7 @@ alter table customers_info add password_reset_date datetime;
 
 <p>In addition, the Customer Password Reset Action Recorder module must be enabled as described below.</p>
 
-<h4>Modified Files</h4>
+<h3>Modified Files</h3>
 
 <p>Files that have been modified in this release include:</p>
 
@@ -69,7 +69,7 @@ alter table customers_info add password_reset_date datetime;
   </tbody>
 </table>
 
-<h4>New Files</h4>
+<h3>New Files</h3>
 
 <p>Files that have been added to this release include:</p>
 
@@ -95,7 +95,7 @@ alter table customers_info add password_reset_date datetime;
   </tbody>
 </table>
 
-<h3>API Changes</h3>
+<h2>API Changes</h2>
 
 <p>The following API changes have been applied:</p>
 
@@ -114,7 +114,7 @@ alter table customers_info add password_reset_date datetime;
   </tbody>
 </table>
 
-<h3>Language Definitions</h3>
+<h2>Language Definitions</h2>
 
 <p>The following languages definitions have been modified:</p>
 
@@ -182,7 +182,7 @@ alter table customers_info add password_reset_date datetime;
   </tbody>
 </table>
 
-<h3>File Changes</h3>
+<h2>File Changes</h2>
 
 <p>
   <i class="icon-file"></i> <strong>admin/includes/classes/passwordhash.php</strong><br />
@@ -656,19 +656,19 @@ define('ERROR_ACTION_RECORDER', 'Error: A password reset link has already been s
 
 <p>Copy new file to destination.</p>
 
-<h3>Enable Customer Password Reset Action Recorder Module</h3>
+<h2>Enable Customer Password Reset Action Recorder Module</h2>
 
 <p>The Customer Password Reset Action Recorder module must be enabled at the following page:</p>
 
 <p>Administration Tool -> Modules -> Action Recorder -> Install Module -> Customer Password Reset -> Install Module</p>
 
-<h3>Reference</h3>
+<h2>Reference</h2>
 
 <p>A full list of source code changes can be seen at:</p>
 
 <p><a href="https://github.com/osCommerce/oscommerce2/compare/v2.3.1...upgrade232" target="_blank">https://github.com/osCommerce/oscommerce2/compare/v2.3.1...upgrade232</a></p>
 
-<h3>Acknowledgements</h3>
+<h2>Acknowledgements</h2>
 
 <p>We'd like to thank <a href="http://forums.oscommerce.com/user/69-burt/" target="_blank">Gary Burton</a> and <a href="http://forums.oscommerce.com/user/227413-multimixer/" target="_blank">George Zarkadas</a> for testing and reviewing this upgrade guide, and George Argyros and Aggelos Kiayias for bringing the issue of insecure random number generators to our attention.</p>
 

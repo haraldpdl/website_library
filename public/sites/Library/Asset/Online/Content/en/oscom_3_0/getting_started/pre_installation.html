@@ -1,8 +1,8 @@
-<h2>Pre-Installation Steps</h2>
+<h1>Pre-Installation Steps</h1>
 
 <p>osCommerce is a web based solution that needs its relevant files to exist on the web server. The files can be copied to the web server by extracting the download package on your computer and uploading its contents to the web server via FTP, or by copying the download package to the web server directly and extracting its contents there.</p>
 
-<h3>Copying the Files to the Web Server</h3>
+<h2>Copying the Files to the Web Server</h2>
 
 <p>The contents of the download package need to be copied to the public HTML directory the web server is serving from.</p>
 
@@ -23,11 +23,11 @@
   <li>license.txt</li>
 </ul>
 
-<h4>Using FTP to Copy the Download Package Contents to the Web Server</h4>
+<h3>Using FTP to Copy the Download Package Contents to the Web Server</h3>
 
 <p>Once osCommerce has been downloaded to your computer, it must be extracted to reveal its contents. The <em>oscommerce</em> directory must be copied to the public HTML directory. This can be achieved on most FTP clients by simply dragging the <em>oscommerce</em> directory from your local file browser pane to the remote pane listing the files on your web server.</p>
 
-<h4>Directly Extracting the Download Package on the Web Server</h4>
+<h3>Directly Extracting the Download Package on the Web Server</h3>
 
 <p>Once osCommerce has been downloaded on the web server, it must be extracted to reveal its contents. The <em>oscommerce</em> directory must be copied to the public HTML directory.</p>
 
@@ -37,7 +37,7 @@
 cp -R oscommerce /path/to/public/html/directory/
 {escape}</pre>
 
-<h3>File and Directory Permissions</h3>
+<h2>File and Directory Permissions</h2>
 
 <p>The following file and directory permissions need to be writable by the web server:</p>
 
@@ -90,13 +90,13 @@ cp -R oscommerce /path/to/public/html/directory/
 
 <p>Changing the file and directory permissions can be performed by most FTP clients or directly on the server.</p>
 
-<h4>Using FTP to Change File and Directory Permissions</h4>
+<h3>Using FTP to Change File and Directory Permissions</h3>
 
 <p>Most FTP clients are capable of changing file and directory permissions on the server. This is commonly performed by right-clicking on the file or directory and selecting "Properties" or "Attributes" on the context menu.</p>
 
 <p>The file or directory permissions can be changed by allowing all users to read, write, and execute the file or directory, or by manually entering the world readable and world writable flag of <em>777</em>.</p>
 
-<h4>Changing File and Directory Permissions Directly on the Server</h4>
+<h3>Changing File and Directory Permissions Directly on the Server</h3>
 
 <p>Changing file and directory permissions directly on the server can be performed with the following command:</p>
 
@@ -104,17 +104,17 @@ cp -R oscommerce /path/to/public/html/directory/
 chmod -R 777 /path/to/public/html/directory/oscommerce/file_or_directory
 {escape}</pre>
 
-<h3>Database</h3>
+<h2>Database</h2>
 
 <p>A database on the database server needs to exist for the installation procedure to be able to successfully import the database table structure and required data settings.</p>
 
 <p>A table name prefix can be provided during the installation procedure if an already existing database is to be used. Using a unique table name prefix will prevent conflicts with existing tables in the database.</p>
 
-<h3>Web Server and Database Server Details</h3>
+<h2>Web Server and Database Server Details</h2>
 
 <p>The following web server and database server details are required during the installation procedure. Please consult your hosting provider if these details are not known.</p>
 
-<h4>Web Server Details</h4>
+<h3>Web Server Details</h3>
 
 <table class="table table-striped table-hover">
   <thead>
@@ -143,7 +143,7 @@ chmod -R 777 /path/to/public/html/directory/oscommerce/file_or_directory
   </tbody>
 </table>
 
-<h4>Database Server Details</h4>
+<h3>Database Server Details</h3>
 
 <table class="table table-striped table-hover">
   <thead>

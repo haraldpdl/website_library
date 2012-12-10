@@ -1,8 +1,8 @@
-<h2>osCommerce Online Merchant v3.0.1</h2>
+<h1>osCommerce Online Merchant v3.0.1</h1>
 
 <p>osCommerce Online Merchant v3.0.1 is a minor release focusing on bug fixes and framework improvements.</p>
 
-<h3>New Installations - Quick Start</h3>
+<h2>New Installations - Quick Start</h2>
 
 <p>Copy the <em>oscommerce</em> directory to your web server htdocs directory and open the location with your browser. Setup will automatically launch and guide you through the installation and configuration of your new online store.</p>
 
@@ -17,21 +17,21 @@ http://www.your-server.com/oscommerce/index.php?Admin
 
 <div class="alert alert-error">Please delete the Setup routine after installation has completed. This can be done by removing the following directory:<br /><br />/path to/oscommerce/osCommerce/OM/Core/Site/Setup</div>
 
-<h3>Upgrading from v3.0.0</h3>
+<h2>Upgrading from v3.0.0</h2>
 
 <div class="alert">New configuration settings have been introduced in this release that must be manually added to existing installations after performing an upgrade.</div>
 
-<h4>CoreUpdate - Automatic Upgrade</h4>
+<h3>CoreUpdate - Automatic Upgrade</h3>
 
 <p>Upgrades can be easily performed through CoreUpdate, located in the Admin Dashboard -> Applications -> Tools -> Core Update menu. Here, a list of available update packages are shown with the ability to read release announcements and to browse the contents of the packages. New update packages may take up to 6 hours to become available.</p>
 
 <div class="alert alert-error">CoreUpdate may show a successful message after performing an upgrade when no upgrade has in fact been performed. The failure to perform an upgrade occurs under certain server environments and can be seen when v3.0.1 is still listed as a CoreUpdate update package. If you experience this, please perform a manual upgrade with a ZIP package as described below. This error is due to not correctly detecting sufficient file permissions and has been fixed, and improved, in v3.0.1.</div>
 
-<h4>ZIP Package - Manual Upgrade</h4>
+<h3>ZIP Package - Manual Upgrade</h3>
 
 <p>A manual upgrade can be performed by extracting the update package contents and copying and overwriting the files to the <em>osCommerce/OM</em> and <em>public/</em> directories. This can be performed directly on the server or via FTP.</p>
 
-<h4>New Configuration Settings</h4>
+<h3>New Configuration Settings</h3>
 
 <p>New configuration settings have been introduced in this release and must be inserted in <em>osCommerce/OM/Config/settings.ini</em>.</p>
 
@@ -68,9 +68,9 @@ time_zone = "Europe/Berlin"
 dir_fs_public = "/opt/local/apache/htdocs/oscommerce/public/"
 {escape}</pre>
 
-<h3>Changelog</h3>
+<h2>Changelog</h2>
 
-<h4>Bug Fixes</h4>
+<h3>Bug Fixes</h3>
 
 <p>The following bug fixes have been applied:</p>
 
@@ -146,7 +146,7 @@ dir_fs_public = "/opt/local/apache/htdocs/oscommerce/public/"
   </tbody>
 </table>
 
-<h4>Improvements</h4>
+<h3>Improvements</h3>
 
 <p>The following improvements have been applied:</p>
 
@@ -201,7 +201,7 @@ dir_fs_public = "/opt/local/apache/htdocs/oscommerce/public/"
   </tbody>
 </table>
 
-<h4>API Changes</h4>
+<h3>API Changes</h3>
 
 <table class="table table-striped table-hover">
   <tbody>
@@ -248,7 +248,7 @@ dir_fs_public = "/opt/local/apache/htdocs/oscommerce/public/"
   </tbody>
 </table>
 
-<h4>Language Definitions</h4>
+<h3>Language Definitions</h3>
 
 <table class="table table-striped table-hover">
   <tbody>
@@ -289,7 +289,7 @@ dir_fs_public = "/opt/local/apache/htdocs/oscommerce/public/"
   </tbody>
 </table>
 
-<h4>PHPUnit Tests</h4>
+<h3>PHPUnit Tests</h3>
 
 <p>PHPUnit tests are available in <em>osCommerce/OM/Tests/</em>.</p>
 
@@ -304,7 +304,7 @@ dir_fs_public = "/opt/local/apache/htdocs/oscommerce/public/"
 
 <p><em>PHPUnit tests are not included in our releases and are only available in our <a href="https://github.com/osCommerce/oscommerce/" target="_blank">GitHub repository</a>.</em></p>
 
-<h3>Thank You!</h3>
+<h2>Thank You!</h2>
 
 <p>We'd like to thank the community for their feedback on our releases. In addition, we thank the following people who participated in the development of this release.</p>
 
@@ -376,7 +376,7 @@ dir_fs_public = "/opt/local/apache/htdocs/oscommerce/public/"
   </tbody>
 </table>
 
-<h3>Reference</h3>
+<h2>Reference</h2>
 
 <p>A full list of source code changes can be seen at:</p>
 

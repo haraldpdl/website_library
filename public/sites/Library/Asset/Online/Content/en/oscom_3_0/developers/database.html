@@ -1,10 +1,10 @@
-<h2>Database Connections and Queries</h2>
+<h1>Database Connections and Queries</h1>
 
 <p>Connecting to and communication with databases is handled through the PHP Data Objects (PDO) extension, a lightweight and consistent interface for accessing databases in PHP. Each instance of the PDO class opens a new connection to a database server and provides a consistent API for communication regardless of the system used (MySQL, PostgreSQL, MS SQL Server, SQLite, etc.).</p>
 
 <p>PDO not only manages database connections, it also supports transactions, prepared statements, stored procedures, and error handling. Our database class extends the base PHP PDO class to also provide support for caching query result sets.</p>
 
-<h3>Connecting to a Database Server</h3>
+<h2>Connecting to a Database Server</h2>
 
 <p>Connecting to a database server is performed through the <em>osCommerce\OM\Core\PDO::initialize()</em> class method as follows:</p>
 
@@ -69,7 +69,7 @@
   </tbody>
 </table>
 
-<h4>Database Drivers</h4>
+<h3>Database Drivers</h3>
 
 <p>Supported database drivers are located in <em>osCommerce/OM/Core/PDO/</em> and are used to connect to the database server.</p>
 
@@ -110,7 +110,7 @@
 
 <div class="alert alert-info">Both <em>Admin</em> and <em>Shop</em> sites register an instance of the <em>osCommerce\OM\Core\PDO</em> class in the registry as <em>PDO</em> that is used to communicate to the database system.</div>
 
-<h3>Abstract Queries</h3>
+<h2>Abstract Queries</h2>
 
 <p>SQL queries are abstracted into modules to not only support various database systems, but to also optimize each query with the unique features of the database system to gain the best performance possible. This allows us to take advantage of stored procedures, views, and database system specific optimizations to perform queries as fast and efficiently as the database system allows.</p>
 
@@ -201,7 +201,7 @@
 
 <div class="alert alert-info"><em>OSCOM::callDB()</em> first checks if an abstract query module exists in the <em>SQL/[Driver]/</em> directory to execute a database system optimized version of the query. If no optimized version is found, it executes an SQL ANSI standard version of the query in the <em>SQL/ANSI/</em> directory.</div>
 
-<h4>Executing Abstract Queries</h4>
+<h3>Executing Abstract Queries</h3>
 
 <p>The following examples show how abstract queries are executed:</p>
 
@@ -231,7 +231,7 @@
 ?>
 {code}
 
-<h3>SQL Queries</h3>
+<h2>SQL Queries</h2>
 
 <p>SQL queries can be performed through an instance of the <em>osCommerce\OM\Core\PDO</em> class.</p>
 
@@ -262,7 +262,7 @@
 
 <div class="alert alert-info">In all three methods, references to table names in the form of <em>:table_[table_name]</em> are automatically replaced with the <em>db_table_prefix</em> database table name prefix value defined in the configuration.</div>
 
-<h4>exec()</h4>
+<h3>exec()</h3>
 
 <p><em>exec()</em> is used to execute simple sql queries where no parameters are passed to the query and no returned result set is needed.</p>
 
@@ -284,7 +284,7 @@
 ?>
 {code}
 
-<h4>query()</h4>
+<h3>query()</h3>
 
 <p><em>query()</em> is used to execute simple sql queries where no parameters are passed and a returned result set is needed.</p>
 
@@ -303,7 +303,7 @@
 ?>
 {code}
 
-<h4>prepare()</h4>
+<h3>prepare()</h3>
 
 <p><em>prepare()</em> is used to execute simple sql queries where parameters are passed to the query and a returned result set is needed.</p>
 
@@ -356,7 +356,7 @@
 
 <div class="alert alert-success">It is highly recommended to use the <em>bind*()</em> methods when passing parameters to the sql query to protect against SQL Injection attacks.</div>
 
-<h4>Caching Result Sets</h4>
+<h3>Caching Result Sets</h3>
 
 <p>Result sets can be cached for a defined period to greatly improve the performance of the web and database server.</p>
 
@@ -382,7 +382,7 @@
 
 <p>Cached result sets are stored in the <em>osCommerce/OM/Work/Cache</em> directory.</p>
 
-<h4>Transactions</h4>
+<h3>Transactions</h3>
 
 <p>Transactions allow multiple queries to be grouped where actual changes to the database are performed after the last query is executed and no errors previously occurred, or cancels the changes from the first query if an error has occurred. This allows multiple database records to be changed in a safe manner.</p>
 
@@ -447,7 +447,7 @@
 
 <div class="alert alert-error">The MySQL\Standard database driver <strong>does not</strong> support and ignores transactions due to it not being a feature of MySQL MyISAM tables. The MySQL\V5 driver does however support transactions as it uses InnoDB tables.</div>
 
-<h3>Foreign Key Relationships (MySQL MyISAM Compatibility)</h3>
+<h2>Foreign Key Relationships (MySQL MyISAM Compatibility)</h2>
 
 <p>An additional optimization we are utilizing is the use of Foreign Key relationships in the database schema structure. This strengthens the relationships between tables where records in multiple tables are linked together and have certain rules applied.</p>
 
@@ -486,7 +486,7 @@ delete from osc_customers where customers_id = 1;
 
 <p>This brings an enormous benefit when Add-Ons are installed as the records in any additional tables created can be defined to be automatically managed through Foreign Key restraints.</p>
 
-<h4>MySQL MyISAM Compatibility</h4>
+<h3>MySQL MyISAM Compatibility</h3>
 
 <div class="alert alert-error">The <em>MySQL\Standard</em> driver <string>does not</string> enforce Foreign Key relationship constraints due to it not being a feature of MySQL MyISAM tables. To work around this, Foreign Key relationships are also defined in the <em>[prefix]_fk_relationships</em> table.</div>
 

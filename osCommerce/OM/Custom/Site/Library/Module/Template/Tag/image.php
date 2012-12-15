@@ -24,7 +24,7 @@
         $image = $string;
       }
 
-      $result = '<p align="center"><img src="' . OSCOM::getPublicSiteLink('Asset/Online/Content/' . $OSCOM_Language->getCode() . '/' . $OSCOM_Template->getValue('current_book') . '/' . $OSCOM_Template->getValue('current_chapter') . '/_images/' . $image) . '" />';
+      $result = '<p align="center"><img src="' . OSCOM::getPublicSiteLink('Asset/' . OSCOM::getSiteApplication() . '/Content/' . $OSCOM_Language->getCode() . '/' . $OSCOM_Template->getValue('current_book') . '/' . $OSCOM_Template->getValue('current_chapter') . '/_images/' . $image) . '" />';
 
       if ( isset($caption) ) {
         $result .= '<br /><small><strong><em>' . $caption . '</em></strong></small>';

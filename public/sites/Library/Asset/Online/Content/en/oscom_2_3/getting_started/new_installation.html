@@ -1,0 +1,65 @@
+<h1>Installation Procedure</h1>
+
+<p>The web based installation procedure configures the online store and imports the configuration data into the database. This is necessary to create a fully functional online store and to create an administrator that administrates the online store through the Administration Tool.</p>
+
+<p>The configuration values provided by default are safe to use but may need to be changed depending on the environment of the web server.</p>
+
+<div class="note">Please review the Pre-Installation Steps page before continuing with the installation procedure.</div>
+
+<h2>Installing a New Online Store</h2>
+
+<p>The web based installation procedure is automatically started when accessing the online store through a web browser. This can be achieved by entering the WWW address of osCommerce Online Merchant installation in your browser.</p>
+
+<p>For example:</p>
+
+<pre>{escape}
+http://www.shinyredapples.com/catalog/
+{escape}</pre>
+
+<p>osCommerce Online Merchant automatically detects if the installation has already been completed and redirects to the installation procedure if it has not yet been performed.</p>
+
+<h2>Step 1: Welcome Page</h2>
+
+<p>The first step is the welcome page shown in <em>Figure 1</em> which displays the current recommended configuration settings for PHP.</p>
+
+{image}2-install_intro.jpg|Figure 1. Welcome Page{image}
+
+<p>It is recommended to update a PHP configuration value, or to install and activate a PHP extension, if it is marked against the recommended setting.</p>
+
+<div class="info">When making PHP configuration changes or when installing and activating a PHP extension, the web server service needs to be restarted for the changes to take effect. Once restarted, refreshing the welcome installation page and viewing the _Server Capabilities_ listing can confirm if the PHP configuration changes have taken place and if it meets the recommended settings.</div>
+
+<h2>Step 2: Database Server</h2>
+
+<p>The second step shown in <em>Figure 2a</em> sets the database connection parameters to successfully connect to the database server, to import the database table structure, and to import required data.</p>
+
+{image}2-install2.jpg|Figure 2a. Database Server Configuration{image}
+
+<p>The installation procedure verifies the values entered before proceeding to the next step. If there is a problem connecting to the database server an error message is shown similar to the message shown in <em>Figure 2b</em>.</p>
+
+{image}2-install2b.jpg|Figure 2b. Database Server Connection Error Message{image}
+
+<div class="note">Check to make sure the correct username, password, and database name are listed.</div>
+
+<h2>Step 3: Web Server</h2>
+
+<p>The third step shown in <em>Figure 3</em> sets the web server parameters to successfully serve the online store to users.</p>
+
+{image}2-install3.jpg|Figure 3. Web Server Configuration{image}
+
+<h2>Step 4: Online Store Settings</h2>
+
+<p>The fourth step shown in <em>Figure 4</em> sets the store owner and administrator settings for the online store.</p>
+
+{image}2-install4.jpg|Figure 4. Store Owner Settings{image}
+
+<p>It is important to keep note of the administrator username and password as these are used to login and to access the Administration Tool.</p>
+
+<div class="info">Additional administrators can be created in the Administration Tool after the installation procedure has been successfully completed.</div>
+
+<h2>Step 5: Finished!</h2>
+
+<p>The last step in the installation procedure stores the database server and web server parameters to the configuration file on the web server. On successfully saving the configuration file, the installation procedure is finalized and the online store is ready to be used as shown on <em>Figure 5</em>.</p>
+
+{image}install-05a.jpg|Figure 5. Successful Installation Confirmation{image}
+
+<div class="note">Please review the Post-Installation Steps page after the installation procedure has been successfully completed to secure the online store.</div>

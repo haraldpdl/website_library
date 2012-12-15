@@ -4991,23 +4991,93 @@ body {
   background: url('../../../images/bg.png') repeat;
   margin-top: 50px;
 }
-h1 {
-  padding-bottom: 0.5em;
-}
-h2 {
-  padding-bottom: 0.5em;
-}
-h3 {
-  padding-bottom: 0.4em;
-}
-h4 {
-  padding-top: 0.29em;
-  padding-bottom: 0.3em;
-  color: #999;
-}
 p {
-  padding-bottom: 0.8em;
   line-height: 1.6em;
+}
+table.pretty {
+  width: 100%;
+  margin-bottom: 20px;
+}
+table.pretty th,
+table.pretty td {
+  padding: 8px;
+  line-height: 20px;
+  text-align: left;
+  vertical-align: top;
+  border-top: 1px solid #dddddd;
+}
+table.pretty th {
+  font-weight: bold;
+}
+table.pretty thead th {
+  vertical-align: bottom;
+}
+table.pretty caption + thead tr:first-child th,
+table.pretty caption + thead tr:first-child td,
+table.pretty colgroup + thead tr:first-child th,
+table.pretty colgroup + thead tr:first-child td,
+table.pretty thead:first-child tr:first-child th,
+table.pretty thead:first-child tr:first-child td {
+  border-top: 0;
+}
+table.pretty tbody + tbody {
+  border-top: 2px solid #dddddd;
+}
+table.pretty tbody tr:nth-child(odd) td,
+table.pretty tbody tr:nth-child(odd) th {
+  background-color: #f9f9f9;
+}
+table.pretty tbody tr:hover td,
+table.pretty tbody tr:hover th {
+  background-color: #f5f5f5;
+}
+div.note {
+  padding: 8px 35px 8px 14px;
+  margin-bottom: 20px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  background-color: #fcf8e3;
+  border: 1px solid #fbeed5;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  color: #c09853;
+}
+div.info {
+  padding: 8px 35px 8px 14px;
+  margin-bottom: 20px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  background-color: #fcf8e3;
+  border: 1px solid #fbeed5;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  color: #c09853;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+  color: #3a87ad;
+}
+div.achtung {
+  padding: 8px 35px 8px 14px;
+  margin-bottom: 20px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  background-color: #fcf8e3;
+  border: 1px solid #fbeed5;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  color: #c09853;
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48;
+}
+dl.bulleted dt {
+  padding-bottom: 10px;
+}
+dl.bulleted dd {
+  display: list-item;
+  list-style-type: disc;
+  margin-left: 30px;
+  padding-bottom: 10px;
 }
 footer {
   margin-top: 2em;

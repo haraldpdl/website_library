@@ -14,7 +14,7 @@ lang_time_format = %H:%M:%S
 lang_parent_code =
 
 html_lang_code = en
-html_page_title = osCommerce Library
+html_page_title = osCommerce Library, Online Documentation
 
 copyright_footer = <p>Copyright (c) {value}current_year{value} osCommerce. All rights reserved. osCommerce is a registered trademark of Harald Ponce de Leon.</p>
 
@@ -28,3 +28,9 @@ social_facebook = Facebook
 social_facebook_title = Be our fan on Facebook
 social_github = GitHub
 social_github_title = Code with us on GitHub
+
+books_title = Books
+books_core_title = Core
+books_community_title = Community
+books_packages_title = Packages
+books_wiki_title = Wiki

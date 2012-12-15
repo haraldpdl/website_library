@@ -22,7 +22,8 @@
       $OSCOM_Language = Registry::get('Language');
       $OSCOM_Template = Registry::get('Template');
 
-      Online::load($OSCOM_Language->getCode());
+      Registry::set('CoreBook', new Online($OSCOM_Language->getCode()));
+      $OSCOM_CoreBook = Registry::get('CoreBook');
 
       $application = 'osCommerce\\OM\\Core\\Site\\Library\\Application\\' . OSCOM::getSiteApplication() . '\\Controller';
       Registry::set('Application', new $application());

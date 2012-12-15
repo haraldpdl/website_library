@@ -1,9 +1,18 @@
 <h1>{lang}page_title{lang} <small>{lang}page_subtitle{lang}</small></h1>
 
-<h2>{lang}heading_books{lang}</h2>
+<h2>{lang}books_title{lang}</h2>
 
 <ul class="nav nav-list">
-  {loop book_list}
-    <li><a href="{link}Online|Library|{raw}html_lang{raw}&%code%{link}">#title#</a></li>
+  <li class="nav-header">{lang}books_core_title{lang}</li>
+
+  {loop books}
+    <li><a href="{link}Online|Library|{raw}html_lang{raw}&%code%{link}"><i class="icon-book"></i> #title#</a></li>
   {loop}
+
+  <li class="divider"></li>
+
+  <li class="nav-header">{lang}books_community_title{lang}</li>
+
+  <li><a href="{link}Package|Library|{raw}html_lang{raw}{link}"><i class="icon-list"></i> {lang}books_packages_title{lang}</a></li>
+  <li><a href="{link}Wiki|Library|{raw}html_lang{raw}{link}"><i class="icon-user"></i> {lang}books_wiki_title{lang}</a></li>
 </ul>

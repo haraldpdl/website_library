@@ -1,0 +1,23 @@
+<h1>Post-Installation Steps</h1>
+
+<p>Upon successful installation of osCommerce Online Merchant, the following steps need to be performed to secure the installation of your online store.</p>
+
+<h2>Remove Installation Files</h2>
+
+<p>The <em>catalog/install</em> directory must be removed from the web server otherwise a user could use the installation procedure and reconfigure the online store to use another database server.</p>
+
+<h2>File and Directory Permissions</h2>
+
+<h3>Configuration Files</h3>
+
+<p>The file permissions for <em>catalog/includes/configure.php</em> and <em>catalog/admin/includes/configure.php</em> must deny write access by the web server. This is commonly performed by setting the permission flag to a read only value of 644 or 444 depending on your server.</p>
+
+<h3>Writable Directories</h3>
+
+<p>Some directories need to allow write access by the web server for osCommerce Online Merchant to function properly. A list of directories and the current write permission state can be viewed on the Administration Tool -> Tools -> Security Directory Permissions page.</p>
+
+<h2>Extra Protection for the Administration Tool</h2>
+
+<p>The Administration Tool is secured by its own login routine but is still publicly accessible. It is recommended to further protect the Administration Tool by setting a htaccess password on the <em>catalog/admin</em> directory.</p>
+
+<p>Instructions for adding a htaccess password layer is provided on the Administration Tool -> Configuration -> Administrators page.</p>

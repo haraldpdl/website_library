@@ -1,6 +1,7 @@
 {
   "oscom_2_3": {
     "title": "Online Merchant v2.3",
+    "description": "Documentation for osCommerce Online Merchant v2.3.",
     "copyright": "Copyright (c) 2006-2012 osCommerce. All rights reserved. Content may be reproduced for personal use only.",
     "authors": [
       {
@@ -11,6 +12,21 @@
       }
     ],
     "chapters": {
+      "about": {
+        "title": "About osCommerce",
+        "pages": {
+          "introduction": "Introduction"
+        }
+      },
+      "getting_started": {
+        "title": "Getting Started",
+        "pages": {
+          "requirements": "Requirements",
+          "pre_installation": "Pre-Installation Steps",
+          "new_installation": "New Installation",
+          "post_installation": "Post-Installation Steps"
+        }
+      },
       "release_notes": {
         "title": "Release Notes",
         "pages": {
@@ -22,6 +38,7 @@
   },
   "oscom_3_0": {
     "title": "Online Merchant v3.0",
+    "description": "Documentation for osCommerce Online Merchant v3.0.",
     "copyright": "Copyright (c) 2006-2012 osCommerce. All rights reserved. Content may be reproduced for personal use only.",
     "authors": [
       {

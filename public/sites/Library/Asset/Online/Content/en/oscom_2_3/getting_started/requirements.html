@@ -1,0 +1,107 @@
+<h1>Requirements</h1>
+
+<p>osCommerce Online Merchant can be installed on any web server that has PHP installed and has access to a database server. This includes shared servers, dedicated servers, cloud instances, and local installations running on Linux, Unix, BSD, Mac OS X, and Microsoft Windows operating systems.</p>
+
+<h2>Web Server</h2>
+
+<p>The web server must support PHP either as a module or allow execution of CGI scripts. For performance reasons FastCGI is recommended over CGI.</p>
+
+<h2>PHP</h2>
+
+<p>osCommerce Online Merchant is compatible with PHP 4 and PHP 5. For performance and security reasons it is recommended to use the latest PHP 5 version on the web server.</p>
+
+<p>The following PHP options are recommended to be set in the php.ini configuration file:</p>
+
+<table class="pretty">
+  <thead>
+    <tr>
+      <th>PHP Setting</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="http://www.php.net/manual/en/ini.core.php#ini.register-globals" target="_blank">register_globals</a></td>
+      <td><span class="badge badge-important">Off</span></td>
+    </tr>
+    <tr>
+      <td><a href="http://www.php.net/manual/en/ref.info.php#ini.magic-quotes-gpc" target="_blank">magic_quotes_gpc</a></td>
+      <td><span class="badge badge-important">Off</span></td>
+    </tr>
+    <tr>
+      <td><a href="http://www.php.net/manual/en/ini.core.php#ini.file-uploads" target="_blank">file_uploads</a></td>
+      <td><span class="badge badge-success">On</span></td>
+    </tr>
+    <tr>
+      <td><a href="http://www.php.net/manual/en/ref.session.php#ini.session.auto-start" target="_blank">session.auto_start</a></td>
+      <td><span class="badge badge-important">Off</span></td>
+    </tr>
+    <tr>
+      <td><a href="http://www.php.net/manual/en/ref.session.php#ini.session.use-trans-sid" target="_blank">session.use_trans_sid</a></td>
+      <td><span class="badge badge-important">Off</span></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The following PHP extensions are mandatory:</p>
+
+<table class="pretty">
+  <thead>
+    <tr>
+      <th>Extension</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="http://www.php.net/manual/en/book.mysql.php" target="_blank">MySQL</a></td>
+      <td>MySQL database extension.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The following PHP extensions are recommended:</p>
+
+<table class="pretty">
+  <thead>
+    <tr>
+      <th>Extension</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="http://www.php.net/manual/en/book.image.php" target="_blank">GD</a></td>
+      <td>Image processing module.</td>
+    </tr>
+    <tr>
+      <td><a href="http://www.php.net/manual/en/book.curl.php" target="_blank">cURL</a></td>
+      <td>Network communication library.</td>
+    </tr>
+    <tr>
+      <td><a href="http://www.php.net/manual/en/book.openssl.php" target="_blank">OpenSSL</a></td>
+      <td>Encryption library.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>MySQL Database Server</h2>
+
+<p>The minimum MySQL version required is v3.23. It is recommended to use the latest MySQL 4 or MySQL 5 version on the database server.</p>
+
+<p>The following MySQL storage engines are supported:</p>
+
+<table class="pretty">
+  <thead>
+    <tr>
+      <th>Storage Engine</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="http://dev.mysql.com/doc/refman/4.1/en/myisam-storage-engine.html" target="_blank">MyISAM</a></td>
+      <td>Default storage engine.</td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,178 @@
+<h1>Pre-Installation Steps</h1>
+
+<p>osCommerce Online Merchant is a web based solution that needs its relevant files to exist on the web server. The files can be copied to the web server by extracting the download package on your computer and uploading its contents to the web server via FTP, or by copying the download package to the web server directly and extracting its contents there.</p>
+
+<h2>Copying the Files to the Web Server</h2>
+
+<p>The contents of the download package need to be copied to the public HTML directory the web server is serving from.</p>
+
+<p>Examples of public HTML directories are:</p>
+
+<ul>
+  <li>/home/scott/public_html/</li>
+  <li>/srv/www/htdocs/</li>
+  <li>/usr/local/htdocs/</li>
+  <li>/var/www/vhosts/domain.com/httpdocs/</li>
+</ul>
+
+<p>The contents of the download package once extracted is:</p>
+
+<table class="pretty">
+  <thead>
+    <tr>
+      <th>File/Directory</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><i class="icon-folder-open"></i> catalog</td>
+      <td>The directory containing the PHP source code files.</td>
+    </tr>
+    <tr>
+      <td><i class="icon-file"></i> CHANGELOG</td>
+      <td>The changelog file describes the changes made in published releases.</td>
+    </tr>
+    <tr>
+      <td><i class="icon-file"></i> documentation.pdf</td>
+      <td>The documentation in PDF format.</td>
+    </tr>
+    <tr>
+      <td><i class="icon-folder-open"></i> extras</td>
+      <td>The extras directory contains previous upgrade guides and image templates.</td>
+    </tr>
+    <tr>
+      <td><i class="icon-file"></i> LICENSE</td>
+      <td>The GNU General Public License.</td>
+    </tr>
+    <tr>
+      <td><i class="icon-file"></i> release_notes.pdf</td>
+      <td>The release notes for the downloaded version.</td>
+    </tr>
+    <tr>
+      <td><i class="icon-file"></i> STANDARD</td>
+      <td>The standard file describes the coding standards used in the PHP source code files.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Using FTP to Copy the Download Package Contents to the Web Server</h3>
+
+<p>The download package of osCommerce Online Merchant should be saved and extracted on your computer to reveal its contents.. The <em>catalog</em> directory must be copied to the public HTML directory on the web server. This can be achieved on most FTP clients by simply dragging the <em>catalog</em> directory from your local file browser pane to the remote pane listing the files on your web server.</p>
+
+<h3>Directly Extracting the Download Package on the Web Server</h3>
+
+<p>The download package of osCommerce Online Merchant should be saved and extracted on the web server to reveal its contents. The <em>catalog</em> directory must be copied to the public HTML directory. This can be achieved with the following command:</p>
+
+<pre>{escape}
+cp -R catalog /public_html/
+{escape}</pre>
+
+<h2>File Permissions</h2>
+
+<p>The following files need to be writable by the web server during the installation procedure:</p>
+
+<table class="pretty">
+  <thead>
+    <tr>
+      <th>File</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>catalog/includes/configure.php</td>
+    </tr>
+    <tr>
+      <td>catalog/admin/includes/configure.php</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Please consult with your hosting provider to find out the permission flag to use to allow the web server to have write permissions to files and directories.</p>
+
+<div class="note">The above files must have their web server writable permission removed after the installation procedure has completed successfully. This is described in the Post-Installation Steps page.</div>
+
+<div class="achtung">In some cases a global write permission flag of <em>777</em> can be used but may lead to an insecure installation if not reverted afterwards.</div>
+
+<p>Changing the file and directory permissions can be performed by most FTP clients or directly on the server.</p>
+
+<h3>Using FTP to Change File Permissions</h3>
+
+<p>Most FTP clients are capable of changing file permissions on the server. This is commonly performed by right-clicking on the file or directory and selecting "Properties" or "Attributes" on the context menu.</p>
+
+<p>The file permissions can be changed by allowing all users to read, write, and execute the file, or by manually entering the global readable and writable flag of <em>777</em>.</p>
+
+<h3>Changing File Permissions Directly on the Server</h3>
+
+<p>Changing file permissions directly on the server can be performed with the following command:</p>
+
+<pre>{escape}
+chmod 777 /public_html/catalog/includes/configure.php
+chmod 777 /public_html/catalog/admin/includes/configure.php
+{escape}</pre>
+
+<h2>Database</h2>
+
+<p>A MySQL database needs to exist for the installation procedure to be able to successfully import the database table structure and required data settings.</p>
+
+<h2>Web Server and Database Server Details</h2>
+
+<p>The following web server and database server details are required during the installation procedure. Please consult your hosting provider if these details are not known.</p>
+
+<h3>Web Server Details</h3>
+
+<table class="pretty">
+  <thead>
+    <tr>
+      <th>Setting</th>
+      <th>Description</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Server Address</td>
+      <td>The web address to the online store.</td>
+      <td>http://www.example.com/catalog/</td>
+    </tr>
+    <tr>
+      <td>Root Directory</td>
+      <td>The directory where the online store is installed on the server.</td>
+      <td>/public_html/catalog/</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Database Server Details</h3>
+
+<table class="pretty">
+  <thead>
+    <tr>
+      <th>Setting</th>
+      <th>Description</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Server Address</td>
+      <td>The address of the database server in the form of a hostname or IP address.</td>
+      <td>localhost</td>
+    </tr>
+    <tr>
+      <td>Username</td>
+      <td>The username used to connect to the database server.</td>
+      <td>scott</td>
+    </tr>
+    <tr>
+      <td>Password</td>
+      <td>The password that is used together with the username to connect to the database server.</td>
+      <td>tiger</td>
+    </tr>
+    <tr>
+      <td>Database Name</td>
+      <td>The name of the database to hold the data in.</td>
+      <td>oscommerce</td>
+    </tr>
+  </tbody>
+</table>

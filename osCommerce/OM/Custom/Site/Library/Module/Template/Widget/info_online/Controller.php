@@ -10,16 +10,16 @@
 
   use osCommerce\OM\Core\OSCOM;
   use osCommerce\OM\Core\Registry;
-  use osCommerce\OM\Core\Site\Library\Application\Online\Online;
 
   class Controller extends \osCommerce\OM\Core\Template\WidgetAbstract {
     static public function execute($param = null) {
+      $OSCOM_CoreBook = Registry::get('CoreBook');
       $OSCOM_Template = Registry::get('Template');
 
       $book = $OSCOM_Template->getValue('current_book');
 
-      $OSCOM_Template->setValue('book_copyright', Online::getBookCopyright($book));
-      $OSCOM_Template->setValue('book_authors', Online::getBookAuthors($book));
+      $OSCOM_Template->setValue('book_copyright', $OSCOM_CoreBook->getCopyright($book));
+      $OSCOM_Template->setValue('book_authors', $OSCOM_CoreBook->getAuthors($book));
 
       $file = OSCOM::BASE_DIRECTORY . 'Custom/Site/' . OSCOM::getSite() . '/Module/Template/Widget/info_online/pages/main.html';
 

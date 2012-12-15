@@ -1,0 +1,9 @@
+<h1>{value}chapter_title{value}</h1>
+
+<h2>{lang}heading_pages{lang}</h2>
+
+<ul class="nav nav-list">
+  {loop chapter_pages}
+    <li><a href="{link}Package|Library|{raw}html_lang{raw}&{raw}current_book{raw}&{raw}current_chapter{raw}&%code%{link}"><i class="icon-file"></i> #title#</a></li>
+  {loop}
+</ul>

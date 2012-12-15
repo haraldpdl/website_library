@@ -1,0 +1,14 @@
+{
+  "oscom_2_3": {
+    "title": "Online Merchant v2.3",
+    "description": "Community Wiki for osCommerce Online Merchant v2.3.",
+    "chapters": {
+      "tips": {
+        "title": "Tips and Tricks",
+        "pages": {
+          "php_errors": "PHP Errors"
+        }
+      }
+    }
+  }
+}

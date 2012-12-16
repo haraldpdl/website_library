@@ -1,0 +1,6 @@
+[submodule "public/sites/Library/Asset/Package/Content/en/sage_pay"]
+	path = public/sites/Library/Asset/Package/Content/en/sage_pay
+	url = git://github.com/haraldpdl/library_sage_pay.git
+[submodule "public/sites/Library/Asset/Package/Content/en/paypal"]
+	path = public/sites/Library/Asset/Package/Content/en/paypal
+	url = git://github.com/haraldpdl/library_paypal.git

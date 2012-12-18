@@ -10,5 +10,21 @@
         }
       }
     }
+  },
+  "get_involved": {
+    "title": "Get Involved",
+    "description": "How to help and get involved in the community.",
+    "chapters": {
+      "documentation": {
+        "title": "Documentation",
+        "pages": {
+          "about": "About the Library",
+          "install": "Installing the Library Site",
+          "writing": "Writing Documentation",
+          "packages": "Documentation for Add-On Packages",
+          "languages": "Support for Multiple Languages"
+        }
+      }
+    }
   }
 }

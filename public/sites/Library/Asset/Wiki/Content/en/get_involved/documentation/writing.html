@@ -1,0 +1,434 @@
+<h1>Writing Documentation</h1>
+
+<p>Documentation is written in HTML to quickly and easily write and styilze content. HTML was chosen over other formats such as Markdown and Textile as we all should already have a basic knowledge of HTML and it provides more flexibility in styling the content.</p>
+
+<p>The default stylesheet covers the basic use of HTML tags where additional stylesheet classes are available to further stylize certain content. In addition, template tags exist to help author documentation content by parsing the content through PHP.</p>
+
+<h2>File and Directory Structure</h2>
+
+<p>##TODO##</p>
+
+<h2>Typography</h2>
+
+<p>HTML tags are automatically stylized through basic stylesheet definitions.</p>
+
+<h3>Headings</h3>
+
+<p>Headings are written with the standard {escape}<hX>{escape} tags, where X is a priority number from 1, the main and biggest heading, to 6, the smallest heading. Each documentation page must start with the {escape}<h1>{escape} heading level and subsequent headings must use {escape}<h2>{escape} to {escape}<h6>{escape} depending on the hierarchy level.</p>
+
+<p>Headings are written as:</p>
+
+{code}
+<h1>Main Heading</h1>
+{code}
+
+<div class="example">
+  <h1>Example h1 Heading</h1>
+  <h2>Example h2 Heading</h2>
+  <h3>Example h3 Heading</h3>
+  <h4>Example h4 Heading</h4>
+  <h5>Example h5 Heading</h5>
+  <h6>Example h6 Heading</h6>
+</div>
+
+<h4>Sub-Headings</h4>
+
+<p>Headings can contain sub-headings by wrapping the sub-heading in the main heading with the {escape}<small>{escape} tag.</p>
+
+<p>Sub-Headings are written as:</p>
+
+{code}
+<h1>Main Heading <small>Sub-Heading</small></h1>
+{code}
+
+<div class="example">
+  <h1>Example h1 Heading <small>Attached h1 Sub-Heading</small></h1>
+</div>
+
+<h3>Paragraphs</h3>
+
+<p>Paragraphs are written with the standard {escape}<p>{escape} tag. Paragraphs are not automatically created by new lines so the {escape}<p>{escape} tag must be used.</p>
+
+{code}
+<p>This is a paragraph.</p>
+{code}
+
+<div class="example">
+  <p>Peregrephs ere-a vreettee veet zee stunderd {escape}<p>{escape} teg. Peregrephs ere-a nut ootumeteecelly creeted by noo leenes su zee {escape}<p>{escape} teg moost be-a used. Bork bork bork!</p>
+</div>
+
+<h4>Important Paragraphs</h4>
+
+<p>Important paragraphs can stand out by using the <i>lead</i> stylesheet class:</p>
+
+{code}
+<p class="lead">This is an important paragraph.</p>
+{code}
+
+<div class="example">
+  <p class="lead">This is an important paragraph.</p>
+</div>
+
+<h4>New Lines</h4>
+
+<p>New lines are written with the standard {escape}<br />{escape} tag.</p>
+
+{code}
+<p>
+  Line 1<br />
+  Line 2<br />
+  Line 3
+</p>
+{code}
+
+<div class="example">
+  <p>
+    Line 1<br />
+    Line 2<br />
+    Line 3
+  </p>
+</div>
+
+<h3>Emphasis</h3>
+
+<h4>Smaller Text</h4>
+
+<p>Smaller text can be shown in the current scope with the {escape}<small>{escape} tag.</p>
+
+{code}
+<p>This is normal sized text <small>and this text will appear smaller</small></p>
+{code}
+
+<div class="example">
+  <p>This is normal sized text <small>and this text will appear smaller</small></p>
+</div>
+
+<h4>Bold Text</h4>
+
+<p>Text can be emphasized in a heavier font weight with the {escape}<strong>{escape} tag.</p>
+
+{code}
+<p>This is normal text <strong>and this text is rendered in bold</strong>.</p>
+{code}
+
+<div class="example">
+  <p>This is normal text <strong>and this text is rendered in bold</strong>.</p>
+</div>
+
+<h4>Italic Text</h4>
+
+<p>Text can be emphasized in italics with the {escape}<em>{escape} tag.</p>
+
+{code}
+<p>This is normal text <em>and this text is rendered in italics</em>.</p>
+{code}
+
+<div class="example">
+  <p>This is normal text <em>and this text is rendered in italics</em>.</p>
+</div>
+
+<h4>Underline Text</h4>
+
+<p>Text can be underlined with the {escape}<u>{escape} tag.</p>
+
+{code}
+<p>This is normal text <u>and this text is underlined</u>.</p>
+{code}
+
+<div class="example">
+  <p>This is normal text <u>and this text is underlined</u>.</p>
+</div>
+
+<h4>Coloured Text</h4>
+
+<p>Text can be emphasized in colours with the following stylesheet classes:</p>
+
+<ul>
+  <li>muted</li>
+  <li>text-warning</li>
+  <li>text-error</li>
+  <li>text-info</li>
+  <li>text-success</li>
+</ul>
+
+{code}
+<p class="muted">This text will be coloured in grey.</p>
+<p class="text-warning">This text will be coloured in yellow.</p>
+<p class="text-error">This text will be coloured in red.</p>
+<p class="text-info">This text will be coloured in blue.</p>
+<p class="text-success">This text will be coloured in green.</p>
+{code}
+
+<div class="example">
+  <p class="muted">This text will be coloured in grey.</p>
+  <p class="text-warning">This text will be coloured in yellow.</p>
+  <p class="text-error">This text will be coloured in red.</p>
+  <p class="text-info">This text will be coloured in blue.</p>
+  <p class="text-success">This text will be coloured in green.</p>
+</div>
+
+<h3>Lists</h3>
+
+<h4>Unordered</h4>
+
+<p>A list of items with no priority of order is written as:</p>
+
+{code}
+<ul>
+  <li>List item 1</li>
+  <li>List item 2
+    <ul>
+      <li>Sub list item 1</li>
+      <li>Sub list item 2</li>
+    </ul>
+  </li>
+  <li>List item 3</li>
+  <li>List item 4</li>
+</ul>
+{code}
+
+<div class="example">
+  <ul>
+    <li>List item 1</li>
+    <li>List item 2
+      <ul>
+        <li>Sub list item 1</li>
+        <li>Sub list item 2</li>
+      </ul>
+    </li>
+    <li>List item 3</li>
+    <li>List item 4</li>
+  </ul>
+</div>
+
+<h4>Ordered</h4>
+
+<p>A list of items in specific order is written as:</p>
+
+{code}
+<ol>
+  <li>List item 1</li>
+  <li>List item 2
+    <ol>
+      <li>Sub list item 1</li>
+      <li>Sub list item 2</li>
+    </ol>
+  </li>
+  <li>List item 3</li>
+  <li>List item 4</li>
+</ol>
+{code}
+
+<div class="example">
+  <ol>
+    <li>List item 1</li>
+    <li>List item 2
+      <ol>
+        <li>Sub list item 1</li>
+        <li>Sub list item 2</li>
+      </ol>
+    </li>
+    <li>List item 3</li>
+    <li>List item 4</li>
+  </ol>
+</div>
+
+<h4>Unstyled</h4>
+
+<p>An unstyled list can be produced by using the <i>unstyled</i> stylesheet class:</p>
+
+{code}
+<ul class="unstyled">
+  <li>List item 1</li>
+  <li>List item 2</li>
+  <li>List item 3</li>
+  <li>List item 4</li>
+</ul>
+{code}
+
+<div class="example">
+  <ul class="unstyled">
+    <li>List item 1</li>
+    <li>List item 2</li>
+    <li>List item 3</li>
+    <li>List item 4</li>
+  </ul>
+</div>
+
+<h4>Description</h4>
+
+<p>A list of terms with their associated descriptions is written as:</p>
+
+{code}
+<dl>
+  <dt>Title 1</dt>
+  <dd>Description 1</dd>
+
+  <dt>Title 2</dt>
+  <dd>Description 1</dd>
+  <dd>Description 2</dd>
+</dl>
+{code}
+
+<div class="example">
+  <dl>
+    <dt>Title 1</dt>
+    <dd>Description 1</dd>
+
+    <dt>Title 2</dt>
+    <dd>Description 1</dd>
+    <dd>Description 2</dd>
+  </dl>
+</div>
+
+<h5>Bulleted</h5>
+
+<p>A bulleted list of terms can be produced by using the <i>bulleted</i> stylesheet class:</p>
+
+{code}
+<dl class="bulleted">
+  <dt>Title 1</dt>
+  <dd>Description 1</dd>
+
+  <dt>Title 2</dt>
+  <dd>Description 1</dd>
+  <dd>Description 2</dd>
+</dl>
+{code}
+
+<div class="example">
+  <dl class="bulleted">
+    <dt>Title 1</dt>
+    <dd>Description 1</dd>
+
+    <dt>Title 2</dt>
+    <dd>Description 1</dd>
+    <dd>Description 2</dd>
+  </dl>
+</div>
+
+<h5>Horizontal</h5>
+
+<p>A horizontal list of terms can be produced by using the <i>dl-horizontal</i> stylesheet class:</p>
+
+{code}
+<dl class="dl-horizontal">
+  <dt>Title 1</dt>
+  <dd>Description 1</dd>
+
+  <dt>Title 2</dt>
+  <dd>Description 1</dd>
+  <dd>Description 2</dd>
+</dl>
+{code}
+
+<div class="example">
+  <dl class="dl-horizontal">
+    <dt>Title 1</dt>
+    <dd>Description 1</dd>
+
+    <dt>Title 2</dt>
+    <dd>Description 1</dd>
+    <dd>Description 2</dd>
+  </dl>
+</div>
+
+<h2>Code</h2>
+
+<h4>Formatted</h4>
+
+<p>Formatted code can be produced by using the <i>&#123;code&#125;</i> template tag:</p>
+
+<pre class="prettyprint">
+&#123;code&#125;
+&lt;?php
+  $date = date('jS F, Y', 802562400);
+  echo '[' . $date . '] These tools are a set of small tight cgi binaries written in C. They perform a number of functions to allow you to implement a guestbook or any other form that needs to write information and display it to users later in about 2 minutes.';
+?&gt;
+&#123;code&#125;
+</pre>
+
+<div class="example">
+{code}
+<?php
+  $date = date('jS F, Y', 802562400);
+  echo '[' . $date . '] These tools are a set of small tight cgi binaries written in C. They perform a number of functions to allow you to implement a guestbook or any other form that needs to write information and display it to users later in about 2 minutes.';
+?>
+{code}
+</div>
+
+<div class="info">The <i>&#123;code&#125;</i> template tag automatically escapes the code block with special characters to ensure HTML tags are displayed and not parsed.</div>
+
+<h4>Plain</h4>
+
+<p>Plain code can be written as:</p>
+
+{code}
+<pre>
+&lt;?php
+  $trap = new Acme('tnt');
+  $wile-&gt;setState('ready');
+
+  while ( true ) {
+    if ( $wile-&gt;hears('meepmeep') ) {
+      $trap-&gt;trigger();
+
+      return $wile-&gt;getResult();
+    }
+
+    sleep(1);
+  }
+?&gt;
+</pre>
+{code}
+
+<div class="achtung">It is important to escape HTML tags otherwise they will be parsed and not shown.</div>
+
+<div class="example">
+<pre>
+&lt;?php
+  $trap = new Acme('tnt');
+  $wile-&gt;setState('ready');
+
+  while ( true ) {
+    if ( $wile-&gt;hears('meepmeep') ) {
+      $trap-&gt;trigger();
+
+      return $wile-&gt;getResult();
+    }
+
+    sleep(1);
+  }
+?&gt;
+</pre>
+</div>
+
+<h3>Tables</h3>
+
+##TODO##
+
+<h3>Images</h3>
+
+##TODO##
+
+<h3>Labels and Badges</h3>
+
+##TODO##
+
+<h3>Alerts</h3>
+
+##TODO##
+
+<h2 class="text-error">Forbidden Content</h2>
+
+<div class="achtung">
+  <p>It is forbidden to use any of the following in the documentation content:</p>
+
+  <ul>
+    <li>Inline and external javascript</li>
+    <li>Custom stylesheet definitions</li>
+    <li>Loading of external content, eg. through iframes or objects (including but not limited to external HTML, YouTube videos, flash/java objects, etc.)</li>
+    <li>External images</li>
+    <li>Short URL services</li>
+  </ul>
+</div>

@@ -1,0 +1,42 @@
+<h1>About the Library</h1>
+
+<p>The osCommerce Library serves both core and community contributed documentation to help users with products and services built for and around osCommerce Online Merchant. The authoring standards ensures a consistent structure and layout for both core and community contributed documentation for easier reading.</p>
+
+<p>The structure of the Library is defined as Sections -> Books -> Chapters -> Pages. For example:</p>
+
+<table class="pretty">
+  <thead>
+    <tr>
+      <th>Sections</th>
+      <th>Books</th>
+      <th>Chapters</th>
+      <th>Pages</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Core</td>
+      <td>osCommerce Online Merchant v2.3</td>
+      <td>Getting Started</td>
+      <td>
+        Requirements<br />
+        Pre-Installation Steps<br />
+        New Installation<br />
+        Post-Installation Steps<br />
+      </td>
+    </tr>
+    <tr>
+      <td>Community Packages</td>
+      <td>PayPal</td>
+      <td>osCommerce Online Merchant v2.3</td>
+      <td>
+        PayPal Express Checkout<br />
+        PayPal Payments Standard
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The documentation content is written in HTML files and stored in self-contained directories with a json file defining the content ordering. Writing new or updating existing documentation is as easy as pushing the changes to your git repository and sending pull requests to the main repository hosted at GitHub. The changes from GitHub are then pulled from the server to publish on the Library.</p>
+
+<p>The Community Packages section is unique in the Library where the content is actually hosted on external git repositories and is only linked via git submodules. This allows developers to create their own repositories to document their Add-Ons with and to have the Library dynamically build a list of documentation books available for Add-Ons.</p>

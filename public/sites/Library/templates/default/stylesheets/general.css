@@ -5129,3 +5129,49 @@ a:link {
   color: #9da0a4;
   border-radius: 4px 0 4px 0;
 }
+/* toc slideout */
+#slideout {
+  position: fixed;
+  top: 40px;
+  right: 0;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  z-index: 100;
+}
+#slideout_trichome {
+  background-color: #800000;
+  color: #fff;
+  padding: 5px;
+  font-variant: small-caps;
+  text-transform: lowercase;
+  font-weight: bold;
+}
+#slideout_inner {
+  position: fixed;
+  top: 40px;
+  right: -250px;
+  padding-top: 5px;
+  padding-right: 20px;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  background-color: #800000;
+  color: #fff;
+}
+#slideout_inner ul {
+  list-style-type: none;
+}
+#slideout_inner a:link,
+#slideout_inner a:visited,
+#slideout_inner a:active {
+  color: #fff;
+}
+#slideout:hover {
+  right: 250px;
+}
+#slideout:hover #slideout_inner {
+  right: 0;
+}

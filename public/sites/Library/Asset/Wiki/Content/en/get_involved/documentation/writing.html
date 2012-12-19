@@ -14,21 +14,23 @@
 
 <h3>Headings</h3>
 
-<p>Headings are written with the standard {escape}<hX>{escape} tags, where X is a priority number from 1, the main and biggest heading, to 6, the smallest heading. Each documentation page must start with the {escape}<h1>{escape} heading level and subsequent headings must use {escape}<h2>{escape} to {escape}<h6>{escape} depending on the hierarchy level.</p>
+<p>Headings are written with the standard {escape}<hX>{escape} tags, where X is a priority number from 1, the main and biggest heading, to 6, the smallest heading. Each documentation page must start with and contain only one {escape}<h1>{escape} heading level; subsequent headings must use {escape}<h2>{escape} to {escape}<h6>{escape} depending on the hierarchy level.</p>
 
 <p>Headings are written as:</p>
 
-{code}
-<h1>Main Heading</h1>
-{code}
+<!-- do not use the code template tag otherwise toc will include the heading //-->
+<pre class="prettyprint">
+&lt;h1&gt;Main Heading&lt;/h1&gt;
+</pre>
 
+<!-- leave empty space in </hX > so toc does not include the headings //-->
 <div class="example">
-  <h1>Example h1 Heading</h1>
-  <h2>Example h2 Heading</h2>
-  <h3>Example h3 Heading</h3>
-  <h4>Example h4 Heading</h4>
-  <h5>Example h5 Heading</h5>
-  <h6>Example h6 Heading</h6>
+  <h1 class="ignore">Example h1 Heading</h1 >
+  <h2 class="ignore">Example h2 Heading</h2 >
+  <h3 class="ignore">Example h3 Heading</h3 >
+  <h4 class="ignore">Example h4 Heading</h4 >
+  <h5 class="ignore">Example h5 Heading</h5 >
+  <h6 class="ignore">Example h6 Heading</h6 >
 </div>
 
 <h4>Sub-Headings</h4>
@@ -37,12 +39,14 @@
 
 <p>Sub-Headings are written as:</p>
 
-{code}
-<h1>Main Heading <small>Sub-Heading</small></h1>
-{code}
+<!-- do not use the code template tag otherwise toc will include the heading //-->
+<pre class="prettyprint">
+&lt;h1&gt;Main Heading &lt;small&gt;Sub-Heading&lt;/small&gt;&lt;/h1&gt;
+</pre>
 
+<!-- leave empty space in </h1 > so toc does not include the heading //-->
 <div class="example">
-  <h1>Example h1 Heading <small>Attached h1 Sub-Heading</small></h1>
+  <h1>Example h1 Heading <small>Attached h1 Sub-Heading</small></h1 >
 </div>
 
 <h3>Paragraphs</h3>
@@ -335,7 +339,7 @@
 
 <h2>Code</h2>
 
-<h4>Formatted</h4>
+<h3>Formatted</h3>
 
 <p>Formatted code can be produced by using the <i>&#123;code&#125;</i> template tag:</p>
 
@@ -359,7 +363,7 @@
 
 <div class="info">The <i>&#123;code&#125;</i> template tag automatically escapes the code block with special characters to ensure HTML tags are displayed and not parsed.</div>
 
-<h4>Plain</h4>
+<h3>Plain</h3>
 
 <p>Plain code can be written as:</p>
 
@@ -403,19 +407,23 @@
 </pre>
 </div>
 
-<h3>Tables</h3>
+<h2>Tables</h2>
 
 ##TODO##
 
-<h3>Images</h3>
+<h2>Images</h2>
 
 ##TODO##
 
-<h3>Labels and Badges</h3>
+<h2>Labels and Badges</h2>
 
 ##TODO##
 
-<h3>Alerts</h3>
+<h2>Alerts</h2>
+
+##TODO##
+
+<h2>Linking to Other Pages</h2>
 
 ##TODO##
 

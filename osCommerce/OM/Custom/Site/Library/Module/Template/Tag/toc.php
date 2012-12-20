@@ -49,7 +49,29 @@
       if ( !empty($result) ) {
         $result .= str_repeat('</li></ul>', $level - 1);
 
-        $result = '<div id="slideout"><div id="slideout_trichome">TOC</div><div id="slideout_inner">' . $result . '</div></div>';
+        $result = <<<END
+<div id="toc" style="display: none;">$result</div>
+<div id="toc_trichome"><a href="#" class="btn btn-mini btn-info"><i class="icon-th-list icon-white"></i></a></div>
+<script>
+\$(function() {
+  \$('#toc_trichome a').popover({
+    html: true,
+    trigger: 'manual',
+    content: \$('#toc').html(),
+    placement: 'left',
+    template: '<div class="popover" id="toc_content" onmouseover="clearTimeout(timeoutObj);\$(this).mouseleave(function() {\$(this).hide();});"><div class="popover-inner"><div class="popover-content"><p></p></div></div></div>'
+  }).mouseenter(function(e) {
+    \$(this).popover('show');
+  }).mouseleave(function(e) {
+    var ref = \$(this);
+
+    timeoutObj = setTimeout(function() {
+      ref.popover('hide');
+    }, 50);
+  });
+});
+</script>
+END;
       }
 
       return $result;

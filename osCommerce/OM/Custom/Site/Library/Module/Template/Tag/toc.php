@@ -35,15 +35,17 @@
       $result = '';
 
       foreach ( $matches[1] as $key => $value ) {
-        if ( $value > $level ) {
-          $result .= '<ul>';
-        } else {
-          $result .= str_repeat('</li></ul>', $level - $value) . '</li>';
+        if ( strpos($matches[0][$key], 'notoc') === false ) {
+          if ( $value > $level ) {
+            $result .= '<ul>';
+          } else {
+            $result .= str_repeat('</li></ul>', $level - $value) . '</li>';
+          }
+
+          $result .= '<li><a href="#" onclick="$(window).scrollTop($(\'#bookPageContent :header:not(\\\'h1\\\'):eq(' . $key . ')\').position().top - 40); return false;">' . $matches[2][$key] . '</a>';
+
+          $level = $value;
         }
-
-        $result .= '<li><a href="#" onclick="$(window).scrollTop($(\'#bookPageContent :header:not(\\\'h1, .ignore\\\'):eq(' . $key . ')\').position().top - 40); return false;">' . $matches[2][$key] . '</a>';
-
-        $level = $value;
       }
 
       if ( !empty($result) ) {

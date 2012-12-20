@@ -23,17 +23,24 @@
 &lt;h1&gt;Main Heading&lt;/h1&gt;
 </pre>
 
-<!-- leave empty space in </hX > so toc does not include the headings //-->
 <div class="example">
-  <h1 class="ignore">Example h1 Heading</h1 >
-  <h2 class="ignore">Example h2 Heading</h2 >
-  <h3 class="ignore">Example h3 Heading</h3 >
-  <h4 class="ignore">Example h4 Heading</h4 >
-  <h5 class="ignore">Example h5 Heading</h5 >
-  <h6 class="ignore">Example h6 Heading</h6 >
+  <h1 class="notoc">Example h1 Heading</h1>
+  <h2 class="notoc">Example h2 Heading</h2>
+  <h3 class="notoc">Example h3 Heading</h3>
+  <h4 class="notoc">Example h4 Heading</h4>
+  <h5 class="notoc">Example h5 Heading</h5>
+  <h6 class="notoc">Example h6 Heading</h6>
 </div>
 
-<h4>Sub-Headings</h4>
+<div class="info">
+  <p>Each page has an automatically generated table of contents list that is built on the heading hierarchy level from {escape}<h2>{escape} onwards. Headings that should not be included in the table of contents must have a defined stylesheet class of <em>notoc</em>:</p>
+
+  <pre>&lt;h3 class="notoc"&gt;Section Heading&lt;/h3&gt;</pre>
+</div>
+
+<div class="achtung">The current table of contents implementation will also ignore headings containing the word <em>notoc</em> - please avoid using this in heading titles.</div>
+
+<h4 class="notoc">Sub-Headings</h4>
 
 <p>Headings can contain sub-headings by wrapping the sub-heading in the main heading with the {escape}<small>{escape} tag.</p>
 
@@ -61,7 +68,7 @@
   <p>Peregrephs ere-a vreettee veet zee stunderd {escape}<p>{escape} teg. Peregrephs ere-a nut ootumeteecelly creeted by noo leenes su zee {escape}<p>{escape} teg moost be-a used. Bork bork bork!</p>
 </div>
 
-<h4>Important Paragraphs</h4>
+<h4 class="notoc">Important Paragraphs</h4>
 
 <p>Important paragraphs can stand out by using the <i>lead</i> stylesheet class:</p>
 
@@ -73,7 +80,7 @@
   <p class="lead">This is an important paragraph.</p>
 </div>
 
-<h4>New Lines</h4>
+<h4 class="notoc">New Lines</h4>
 
 <p>New lines are written with the standard {escape}<br />{escape} tag.</p>
 
@@ -173,7 +180,7 @@
 
 <h3>Lists</h3>
 
-<h4>Unordered</h4>
+<h4 class="notoc">Unordered</h4>
 
 <p>A list of items with no priority of order is written as:</p>
 
@@ -205,7 +212,7 @@
   </ul>
 </div>
 
-<h4>Ordered</h4>
+<h4 class="notoc">Ordered</h4>
 
 <p>A list of items in specific order is written as:</p>
 
@@ -237,7 +244,7 @@
   </ol>
 </div>
 
-<h4>Unstyled</h4>
+<h4 class="notoc">Unstyled</h4>
 
 <p>An unstyled list can be produced by using the <i>unstyled</i> stylesheet class:</p>
 
@@ -259,7 +266,7 @@
   </ul>
 </div>
 
-<h4>Description</h4>
+<h4 class="notoc">Description</h4>
 
 <p>A list of terms with their associated descriptions is written as:</p>
 
@@ -285,7 +292,7 @@
   </dl>
 </div>
 
-<h5>Bulleted</h5>
+<h5 class="notoc">Bulleted</h5>
 
 <p>A bulleted list of terms can be produced by using the <i>bulleted</i> stylesheet class:</p>
 
@@ -311,7 +318,7 @@
   </dl>
 </div>
 
-<h5>Horizontal</h5>
+<h5 class="notoc">Horizontal</h5>
 
 <p>A horizontal list of terms can be produced by using the <i>dl-horizontal</i> stylesheet class:</p>
 
@@ -339,7 +346,7 @@
 
 <h2>Code</h2>
 
-<h3>Formatted</h3>
+<h3 class="notoc">Formatted</h3>
 
 <p>Formatted code can be produced by using the <i>&#123;code&#125;</i> template tag:</p>
 
@@ -363,7 +370,7 @@
 
 <div class="info">The <i>&#123;code&#125;</i> template tag automatically escapes the code block with special characters to ensure HTML tags are displayed and not parsed.</div>
 
-<h3>Plain</h3>
+<h3 class="notoc">Plain</h3>
 
 <p>Plain code can be written as:</p>
 

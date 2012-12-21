@@ -99,5 +99,55 @@
     public function getPageFile($page, $chapter, $book) {
       return $this->_asset_path . basename($book) . '/' . basename($chapter) . '/' . basename($page) . '.html';
     }
+
+    public function getPreviousPage($page, $chapter, $book) {
+      $result = null;
+
+      $pos = array_search($page, array_keys($this->_content[$book]['chapters'][$chapter]['pages']));
+
+      if ( $pos > 0 ) {
+        $result = array('book' => $book,
+                        'chapter' => $chapter,
+                        'page' => key(array_slice($this->_content[$book]['chapters'][$chapter]['pages'], $pos-1, 1, true)));
+      } else {
+        $pos = array_search($chapter, array_keys($this->_content[$book]['chapters']));
+
+        if ( $pos > 0 ) {
+// last page of previous chapter
+          $previous_chapter = key(array_slice($this->_content[$book]['chapters'], $pos-1, 1, true));
+
+          $result = array('book' => $book,
+                          'chapter' => $previous_chapter,
+                          'page' => key(array_slice($this->_content[$book]['chapters'][$previous_chapter]['pages'], (count($this->_content[$book]['chapters'][$previous_chapter]['pages'])-1), 1, true)));
+        }
+      }
+
+      return $result;
+    }
+
+    public function getNextPage($page, $chapter, $book) {
+      $result = null;
+
+      $pos = array_search($page, array_keys($this->_content[$book]['chapters'][$chapter]['pages']));
+
+      if ( $pos < (count($this->_content[$book]['chapters'][$chapter]['pages'])-1) ) {
+        $result = array('book' => $book,
+                        'chapter' => $chapter,
+                        'page' => key(array_slice($this->_content[$book]['chapters'][$chapter]['pages'], $pos+1, 1, true)));
+      } else {
+        $pos = array_search($chapter, array_keys($this->_content[$book]['chapters']));
+
+        if ( $pos < (count($this->_content[$book]['chapters'])-1) ) {
+// first page of next chapter
+          $next_chapter = key(array_slice($this->_content[$book]['chapters'], $pos+1, 1, true));
+
+          $result = array('book' => $book,
+                          'chapter' => $next_chapter,
+                          'page' => key(array_slice($this->_content[$book]['chapters'][$next_chapter]['pages'], 0, 1, true)));
+        }
+      }
+
+      return $result;
+    }
   }
 ?>

@@ -5156,3 +5156,14 @@ a:link {
 #toc_content a:active {
   color: #fff;
 }
+/* wally */
+#wallyPrevious i {
+  margin-right: 5px;
+}
+#wallyWoof {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+#wallyNext i {
+  margin-left: 5px;
+}

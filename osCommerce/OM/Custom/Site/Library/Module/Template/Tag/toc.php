@@ -53,10 +53,10 @@
 
         $result = <<<END
 <div id="toc" style="display: none;">$result</div>
-<div id="toc_trichome"><a href="#" class="btn btn-mini btn-info" onclick="return false;"><i class="icon-th-list icon-white"></i></a></div>
+<div id="toc_trichome"><button type="button" class="btn btn-mini btn-info"><i class="icon-th-list icon-white"></i></button></div>
 <script>
 \$(function() {
-  \$('#toc_trichome a').popover({
+  \$('#toc_trichome').popover({
     html: true,
     trigger: 'manual',
     content: \$('#toc').html(),

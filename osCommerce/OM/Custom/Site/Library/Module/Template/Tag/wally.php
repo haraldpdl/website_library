@@ -38,7 +38,7 @@
           $title = $OSCOM_Book->getChapterTitle($previous['chapter'], $previous['book']);
         }
 
-        $result .= '<a href="' . OSCOM::getLink(null, OSCOM::getSiteApplication(), $OSCOM_Language->getCode() . '&' . $previous['book'] . '&' . $previous['chapter'] . (isset($previous['page']) ? '&' . $previous['page'] : '')) . '" id="wallyPrevious"><i class="icon-chevron-left"></i>' . $title . '</a>';
+        $result .= '<span id="wallyPrevious"><a href="' . OSCOM::getLink(null, OSCOM::getSiteApplication(), $OSCOM_Language->getCode() . '&' . $previous['book'] . '&' . $previous['chapter'] . (isset($previous['page']) ? '&' . $previous['page'] : '')) . '"><i class="icon-arrow-left"></i>' . $title . '</a></span>';
       }
 
       $next = $OSCOM_Book->getNextPage($current_page, $current_chapter, $current_book);
@@ -56,11 +56,7 @@
           $title = $OSCOM_Book->getChapterTitle($next['chapter'], $next['book']);
         }
 
-        if ( !empty($result) ) {
-          $result .= '<i id="wallyWoof" class="icon-minus"></i>';
-        }
-
-        $result .= '<a href="' . OSCOM::getLink(null, OSCOM::getSiteApplication(), $OSCOM_Language->getCode() . '&' . $next['book'] . '&' . $next['chapter'] . (isset($next['page']) ? '&' . $next['page'] : '')) . '" id="wallyNext">' . $title . '<i class="icon-chevron-right"></i></a>';
+        $result .= '<span id="wallyNext"><a href="' . OSCOM::getLink(null, OSCOM::getSiteApplication(), $OSCOM_Language->getCode() . '&' . $next['book'] . '&' . $next['chapter'] . (isset($next['page']) ? '&' . $next['page'] : '')) . '">' . $title . '<i class="icon-arrow-right"></i></a></span>';
       }
 
       if ( !empty($result) ) {

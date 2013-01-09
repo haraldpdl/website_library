@@ -562,8 +562,8 @@ define('ERROR_ACTION_RECORDER', 'Error: A password reset link has already been s
 
         $reset_key_url = tep_href_link(FILENAME_PASSWORD_RESET, 'account=' . urlencode($email_address) . '&key=' . $reset_key, 'SSL', false);
 
-        if ( strpos($reset_key_url, '&') !== false ) {
-          $reset_key_url = str_replace('&', '&', $reset_key_url);
+        if ( strpos($reset_key_url, '&amp;') !== false ) {
+          $reset_key_url = str_replace('&amp;', '&', $reset_key_url);
         }
 
         tep_mail($check_customer['customers_firstname'] . ' ' . $check_customer['customers_lastname'], $email_address, EMAIL_PASSWORD_RESET_SUBJECT, sprintf(EMAIL_PASSWORD_RESET_BODY, $reset_key_url), STORE_OWNER, STORE_OWNER_EMAIL_ADDRESS);

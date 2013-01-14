@@ -34,3 +34,4 @@ books_core_title = Core
 books_community_title = Community
 books_packages_title = Packages
 books_wiki_title = Wiki
+books_old_title = Old Documentation (PDF Downloads)

@@ -12,7 +12,15 @@
 
   class code extends \osCommerce\OM\Core\Template\TagAbstract {
     static public function execute($string) {
-      return '<pre class="prettyprint">' . HTML::outputProtected($string) . '</pre>';
+      $args = func_get_args();
+
+      $language = 'php';
+
+      if ( isset($args[1]) && !empty($args[1]) ) {
+        $language = trim($args[1]);
+      }
+
+      return '<pre><code class="language-' . $language . '">' . HTML::outputProtected($string) . '</code></pre>';
     }
   }
 ?>

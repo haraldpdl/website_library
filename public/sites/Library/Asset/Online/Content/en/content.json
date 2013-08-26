@@ -2,7 +2,7 @@
   "oscom_2_3": {
     "title": "Online Merchant v2.3",
     "description": "Documentation for osCommerce Online Merchant v2.3.",
-    "copyright": "Copyright (c) 2006-2012 osCommerce. All rights reserved. Content may be reproduced for personal use only.",
+    "copyright": "Copyright (c) 2006-2013 osCommerce. All rights reserved. Content may be reproduced for personal use only.",
     "authors": [
       {
         "name": "Melinda Odom"
@@ -30,6 +30,7 @@
       "release_notes": {
         "title": "Release Notes",
         "pages": {
+          "v2_3_3_1": "osCommerce Online Merchant v2.3.3.1",
           "v2_3_3": "osCommerce Online Merchant v2.3.3",
           "v2_3_2": "osCommerce Online Merchant v2.3.2"
         }

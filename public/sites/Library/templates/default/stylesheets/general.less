@@ -149,3 +149,13 @@ a:link { -webkit-tap-highlight-color: #36d63d; }
     margin-left: 5px;
   }
 }
+
+@media print {
+  body {
+    background-image: none;
+  }
+
+  #ugarit, #wally, #toc, #toc_trichome, footer {
+    display: none;
+  }
+}

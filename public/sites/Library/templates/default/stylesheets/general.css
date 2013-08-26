@@ -5400,3 +5400,15 @@ a:link {
 #wallyNext i {
   margin-left: 5px;
 }
+@media print {
+  body {
+    background-image: none;
+  }
+  #ugarit,
+  #wally,
+  #toc,
+  #toc_trichome,
+  footer {
+    display: none;
+  }
+}

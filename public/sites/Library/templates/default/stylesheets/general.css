@@ -5400,9 +5400,18 @@ a:link {
 #wallyNext i {
   margin-left: 5px;
 }
+.visible-print {
+  display: none !important;
+}
 @media print {
   body {
     background-image: none;
+  }
+  .visible-print {
+    display: block !important;
+  }
+  .hidden-print {
+    display: none !important;
   }
   #ugarit,
   #wally,

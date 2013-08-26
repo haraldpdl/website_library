@@ -150,9 +150,21 @@ a:link { -webkit-tap-highlight-color: #36d63d; }
   }
 }
 
+.visible-print {
+  display: none !important;
+}
+
 @media print {
   body {
     background-image: none;
+  }
+
+  .visible-print {
+    display: block !important;
+  }
+
+  .hidden-print {
+    display: none !important;
   }
 
   #ugarit, #wally, #toc, #toc_trichome, footer {

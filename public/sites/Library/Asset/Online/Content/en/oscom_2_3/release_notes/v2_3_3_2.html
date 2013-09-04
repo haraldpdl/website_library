@@ -1,0 +1,1920 @@
+<span id="upgtop"></span>
+
+<h1>osCommerce Online Merchant v2.3.3.2</h1>
+
+<p>osCommerce Online Merchant v2.3.3.2 is a general maintenance release focusing on PHP 5.5 compatibilty, improving core features, and introducing new modules.</p>
+
+<p>This release is in preparation of v2.3.4 containing additional improvements.</p>
+
+<div class="visible-print">
+  <p>This document can be found online at:</p>
+
+  <p><a href="http://library.oscommerce.com/Online&amp;en&amp;oscom_2_3&amp;release_notes&amp;v2_3_3_2">http://library.oscommerce.com/Online&amp;en&amp;oscom_2_3&amp;release_notes&amp;v2_3_3_2</a></p>
+</div>
+
+<h2>Code Changes</h2>
+
+<p>The following changes have been applied:</p>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Bug</th>
+      <th>Severity</th>
+      <th>Committer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="success">
+      <td><a href="#upg1">PHP 5.5 Compatibility: Database Functions</a> (8 files)</td>
+      <td>Replace mysql function calls with mysqli functions. Add a mysqli compatibility layer for earlier PHP versions without native support for mysqli.</td>
+      <td></td>
+      <td>Low</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg2">Administrator Account Initialization</a> (1 file)</td>
+      <td>Prevent empty accounts being created when initializing an administrator account.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-149-bug-install-with-empty-administrator/">149</a></td>
+      <td>Low</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg3">tep_catalog_href_link()</a> (6 files)</td>
+      <td>Take the catalog HTTPS path into consideration in the Administration Tool tep_catalog_href_link() function.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-174-no-language-flags-in-admin/">174</a></td>
+      <td>Low</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg4">Administration Tool Navigation Menu</a> (1 file)</td>
+      <td>Collapse the Administration Tool navigation menu by default and use the default jQuery UI Accordion icons.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-405-close-all-accordions-when-step-into-admin-or-click-oscommerce-logo/">405</a></td>
+      <td>Low</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=241134" target="_blank">Gergely</a></td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg5">Google+ Social Bookmark Modules</a> (2 files)</td>
+      <td>Add the language to the Google+ 1 and Google+ Share buttons.</td>
+      <td></td>
+      <td>Low</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=241134" target="_blank">Gergely</a></td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg6">Template Modules</a> (1 file)</td>
+      <td>Only include template modules if their class files exist.</td>
+      <td></td>
+      <td>Low</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg7">Canonical Header Tag Module</a> (1 file)</td>
+      <td>Link to the main product information page and ignore product attribute combinations.</td>
+      <td></td>
+      <td>Low</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=69" target="_blank">Gary</a></td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg8">osCommerce Logo</a> (1 file)</td>
+      <td>Update the osCommerce logo image shown in the Administration Tool.</td>
+      <td></td>
+      <td>Low</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg9">Version Update</a> (1 file)</td>
+      <td>Update version to v2.3.3.2.</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>New Modules</h2>
+
+<p>The following modules have been added:</p>
+
+<table class="pretty">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Committer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="#upg10">Partner News Administration Tool Dashboard Module</a></td>
+      <td>Show the latest partner news in the Administration Tool Dashboard.</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
+    </tr>
+    <tr>
+      <td><a href="#upg11">Twitter Product Card Header Tag Module</a></td>
+      <td>Adds Twitter Product Card meta tags to the product information page.</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=69" target="_blank">Gary</a></td>
+    </tr>
+    <tr>
+      <td><a href="#upg12">Google AdWords Conversion Tracking Header Tag Module</a></td>
+      <td>Adds Google AdWords Conversion Tracking code to the checkout success page.</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=69" target="_blank">Gary</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>API Changes</h2>
+
+<p>The following API changes have been applied:</p>
+
+<table class="pretty">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Catalog HTTPS Directory for the Administration Tool</td>
+      <td>Added new DIR_WS_HTTPS_CATALOG Administration Tool configuration parameter to correctly link to the shop frontend when HTTPS links are used.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Language Definitions</h2>
+
+<p>The following languages definitions have been modified:</p>
+
+<table class="pretty">
+  <thead>
+    <tr>
+      <th>Language File</th>
+      <th>Definitions</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>modules/dashboard/d_partner_news.php</td>
+      <td>MODULE_ADMIN_DASHBOARD_PARTNER_NEWS_TITLE<br />
+          MODULE_ADMIN_DASHBOARD_PARTNER_NEWS_DESCRIPTION<br />
+          MODULE_ADMIN_DASHBOARD_PARTNER_NEWS_MORE_TITLE<br />
+          MODULE_ADMIN_DASHBOARD_PARTNER_NEWS_ERROR_JSON_DECODE</td>
+      <td>New<br />
+          New<br />
+          New<br />
+          New</td>
+    </tr>
+    <tr>
+      <td>modules/header_tags/ht_twitter_product_card.php</td>
+      <td>MODULE_HEADER_TAGS_TWITTER_PRODUCT_CARD_TITLE<br />
+          MODULE_HEADER_TAGS_TWITTER_PRODUCT_CARD_DESCRIPTION<br />
+          MODULE_HEADER_TAGS_TWITTER_PRODUCT_CARD_TEXT_PRE_ORDER<br />
+          MODULE_HEADER_TAGS_TWITTER_PRODUCT_CARD_TEXT_IN_STOCK<br />
+          MODULE_HEADER_TAGS_TWITTER_PRODUCT_CARD_TEXT_OUT_OF_STOCK<br />
+          MODULE_HEADER_TAGS_TWITTER_PRODUCT_CARD_TEXT_BUY_NOW<br />
+          MODULE_HEADER_TAGS_TWITTER_PRODUCT_CARD_TEXT_CONTACT_US</td>
+      <td>New<br />
+          New<br />
+          New<br />
+          New<br />
+          New<br />
+          New<br />
+          New</td>
+    </tr>
+    <tr>
+      <td>modules/header_tags/ht_google_adwords_conversion.php</td>
+      <td>MODULE_HEADER_TAGS_GOOGLE_ADWORDS_CONVERSION_TITLE<br />
+          MODULE_HEADER_TAGS_GOOGLE_ADWORDS_CONVERSION_DESCRIPTION</td>
+      <td>New<br />
+          New</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Upgrading from v2.3.3.1</h2>
+
+<h3>Modified Files</h3>
+
+<p>Files that have been modified in this release include:</p>
+
+<table class="pretty">
+  <thead>
+    <tr>
+      <th>Modified Files</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>admin/action_recorder.php</td>
+    </tr>
+    <tr>
+      <td>admin/categories.php</td>
+    </tr>
+    <tr>
+      <td>admin/images/oscommerce.png</td>
+    </tr>
+    <tr>
+      <td>admin/includes/column_left.php</td>
+    </tr>
+    <tr>
+      <td>admin/includes/configure.php</td>
+    </tr>
+    <tr>
+      <td>admin/includes/functions/database.php</td>
+    </tr>
+    <tr>
+      <td>admin/includes/functions/general.php</td>
+    </tr>
+    <tr>
+      <td>admin/includes/functions/html_output.php</td>
+    </tr>
+    <tr>
+      <td>admin/languages.php</td>
+    </tr>
+    <tr>
+      <td>admin/login.php</td>
+    </tr>
+    <tr>
+      <td>admin/manufacturers.php</td>
+    </tr>
+    <tr>
+      <td>admin/orders_status.php</td>
+    </tr>
+    <tr>
+      <td>includes/classes/osc_template.php</td>
+    </tr>
+    <tr>
+      <td>includes/functions/database.php</td>
+    </tr>
+    <tr>
+      <td>includes/modules/action_recorder/ar_admin_login.php</td>
+    </tr>
+    <tr>
+      <td>includes/modules/action_recorder/ar_contact_us.php</td>
+    </tr>
+    <tr>
+      <td>includes/modules/action_recorder/ar_reset_password.php</td>
+    </tr>
+    <tr>
+      <td>includes/modules/action_recorder/ar_tell_a_friend.php</td>
+    </tr>
+    <tr>
+      <td>includes/modules/header_tags/ht_canonical.php</td>
+    </tr>
+    <tr>
+      <td>includes/modules/social_bookmarks/sb_google_plus_one.php</td>
+    </tr>
+    <tr>
+      <td>includes/modules/social_bookmarks/sb_google_plus_share.php</td>
+    </tr>
+    <tr>
+      <td>includes/version.php</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>New Files</h3>
+
+<p>Files that have been added to this release include:</p>
+
+<table class="pretty">
+  <thead>
+    <tr>
+      <th>New Files</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>admin/includes/languages/english/modules/dashboard/d_partner_news.php</td>
+    </tr>
+    <tr>
+      <td>admin/includes/modules/dashboard/d_partner_news.php</td>
+    </tr>
+    <tr>
+      <td>includes/languages/english/modules/header_tags/ht_google_adwords_conversion.php</td>
+    </tr>
+    <tr>
+      <td>includes/languages/english/modules/header_tags/ht_twitter_product_card.php</td>
+    </tr>
+    <tr>
+      <td>includes/modules/header_tags/ht_google_adwords_conversion.php</td>
+    </tr>
+    <tr>
+      <td>includes/modules/header_tags/ht_twitter_product_card.php</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>File Changes</h2>
+
+<span id="upg1"></span>
+
+<h3 class="notoc">PHP 5.5 Compatibility: Database Functions (8 files)</h3>
+
+<p><i class="icon-file"></i> <strong>admin/action_recorder.php</strong></p>
+
+<p>around line 67, change:</p>
+
+{code}
+$expired_entries += mysql_affected_rows($db_link);
+{code}
+
+<p>to:</p>
+
+{code}
+$expired_entries += tep_db_affected_rows($db_link);
+{code}
+
+<p><i class="icon-file"></i> <strong>admin/includes/functions/database.php</strong></p>
+
+<p>change tep_db_connect() from:</p>
+
+{code}
+function tep_db_connect($server = DB_SERVER, $username = DB_SERVER_USERNAME, $password = DB_SERVER_PASSWORD, $database = DB_DATABASE, $link = 'db_link') {
+  global $$link;
+
+  if (USE_PCONNECT == 'true') {
+    $$link = mysql_pconnect($server, $username, $password);
+  } else {
+    $$link = mysql_connect($server, $username, $password);
+  }
+
+  if ($$link) mysql_select_db($database);
+
+  return $$link;
+}
+{code}
+
+<p>to:</p>
+
+{code}
+function tep_db_connect($server = DB_SERVER, $username = DB_SERVER_USERNAME, $password = DB_SERVER_PASSWORD, $database = DB_DATABASE, $link = 'db_link') {
+  global $$link;
+
+  if (USE_PCONNECT == 'true') {
+    $server = 'p:' . $server;
+  }
+
+  $$link = mysqli_connect($server, $username, $password, $database);
+
+  return $$link;
+}
+{code}
+
+<p>change tep_db_close() from:</p>
+
+{code}
+function tep_db_close($link = 'db_link') {
+  global $$link;
+
+  return mysql_close($$link);
+}
+{code}
+
+<p>to:</p>
+
+{code}
+function tep_db_close($link = 'db_link') {
+  global $$link;
+
+  return mysqli_close($$link);
+}
+{code}
+
+<p>change tep_db_query() from:</p>
+
+{code}
+function tep_db_query($query, $link = 'db_link') {
+  global $$link, $logger;
+
+  if (defined('STORE_DB_TRANSACTIONS') && (STORE_DB_TRANSACTIONS == 'true')) {
+    if (!is_object($logger)) $logger = new logger;
+    $logger->write($query, 'QUERY');
+  }
+
+  $result = mysql_query($query, $$link) or tep_db_error($query, mysql_errno(), mysql_error());
+
+  if (defined('STORE_DB_TRANSACTIONS') && (STORE_DB_TRANSACTIONS == 'true')) {
+    if (mysql_error()) $logger->write(mysql_error(), 'ERROR');
+  }
+
+  return $result;
+}
+{code}
+
+<p>to:</p>
+
+{code}
+function tep_db_query($query, $link = 'db_link') {
+  global $$link, $logger;
+
+  if (defined('STORE_DB_TRANSACTIONS') && (STORE_DB_TRANSACTIONS == 'true')) {
+    if (!is_object($logger)) $logger = new logger;
+    $logger->write($query, 'QUERY');
+  }
+
+  $result = mysqli_query($$link, $query) or tep_db_error($query, mysqli_errno($$link), mysqli_error($$link));
+
+  if (defined('STORE_DB_TRANSACTIONS') && (STORE_DB_TRANSACTIONS == 'true')) {
+    if (mysqli_error($$link)) $logger->write(mysqli_error($llink), 'ERROR');
+  }
+
+  return $result;
+}
+{code}
+
+<p>change tep_db_fetch_array() from:</p>
+
+{code}
+function tep_db_fetch_array($db_query) {
+  return mysql_fetch_array($db_query, MYSQL_ASSOC);
+}
+{code}
+
+<p>to:</p>
+
+{code}
+function tep_db_fetch_array($db_query) {
+  return mysqli_fetch_array($db_query, MYSQLI_ASSOC);
+}
+{code}
+
+<p>change tep_db_result() from:</p>
+
+{code}
+function tep_db_result($result, $row, $field = '') {
+  return mysql_result($result, $row, $field);
+}
+{code}
+
+<p>to:</p>
+
+{code}
+function tep_db_result($result, $row, $field = '') {
+  if ( $field === '' ) {
+    $field = 0;
+  }
+
+  tep_db_data_seek($result, $row);
+  $data = tep_db_fetch_array($result);
+
+  return $data[$field];
+}
+{code}
+
+<p>change tep_db_num_rows() from:</p>
+
+{code}
+function tep_db_num_rows($db_query) {
+  return mysql_num_rows($db_query);
+}
+{code}
+
+<p>to:</p>
+
+{code}
+function tep_db_num_rows($db_query) {
+  return mysqli_num_rows($db_query);
+}
+{code}
+
+<p>change tep_db_data_seek() from:</p>
+
+{code}
+function tep_db_data_seek($db_query, $row_number) {
+  return mysql_data_seek($db_query, $row_number);
+}
+{code}
+
+<p>to:</p>
+
+{code}
+function tep_db_data_seek($db_query, $row_number) {
+  return mysqli_data_seek($db_query, $row_number);
+}
+{code}
+
+<p>change tep_db_insert_id() from:</p>
+
+{code}
+function tep_db_insert_id($link = 'db_link') {
+  global $$link;
+
+  return mysql_insert_id($$link);
+}
+{code}
+
+<p>to:</p>
+
+{code}
+function tep_db_insert_id($link = 'db_link') {
+  global $$link;
+
+  return mysqli_insert_id($$link);
+}
+{code}
+
+<p>change tep_db_free_result() from:</p>
+
+{code}
+function tep_db_free_result($db_query) {
+  return mysql_free_result($db_query);
+}
+{code}
+
+<p>to:</p>
+
+{code}
+function tep_db_free_result($db_query) {
+  return mysqli_free_result($db_query);
+}
+{code}
+
+<p>change tep_db_fetch_fields() from:</p>
+
+{code}
+function tep_db_fetch_fields($db_query) {
+  return mysql_fetch_field($db_query);
+}
+{code}
+
+<p>to:</p>
+
+{code}
+function tep_db_fetch_fields($db_query) {
+  return mysqli_fetch_field($db_query);
+}
+{code}
+
+<p>change tep_db_input() from:</p>
+
+{code}
+function tep_db_input($string, $link = 'db_link') {
+  global $$link;
+
+  if (function_exists('mysql_real_escape_string')) {
+    return mysql_real_escape_string($string, $$link);
+  } elseif (function_exists('mysql_escape_string')) {
+    return mysql_escape_string($string);
+  }
+
+  return addslashes($string);
+}
+{code}
+
+<p>to:</p>
+
+{code}
+function tep_db_input($string, $link = 'db_link') {
+  global $$link;
+
+  return mysqli_real_escape_string($$link, $string);
+}
+{code}
+
+<p>at the end of the file, before the closing ?&gt; PHP tag, add:</p>
+
+{code}
+function tep_db_affected_rows($link = 'db_link') {
+  global $$link;
+
+  return mysqli_affected_rows($$link);
+}
+
+function tep_db_get_server_info($link = 'db_link') {
+  global $$link;
+
+  return mysqli_get_server_info($$link);
+}
+
+if ( !function_exists('mysqli_connect') ) {
+  define('MYSQLI_ASSOC', MYSQL_ASSOC);
+
+  function mysqli_connect($server, $username, $password, $database) {
+    if ( substr($server, 0, 2) == 'p:' ) {
+      $link = mysql_pconnect(substr($server, 2), $username, $password);
+    } else {
+      $link = mysql_connect($server, $username, $password);
+    }
+
+    if ( $link ) {
+      mysql_select_db($database, $link);
+    }
+
+    return $link;
+  }
+
+  function mysqli_close($link) {
+    return mysql_close($link);
+  }
+
+  function mysqli_query($link, $query) {
+    return mysql_query($query, $link);
+  }
+
+  function mysqli_errno($link = null) {
+    return mysql_errno($link);
+  }
+
+  function mysqli_error($link = null) {
+    return mysql_error($link);
+  }
+
+  function mysqli_fetch_array($query, $type) {
+    return mysql_fetch_array($query, $type);
+  }
+
+  function mysqli_num_rows($query) {
+    return mysql_num_rows($query);
+  }
+
+  function mysqli_data_seek($query, $offset) {
+    return mysql_data_seek($query, $offset);
+  }
+
+  function mysqli_insert_id($link) {
+    return mysql_insert_id($link);
+  }
+
+  function mysqli_free_result($query) {
+    return mysql_free_result($query);
+  }
+
+  function mysqli_fetch_field($query) {
+    return mysql_fetch_field($query);
+  }
+
+  function mysqli_real_escape_string($link, $string) {
+    if ( function_exists('mysql_real_escape_string') ) {
+      return mysql_real_escape_string($string, $link);
+    } elseif ( function_exists('mysql_escape_string') ) {
+      return mysql_escape_string($string);
+    }
+
+    return addslashes($string);
+  }
+
+  function mysqli_affected_rows($link) {
+    return mysql_affected_rows($link);
+  }
+
+  function mysqli_get_server_info($link) {
+    return mysql_get_server_info($link);
+  }
+}
+{code}
+
+<p><i class="icon-file"></i> <strong>admin/includes/functions/general.php</strong></p>
+
+<p>change tep_get_system_information() from:</p>
+
+{code}
+function tep_get_system_information() {
+  global $HTTP_SERVER_VARS;
+
+  $db_query = tep_db_query("select now() as datetime");
+  $db = tep_db_fetch_array($db_query);
+
+  @list($system, $host, $kernel) = preg_split('/[\s,]+/', @exec('uname -a'), 5);
+
+  $data = array();
+
+  $data['oscommerce']  = array('version' => tep_get_version());
+
+  $data['system'] = array('date' => date('Y-m-d H:i:s O T'),
+                          'os' => PHP_OS,
+                          'kernel' => $kernel,
+                          'uptime' => @exec('uptime'),
+                          'http_server' => $HTTP_SERVER_VARS['SERVER_SOFTWARE']);
+
+  $data['mysql']  = array('version' => (function_exists('mysql_get_server_info') ? mysql_get_server_info() : ''),
+                          'date' => $db['datetime']);
+
+  $data['php']    = array('version' => PHP_VERSION,
+                          'zend' => zend_version(),
+                          'sapi' => PHP_SAPI,
+                          'int_size'  => defined('PHP_INT_SIZE') ? PHP_INT_SIZE : '',
+                          'safe_mode' => (int) @ini_get('safe_mode'),
+                          'open_basedir' => (int) @ini_get('open_basedir'),
+                          'memory_limit' => @ini_get('memory_limit'),
+                          'error_reporting' => error_reporting(),
+                          'display_errors' => (int)@ini_get('display_errors'),
+                          'allow_url_fopen' => (int) @ini_get('allow_url_fopen'),
+                          'allow_url_include' => (int) @ini_get('allow_url_include'),
+                          'file_uploads' => (int) @ini_get('file_uploads'),
+                          'upload_max_filesize' => @ini_get('upload_max_filesize'),
+                          'post_max_size' => @ini_get('post_max_size'),
+                          'disable_functions' => @ini_get('disable_functions'),
+                          'disable_classes' => @ini_get('disable_classes'),
+                          'enable_dl' => (int) @ini_get('enable_dl'),
+                          'magic_quotes_gpc' => (int) @ini_get('magic_quotes_gpc'),
+                          'register_globals' => (int) @ini_get('register_globals'),
+                          'filter.default'   => @ini_get('filter.default'),
+                          'zend.ze1_compatibility_mode' => (int) @ini_get('zend.ze1_compatibility_mode'),
+                          'unicode.semantics' => (int) @ini_get('unicode.semantics'),
+                          'zend_thread_safty' => (int) function_exists('zend_thread_id'),
+                          'extensions' => get_loaded_extensions());
+
+  return $data;
+}
+{code}
+
+<p>to:</p>
+
+{code}
+function tep_get_system_information() {
+  global $HTTP_SERVER_VARS;
+
+  $db_query = tep_db_query("select now() as datetime");
+  $db = tep_db_fetch_array($db_query);
+
+  @list($system, $host, $kernel) = preg_split('/[\s,]+/', @exec('uname -a'), 5);
+
+  $data = array();
+
+  $data['oscommerce']  = array('version' => tep_get_version());
+
+  $data['system'] = array('date' => date('Y-m-d H:i:s O T'),
+                          'os' => PHP_OS,
+                          'kernel' => $kernel,
+                          'uptime' => @exec('uptime'),
+                          'http_server' => $HTTP_SERVER_VARS['SERVER_SOFTWARE']);
+
+  $data['mysql']  = array('version' => tep_db_get_server_info(),
+                          'date' => $db['datetime']);
+
+  $data['php']    = array('version' => PHP_VERSION,
+                          'zend' => zend_version(),
+                          'sapi' => PHP_SAPI,
+                          'int_size'  => defined('PHP_INT_SIZE') ? PHP_INT_SIZE : '',
+                          'safe_mode' => (int) @ini_get('safe_mode'),
+                          'open_basedir' => (int) @ini_get('open_basedir'),
+                          'memory_limit' => @ini_get('memory_limit'),
+                          'error_reporting' => error_reporting(),
+                          'display_errors' => (int)@ini_get('display_errors'),
+                          'allow_url_fopen' => (int) @ini_get('allow_url_fopen'),
+                          'allow_url_include' => (int) @ini_get('allow_url_include'),
+                          'file_uploads' => (int) @ini_get('file_uploads'),
+                          'upload_max_filesize' => @ini_get('upload_max_filesize'),
+                          'post_max_size' => @ini_get('post_max_size'),
+                          'disable_functions' => @ini_get('disable_functions'),
+                          'disable_classes' => @ini_get('disable_classes'),
+                          'enable_dl' => (int) @ini_get('enable_dl'),
+                          'magic_quotes_gpc' => (int) @ini_get('magic_quotes_gpc'),
+                          'register_globals' => (int) @ini_get('register_globals'),
+                          'filter.default'   => @ini_get('filter.default'),
+                          'zend.ze1_compatibility_mode' => (int) @ini_get('zend.ze1_compatibility_mode'),
+                          'unicode.semantics' => (int) @ini_get('unicode.semantics'),
+                          'zend_thread_safty' => (int) function_exists('zend_thread_id'),
+                          'extensions' => get_loaded_extensions());
+
+  return $data;
+}
+{code}
+
+<p><i class="icon-file"></i> <strong>includes/functions/database.php</strong></p>
+
+<p>change tep_db_connect() from:</p>
+
+{code}
+function tep_db_connect($server = DB_SERVER, $username = DB_SERVER_USERNAME, $password = DB_SERVER_PASSWORD, $database = DB_DATABASE, $link = 'db_link') {
+  global $$link;
+
+  if (USE_PCONNECT == 'true') {
+    $$link = mysql_pconnect($server, $username, $password);
+  } else {
+    $$link = mysql_connect($server, $username, $password);
+  }
+
+  if ($$link) mysql_select_db($database);
+
+  return $$link;
+}
+{code}
+
+<p>to:</p>
+
+{code}
+function tep_db_connect($server = DB_SERVER, $username = DB_SERVER_USERNAME, $password = DB_SERVER_PASSWORD, $database = DB_DATABASE, $link = 'db_link') {
+  global $$link;
+
+  if (USE_PCONNECT == 'true') {
+    $server = 'p:' . $server;
+  }
+
+  $$link = mysqli_connect($server, $username, $password, $database);
+
+  return $$link;
+}
+{code}
+
+<p>change tep_db_close() from:</p>
+
+{code}
+function tep_db_close($link = 'db_link') {
+  global $$link;
+
+  return mysql_close($$link);
+}
+{code}
+
+<p>to:</p>
+
+{code}
+function tep_db_close($link = 'db_link') {
+  global $$link;
+
+  return mysqli_close($$link);
+}
+{code}
+
+<p>change tep_db_query() from:</p>
+
+{code}
+function tep_db_query($query, $link = 'db_link') {
+  global $$link;
+
+  if (defined('STORE_DB_TRANSACTIONS') && (STORE_DB_TRANSACTIONS == 'true')) {
+    error_log('QUERY ' . $query . "\n", 3, STORE_PAGE_PARSE_TIME_LOG);
+  }
+
+  $result = mysql_query($query, $$link) or tep_db_error($query, mysql_errno(), mysql_error());
+
+  if (defined('STORE_DB_TRANSACTIONS') && (STORE_DB_TRANSACTIONS == 'true')) {
+     $result_error = mysql_error();
+     error_log('RESULT ' . $result . ' ' . $result_error . "\n", 3, STORE_PAGE_PARSE_TIME_LOG);
+  }
+
+  return $result;
+}
+{code}
+
+<p>to:</p>
+
+{code}
+function tep_db_query($query, $link = 'db_link') {
+  global $$link;
+
+  if (defined('STORE_DB_TRANSACTIONS') && (STORE_DB_TRANSACTIONS == 'true')) {
+    error_log('QUERY ' . $query . "\n", 3, STORE_PAGE_PARSE_TIME_LOG);
+  }
+
+  $result = mysqli_query($$link, $query) or tep_db_error($query, mysqli_errno($$link), mysqli_error($$link));
+
+  if (defined('STORE_DB_TRANSACTIONS') && (STORE_DB_TRANSACTIONS == 'true')) {
+     $result_error = mysqli_error($$link);
+     error_log('RESULT ' . $result . ' ' . $result_error . "\n", 3, STORE_PAGE_PARSE_TIME_LOG);
+  }
+
+  return $result;
+}
+{code}
+
+<p>change tep_db_fetch_array() from:</p>
+
+{code}
+function tep_db_fetch_array($db_query) {
+  return mysql_fetch_array($db_query, MYSQL_ASSOC);
+}
+{code}
+
+<p>to:</p>
+
+{code}
+function tep_db_fetch_array($db_query) {
+  return mysqli_fetch_array($db_query, MYSQLI_ASSOC);
+}
+{code}
+
+<p>change tep_db_num_rows() from:</p>
+
+{code}
+function tep_db_num_rows($db_query) {
+  return mysql_num_rows($db_query);
+}
+{code}
+
+<p>to:</p>
+
+{code}
+function tep_db_num_rows($db_query) {
+  return mysqli_num_rows($db_query);
+}
+{code}
+
+<p>change tep_db_data_seek() from:</p>
+
+{code}
+function tep_db_data_seek($db_query, $row_number) {
+  return mysql_data_seek($db_query, $row_number);
+}
+{code}
+
+<p>to:</p>
+
+{code}
+function tep_db_data_seek($db_query, $row_number) {
+  return mysqli_data_seek($db_query, $row_number);
+}
+{code}
+
+<p>change tep_db_insert_id() from:</p>
+
+{code}
+function tep_db_insert_id($link = 'db_link') {
+  global $$link;
+
+  return mysql_insert_id($$link);
+}
+{code}
+
+<p>to:</p>
+
+{code}
+function tep_db_insert_id($link = 'db_link') {
+  global $$link;
+
+  return mysqli_insert_id($$link);
+}
+{code}
+
+<p>change tep_db_free_result() from:</p>
+
+{code}
+function tep_db_free_result($db_query) {
+  return mysql_free_result($db_query);
+}
+{code}
+
+<p>to:</p>
+
+{code}
+function tep_db_free_result($db_query) {
+  return mysqli_free_result($db_query);
+}
+{code}
+
+<p>change tep_db_fetch_fields() from:</p>
+
+{code}
+function tep_db_fetch_fields($db_query) {
+  return mysql_fetch_field($db_query);
+}
+{code}
+
+<p>to:</p>
+
+{code}
+function tep_db_fetch_fields($db_query) {
+  return mysqli_fetch_field($db_query);
+}
+{code}
+
+<p>change tep_db_input() from:</p>
+
+{code}
+function tep_db_input($string, $link = 'db_link') {
+  global $$link;
+
+  if (function_exists('mysql_real_escape_string')) {
+    return mysql_real_escape_string($string, $$link);
+  } elseif (function_exists('mysql_escape_string')) {
+    return mysql_escape_string($string);
+  }
+
+  return addslashes($string);
+}
+{code}
+
+<p>to:</p>
+
+{code}
+function tep_db_input($string, $link = 'db_link') {
+  global $$link;
+
+  return mysqli_real_escape_string($$link, $string);
+}
+{code}
+
+<p>at the end of the file, before the closing ?&gt; PHP tag, add:</p>
+
+{code}
+function tep_db_affected_rows($link = 'db_link') {
+  global $$link;
+
+  return mysqli_affected_rows($$link);
+}
+
+function tep_db_get_server_info($link = 'db_link') {
+  global $$link;
+
+  return mysqli_get_server_info($$link);
+}
+
+if ( !function_exists('mysqli_connect') ) {
+  define('MYSQLI_ASSOC', MYSQL_ASSOC);
+
+  function mysqli_connect($server, $username, $password, $database) {
+    if ( substr($server, 0, 2) == 'p:' ) {
+      $link = mysql_pconnect(substr($server, 2), $username, $password);
+    } else {
+      $link = mysql_connect($server, $username, $password);
+    }
+
+    if ( $link ) {
+      mysql_select_db($database, $link);
+    }
+
+    return $link;
+  }
+
+  function mysqli_close($link) {
+    return mysql_close($link);
+  }
+
+  function mysqli_query($link, $query) {
+    return mysql_query($query, $link);
+  }
+
+  function mysqli_errno($link = null) {
+    return mysql_errno($link);
+  }
+
+  function mysqli_error($link = null) {
+    return mysql_error($link);
+  }
+
+  function mysqli_fetch_array($query, $type) {
+    return mysql_fetch_array($query, $type);
+  }
+
+  function mysqli_num_rows($query) {
+    return mysql_num_rows($query);
+  }
+
+  function mysqli_data_seek($query, $offset) {
+    return mysql_data_seek($query, $offset);
+  }
+
+  function mysqli_insert_id($link) {
+    return mysql_insert_id($link);
+  }
+
+  function mysqli_free_result($query) {
+    return mysql_free_result($query);
+  }
+
+  function mysqli_fetch_field($query) {
+    return mysql_fetch_field($query);
+  }
+
+  function mysqli_real_escape_string($link, $string) {
+    if ( function_exists('mysql_real_escape_string') ) {
+      return mysql_real_escape_string($string, $link);
+    } elseif ( function_exists('mysql_escape_string') ) {
+      return mysql_escape_string($string);
+    }
+
+    return addslashes($string);
+  }
+
+  function mysqli_affected_rows($link) {
+    return mysql_affected_rows($link);
+  }
+
+  function mysqli_get_server_info($link) {
+    return mysql_get_server_info($link);
+  }
+}
+{code}
+
+<p><i class="icon-file"></i> <strong>includes/modules/action_recorder/ar_admin_login.php</strong></p>
+
+<p>change expireEntries() from:</p>
+
+{code}
+function expireEntries() {
+  global $db_link;
+
+  tep_db_query("delete from " . TABLE_ACTION_RECORDER . " where module = '" . $this->code . "' and date_added < date_sub(now(), interval " . (int)$this->minutes  . " minute)");
+
+  return mysql_affected_rows($db_link);
+}
+{code}
+
+<p>to:</p>
+
+{code}
+function expireEntries() {
+  global $db_link;
+
+  tep_db_query("delete from " . TABLE_ACTION_RECORDER . " where module = '" . $this->code . "' and date_added < date_sub(now(), interval " . (int)$this->minutes  . " minute)");
+
+  return tep_db_affected_rows($db_link);
+}
+{code}
+
+<p><i class="icon-file"></i> <strong>includes/modules/action_recorder/ar_contact_us.php</strong></p>
+
+<p>change expireEntries() from:</p>
+
+{code}
+function expireEntries() {
+  global $db_link;
+
+  tep_db_query("delete from " . TABLE_ACTION_RECORDER . " where module = '" . $this->code . "' and date_added < date_sub(now(), interval " . (int)$this->minutes  . " minute)");
+
+  return mysql_affected_rows($db_link);
+}
+{code}
+
+<p>to:</p>
+
+{code}
+function expireEntries() {
+  global $db_link;
+
+  tep_db_query("delete from " . TABLE_ACTION_RECORDER . " where module = '" . $this->code . "' and date_added < date_sub(now(), interval " . (int)$this->minutes  . " minute)");
+
+  return tep_db_affected_rows($db_link);
+}
+{code}
+
+<p><i class="icon-file"></i> <strong>includes/modules/action_recorder/ar_reset_password.php</strong></p>
+
+<p>change expireEntries() from:</p>
+
+{code}
+function expireEntries() {
+  global $db_link;
+
+  tep_db_query("delete from " . TABLE_ACTION_RECORDER . " where module = '" . $this->code . "' and date_added < date_sub(now(), interval " . (int)$this->minutes  . " minute)");
+
+  return mysql_affected_rows($db_link);
+}
+{code}
+
+<p>to:</p>
+
+{code}
+function expireEntries() {
+  global $db_link;
+
+  tep_db_query("delete from " . TABLE_ACTION_RECORDER . " where module = '" . $this->code . "' and date_added < date_sub(now(), interval " . (int)$this->minutes  . " minute)");
+
+  return tep_db_affected_rows($db_link);
+}
+{code}
+
+<p><i class="icon-file"></i> <strong>includes/modules/action_recorder/ar_tell_a_friend.php</strong></p>
+
+<p>change expireEntries() from:</p>
+
+{code}
+function expireEntries() {
+  global $db_link;
+
+  tep_db_query("delete from " . TABLE_ACTION_RECORDER . " where module = '" . $this->code . "' and date_added < date_sub(now(), interval " . (int)$this->minutes  . " minute)");
+
+  return mysql_affected_rows($db_link);
+}
+{code}
+
+<p>to:</p>
+
+{code}
+function expireEntries() {
+  global $db_link;
+
+  tep_db_query("delete from " . TABLE_ACTION_RECORDER . " where module = '" . $this->code . "' and date_added < date_sub(now(), interval " . (int)$this->minutes  . " minute)");
+
+  return tep_db_affected_rows($db_link);
+}
+{code}
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/e79b9c6eb24f2a75001f170e3e65b53fc5ff1b41" target="_blank">View online at GitHub</a></p>
+
+<span id="upg2"></span>
+
+<h3 class="notoc">Administrator Account Initialization (1 file)</h3>
+
+<p><i class="icon-file"></i> <strong>admin/login.php</strong></p>
+
+<p>around line 103, change from:</p>
+
+{code}
+tep_db_query("insert into " . TABLE_ADMINISTRATORS . " (user_name, user_password) values ('" . tep_db_input($username) . "', '" . tep_db_input(tep_encrypt_password($password)) . "')");
+{code}
+
+<p>to:</p>
+
+{code}
+if ( !empty($username) ) {
+  tep_db_query("insert into " . TABLE_ADMINISTRATORS . " (user_name, user_password) values ('" . tep_db_input($username) . "', '" . tep_db_input(tep_encrypt_password($password)) . "')");
+}
+{code}
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/9916dc54e3f4fa628c2e1cce5e8cedc8048197ec" target="_blank">View online at GitHub</a></p>
+
+<span id="upg3"></span>
+
+<h3 class="notoc">tep_catalog_href_link() (6 files)</h3>
+
+<p><i class="icon-file"></i> <strong>admin/categories.php</strong></p>
+
+<p>around line 534, change from:</p>
+
+{code}
+<td class="main"><?php echo tep_image(DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . tep_draw_input_field('products_name[' . $languages[$i]['id'] . ']', (empty($pInfo->products_id) ? '' : tep_get_products_name($pInfo->products_id, $languages[$i]['id']))); ?></td>
+{code}
+
+<p>to:</p>
+
+{code}
+<td class="main"><?php echo tep_image(tep_catalog_href_link(DIR_WS_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], '', 'SSL'), $languages[$i]['name']) . '&nbsp;' . tep_draw_input_field('products_name[' . $languages[$i]['id'] . ']', (empty($pInfo->products_id) ? '' : tep_get_products_name($pInfo->products_id, $languages[$i]['id']))); ?></td>
+{code}
+
+<p>around line 567, change from:</p>
+
+{code}
+<td class="main" valign="top"><?php echo tep_image(DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']); ?>&nbsp;</td>
+{code}
+
+<p>to:</p>
+
+{code}
+<td class="main" valign="top"><?php echo tep_image(tep_catalog_href_link(DIR_WS_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], '', 'SSL'), $languages[$i]['name']); ?>&nbsp;</td>
+{code}
+
+<p>around line 668, change from:</p>
+
+{code}
+<td class="main"><?php echo tep_image(DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . tep_draw_input_field('products_url[' . $languages[$i]['id'] . ']', (isset($products_url[$languages[$i]['id']]) ? stripslashes($products_url[$languages[$i]['id']]) : tep_get_products_url($pInfo->products_id, $languages[$i]['id']))); ?></td>
+{code}
+
+<p>to:</p>
+
+{code}
+<td class="main"><?php echo tep_image(tep_catalog_href_link(DIR_WS_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], '', 'SSL'), $languages[$i]['name']) . '&nbsp;' . tep_draw_input_field('products_url[' . $languages[$i]['id'] . ']', (isset($products_url[$languages[$i]['id']]) ? stripslashes($products_url[$languages[$i]['id']]) : tep_get_products_url($pInfo->products_id, $languages[$i]['id']))); ?></td>
+{code}
+
+<p>around line 715, change from:</p>
+
+{code}
+<td class="pageHeading"><?php echo tep_image(DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . $pInfo->products_name; ?></td>
+{code}
+
+<p>to:</p>
+
+{code}
+<td class="pageHeading"><?php echo tep_image(tep_catalog_href_link(DIR_WS_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], '', 'SSL'), $languages[$i]['name']) . '&nbsp;' . $pInfo->products_name; ?></td>
+{code}
+
+<p>around line 935, change from:</p>
+
+{code}
+$category_inputs_string .= '<br />' . tep_image(DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . tep_draw_input_field('categories_name[' . $languages[$i]['id'] . ']');
+{code}
+
+<p>to:</p>
+
+{code}
+$category_inputs_string .= '<br />' . tep_image(tep_catalog_href_link(DIR_WS_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], '', 'SSL'), $languages[$i]['name']) . '&nbsp;' . tep_draw_input_field('categories_name[' . $languages[$i]['id'] . ']');
+{code}
+
+<p>around line 952, change from:</p>
+
+{code}
+$category_inputs_string .= '<br />' . tep_image(DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . tep_draw_input_field('categories_name[' . $languages[$i]['id'] . ']', tep_get_category_name($cInfo->categories_id, $languages[$i]['id']));
+{code}
+
+<p>to:</p>
+
+{code}
+$category_inputs_string .= '<br />' . tep_image(tep_catalog_href_link(DIR_WS_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], '', 'SSL'), $languages[$i]['name']) . '&nbsp;' . tep_draw_input_field('categories_name[' . $languages[$i]['id'] . ']', tep_get_category_name($cInfo->categories_id, $languages[$i]['id']));
+{code}
+
+<p><i class="icon-file"></i> <strong>admin/includes/configure.php</strong></p>
+
+<p>add the DIR_WS_HTTPS_CATALOG configuration parameter with the same value from includes/configure.php:</p>
+
+{code}
+define('DIR_WS_HTTPS_CATALOG', '/shop/');
+{code}
+
+<p><i class="icon-file"></i> <strong>admin/includes/functions/html_output.php</strong></p>
+
+<p>change tep_catalog_href_link() from:</p>
+
+{code}
+function tep_catalog_href_link($page = '', $parameters = '', $connection = 'NONSSL') {
+  if ($connection == 'NONSSL') {
+    $link = HTTP_CATALOG_SERVER . DIR_WS_CATALOG;
+  } elseif ($connection == 'SSL') {
+    if (ENABLE_SSL_CATALOG == 'true') {
+      $link = HTTPS_CATALOG_SERVER . DIR_WS_CATALOG;
+    } else {
+      $link = HTTP_CATALOG_SERVER . DIR_WS_CATALOG;
+    }
+  } else {
+    die('</td></tr></table></td></tr></table><br /><br /><font color="#ff0000"><strong>Error!</strong></font><br /><br /><strong>Unable to determine connection method on a link!<br /><br />Known methods: NONSSL SSL<br /><br />Function used:<br /><br />tep_href_link(\'' . $page . '\', \'' . $parameters . '\', \'' . $connection . '\')</strong>');
+  }
+  if ($parameters == '') {
+    $link .= $page;
+  } else {
+    $link .= $page . '?' . $parameters;
+  }
+
+  while ( (substr($link, -1) == '&') || (substr($link, -1) == '?') ) $link = substr($link, 0, -1);
+
+  return $link;
+}
+{code}
+
+<p>to:</p>
+
+{code}
+function tep_catalog_href_link($page = '', $parameters = '', $connection = 'NONSSL') {
+  if ($connection == 'NONSSL') {
+    $link = HTTP_CATALOG_SERVER . DIR_WS_CATALOG;
+  } elseif ($connection == 'SSL') {
+    if (ENABLE_SSL_CATALOG == 'true') {
+      $link = HTTPS_CATALOG_SERVER . (defined('DIR_WS_HTTPS_CATALOG') ? DIR_WS_HTTPS_CATALOG : DIR_WS_CATALOG);
+    } else {
+      $link = HTTP_CATALOG_SERVER . DIR_WS_CATALOG;
+    }
+  } else {
+    die('</td></tr></table></td></tr></table><br /><br /><font color="#ff0000"><strong>Error!</strong></font><br /><br /><strong>Unable to determine connection method on a link!<br /><br />Known methods: NONSSL SSL<br /><br />Function used:<br /><br />tep_href_link(\'' . $page . '\', \'' . $parameters . '\', \'' . $connection . '\')</strong>');
+  }
+  if ($parameters == '') {
+    $link .= $page;
+  } else {
+    $link .= $page . '?' . $parameters;
+  }
+
+  while ( (substr($link, -1) == '&') || (substr($link, -1) == '?') ) $link = substr($link, 0, -1);
+
+  return $link;
+}
+{code}
+
+<p><i class="icon-file"></i> <strong>admin/languages.php</strong></p>
+
+<p>around line 233, change from:</p>
+
+{code}
+$contents[] = array('text' => '<br />' . tep_image(DIR_WS_CATALOG_LANGUAGES . $lInfo->directory . '/images/' . $lInfo->image, $lInfo->name));
+{code}
+
+<p>to:</p>
+
+{code}
+$contents[] = array('text' => '<br />' . tep_image(tep_catalog_href_link(DIR_WS_LANGUAGES . $lInfo->directory . '/images/' . $lInfo->image, '', 'SSL'), $lInfo->name));
+{code}
+
+<p><i class="icon-file"></i> <strong>admin/manufacturers.php</strong></p>
+
+<p>around line 185, change from:</p>
+
+{code}
+$manufacturer_inputs_string .= '<br />' . tep_image(DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . tep_draw_input_field('manufacturers_url[' . $languages[$i]['id'] . ']');
+{code}
+
+<p>to:</p>
+
+{code}
+$manufacturer_inputs_string .= '<br />' . tep_image(tep_catalog_href_link(DIR_WS_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], '', 'SSL'), $languages[$i]['name']) . '&nbsp;' . tep_draw_input_field('manufacturers_url[' . $languages[$i]['id'] . ']');
+{code}
+
+<p>around line 202, change from:</p>
+
+{code}
+$manufacturer_inputs_string .= '<br />' . tep_image(DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . tep_draw_input_field('manufacturers_url[' . $languages[$i]['id'] . ']', tep_get_manufacturer_url($mInfo->manufacturers_id, $languages[$i]['id']));
+{code}
+
+<p>to:</p>
+
+{code}
+$manufacturer_inputs_string .= '<br />' . tep_image(tep_catalog_href_link(DIR_WS_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], '', 'SSL'), $languages[$i]['name']) . '&nbsp;' . tep_draw_input_field('manufacturers_url[' . $languages[$i]['id'] . ']', tep_get_manufacturer_url($mInfo->manufacturers_id, $languages[$i]['id']));
+{code}
+
+<p><i class="icon-file"></i> <strong>admin/orders_status.php</strong></p>
+
+<p>around line 177, change from:</p>
+
+{code}
+$orders_status_inputs_string .= '<br />' . tep_image(DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . tep_draw_input_field('orders_status_name[' . $languages[$i]['id'] . ']');
+{code}
+
+<p>to:</p>
+
+{code}
+$orders_status_inputs_string .= '<br />' . tep_image(tep_catalog_href_link(DIR_WS_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], '', 'SSL'), $languages[$i]['name']) . '&nbsp;' . tep_draw_input_field('orders_status_name[' . $languages[$i]['id'] . ']');
+{code}
+
+<p>around line 195, change from:</p>
+
+{code}
+$orders_status_inputs_string .= '<br />' . tep_image(DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . tep_draw_input_field('orders_status_name[' . $languages[$i]['id'] . ']', tep_get_orders_status_name($oInfo->orders_status_id, $languages[$i]['id']));
+{code}
+
+<p>to:</p>
+
+{code}
+$orders_status_inputs_string .= '<br />' . tep_image(tep_catalog_href_link(DIR_WS_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], '', 'SSL'), $languages[$i]['name']) . '&nbsp;' . tep_draw_input_field('orders_status_name[' . $languages[$i]['id'] . ']', tep_get_orders_status_name($oInfo->orders_status_id, $languages[$i]['id']));
+{code}
+
+<p>around line 221, change from:</p>
+
+{code}
+$orders_status_inputs_string .= '<br />' . tep_image(DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . tep_get_orders_status_name($oInfo->orders_status_id, $languages[$i]['id']);
+{code}
+
+<p>to:</p>
+
+{code}
+$orders_status_inputs_string .= '<br />' . tep_image(tep_catalog_href_link(DIR_WS_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], '', 'SSL'), $languages[$i]['name']) . '&nbsp;' . tep_get_orders_status_name($oInfo->orders_status_id, $languages[$i]['id']);
+{code}
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/093dec6e243fe44f639170438c05f06083f5f77b" target="_blank">View online at GitHub</a></p>
+
+<span id="upg4"></span>
+
+<h3 class="notoc">Administration Tool Navigation Menu (1 file)</h3>
+
+<p><i class="icon-file"></i> <strong>admin/includes/column_left.php</strong></p>
+
+<p>around line 43, change the javascript block from:</p>
+
+{code}
+<script type="text/javascript">
+$('#adminAppMenu').accordion({
+  autoHeight: false,
+  icons: {
+    'header': 'ui-icon-plus',
+    'headerSelected': 'ui-icon-minus'
+  }
+
+<?php
+    $counter = 0;
+    foreach ($cl_box_groups as $groups) {
+      foreach ($groups['apps'] as $app) {
+        if ($app['code'] == $PHP_SELF) {
+          echo ',active: ' . $counter;
+          break;
+        }
+      }
+
+      $counter++;
+    }
+?>
+
+});
+</script>
+{code}
+
+<p>to:</p>
+
+{code}
+<script type="text/javascript">
+$('#adminAppMenu').accordion({
+  autoHeight: false,
+  collapsible: true,
+
+<?php
+    $counter = 0;
+    foreach ($cl_box_groups as $groups) {
+      foreach ($groups['apps'] as $app) {
+        if ($app['code'] == $PHP_SELF) {
+          break 2;
+        }
+      }
+
+      $counter++;
+    }
+
+    echo 'active: ' . (isset($app) && ($app['code'] == $PHP_SELF) ? $counter : 'false');
+?>
+
+});
+</script>
+{code}
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/ea7422a765e873dc5dd382b6f2102860486c4e60" target="_blank">View online at GitHub</a></p>
+
+<span id="upg5"></span>
+
+<h3 class="notoc">Google+ Social Bookmark Modules (2 files)</h3>
+
+<p><i class="icon-file"></i> <strong>includes/modules/social_bookmarks/sb_google_plus_one.php</strong></p>
+
+<p>change getOutput() from:</p>
+
+{code}
+function getOutput() {
+  global $HTTP_GET_VARS;
+
+  $output = '<div class="g-plusone" data-href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $HTTP_GET_VARS['products_id'], 'NONSSL', false) . '" data-size="' . strtolower(MODULE_SOCIAL_BOOKMARKS_GOOGLE_PLUS_ONE_SIZE) . '" data-annotation="' . strtolower(MODULE_SOCIAL_BOOKMARKS_GOOGLE_PLUS_ONE_ANNOTATION) . '"';
+
+  if (MODULE_SOCIAL_BOOKMARKS_GOOGLE_PLUS_ONE_ANNOTATION == 'Inline') {
+    $output.= ' data-width="' . (int)MODULE_SOCIAL_BOOKMARKS_GOOGLE_PLUS_ONE_WIDTH . '" data-align="' . strtolower(MODULE_SOCIAL_BOOKMARKS_GOOGLE_PLUS_ONE_ALIGN) . '"';
+  }
+
+  $output .= '></div>';
+
+  $output .= '<script type="text/javascript">
+  (function() {
+    var po = document.createElement(\'script\'); po.type = \'text/javascript\'; po.async = true;
+    po.src = \'https://apis.google.com/js/plusone.js\';
+    var s = document.getElementsByTagName(\'script\')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>';
+
+  return $output;
+}
+{code}
+
+<p>to:</p>
+
+{code}
+function getOutput() {
+  global $HTTP_GET_VARS, $lng, $languages_id;
+
+  if (!isset($lng) || (isset($lng) && !is_object($lng))) {
+    include(DIR_WS_CLASSES . 'language.php');
+    $lng = new language;
+  }
+
+  foreach ($lng->catalog_languages as $lkey => $lvalue) {
+    if ($lvalue['id'] == $languages_id) {
+      $language_code = $lkey;
+      break;
+    }
+  }
+
+  $output = '<div class="g-plusone" data-href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $HTTP_GET_VARS['products_id'], 'NONSSL', false) . '" data-size="' . strtolower(MODULE_SOCIAL_BOOKMARKS_GOOGLE_PLUS_ONE_SIZE) . '" data-annotation="' . strtolower(MODULE_SOCIAL_BOOKMARKS_GOOGLE_PLUS_ONE_ANNOTATION) . '"';
+
+  if (MODULE_SOCIAL_BOOKMARKS_GOOGLE_PLUS_ONE_ANNOTATION == 'Inline') {
+    $output.= ' data-width="' . (int)MODULE_SOCIAL_BOOKMARKS_GOOGLE_PLUS_ONE_WIDTH . '" data-align="' . strtolower(MODULE_SOCIAL_BOOKMARKS_GOOGLE_PLUS_ONE_ALIGN) . '"';
+  }
+
+  $output .= '></div>';
+
+  $output .= '<script type="text/javascript">
+  if ( typeof window.___gcfg == "undefined" ) {
+    window.___gcfg = { };
+  }
+
+  if ( typeof window.___gcfg.lang == "undefined" ) {
+    window.___gcfg.lang = "' . tep_output_string_protected($language_code) . '";
+  }
+
+  (function() {
+    var po = document.createElement(\'script\'); po.type = \'text/javascript\'; po.async = true;
+    po.src = \'https://apis.google.com/js/plusone.js\';
+    var s = document.getElementsByTagName(\'script\')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>';
+
+  return $output;
+}
+{code}
+
+<p><i class="icon-file"></i> <strong>includes/modules/social_bookmarks/sb_google_plus_share.php</strong></p>
+
+<p>Change getOutput() from:</p>
+
+{code}
+function getOutput() {
+  global $HTTP_GET_VARS;
+
+  $button_height = (int)MODULE_SOCIAL_BOOKMARKS_GOOGLE_PLUS_SHARE_HEIGHT;
+
+  if (MODULE_SOCIAL_BOOKMARKS_GOOGLE_PLUS_SHARE_ANNOTATION == 'Vertical-Bubble') {
+    $button_height = 60;
+  }
+
+  $output = '<div class="g-plus" data-action="share" data-href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $HTTP_GET_VARS['products_id'], 'NONSSL', false) . '" data-annotation="' . strtolower(MODULE_SOCIAL_BOOKMARKS_GOOGLE_PLUS_SHARE_ANNOTATION) . '"';
+
+  if ((int)MODULE_SOCIAL_BOOKMARKS_GOOGLE_PLUS_SHARE_WIDTH > 0) {
+    $output .= ' data-width="' . (int)MODULE_SOCIAL_BOOKMARKS_GOOGLE_PLUS_SHARE_WIDTH . '"';
+  }
+
+  $output .= ' data-height="' . $button_height . '" data-align="' . strtolower(MODULE_SOCIAL_BOOKMARKS_GOOGLE_PLUS_SHARE_ALIGN) . '"></div>';
+
+  $output .= '<script type="text/javascript">
+  (function() {
+    var po = document.createElement(\'script\'); po.type = \'text/javascript\'; po.async = true;
+    po.src = \'https://apis.google.com/js/plusone.js\';
+    var s = document.getElementsByTagName(\'script\')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>';
+
+  return $output;
+}
+{code}
+
+<p>to:</p>
+
+{code}
+function getOutput() {
+  global $HTTP_GET_VARS, $lng, $languages_id;
+
+  if (!isset($lng) || (isset($lng) && !is_object($lng))) {
+    include(DIR_WS_CLASSES . 'language.php');
+    $lng = new language;
+  }
+
+  foreach ($lng->catalog_languages as $lkey => $lvalue) {
+    if ($lvalue['id'] == $languages_id) {
+      $language_code = $lkey;
+      break;
+    }
+  }
+
+  $button_height = (int)MODULE_SOCIAL_BOOKMARKS_GOOGLE_PLUS_SHARE_HEIGHT;
+
+  if (MODULE_SOCIAL_BOOKMARKS_GOOGLE_PLUS_SHARE_ANNOTATION == 'Vertical-Bubble') {
+    $button_height = 60;
+  }
+
+  $output = '<div class="g-plus" data-action="share" data-href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $HTTP_GET_VARS['products_id'], 'NONSSL', false) . '" data-annotation="' . strtolower(MODULE_SOCIAL_BOOKMARKS_GOOGLE_PLUS_SHARE_ANNOTATION) . '"';
+
+  if ((int)MODULE_SOCIAL_BOOKMARKS_GOOGLE_PLUS_SHARE_WIDTH > 0) {
+    $output .= ' data-width="' . (int)MODULE_SOCIAL_BOOKMARKS_GOOGLE_PLUS_SHARE_WIDTH . '"';
+  }
+
+  $output .= ' data-height="' . $button_height . '" data-align="' . strtolower(MODULE_SOCIAL_BOOKMARKS_GOOGLE_PLUS_SHARE_ALIGN) . '"></div>';
+
+  $output .= '<script type="text/javascript">
+  if ( typeof window.___gcfg == "undefined" ) {
+    window.___gcfg = { };
+  }
+
+  if ( typeof window.___gcfg.lang == "undefined" ) {
+    window.___gcfg.lang = "' . tep_output_string_protected($language_code) . '";
+  }
+
+  (function() {
+    var po = document.createElement(\'script\'); po.type = \'text/javascript\'; po.async = true;
+    po.src = \'https://apis.google.com/js/plusone.js\';
+    var s = document.getElementsByTagName(\'script\')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>';
+
+  return $output;
+}
+{code}
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/94c8a8489df2411749c54f9eb11858e7846cea04" target="_blank">View online at GitHub</a></p>
+
+<span id="upg6"></span>
+
+<h3 class="notoc">Template Modules (1 file)</h3>
+
+<p><i class="icon-file"></i> <strong>includes/classes/osc_template.php</strong></p>
+
+<p>Change buildBlocks() from:</p>
+
+{code}
+function buildBlocks() {
+  global $language;
+
+  if ( defined('TEMPLATE_BLOCK_GROUPS') && tep_not_null(TEMPLATE_BLOCK_GROUPS) ) {
+    $tbgroups_array = explode(';', TEMPLATE_BLOCK_GROUPS);
+
+    foreach ($tbgroups_array as $group) {
+      $module_key = 'MODULE_' . strtoupper($group) . '_INSTALLED';
+
+      if ( defined($module_key) && tep_not_null(constant($module_key)) ) {
+        $modules_array = explode(';', constant($module_key));
+
+        foreach ( $modules_array as $module ) {
+          $class = substr($module, 0, strrpos($module, '.'));
+
+          if ( !class_exists($class) ) {
+            include(DIR_WS_LANGUAGES . $language . '/modules/' . $group . '/' . $module);
+            include(DIR_WS_MODULES . $group . '/' . $class . '.php');
+          }
+
+          $mb = new $class();
+
+          if ( $mb->isEnabled() ) {
+            $mb->execute();
+          }
+        }
+      }
+    }
+  }
+}
+{code}
+
+<p>to:</p>
+
+{code}
+function buildBlocks() {
+  global $language;
+
+  if ( defined('TEMPLATE_BLOCK_GROUPS') && tep_not_null(TEMPLATE_BLOCK_GROUPS) ) {
+    $tbgroups_array = explode(';', TEMPLATE_BLOCK_GROUPS);
+
+    foreach ($tbgroups_array as $group) {
+      $module_key = 'MODULE_' . strtoupper($group) . '_INSTALLED';
+
+      if ( defined($module_key) && tep_not_null(constant($module_key)) ) {
+        $modules_array = explode(';', constant($module_key));
+
+        foreach ( $modules_array as $module ) {
+          $class = substr($module, 0, strrpos($module, '.'));
+
+          if ( !class_exists($class) ) {
+            if ( file_exists(DIR_WS_LANGUAGES . $language . '/modules/' . $group . '/' . $module) ) {
+              include(DIR_WS_LANGUAGES . $language . '/modules/' . $group . '/' . $module);
+            }
+
+            if ( file_exists(DIR_WS_MODULES . $group . '/' . $class . '.php') ) {
+              include(DIR_WS_MODULES . $group . '/' . $class . '.php');
+            }
+          }
+
+          if ( class_exists($class) ) {
+            $mb = new $class();
+
+            if ( $mb->isEnabled() ) {
+              $mb->execute();
+            }
+          }
+        }
+      }
+    }
+  }
+}
+{code}
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/502184e86398c78cb9b53eefa5cc05e5ebdddcad" target="_blank">View online at GitHub</a></p>
+
+<span id="upg7"></span>
+
+<h3 class="notoc">Canonical Header Tag Module (1 file)</h3>
+
+<p><i class="icon-file"></i> <strong>includes/modules/header_tags/ht_canonical.php</strong></p>
+
+<p>Change execute() from:</p>
+
+{code}
+function execute() {
+  global $PHP_SELF, $HTTP_GET_VARS, $cPath, $oscTemplate;
+
+  if (basename($PHP_SELF) == FILENAME_PRODUCT_INFO) {
+    $oscTemplate->addBlock('<link rel="canonical" href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $HTTP_GET_VARS['products_id'], 'NONSSL', false) . '" />' . "\n", $this->group);
+  } elseif (basename($PHP_SELF) == FILENAME_DEFAULT) {
+    if (isset($cPath) && tep_not_null($cPath)) {
+      $oscTemplate->addBlock('<link rel="canonical" href="' . tep_href_link(FILENAME_DEFAULT, 'cPath=' . $cPath, 'NONSSL', false) . '" />' . "\n", $this->group);
+    } elseif (isset($HTTP_GET_VARS['manufacturers_id']) && tep_not_null($HTTP_GET_VARS['manufacturers_id'])) {
+      $oscTemplate->addBlock('<link rel="canonical" href="' . tep_href_link(FILENAME_DEFAULT, 'manufacturers_id=' . $HTTP_GET_VARS['manufacturers_id'], 'NONSSL', false) . '" />' . "\n", $this->group);
+    }
+  }
+}
+{code}
+
+<p>to:</p>
+
+{code}
+function execute() {
+  global $PHP_SELF, $HTTP_GET_VARS, $cPath, $oscTemplate;
+
+  if (basename($PHP_SELF) == FILENAME_PRODUCT_INFO) {
+    $oscTemplate->addBlock('<link rel="canonical" href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . (int)$HTTP_GET_VARS['products_id'], 'NONSSL', false) . '" />' . "\n", $this->group);
+  } elseif (basename($PHP_SELF) == FILENAME_DEFAULT) {
+    if (isset($cPath) && tep_not_null($cPath)) {
+      $oscTemplate->addBlock('<link rel="canonical" href="' . tep_href_link(FILENAME_DEFAULT, 'cPath=' . $cPath, 'NONSSL', false) . '" />' . "\n", $this->group);
+    } elseif (isset($HTTP_GET_VARS['manufacturers_id']) && tep_not_null($HTTP_GET_VARS['manufacturers_id'])) {
+      $oscTemplate->addBlock('<link rel="canonical" href="' . tep_href_link(FILENAME_DEFAULT, 'manufacturers_id=' . $HTTP_GET_VARS['manufacturers_id'], 'NONSSL', false) . '" />' . "\n", $this->group);
+    }
+  }
+}
+{code}
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/fb2892873f997706816c6305e8a68cdefacf842b" target="_blank">View online at GitHub</a></p>
+
+<span id="upg8"></span>
+
+<h3 class="notoc">osCommerce Logo (1 file)</h3>
+
+<p><i class="icon-file"></i> <strong>admin/images/oscommerce.png</strong></p>
+
+<p>Replace the existing image with the new image file.</p>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/cdfeb0fc426e223ffb217b236f57807a7136ce8b" target="_blank">View online at GitHub</a></p>
+
+<span id="upg9"></span>
+
+<h3 class="notoc">Version Update (1 file)</h3>
+
+<p><i class="icon-file"></i> <strong>includes/version.php</strong></p>
+
+<p>change line 1 from:</p>
+
+{code}
+2.3.3.1
+{code}
+
+<p>to:</p>
+
+{code}
+2.3.3.2
+{code}
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/3a1354c042e222a58104ba390ab4b33a53f4f6dc" target="_blank">View online at GitHub</a></p>
+
+<span id="upg10"></span>
+
+<h3 class="notoc">Partner News Administration Tool Dashboard Module</h3>
+
+<p>Copy the following files to their respective directories:</p>
+
+<p>
+  <i class="icon-file"></i> <strong>admin/includes/languages/english/modules/dashboard/d_partner_news.php</strong><br />
+  <i class="icon-file"></i> <strong>admin/includes/modules/dashboard/d_partner_news.php</strong>
+</p>
+
+<div class="info">The module can be enabled at the Administration Tool -&gt; Modules -&gt; Dashboard -&gt; Install Module page.</div>
+
+<div class="note">Please also copy and update the language definition file to the other languages you have installed.</div>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/ee26fa5253efd739c5fb19a824d3d13119ed288c" target="_blank">View online at GitHub</a></p>
+
+<span id="upg11"></span>
+
+<h3 class="notoc">Twitter Product Card Header Tag Module</h3>
+
+<p>Copy the following files to their respective directories:</p>
+
+<p>
+  <i class="icon-file"></i> <strong>includes/languages/english/modules/header_tags/ht_twitter_product_card.php</strong><br />
+  <i class="icon-file"></i> <strong>includes/modules/header_tags/ht_twitter_product_card.php</strong>
+</p>
+
+<div class="info">The module can be enabled at the Administration Tool -&gt; Modules -&gt; Header Tags -&gt; Install Module page.</div>
+
+<div class="note">Please also copy and update the language definition file to the other languages you have installed.</div>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/41dfcd09600f109f411bfdca115e9f1df1c80449" target="_blank">View online at GitHub</a></p>
+
+<span id="upg12"></span>
+
+<h3 class="notoc">Google AdWords Conversion Tracking Header Tag Module</h3>
+
+<p>Copy the following files to their respective directories:</p>
+
+<p>
+  <i class="icon-file"></i> <strong>includes/languages/english/modules/header_tags/ht_google_adwords_conversion.php</strong><br />
+  <i class="icon-file"></i> <strong>includes/modules/header_tags/ht_google_adwords_conversion.php</strong>
+</p>
+
+<div class="info">The module can be enabled at the Administration Tool -&gt; Modules -&gt; Header Tags -&gt; Install Module page.</div>
+
+<div class="note">Please also copy and update the language definition file to the other languages you have installed.</div>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/fe42326aee803d0779f5ca7eca182f76c8b96621" target="_blank">View online at GitHub</a></p>
+
+<h2>Thank You!</h2>
+
+<p>We'd like to thank the community for their feedback on our releases. In addition, we thank the following people who participated in the development of this release.</p>
+
+<table class="pretty">
+  <thead>
+    <tr>
+      <th>Bug Reporters</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=7841" target="_blank">GniDhal</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=14259" target="_blank">kymation</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Reference</h2>
+
+<p>A full list of source code changes can be seen at:</p>
+
+<p><a href="https://github.com/osCommerce/oscommerce2/compare/v2.3.3.1...upgrade2332" target="_blank">https://github.com/osCommerce/oscommerce2/compare/v2.3.3.1...upgrade2332</a></p>

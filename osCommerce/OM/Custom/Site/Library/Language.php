@@ -2,7 +2,7 @@
 /**
  * osCommerce Website
  * 
- * @copyright Copyright (c) 2012 osCommerce; http://www.oscommerce.com
+ * @copyright Copyright (c) 2013 osCommerce; http://www.oscommerce.com
  * @license BSD License; http://www.oscommerce.com/bsdlicense.txt
  */
 
@@ -33,15 +33,13 @@
 
       unset($lang);
 
-      $language = (isset($_GET['ll']) && !empty($_GET['ll']) && $this->exists($_GET['ll'])) ? $_GET['ll'] : null;
+      $language = null;
 
-      if ( empty($language) && isset($_GET['Online']) ) {
-        $keys = array_keys($_GET);
-        $position = array_search('Online', $keys);
+      $keys = array_keys($_GET);
+      $position = array_search(OSCOM::getSiteApplication(), $keys);
 
-        if ( isset($keys[$position + 1]) && $this->exists($keys[$position + 1]) ) {
-          $language = $keys[$position + 1];
-        }
+      if ( isset($keys[$position + 1]) && $this->exists($keys[$position + 1]) ) {
+        $language = $keys[$position + 1];
       }
 
       $this->set($language);

@@ -7,6 +7,7 @@
         "title": "Security Check Modules",
         "pages": {
           "admin_backup_directory_listing": "admin/backups Directory Listing",
+          "admin_backup_file": "admin/backups File Access",
           "ext_directory_listing": "ext/ Directory Listing"
         }
       }

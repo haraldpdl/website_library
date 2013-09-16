@@ -4,7 +4,7 @@
 
 <p>It is important that Directory Listing is disabled for this directory in the web server configration to prevent unauthorized access and snooping of the contents in the directory.</p>
 
-<p>After applying the following configuration, confirm the change by accessing the ext/ directory with your browser. If you receive a Forbidden 403 error page, the configuration was applied successfully. If you receive an Internal Server 500 error page, undo the changes performed and contact your hosting provider or visit our support page for further help.</p>
+<p>After applying the following configuration, confirm the change by accessing the ext/ directory with your browser. If you receive a Forbidden 403 error page, the configuration was applied successfully. If you receive an Internal Server 500 error page, undo the changes performed and contact your hosting provider or visit <a href="http://www.oscommerce.com/support" target="_blank">our support page</a> for further help.</p>
 
 <h2>Apache Web Server</h2>
 
@@ -33,7 +33,7 @@ Options -Indexes
 
 <h2>Nginx</h2>
 
-<p>In the server configuration, add the autoindex directive to the location block:</p>
+<p>In the server configuration, add the autoindex directive to the location block with the correct directory location:</p>
 
 {code}
 server {

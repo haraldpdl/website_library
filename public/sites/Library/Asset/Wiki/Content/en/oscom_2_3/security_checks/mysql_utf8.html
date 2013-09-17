@@ -1,0 +1,41 @@
+<h1>MySQL UTF-8</h1>
+
+<p>The MySQL database tables should have a character set of UTF8 and a collation of utf8_unicode_ci to support encodings of special characters used in languages.</p>
+
+<p>The list of character sets currently used in the database tables can be seen in the Administration Tool -&gt; Tools -&gt; Database Tables page.</p>
+
+<h2>Administration Tool -&gt; Tools -&gt; Database Tables</h2>
+
+<p>This page shows information on all tables available in the database, including:</p>
+
+<ul>
+  <li>Table name</li>
+  <li>Number of rows</li>
+  <li>Size</li>
+  <li>Engine type</li>
+  <li>Collation (character set)</li>
+</ul>
+
+<p>Actions can be performed on all or selected tables, including:</p>
+
+<ul>
+  <li>Check Tables</li>
+  <li>Analyze Tables</li>
+  <li>Optimize Tables</li>
+  <li>Repair Tables</li>
+  <li>Convert to UTF8</li>
+</ul>
+
+<p>Tables that do not have a utf8_unicode_ci collation can be converted to UTF-8 by using the Convert to UTF8 action.</p>
+
+<div class="info">
+  <strong>Info</strong> When performing actions on database tables, please select a few tables at a time as actions take longer to perform on larger tables.
+</div>
+
+<div class="note">
+  <strong>Note</strong> When converting database tables to UTF-8, MySQL will automatically increase the size of varchar and text fields to ensure existing data is not truncated (eg, text fields will be converted to mediumtext).
+</div>
+
+<div class="achtung">
+  <strong>Warning</strong> Please be sure to have an up-to-date backup of your database before performing actions on database tables, espeically if tables are to be converted to UTF-8.
+</div>

@@ -9,7 +9,8 @@
           "admin_backup_directory_listing": "admin/backups Directory Listing",
           "admin_backup_file": "admin/backups File Access",
           "ext_directory_listing": "ext/ Directory Listing",
-          "mysql_utf8": "MySQL UTF-8"
+          "mysql_utf8": "MySQL UTF-8",
+          "version_check": "Version Check"
         }
       }
     }

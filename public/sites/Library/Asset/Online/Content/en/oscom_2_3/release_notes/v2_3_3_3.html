@@ -406,24 +406,481 @@
 
 <span id="upg1"></span>
 
-<h3 class="notoc">Title (x files)</h3>
+<h3 class="notoc">Database Query Logging (2 files)</h3>
 
-<p><i class="icon-file"></i> <strong>filename.php</strong></p>
+<p><i class="icon-file"></i> <strong>admin/includes/functions/database.php</strong></p>
 
-<p>around line xx, change:</p>
+<p>change tep_db_error() from:</p>
 
 {code}
+function tep_db_error($query, $errno, $error) { 
+  die('<font color="#000000"><strong>' . $errno . ' - ' . $error . '<br /><br />' . $query . '<br /><br /><small><font color="#ff0000">[TEP STOP]</font></small><br /><br /></strong></font>');
+}
 {code}
 
 <p>to:</p>
 
 {code}
+function tep_db_error($query, $errno, $error) {
+  global $logger;
+
+  if (defined('STORE_DB_TRANSACTIONS') && (STORE_DB_TRANSACTIONS == 'true')) {
+    $logger->write('[' . $errno . '] ' . $error, 'ERROR');
+  }
+
+  die('<font color="#000000"><strong>' . $errno . ' - ' . $error . '<br /><br />' . $query . '<br /><br /><small><font color="#ff0000">[TEP STOP]</font></small><br /><br /></strong></font>');
+}
+{code}
+
+<p>change tep_db_query() from:</p>
+
+{code}
+function tep_db_query($query, $link = 'db_link') {
+  global $$link, $logger;
+
+  if (defined('STORE_DB_TRANSACTIONS') && (STORE_DB_TRANSACTIONS == 'true')) {
+    if (!is_object($logger)) $logger = new logger;
+    $logger->write($query, 'QUERY');
+  }
+
+  $result = mysqli_query($$link, $query) or tep_db_error($query, mysqli_errno($$link), mysqli_error($$link));
+
+  if (defined('STORE_DB_TRANSACTIONS') && (STORE_DB_TRANSACTIONS == 'true')) {
+    if (mysqli_error($$link)) $logger->write(mysqli_error($llink), 'ERROR');
+  }
+
+  return $result;
+}
+{code}
+
+<p>to:</p>
+
+{code}
+function tep_db_query($query, $link = 'db_link') {
+  global $$link, $logger;
+
+  if (defined('STORE_DB_TRANSACTIONS') && (STORE_DB_TRANSACTIONS == 'true')) {
+    if (!is_object($logger)) $logger = new logger;
+    $logger->write($query, 'QUERY');
+  }
+
+  $result = mysqli_query($$link, $query) or tep_db_error($query, mysqli_errno($$link), mysqli_error($$link));
+
+  return $result;
+}
+{code}
+
+<p><i class="icon-file"></i> <strong>includes/functions/database.php</strong></p>
+
+<p>change tep_db_error() from:</p>
+
+{code}
+function tep_db_error($query, $errno, $error) { 
+  die('<font color="#000000"><strong>' . $errno . ' - ' . $error . '<br /><br />' . $query . '<br /><br /><small><font color="#ff0000">[TEP STOP]</font></small><br /><br /></strong></font>');
+}
+{code}
+
+<p>to:</p>
+
+{code}
+function tep_db_error($query, $errno, $error) { 
+  if (defined('STORE_DB_TRANSACTIONS') && (STORE_DB_TRANSACTIONS == 'true')) {
+    error_log('ERROR: [' . $errno . '] ' . $error . "\n", 3, STORE_PAGE_PARSE_TIME_LOG);
+  }
+
+  die('<font color="#000000"><strong>' . $errno . ' - ' . $error . '<br /><br />' . $query . '<br /><br /><small><font color="#ff0000">[TEP STOP]</font></small><br /><br /></strong></font>');
+}
+{code}
+
+<p>change tep_db_query() from:</p>
+
+{code}
+function tep_db_query($query, $link = 'db_link') {
+  global $$link;
+
+  if (defined('STORE_DB_TRANSACTIONS') && (STORE_DB_TRANSACTIONS == 'true')) {
+    error_log('QUERY ' . $query . "\n", 3, STORE_PAGE_PARSE_TIME_LOG);
+  }
+
+  $result = mysqli_query($$link, $query) or tep_db_error($query, mysqli_errno($$link), mysqli_error($$link));
+
+  if (defined('STORE_DB_TRANSACTIONS') && (STORE_DB_TRANSACTIONS == 'true')) {
+     $result_error = mysqli_error($$link);
+     error_log('RESULT ' . $result . ' ' . $result_error . "\n", 3, STORE_PAGE_PARSE_TIME_LOG);
+  }
+
+  return $result;
+}
+{code}
+
+<p>to:</p>
+
+{code}
+function tep_db_query($query, $link = 'db_link') {
+  global $$link;
+
+  if (defined('STORE_DB_TRANSACTIONS') && (STORE_DB_TRANSACTIONS == 'true')) {
+    error_log('QUERY: ' . $query . "\n", 3, STORE_PAGE_PARSE_TIME_LOG);
+  }
+
+  $result = mysqli_query($$link, $query) or tep_db_error($query, mysqli_errno($$link), mysqli_error($$link));
+
+  return $result;
+}
 {code}
 
 <p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
-<p><a href="https://github.com/osCommerce/oscommerce2/commit/xxx" target="_blank">View online at GitHub</a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/a4b14dd688eaddd20332e01540dca3e75227ed58" target="_blank">View online at GitHub</a></p>
 
-<span id="upgX"></span>
+<span id="upg2"></span>
+
+<h3 class="notoc">Administration Tool Navigation Menu (1 file)</h3>
+
+<p><i class="icon-file"></i> <strong>admin/includes/column_left.php</strong></p>
+
+<p>around line 16, change from:</p>
+
+{code}
+include(DIR_WS_BOXES . 'configuration.php');
+include(DIR_WS_BOXES . 'catalog.php');
+include(DIR_WS_BOXES . 'modules.php');
+include(DIR_WS_BOXES . 'customers.php');
+include(DIR_WS_BOXES . 'taxes.php');
+include(DIR_WS_BOXES . 'localization.php');
+include(DIR_WS_BOXES . 'reports.php');
+include(DIR_WS_BOXES . 'tools.php');
+{code}
+
+<p>to:</p>
+
+{code}
+if ($dir = @dir(DIR_FS_ADMIN . 'includes/boxes')) {
+  $files = array();
+
+  while ($file = $dir->read()) {
+    if (!is_dir($dir->path . '/' . $file)) {
+      if (substr($file, strrpos($file, '.')) == '.php') {
+        $files[] = $file;
+      }
+    }
+  }
+
+  $dir->close();
+
+  natcasesort($files);
+
+  foreach ( $files as $file ) {
+    if ( file_exists(DIR_FS_ADMIN . 'includes/languages/' . $language . '/modules/boxes/' . $file) ) {
+      include(DIR_FS_ADMIN . 'includes/languages/' . $language . '/modules/boxes/' . $file);
+    }
+
+    include($dir->path . '/' . $file);
+  }
+}
+
+function tep_sort_admin_boxes($a, $b) {
+  return strcasecmp($a['heading'], $b['heading']);
+}
+
+usort($cl_box_groups, 'tep_sort_admin_boxes');
+
+function tep_sort_admin_boxes_links($a, $b) {
+  return strcasecmp($a['title'], $b['title']);
+}
+
+foreach ( $cl_box_groups as &$group ) {
+  usort($group['apps'], 'tep_sort_admin_boxes_links');
+}
+{code}
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/8fd022a085e988e44b85f0b0fdeaf3849a707789" target="_blank">View online at GitHub</a></p>
+
+<span id="upg3"></span>
+
+<h3 class="notoc">HTTPS -&gt; HTTP Browser Alert (2 files)</h3>
+
+<p><i class="icon-file"></i> <strong>includes/modules/boxes/bm_manufacturers.php</strong></p>
+
+<p>around line 34, change from:</p>
+
+{code}
+global $HTTP_GET_VARS, $oscTemplate;
+{code}
+
+<p>to:</p>
+
+{code}
+global $HTTP_GET_VARS, $request_type, $oscTemplate;
+{code}
+
+<p>around line 65, change from:</p>
+
+{code}
+$content = tep_draw_form('manufacturers', tep_href_link(FILENAME_DEFAULT, '', 'NONSSL', false), 'get') .
+{code}
+
+<p>to:</p>
+
+{code}
+$content = tep_draw_form('manufacturers', tep_href_link(FILENAME_DEFAULT, '', $request_type, false), 'get') .
+{code}
+
+<p><i class="icon-file"></i> <strong>includes/modules/boxes/bm_search.php</strong></p>
+
+<p>around line 34, change from:</p>
+
+{code}
+global $oscTemplate;
+{code}
+
+<p>to:</p>
+
+{code}
+global $request_type, $oscTemplate;
+{code}
+
+<p>around line 39, change from:</p>
+
+{code}
+'    ' . tep_draw_form('quick_find', tep_href_link(FILENAME_ADVANCED_SEARCH_RESULT, '', 'NONSSL', false), 'get') .
+{code}
+
+<p>to:</p>
+
+{code}
+'    ' . tep_draw_form('quick_find', tep_href_link(FILENAME_ADVANCED_SEARCH_RESULT, '', $request_type, false), 'get') .
+{code}
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/40fc8e27c97f3f8fccfd67e9516804def7b443a4" target="_blank">View online at GitHub</a></p>
+
+<span id="upg4"></span>
+
+<h3 class="notoc">Currencies (1 file)</h3>
+
+<p><i class="icon-file"></i> <strong>includes/classes/currencies.php</strong></p>
+
+<p>around line 29, change from:</p>
+
+{code}
+'decimal_places' => $currencies['decimal_places'],
+{code}
+
+<p>to:</p>
+
+{code}
+'decimal_places' => (int)$currencies['decimal_places'],
+{code}
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/5d879ce7929d1f57626bd88fb5fd37b49fead077" target="_blank">View online at GitHub</a></p>
+
+<span id="upg5"></span>
+
+<h3 class="notoc">Action Recorder (5 files)</h3>
+
+<p><i class="icon-file"></i> <strong>admin/action_recorder.php</strong></p>
+
+<p>around line 67, change from:</p>
+
+{code}
+$expired_entries += tep_db_affected_rows($db_link);
+{code}
+
+<p>to:</p>
+
+{code}
+$expired_entries += tep_db_affected_rows();
+{code}
+
+<p><i class="icon-file"></i> <strong>includes/modules/action_recorder/ar_admin_login.php</strong><br />
+<i class="icon-file"></i> <strong>includes/modules/action_recorder/ar_contact_us.php</strong><br />
+<i class="icon-file"></i> <strong>includes/modules/action_recorder/ar_reset_password.php</strong><br />
+<i class="icon-file"></i> <strong>includes/modules/action_recorder/ar_tell_a_friend.php</strong></p>
+
+<p>in those 4 module files, change expireEntries() from:</p>
+
+{code}
+function expireEntries() {
+  global $db_link;
+
+  tep_db_query("delete from " . TABLE_ACTION_RECORDER . " where module = '" . $this->code . "' and date_added < date_sub(now(), interval " . (int)$this->minutes  . " minute)");
+
+  return tep_db_affected_rows($db_link);
+}
+{code}
+
+<p>to:</p>
+
+{code}
+function expireEntries() {
+  tep_db_query("delete from " . TABLE_ACTION_RECORDER . " where module = '" . $this->code . "' and date_added < date_sub(now(), interval " . (int)$this->minutes  . " minute)");
+
+  return tep_db_affected_rows();
+}
+{code}
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/e55fd8862faba4472d9dd63b472410942dda6e84" target="_blank">View online at GitHub</a></p>
+
+<span id="upg6"></span>
+
+<h3 class="notoc">UTF-8 Updates (4 files)</h3>
+
+<p><i class="icon-file"></i> <strong>admin/includes/functions/database.php</strong><br />
+<i class="icon-file"></i> <strong>includes/functions/database.php</strong></p>
+
+<p>in those 2 files, change tep_db_connect() from:</p>
+
+{code}
+function tep_db_connect($server = DB_SERVER, $username = DB_SERVER_USERNAME, $password = DB_SERVER_PASSWORD, $database = DB_DATABASE, $link = 'db_link') {
+  global $$link;
+
+  if (USE_PCONNECT == 'true') {
+    $server = 'p:' . $server;
+  }
+
+  $$link = mysqli_connect($server, $username, $password, $database);
+
+  return $$link;
+}
+{code}
+
+<p>to:</p>
+
+{code}
+function tep_db_connect($server = DB_SERVER, $username = DB_SERVER_USERNAME, $password = DB_SERVER_PASSWORD, $database = DB_DATABASE, $link = 'db_link') {
+  global $$link;
+
+  if (USE_PCONNECT == 'true') {
+    $server = 'p:' . $server;
+  }
+
+  $$link = mysqli_connect($server, $username, $password, $database);
+
+  if ( !mysqli_connect_errno() ) {
+    mysqli_set_charset($$link, 'utf8');
+  } 
+
+  return $$link;
+}
+{code}
+
+<p>after the mysqli_connect() function (defined around line 178), add:</p>
+
+{code}
+function mysqli_connect_errno($link = null) {
+  return mysql_errno($link);
+}
+
+function mysqli_connect_error($link = null) {
+  return mysql_error($link);
+}
+
+function mysqli_set_charset($link, $charset) {
+  if ( function_exists('mysql_set_charset') ) {
+    return mysql_set_charset($charset, $link);
+  }
+}
+{code}
+
+<p><i class="icon-file"></i> <strong>admin/includes/languages/english.php</strong><br />
+<i class="icon-file"></i> <strong>includes/languages/english.php</strong></p>
+
+<p>in those 2 files, around lines 17 and 19, change from:</p>
+
+{code}
+setlocale(LC_TIME, 'en_US.ISO_8859-1');
+{code}
+
+<p>to:</p>
+
+{code}
+setlocale(LC_ALL, array('en_US.UTF-8', 'en_US.UTF8', 'enu_usa'));
+{code}
+
+<div class="note">
+  <p>Please also make the same change to the main catalog and admin language files for other languages you have installed. Example language UTF-8 locales are:</p>
+
+  <ul>
+    <li><strong>Arabic:</strong> ar_SA.UTF-8, ar_SA.UTF8, ara_sau</li>
+    <li><strong>Chinese (Simplified):</strong> zh_CN.UTF-8, zh_CN.UTF8, chs_chn</li>
+    <li><strong>Chinese (Traditional):</strong> zh_TW.UTF-8, zh_TW.UTF8, cht_twn</li>
+    <li><strong>Dutch:</strong> nl_NL.UTF-8, nl_NL.UTF8, nld_nld</li>
+    <li><strong>French (Canada):</strong> fr_CA.UTF-8, fr_CA.UTF8, frc_can</li>
+    <li><strong>French (France):</strong> fr_FR.UTF-8, fr_FR.UTF8, fra_fra</li>
+    <li><strong>German:</strong> de_DE.UTF-8, de_DE.UTF8, deu_deu</li>
+    <li><strong>Greek:</strong> el_GR.UTF-8, el_GR.UTF8, ell_grc</li>
+    <li><strong>Hebrew:</strong> iw_IL.UTF-8, iw_IL.UTF8, heb_isr</li>
+    <li><strong>Hindi:</strong> hi_IN.UTF-8, hi_IN.UTF8, hin_ind</li>
+    <li><strong>Italian:</strong> it_IT.UTF-8, it_IT.UTF8, ita_ita</li>
+    <li><strong>Japanese:</strong> ja_JP.UTF-8, ja_JP.UTF8, jpn_jpn</li>
+    <li><strong>Korean:</strong> ko_KR.UTF-8, ko_KR.UTF8, kor_kor</li>
+    <li><strong>Portuguese:</strong> pt_BR.UTF-8, pt_BR.UTF8, ptb_bra</li>
+    <li><strong>Russian:</strong> ru_RU.UTF-8, ru_RU.UTF8, rus_rus</li>
+    <li><strong>Spanish:</strong> es_ES.UTF-8, es_ES.UTF8, esp_esp</li>
+    <li><strong>Swedish:</strong> sv_SE.UTF-8, sv_SE.UTF8, sve_swe</li>
+    <li><strong>Turkish:</strong> tr_TR.UTF-8, tr_TR.UTF8, trk_tur</li>
+  </ul>
+</div>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/2bb8549aaa5f071d372e71adbc31f591c36d3615" target="_blank">View online at GitHub</a></p>
+
+<span id="upg7"></span>
+
+<h3 class="notoc">Date of Birth (3 files)</h3>
+
+<p><i class="icon-file"></i> <strong>admin/customers.php</strong></p>
+
+<p>around line 60, change from:</p>
+
+{code}
+if (checkdate(substr(tep_date_raw($customers_dob), 4, 2), substr(tep_date_raw($customers_dob), 6, 2), substr(tep_date_raw($customers_dob), 0, 4))) {
+{code}
+
+<p>to:</p>
+
+{code}
+if ((strlen($customers_dob) >= ENTRY_DOB_MIN_LENGTH) && ((is_numeric(tep_date_raw($customers_dob)) && @checkdate(substr(tep_date_raw($customers_dob), 4, 2), substr(tep_date_raw($customers_dob), 6, 2), substr(tep_date_raw($customers_dob), 0, 4))) || empty($customers_dob))) {
+{code}
+
+<p><i class="icon-file"></i> <strong>account_edit.php</strong></p>
+
+<p>around line 55, change from:</p>
+
+{code}
+if ((is_numeric(tep_date_raw($dob)) == false) || (@checkdate(substr(tep_date_raw($dob), 4, 2), substr(tep_date_raw($dob), 6, 2), substr(tep_date_raw($dob), 0, 4)) == false)) {
+{code}
+
+<p>to:</p>
+
+{code}
+if ((strlen($dob) < ENTRY_DOB_MIN_LENGTH) || (!empty($dob) && (!is_numeric(tep_date_raw($dob)) || !@checkdate(substr(tep_date_raw($dob), 4, 2), substr(tep_date_raw($dob), 6, 2), substr(tep_date_raw($dob), 0, 4))))) {
+{code}
+
+<p><i class="icon-file"></i> <strong>create_account.php</strong></p>
+
+<p>around line 80, change from:</p>
+
+{code}
+if ((is_numeric(tep_date_raw($dob)) == false) || (@checkdate(substr(tep_date_raw($dob), 4, 2), substr(tep_date_raw($dob), 6, 2), substr(tep_date_raw($dob), 0, 4)) == false)) {
+{code}
+
+<p>to:</p>
+
+{code}
+if ((strlen($dob) < ENTRY_DOB_MIN_LENGTH) || (!empty($dob) && (!is_numeric(tep_date_raw($dob)) || !@checkdate(substr(tep_date_raw($dob), 4, 2), substr(tep_date_raw($dob), 6, 2), substr(tep_date_raw($dob), 0, 4))))) {
+{code}
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/e64165eff35f0d8df6a4ca4cbf1b8d231ade5747" target="_blank">View online at GitHub</a></p>
+
+
+
+
+<span id="upg14"></span>
 
 <h3 class="notoc">Version Update (1 file)</h3>
 
@@ -442,7 +899,7 @@
 {code}
 
 <p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
-<p><a href="https://github.com/osCommerce/oscommerce2/commit/xxx" target="_blank">View online at GitHub</a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/292ce5af6b0d0a84a9162767958e543655cbc209" target="_blank">View online at GitHub</a></p>
 
 <span id="upgX"></span>
 

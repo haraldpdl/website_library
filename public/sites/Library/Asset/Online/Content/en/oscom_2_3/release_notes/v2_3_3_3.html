@@ -1,0 +1,484 @@
+<span id="upgtop"></span>
+
+<div class="achtung">
+  <strong>Note:</strong> This document is still being edited.
+</div>
+
+<h1>osCommerce Online Merchant v2.3.3.3</h1>
+
+<p>osCommerce Online Merchant v2.3.3.3 is a general maintenance release focusing on improving core features and introducing new security check modules.</p>
+
+<p>This release is in preparation of and building up to v2.3.4.</p>
+
+<div class="visible-print">
+  <p>This document can be found online at:</p>
+
+  <p><a href="http://library.oscommerce.com/Online&amp;en&amp;oscom_2_3&amp;release_notes&amp;v2_3_3_3">http://library.oscommerce.com/Online&amp;en&amp;oscom_2_3&amp;release_notes&amp;v2_3_3_3</a></p>
+</div>
+
+<h2>Upgrading from v2.3.3.2</h2>
+
+<h3>Code Changes</h3>
+
+<p>The following changes have been applied:</p>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Bug</th>
+      <th>Severity</th>
+      <th>Committer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="success">
+      <td><a href="#upg1">Database Query Logging</a> (2 files)</td>
+      <td>Improve database query error logging.</td>
+      <td></td>
+      <td>Low</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg2">Administration Tool Navigation Menu</a> (1 file)</td>
+      <td>Dynamically load navigation menu boxes.</td>
+      <td></td>
+      <td>Low</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg3">HTTPS -&gt; HTTP Browser Alert</a> (2 files)</td>
+      <td>Have forms posting from a HTTPS to HTTP page post to a HTTPS version to prevent the browser (Firefox) from alerting the user of being directed to an insecure page.</td>
+      <td></td>
+      <td>Low</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg4">Currencies</a> (1 file)</td>
+      <td>Force decimal places value to an integer value.</td>
+      <td></td>
+      <td>Low</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg5">Action Recorder</a> (5 files)</td>
+      <td>When expiring logged entries, don't pass the database connection link to tep_db_affected_rows().</td>
+      <td></td>
+      <td>Low</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg6">UTF-8 Updates</a> (4 files)</td>
+      <td>Set the MySQL character set to UTF-8 after a connection is made.<br />Set the English locale to en_US.UTF-8, en_US.UTF8, enu_usa.</td>
+      <td></td>
+      <td>Low</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg7">Date of Birth</a> (3 files)</td>
+      <td>Take the Configuration -&gt; Minimum Values -&gt; Date of Birth value into consideration to make the date of birth field optional.</td>
+      <td></td>
+      <td>Low</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg8">Administration Tool Automatic HTTP Authentication Login</a> (1 file)</td>
+      <td>Don't use the HTTP Authentication values when the login form is being submitted.<br />Don't show an invalid administrator notice when an automatic HTTP Authentication fails.<br />Don't record failed automatic HTTP Authentication logins.</td>
+      <td></td>
+      <td>Low</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg9">Canonical Manufacturer ID</a> (1 file)</td>
+      <td>Force the Manufacturer ID to an integer value.</td>
+      <td></td>
+      <td>Low</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=69" target="_blank">Gary</a></td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg10">Administration Tool -&gt; Who's Online</a> (3 files)</td>
+      <td>Remove the session_decode() functionality and show shopping cart contents only for logged in customers.<br />When regenerating a session ID, update the session ID in the who's online database table to prevent duplicate entries.</td>
+      <td></td>
+      <td>Low</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg11">MailChimp 360</a> (1 file)</td>
+      <td>Fix module title.</td>
+      <td></td>
+      <td>Low</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg12">Administration Tool -&gt; Security Checks</a> (4 files)</td>
+      <td>Introduce a new security checks page that shows the results of the security checks and extended security checks modules.</td>
+      <td></td>
+      <td>Low</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg13">Administration Tool -&gt; Database Tables</a> (4 files)</td>
+      <td>Introduce a new database tables page to show information and perform actions on database tables.</td>
+      <td></td>
+      <td>Low</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg14">Version Update</a> (1 file)</td>
+      <td>Update version to v2.3.3.3.</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>New Modules</h3>
+
+<p>The following modules have been added:</p>
+
+<table class="pretty">
+  <thead>
+    <tr>
+      <th>Security Check Modules</th>
+      <th>Description</th>
+      <th>Committer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="#upg15">Extended Last Run Check</a></td>
+      <td>Check if the extended security check modules were run in the last 30 days.</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="pretty">
+  <thead>
+    <tr>
+      <th>Extended Security Check Modules</th>
+      <th>Description</th>
+      <th>Committer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="#upg16">admin/backups/ Directory Listing</a></td>
+      <td>Check if the admin/backups/ directory is publicly accessible (directory listing or index.html page).</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
+    </tr>
+    <tr>
+      <td><a href="#upg17">admin/backups/ File Accessibility</a></td>
+      <td>Check if a backup in admin/backups/ is publicly accessible.</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
+    </tr>
+    <tr>
+      <td><a href="#upg18">Administration Tool HTTP Authentication</a></td>
+      <td>Check if a HTTP Authentication layer is active on the Administration Tool.</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
+    </tr>
+    <tr>
+      <td><a href="#upg19">ext/ Directory Listing</a></td>
+      <td>Check if the ext/ directory is publicly accessible (directory listing or index.html page).</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
+    </tr>
+    <tr>
+      <td><a href="#upg20">MySQL UTF-8 Database Tables</a></td>
+      <td>Check if a database table exists that does not have a utf8_unicode_ci character set.</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
+    </tr>
+    <tr>
+      <td><a href="#upg21">Version Check</a></td>
+      <td>Check if a version update check was performed in the last 30 days.</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>API Changes</h3>
+
+<p>The following API changes have been applied:</p>
+
+<table class="pretty">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Title</td>
+      <td>Description.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Language Definitions</h3>
+
+<p>The following languages definitions have been modified:</p>
+
+<table class="pretty">
+  <thead>
+    <tr>
+      <th>Language File</th>
+      <th>Definitions</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>filename.php</td>
+      <td>DEFINITION_1<br />
+          DEFINITION_2</td>
+      <td>New<br />
+          New</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Modified Files</h3>
+
+<p>Files that have been modified in this release include:</p>
+
+<table class="pretty">
+  <thead>
+    <tr>
+      <th>Modified Files</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>admin/includes/functions/database.php</td>
+    </tr>
+    <tr>
+      <td>admin/includes/languages/english.php</td>
+    </tr>
+    <tr>
+      <td>admin/includes/column_left.php</td>
+    </tr>
+    <tr>
+      <td>admin/action_recorder.php</td>
+    </tr>
+    <tr>
+      <td>admin/customers.php</td>
+    </tr>
+    <tr>
+      <td>admin/login.php</td>
+    </tr>
+    <tr>
+      <td>admin/whos_online.php</td>
+    </tr>
+    <tr>
+      <td>includes/classes/currencies.php</td>
+    </tr>
+    <tr>
+      <td>includes/functions/database.php</td>
+    </tr>
+    <tr>
+      <td>includes/functions/sessions.php</td>
+    </tr>
+    <tr>
+      <td>includes/functions/whos_online.php</td>
+    </tr>
+    <tr>
+      <td>includes/languages/english.php</td>
+    </tr>
+    <tr>
+      <td>includes/modules/action_recorder/ar_admin_login.php</td>
+    </tr>
+    <tr>
+      <td>includes/modules/action_recorder/ar_contact_us.php</td>
+    </tr>
+    <tr>
+      <td>includes/modules/action_recorder/ar_reset_password.php</td>
+    </tr>
+    <tr>
+      <td>includes/modules/action_recorder/ar_tell_a_friend.php</td>
+    </tr>
+    <tr>
+      <td>includes/modules/boxes/bm_manufacturers.php</td>
+    </tr>
+    <tr>
+      <td>includes/modules/boxes/bm_search.php</td>
+    </tr>
+    <tr>
+      <td>includes/modules/header_tags/ht_canonical.php</td>
+    </tr>
+    <tr>
+      <td>includes/modules/header_tags/ht_mailchimp_360.php</td>
+    </tr>
+    <tr>
+      <td>includes/version.php</td>
+    </tr>
+    <tr>
+      <td>account_edit.php</td>
+    </tr>
+    <tr>
+      <td>create_account.php</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>New Files</h3>
+
+<p>Files that have been added to this release include:</p>
+
+<table class="pretty">
+  <thead>
+    <tr>
+      <th>New Files</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>admin/includes/boxes/tools_database_tables.php</td>
+    </tr>
+    <tr>
+      <td>admin/includes/boxes/tools_security_checks.php</td>
+    </tr>
+    <tr>
+      <td>admin/includes/languages/english/database_tables.php</td>
+    </tr>
+    <tr>
+      <td>admin/includes/languages/english/modules/boxes/tools_database_tables.php</td>
+    </tr>
+    <tr>
+      <td>admin/includes/languages/english/modules/boxes/tools_security_checks.php</td>
+    </tr>
+    <tr>
+      <td>admin/includes/languages/english/modules/security_check/extended/admin_backup_directory_listing.php</td>
+    </tr>
+    <tr>
+      <td>admin/includes/languages/english/modules/security_check/extended/admin_backup_file.php</td>
+    </tr>
+    <tr>
+      <td>admin/includes/languages/english/modules/security_check/extended/admin_http_authentication.php</td>
+    </tr>
+    <tr>
+      <td>admin/includes/languages/english/modules/security_check/extended/ext_directory_listing.php</td>
+    </tr>
+    <tr>
+      <td>admin/includes/languages/english/modules/security_check/extended/mysql_utf8.php</td>
+    </tr>
+    <tr>
+      <td>admin/includes/languages/english/modules/security_check/extended/version_check.php</td>
+    </tr>
+    <tr>
+      <td>admin/includes/languages/english/modules/security_check/extended_last_run.php</td>
+    </tr>
+    <tr>
+      <td>admin/includes/languages/english/security_checks.php</td>
+    </tr>
+    <tr>
+      <td>admin/includes/modules/security_check/extended/admin_backup_directory_listing.php</td>
+    </tr>
+    <tr>
+      <td>admin/includes/modules/security_check/extended/admin_backup_file.php</td>
+    </tr>
+    <tr>
+      <td>admin/includes/modules/security_check/extended/admin_http_authentication.php</td>
+    </tr>
+    <tr>
+      <td>admin/includes/modules/security_check/extended/ext_directory_listing.php</td>
+    </tr>
+    <tr>
+      <td>admin/includes/modules/security_check/extended/mysql_utf8.php</td>
+    </tr>
+    <tr>
+      <td>admin/includes/modules/security_check/extended/version_check.php</td>
+    </tr>
+    <tr>
+      <td>admin/includes/modules/security_check/extended_last_run.php</td>
+    </tr>
+    <tr>
+      <td>admin/database_tables.php</td>
+    </tr>
+    <tr>
+      <td>admin/security_checks.php</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>File Changes</h2>
+
+<span id="upg1"></span>
+
+<h3 class="notoc">Title (x files)</h3>
+
+<p><i class="icon-file"></i> <strong>filename.php</strong></p>
+
+<p>around line xx, change:</p>
+
+{code}
+{code}
+
+<p>to:</p>
+
+{code}
+{code}
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/xxx" target="_blank">View online at GitHub</a></p>
+
+<span id="upgX"></span>
+
+<h3 class="notoc">Version Update (1 file)</h3>
+
+<p><i class="icon-file"></i> <strong>includes/version.php</strong></p>
+
+<p>change line 1 from:</p>
+
+{code}
+2.3.3.2
+{code}
+
+<p>to:</p>
+
+{code}
+2.3.3.3
+{code}
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/xxx" target="_blank">View online at GitHub</a></p>
+
+<span id="upgX"></span>
+
+<h3 class="notoc">Title Module</h3>
+
+<p>Copy the following files to their respective directories:</p>
+
+<p>
+  <i class="icon-file"></i> <strong>languages/english/modules/filename.php</strong><br />
+  <i class="icon-file"></i> <strong>modules/filename.php</strong>
+</p>
+
+<div class="note">Please also copy and update the language definition file to the other languages you have installed.</div>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/xxx" target="_blank">View online at GitHub</a></p>
+
+<h2>Thank You!</h2>
+
+<p>We'd like to thank the community for their feedback on our releases. In addition, we thank the following people who participated in the development of this release.</p>
+
+<table class="pretty">
+  <thead>
+    <tr>
+      <th>Bug Reporters</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=xx" target="_blank">Name</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Reference</h2>
+
+<p>A full list of source code changes can be seen at:</p>
+
+<p><a href="https://github.com/osCommerce/oscommerce2/compare/v2.3.3.2...upgrade2333" target="_blank">https://github.com/osCommerce/oscommerce2/compare/v2.3.3.2...upgrade2333</a></p>

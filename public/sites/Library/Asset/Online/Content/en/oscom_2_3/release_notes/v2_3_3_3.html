@@ -825,6 +825,8 @@ setlocale(LC_ALL, array('en_US.UTF-8', 'en_US.UTF8', 'enu_usa'));
   </ul>
 </div>
 
+<div class="info">Please also apply the Administration Tool -&gt; Database Tables changeset described in this release guide to be able to see the character sets of your database tables and convert non-UTF8 tables to utf8_unicode_ci.</div>
+
 <p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
 <p><a href="https://github.com/osCommerce/oscommerce2/commit/2bb8549aaa5f071d372e71adbc31f591c36d3615" target="_blank">View online at GitHub</a></p>
 
@@ -877,8 +879,358 @@ if ((strlen($dob) < ENTRY_DOB_MIN_LENGTH) || (!empty($dob) && (!is_numeric(tep_d
 <p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
 <p><a href="https://github.com/osCommerce/oscommerce2/commit/e64165eff35f0d8df6a4ca4cbf1b8d231ade5747" target="_blank">View online at GitHub</a></p>
 
+<span id="upg8"></span>
 
+<h3 class="notoc">Administration Tool Automatic HTTP Authentication Login (1 file)</h3>
 
+<p><i class="icon-file"></i> <strong>admin/login.php</strong></p>
+
+<p>around line 28, change from:</p>
+
+{code}
+if (tep_session_is_registered('redirect_origin') && isset($redirect_origin['auth_user'])) {
+{code}
+
+<p>to:</p>
+
+{code}
+if (tep_session_is_registered('redirect_origin') && isset($redirect_origin['auth_user']) && !isset($HTTP_POST_VARS['username'])) {
+{code}
+
+<p>around line 75, change from:</p>
+
+{code}
+$messageStack->add(ERROR_INVALID_ADMINISTRATOR, 'error');
+{code}
+
+<p>to:</p>
+
+{code}
+if (isset($HTTP_POST_VARS['username'])) {
+  $messageStack->add(ERROR_INVALID_ADMINISTRATOR, 'error');
+}
+{code}
+
+<p>around line 80, change from:</p>
+
+{code}
+$actionRecorder->record(false);
+{code}
+
+<p>to:</p>
+
+{code}
+if (isset($HTTP_POST_VARS['username'])) {
+  $actionRecorder->record(false);
+}
+{code}
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/f79ba4cdf7aa87a1e7f657989a662ce460f686f2" target="_blank">View online at GitHub</a></p>
+
+<span id="upg9"></span>
+
+<h3 class="notoc">Canonical Manufacturer ID (1 file)</h3>
+
+<p><i class="icon-file"></i> <strong>includes/modules/header_tags/ht_canonical.php</strong></p>
+
+<p>around line 40, change from:</p>
+
+{code}
+$oscTemplate->addBlock('<link rel="canonical" href="' . tep_href_link(FILENAME_DEFAULT, 'manufacturers_id=' . $HTTP_GET_VARS['manufacturers_id'], 'NONSSL', false) . '" />' . "\n", $this->group);
+{code}
+
+<p>to:</p>
+
+{code}
+$oscTemplate->addBlock('<link rel="canonical" href="' . tep_href_link(FILENAME_DEFAULT, 'manufacturers_id=' . (int)$HTTP_GET_VARS['manufacturers_id'], 'NONSSL', false) . '" />' . "\n", $this->group);
+{code}
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/8fecd2b7873d0040898f2d5b9c4b960e7194958c" target="_blank">View online at GitHub</a></p>
+
+<span id="upg10"></span>
+
+<h3 class="notoc">Administration Tool -&gt; Who's Online (3 files)</h3>
+
+<p><i class="icon-file"></i> <strong>admin/whos_online.php</strong></p>
+
+<div class="note">It is safe to skip this file if your version contains customizations or modifications from an Add-On.</div>
+
+<p>around line 53, change from:</p>
+
+{code}
+$info = $whos_online['session_id'];
+{code}
+
+<p>to:</p>
+
+{code}
+$info = new ObjectInfo($whos_online);
+{code}
+
+<p>around line 56, change from:</p>
+
+{code}
+if ($whos_online['session_id'] == $info) {
+{code}
+
+<p>to:</p>
+
+{code}
+if (isset($info) && ($whos_online['session_id'] == $info->session_id)) {
+{code}
+
+<p>around line 68, change from:</p>
+
+{code}
+<td class="dataTableContent"><?php if (preg_match('/^(.*)' . tep_session_name() . '=[a-f,0-9]+[&]*(.*)/i', $whos_online['last_page_url'], $array)) { echo $array[1] . $array[2]; } else { echo $whos_online['last_page_url']; } ?>&nbsp;</td>
+{code}
+
+<p>to:</p>
+
+{code}
+<td class="dataTableContent"><?php if (preg_match('/^(.*)osCsid=[A-Z0-9,-]+[&]*(.*)/i', $whos_online['last_page_url'], $array)) { echo $array[1] . $array[2]; } else { echo $whos_online['last_page_url']; } ?>&nbsp;</td>
+{code}
+
+<p>around line 81, change from:</p>
+
+{code}
+if (isset($info)) {
+  $heading[] = array('text' => '<strong>' . TABLE_HEADING_SHOPPING_CART . '</strong>');
+
+  if (STORE_SESSIONS == 'mysql') {
+    $session_data = tep_db_query("select value from " . TABLE_SESSIONS . " WHERE sesskey = '" . $info . "'");
+    $session_data = tep_db_fetch_array($session_data);
+    $session_data = trim($session_data['value']);
+  } else {
+    if ( (file_exists(tep_session_save_path() . '/sess_' . $info)) && (filesize(tep_session_save_path() . '/sess_' . $info) > 0) ) {
+      $session_data = file(tep_session_save_path() . '/sess_' . $info);
+      $session_data = trim(implode('', $session_data));
+    }
+  }
+
+  if ($length = strlen($session_data)) {
+    $start_id = strpos($session_data, 'customer_id|s');
+    $start_cart = strpos($session_data, 'cart|O');
+    $start_currency = strpos($session_data, 'currency|s');
+    $start_country = strpos($session_data, 'customer_country_id|s');
+    $start_zone = strpos($session_data, 'customer_zone_id|s');
+
+    for ($i=$start_cart; $i<$length; $i++) {
+      if ($session_data[$i] == '{') {
+        if (isset($tag)) {
+          $tag++;
+        } else {
+          $tag = 1;
+        }
+      } elseif ($session_data[$i] == '}') {
+        $tag--;
+      } elseif ( (isset($tag)) && ($tag < 1) ) {
+        break;
+      }
+    }
+
+    $session_data_id = substr($session_data, $start_id, (strpos($session_data, ';', $start_id) - $start_id + 1));
+    $session_data_cart = substr($session_data, $start_cart, $i);
+    $session_data_currency = substr($session_data, $start_currency, (strpos($session_data, ';', $start_currency) - $start_currency + 1));
+    $session_data_country = substr($session_data, $start_country, (strpos($session_data, ';', $start_country) - $start_country + 1));
+    $session_data_zone = substr($session_data, $start_zone, (strpos($session_data, ';', $start_zone) - $start_zone + 1));
+
+    session_decode($session_data_id);
+    session_decode($session_data_currency);
+    session_decode($session_data_country);
+    session_decode($session_data_zone);
+    session_decode($session_data_cart);
+
+    if (isset($cart) && is_object($cart)) {
+      $products = $cart->get_products();
+      for ($i = 0, $n = sizeof($products); $i < $n; $i++) {
+        $contents[] = array('text' => $products[$i]['quantity'] . ' x ' . $products[$i]['name']);
+      }
+
+      if (sizeof($products) > 0) {
+        $contents[] = array('text' => tep_draw_separator('pixel_black.gif', '100%', '1'));
+        $contents[] = array('align' => 'right', 'text'  => TEXT_SHOPPING_CART_SUBTOTAL . ' ' . $currencies->format($cart->show_total(), true, $currency));
+      } else {
+        $contents[] = array('text' => '&nbsp;');
+      }
+    }
+  }
+}
+{code}
+
+<p>to:</p>
+
+{code}
+if (isset($info)) {
+  $heading[] = array('text' => '<strong>' . TABLE_HEADING_SHOPPING_CART . '</strong>');
+
+  if ( $info->customer_id > 0 ) {
+    $products_query = tep_db_query("select cb.customers_basket_quantity, cb.products_id, pd.products_name from " . TABLE_CUSTOMERS_BASKET . " cb, " . TABLE_PRODUCTS_DESCRIPTION . " pd where cb.customers_id = '" . (int)$info->customer_id . "' and cb.products_id = pd.products_id and pd.language_id = '" . (int)$languages_id . "'");
+
+    if ( tep_db_num_rows($products_query) ) {
+      $shoppingCart = new shoppingCart();
+
+      while ( $products = tep_db_fetch_array($products_query) ) {
+        $contents[] = array('text' => $products['customers_basket_quantity'] . ' x ' . $products['products_name']);
+
+        $attributes = array();
+
+        if ( strpos($products['products_id'], '{') !== false ) {
+          $combos = array();
+          preg_match_all('/(\{[0-9]+\}[0-9]+){1}/', $products['products_id'], $combos);
+
+          foreach ( $combos[0] as $combo ) {
+            $att = array();
+            preg_match('/\{([0-9]+)\}([0-9]+)/', $combo, $att);
+
+            $attributes[$att[1]] = $att[2];
+          }
+        }
+
+        $shoppingCart->add_cart(tep_get_prid($products['products_id']), $products['customers_basket_quantity'], $attributes);
+      }
+
+      $contents[] = array('text' => tep_draw_separator('pixel_black.gif', '100%', '1'));
+      $contents[] = array('align' => 'right', 'text'  => TEXT_SHOPPING_CART_SUBTOTAL . ' ' . $currencies->format($shoppingCart->show_total()));
+    } else {
+      $contents[] = array('text' => '&nbsp;');
+    }
+  } else {
+    $contents[] = array('text' => 'N/A');
+  }
+}
+{code}
+
+<p><i class="icon-file"></i> <strong>includes/functions/sessions.php</strong></p>
+
+<p>change tep_session_recreate() from:</p>
+
+{code}
+function tep_session_recreate() {
+  global $SID;
+
+  if (PHP_VERSION >= 5.1) {
+    session_regenerate_id(true);
+
+    if (!empty($SID)) {
+      $SID = tep_session_name() . '=' . tep_session_id();
+    }
+  }
+}
+{code}
+
+<p>to:</p>
+
+{code}
+function tep_session_recreate() {
+  global $SID;
+
+  if (PHP_VERSION >= 5.1) {
+    $old_id = session_id();
+
+    session_regenerate_id(true);
+
+    if (!empty($SID)) {
+      $SID = tep_session_name() . '=' . tep_session_id();
+    }
+
+    tep_whos_online_update_session_id($old_id, tep_session_id());
+  }
+}
+{code}
+
+<p><i class="icon-file"></i> <strong>includes/functions/whos_online.php</strong></p>
+
+<p>around line 38, change from:</p>
+
+{code}
+$stored_customer_query = tep_db_query("select count(*) as count from " . TABLE_WHOS_ONLINE . " where session_id = '" . tep_db_input($wo_session_id) . "'");
+$stored_customer = tep_db_fetch_array($stored_customer_query);
+
+if ($stored_customer['count'] > 0) {
+{code}
+
+<p>to:</p>
+
+{code}
+$stored_customer_query = tep_db_query("select session_id from " . TABLE_WHOS_ONLINE . " where session_id = '" . tep_db_input($wo_session_id) . "' limit 1");
+
+if ( tep_db_num_rows($stored_customer_query) > 0 ) {
+{code}
+
+<p>after tep_update_whos_online(), add:</p>
+
+{code}
+function tep_whos_online_update_session_id($old_id, $new_id) {
+  tep_db_query("update " . TABLE_WHOS_ONLINE . " set session_id = '" . tep_db_input($new_id) . "' where session_id = '" . tep_db_input($old_id) . "'");
+}
+{code}
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/07fa0551a33a87fb454f65308f94e9638fa48e1b" target="_blank">View online at GitHub</a></p>
+
+<span id="upg11"></span>
+
+<h3 class="notoc">MailChimp 360 (1 file)</h3>
+
+<p><i class="icon-file"></i> <strong>includes/modules/header_tags/ht_mailchimp_360.php</strong></p>
+
+<p>around line 54, change from:</p>
+
+{code}
+tep_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('Enable Category Title Module', 'MODULE_HEADER_TAGS_MAILCHIMP_360_STATUS', 'True', 'Do you want to allow category titles to be added to the page title?', '6', '1', 'tep_cfg_select_option(array(\'True\', \'False\'), ', now())");
+{code}
+
+<p>to:</p>
+
+{code}
+tep_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('Enable MailChimp 360 Module', 'MODULE_HEADER_TAGS_MAILCHIMP_360_STATUS', 'True', 'Do you want to activate this module in your shop?', '6', '1', 'tep_cfg_select_option(array(\'True\', \'False\'), ', now())");
+{code}
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/3d28527afb774684cdad256c294ce6a24605ee6b" target="_blank">View online at GitHub</a></p>
+
+<span id="upg12"></span>
+
+<h3 class="notoc">Administration Tool -&gt; Security Checks (4 files)</h3>
+
+<p>Copy the following files to their respective directories:</p>
+
+<p>
+  <i class="icon-file"></i> <strong>admin/includes/boxes/tools_security_checks.php</strong><br />
+  <i class="icon-file"></i> <strong>admin/includes/languages/english/modules/boxes/tools_security_checks.php</strong><br />
+  <i class="icon-file"></i> <strong>admin/includes/languages/english/security_checks.php</strong><br />
+  <i class="icon-file"></i> <strong>admin/security_checks.php</strong>
+</p>
+
+<div class="note">Please also copy and update the language definition file to the other languages you have installed.</div>
+
+<div class="info">This changeset should be performed after the Administration Tool Navigation Menu changeset for the link to appear automatically in the Administration Tool -&gt; Tools menu.</div>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/20608d6c7fb7fb964de1030770a0f5b4aca3426c" target="_blank">View online at GitHub</a></p>
+
+<span id="upg13"></span>
+
+<h3 class="notoc">Administration Tool -&gt; Database Tables (4 files)</h3>
+
+<p>Copy the following files to their respective directories:</p>
+
+<p>
+  <i class="icon-file"></i> <strong>admin/includes/boxes/tools_database_tables.php</strong><br />
+  <i class="icon-file"></i> <strong>admin/includes/languages/english/modules/boxes/tools_database_tables.php</strong><br />
+  <i class="icon-file"></i> <strong>admin/includes/languages/english/database_tables.php</strong><br />
+  <i class="icon-file"></i> <strong>admin/database_tables.php</strong>
+</p>
+
+<div class="note">Please also copy and update the language definition file to the other languages you have installed.</div>
+
+<div class="info">This changeset should be performed after the Administration Tool Navigation Menu changeset for the link to appear automatically in the Administration Tool -&gt; Tools menu.</div>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/48c04975b1f224a1cd7f5ba5f715e54e53ab0b46" target="_blank">View online at GitHub</a></p>
 
 <span id="upg14"></span>
 

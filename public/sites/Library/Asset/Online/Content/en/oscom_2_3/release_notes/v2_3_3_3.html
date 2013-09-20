@@ -1,9 +1,5 @@
 <span id="upgtop"></span>
 
-<div class="achtung">
-  <strong>Note:</strong> This document is still being edited.
-</div>
-
 <h1>osCommerce Online Merchant v2.3.3.3</h1>
 
 <p>osCommerce Online Merchant v2.3.3.3 is a general maintenance release focusing on improving core features and introducing new security check modules.</p>
@@ -16,9 +12,7 @@
   <p><a href="http://library.oscommerce.com/Online&amp;en&amp;oscom_2_3&amp;release_notes&amp;v2_3_3_3">http://library.oscommerce.com/Online&amp;en&amp;oscom_2_3&amp;release_notes&amp;v2_3_3_3</a></p>
 </div>
 
-<h2>Upgrading from v2.3.3.2</h2>
-
-<h3>Code Changes</h3>
+<h2>Changelog <small>Changes from v2.3.3.2</small></h2>
 
 <p>The following changes have been applied:</p>
 
@@ -36,7 +30,7 @@
     <tr class="success">
       <td><a href="#upg1">Database Query Logging</a> (2 files)</td>
       <td>Improve database query error logging.</td>
-      <td></td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-626-v2332-object-of-class-mysqli-result-could-not-be-converted-to-string/">626</a></td>
       <td>Low</td>
       <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
     </tr>
@@ -50,7 +44,7 @@
     <tr class="success">
       <td><a href="#upg3">HTTPS -&gt; HTTP Browser Alert</a> (2 files)</td>
       <td>Have forms posting from a HTTPS to HTTP page post to a HTTPS version to prevent the browser (Firefox) from alerting the user of being directed to an insecure page.</td>
-      <td></td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-606-links-shows-security-warning/">606</a></td>
       <td>Low</td>
       <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
     </tr>
@@ -64,7 +58,7 @@
     <tr class="success">
       <td><a href="#upg5">Action Recorder</a> (5 files)</td>
       <td>When expiring logged entries, don't pass the database connection link to tep_db_affected_rows().</td>
-      <td></td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-629-2332-action-recorder-bug/">629</a></td>
       <td>Low</td>
       <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
     </tr>
@@ -108,7 +102,7 @@
       <td>Fix module title.</td>
       <td></td>
       <td>Low</td>
-      <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
+      <td>Foxp2</td>
     </tr>
     <tr class="success">
       <td><a href="#upg12">Administration Tool -&gt; Security Checks</a> (4 files)</td>
@@ -197,6 +191,8 @@
   </tbody>
 </table>
 
+<div class="info">The Extended Security Check modules are located in a new directory in admin/includes/modules/security_check/extended/.</div>
+
 <h3>API Changes</h3>
 
 <p>The following API changes have been applied:</p>
@@ -210,30 +206,140 @@
   </thead>
   <tbody>
     <tr>
-      <td>Title</td>
-      <td>Description.</td>
+      <td>New MySQLi Compatibility Functions</td>
+      <td>mysqli_connect_errno(), mysqli_connect_error(), mysqli_set_charset().</td>
     </tr>
+    <tr>
+      <td>Language Locale</td>
+      <td>The locale defined in the main language file has changed from a LC_TIME setting to LC_ALL, and from a ISO_8859-1 character set to UTF-8.</td>
+    </tr>
+    <tr>
+      <td>Who's Online</td>
+      <td>The shopping cart contents of guests are no longer shown on the Who's Online page due to the removal of the potentially session conflicting session_decode() function.</td>
+    </tr>
+    <tr>
+      <td>Who's Online</td>
+      <td>New tep_whos_online_update_session_id() function to update the customers session ID in the whos_online database table when their session ID has been regenerated. This prevents duplicate entries showing in the Who's Online listing.</td>
+    </tr>
+    <tr>
+      <td>Administration Tool Navigation Menu</td>
+      <td>The Administration Tool navigation menu now loads the boxes dynamically so column_left.php no longer needs to be edited to add a navigation menu link. The navigation links are now sorted alphabetically.</td>
+    </tr>
+    <tr>
+      <td>Administration Tool Extended Security Check Modules</td>
+      <td>Extended Security Check modules are located in a new admin/includes/modules/security_check/extended/ directory and are not loaded with the normal security check modules on the Dashboard page due to being more resource intensive. Instead they are loaded on a new Tools -&gt; Security Checks page together with the normal security check modules. Both module types can now have a $has_doc class property to link to the Library Wiki documentation site.</td>
   </tbody>
 </table>
 
 <h3>Language Definitions</h3>
 
-<p>The following languages definitions have been modified:</p>
+<p>The following language definitions have been modified:</p>
 
 <table class="pretty">
   <thead>
     <tr>
-      <th>Language File</th>
       <th>Definitions</th>
       <th>Status</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>filename.php</td>
-      <td>DEFINITION_1<br />
-          DEFINITION_2</td>
-      <td>New<br />
+      <td><strong>[admin] modules/boxes/tools_database_tables.php</strong><br /><br />
+          MODULES_ADMIN_MENU_TOOLS_DATABASE_TABLES</td>
+      <td><br /><br />New</td>
+    </tr>
+    <tr>
+      <td><strong>[admin] modules/boxes/tools_security_checks.php</strong><br /><br />
+          MODULES_ADMIN_MENU_TOOLS_SECURITY_CHECKS</td>
+      <td><br /><br />New</td>
+    </tr>
+    <tr>
+      <td><strong>[admin] modules/security_check/extended/admin_backup_directory_listing.php</strong><br /><br />
+          MODULE_SECURITY_CHECK_EXTENDED_ADMIN_BACKUP_DIRECTORY_LISTING_TITLE<br />
+          MODULE_SECURITY_CHECK_EXTENDED_ADMIN_BACKUP_DIRECTORY_LISTING_HTTP_200</td>
+      <td><br /><br />New<br />
+          New</td>
+    </tr>
+    <tr>
+      <td><strong>[admin] modules/security_check/extended/admin_backup_file.php</strong><br /><br />
+          MODULE_SECURITY_CHECK_EXTENDED_ADMIN_BACKUP_FILE_TITLE<br />
+          MODULE_SECURITY_CHECK_EXTENDED_ADMIN_BACKUP_FILE_HTTP_200</td>
+      <td><br /><br />New<br />
+          New</td>
+    </tr>
+    <tr>
+      <td><strong>[admin] modules/security_check/extended/admin_http_authentication.php</strong><br /><br />
+          MODULE_SECURITY_CHECK_EXTENDED_ADMIN_HTTP_AUTHENTICATION_TITLE<br />
+          MODULE_SECURITY_CHECK_EXTENDED_ADMIN_HTTP_AUTHENTICATION_ERROR</td>
+      <td><br /><br />New<br />
+          New</td>
+    </tr>
+    <tr>
+      <td><strong>[admin] modules/security_check/extended/ext_directory_listing.php</strong><br /><br />
+          MODULE_SECURITY_CHECK_EXTENDED_EXT_DIRECTORY_LISTING_TITLE<br />
+          MODULE_SECURITY_CHECK_EXTENDED_EXT_DIRECTORY_LISTING_HTTP_200</td>
+      <td><br /><br />New<br />
+          New</td>
+    </tr>
+    <tr>
+      <td><strong>[admin] modules/security_check/extended/mysql_utf8.php</strong><br /><br />
+          MODULE_SECURITY_CHECK_EXTENDED_MYSQL_UTF8_TITLE<br />
+          MODULE_SECURITY_CHECK_EXTENDED_MYSQL_UTF8_ERROR</td>
+      <td><br /><br />New<br />
+          New</td>
+    </tr>
+    <tr>
+      <td><strong>[admin] modules/security_check/extended/version_check.php</strong><br /><br />
+          MODULE_SECURITY_CHECK_EXTENDED_VERSION_CHECK_TITLE<br />
+          MODULE_SECURITY_CHECK_EXTENDED_VERSION_CHECK_ERROR</td>
+      <td><br /><br />New<br />
+          New</td>
+    </tr>
+    <tr>
+      <td><strong>[admin] modules/security_check/extended_last_run.php</strong><br /><br />
+          MODULE_SECURITY_CHECK_EXTENDED_LAST_RUN_OLD</td>
+      <td><br /><br />New</td>
+    </tr>
+    <tr>
+      <td><strong>[admin] database_tables.php</strong><br /><br />
+          HEADING_TITLE<br />
+          TABLE_HEADING_TABLE<br />
+          TABLE_HEADING_ROWS<br />
+          TABLE_HEADING_SIZE<br />
+          TABLE_HEADING_ENGINE<br />
+          TABLE_HEADING_COLLATION<br />
+          TABLE_HEADING_MSG_TYPE<br />
+          TABLE_HEADING_MSG<br />
+          ACTION_CHECK_TABLES<br />
+          ACTION_ANALYZE_TABLES<br />
+          ACTION_OPTIMIZE_TABLES<br />
+          ACTION_REPAIR_TABLES<br />
+          ACTION_UTF8_CONVERSION<br />
+          BUTTON_ACTION_GO</td>
+      <td><br /><br />New<br />
+          New<br />
+          New<br />
+          New<br />
+          New<br />
+          New<br />
+          New<br />
+          New<br />
+          New<br />
+          New<br />
+          New<br />
+          New<br />
+          New<br />
+          New</td>
+    </tr>
+    <tr>
+      <td><strong>[admin] security_checks.php</strong><br /><br />
+          HEADING_TITLE<br />
+          TABLE_HEADING_TITLE<br />
+          TABLE_HEADING_MODULE<br />
+          TABLE_HEADING_INFO</td>
+      <td><br /><br />New<br />
+          New<br />
+          New<br />
           New</td>
     </tr>
   </tbody>
@@ -1253,21 +1359,131 @@ tep_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_title, conf
 <p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
 <p><a href="https://github.com/osCommerce/oscommerce2/commit/292ce5af6b0d0a84a9162767958e543655cbc209" target="_blank">View online at GitHub</a></p>
 
-<span id="upgX"></span>
+<span id="upg15"></span>
 
-<h3 class="notoc">Title Module</h3>
+<h3 class="notoc">Extended Last Run Check</h3>
 
 <p>Copy the following files to their respective directories:</p>
 
 <p>
-  <i class="icon-file"></i> <strong>languages/english/modules/filename.php</strong><br />
-  <i class="icon-file"></i> <strong>modules/filename.php</strong>
+  <i class="icon-file"></i> <strong>admin/includes/languages/english/modules/security_check/extended_last_run.php</strong><br />
+  <i class="icon-file"></i> <strong>admin/includes/modules/security_check/extended_last_run.php</strong>
 </p>
 
 <div class="note">Please also copy and update the language definition file to the other languages you have installed.</div>
 
+<div class="info">After this changeset is applied, the module can be found in Administration Tool -&gt; Tools -&gt; Security Checks.</div>
+
 <p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
-<p><a href="https://github.com/osCommerce/oscommerce2/commit/xxx" target="_blank">View online at GitHub</a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/20608d6c7fb7fb964de1030770a0f5b4aca3426c" target="_blank">View online at GitHub</a></p>
+
+<span id="upg16"></span>
+
+<h3 class="notoc">admin/backups/ Directory Listing</h3>
+
+<p>Copy the following files to their respective directories:</p>
+
+<p>
+  <i class="icon-file"></i> <strong>admin/includes/languages/english/modules/security_check/extended/admin_backup_directory_listing.php</strong><br />
+  <i class="icon-file"></i> <strong>admin/includes/modules/security_check/extended/admin_backup_directory_listing.php</strong>
+</p>
+
+<div class="note">Please also copy and update the language definition file to the other languages you have installed.</div>
+
+<div class="info">After this changeset is applied, the module can be found in Administration Tool -&gt; Tools -&gt; Security Checks.</div>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/20608d6c7fb7fb964de1030770a0f5b4aca3426c" target="_blank">View online at GitHub</a></p>
+
+<span id="upg17"></span>
+
+<h3 class="notoc">admin/backups/ File Accessibility</h3>
+
+<p>Copy the following files to their respective directories:</p>
+
+<p>
+  <i class="icon-file"></i> <strong>admin/includes/languages/english/modules/security_check/extended/admin_backup_file.php</strong><br />
+  <i class="icon-file"></i> <strong>admin/includes/modules/security_check/extended/admin_backup_file.php</strong>
+</p>
+
+<div class="note">Please also copy and update the language definition file to the other languages you have installed.</div>
+
+<div class="info">After this changeset is applied, the module can be found in Administration Tool -&gt; Tools -&gt; Security Checks.</div>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/20608d6c7fb7fb964de1030770a0f5b4aca3426c" target="_blank">View online at GitHub</a></p>
+
+<span id="upg18"></span>
+
+<h3 class="notoc">Administration Tool HTTP Authentication</h3>
+
+<p>Copy the following files to their respective directories:</p>
+
+<p>
+  <i class="icon-file"></i> <strong>admin/includes/languages/english/modules/security_check/extended/admin_http_authentication.php</strong><br />
+  <i class="icon-file"></i> <strong>admin/includes/modules/security_check/extended/admin_http_authentication.php</strong>
+</p>
+
+<div class="note">Please also copy and update the language definition file to the other languages you have installed.</div>
+
+<div class="info">After this changeset is applied, the module can be found in Administration Tool -&gt; Tools -&gt; Security Checks.</div>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/20608d6c7fb7fb964de1030770a0f5b4aca3426c" target="_blank">View online at GitHub</a></p>
+
+<span id="upg19"></span>
+
+<h3 class="notoc">ext/ Directory Listing</h3>
+
+<p>Copy the following files to their respective directories:</p>
+
+<p>
+  <i class="icon-file"></i> <strong>admin/includes/languages/english/modules/security_check/extended/ext_directory_listing.php</strong><br />
+  <i class="icon-file"></i> <strong>admin/includes/modules/security_check/extended/ext_directory_listing.php</strong>
+</p>
+
+<div class="note">Please also copy and update the language definition file to the other languages you have installed.</div>
+
+<div class="info">After this changeset is applied, the module can be found in Administration Tool -&gt; Tools -&gt; Security Checks.</div>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/20608d6c7fb7fb964de1030770a0f5b4aca3426c" target="_blank">View online at GitHub</a></p>
+
+<span id="upg20"></span>
+
+<h3 class="notoc">MySQL UTF-8 Database Tables</h3>
+
+<p>Copy the following files to their respective directories:</p>
+
+<p>
+  <i class="icon-file"></i> <strong>admin/includes/languages/english/modules/security_check/extended/mysql_utf8.php</strong><br />
+  <i class="icon-file"></i> <strong>admin/includes/modules/security_check/extended/mysql_utf8.php</strong>
+</p>
+
+<div class="note">Please also copy and update the language definition file to the other languages you have installed.</div>
+
+<div class="info">After this changeset is applied, the module can be found in Administration Tool -&gt; Tools -&gt; Security Checks.</div>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/20608d6c7fb7fb964de1030770a0f5b4aca3426c" target="_blank">View online at GitHub</a></p>
+
+<span id="upg21"></span>
+
+<h3 class="notoc">Version Check</h3>
+
+<p>Copy the following files to their respective directories:</p>
+
+<p>
+  <i class="icon-file"></i> <strong>admin/includes/languages/english/modules/security_check/extended/version_check.php</strong><br />
+  <i class="icon-file"></i> <strong>admin/includes/modules/security_check/extended/version_check.php</strong>
+</p>
+
+<div class="note">Please also copy and update the language definition file to the other languages you have installed.</div>
+
+<div class="info">After this changeset is applied, the module can be found in Administration Tool -&gt; Tools -&gt; Security Checks.</div>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/20608d6c7fb7fb964de1030770a0f5b4aca3426c" target="_blank">View online at GitHub</a></p>
 
 <h2>Thank You!</h2>
 
@@ -1281,7 +1497,28 @@ tep_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_title, conf
   </thead>
   <tbody>
     <tr>
-      <td><a href="http://forums.oscommerce.com/index.php?showuser=xx" target="_blank">Name</a></td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=323143" target="_blank">ABS0lute</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=316891" target="_blank">Bob Terveuren</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=61933" target="_blank">D-BlooD</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=303521" target="_blank">dculley</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=17188" target="_blank">Jack_mcs</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=290961" target="_blank">mvanderhoff</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=114908" target="_blank">Scottyj</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=324007" target="_blank">t.man</a></td>
     </tr>
   </tbody>
 </table>

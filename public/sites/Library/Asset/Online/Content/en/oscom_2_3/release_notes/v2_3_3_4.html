@@ -44,8 +44,8 @@
       <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
     </tr>
     <tr class="success">
-      <td><a href="#upg3">Language Locale</a> (2 files)</td>
-      <td>As LC_ALL is now being used to set the locale, languages other than English should manually set LC_NUMERIC to en_US to avoid PHP using commas in float/decimal values.</td>
+      <td><a href="#upg3">LC_NUMERIC Locale</a> (2 files)</td>
+      <td>As LC_ALL is now being used to set the locale, manually set LC_NUMERIC to the system locale to prevent languages using commas in float/decimal values.</td>
       <td><a href="http://forums.oscommerce.com/tracker/issue-634-product-price-final-price-not-correct-when-placing-an-order-using-utf-8/">634</a></td>
       <td>Low</td>
       <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
@@ -73,8 +73,8 @@
   </thead>
   <tbody>
     <tr>
-      <td>Language Locale</td>
-      <td>As the locale is set to LC_ALL, languages other than English should manually set LC_NUMERIC to en_US to avoid PHP using commas in float/decimal values.</td>
+      <td>LC_NUMERIC Locale</td>
+      <td>As the language locale is set to LC_ALL, some languages were using commas in float/decimal values which conflicted with MySQL. LC_NUMERIC is now set to the system locale after the main language file has loaded, overriding the LC_ALL value.</td>
     </tr>
   </tbody>
 </table>
@@ -123,7 +123,7 @@
       <td>admin/includes/languages/english/database_tables.php</td>
     </tr>
     <tr>
-      <td>admin/includes/languages/english.php</td>
+      <td>admin/includes/application_top.php</td>
     </tr>
     <tr>
       <td>admin/database_tables.php</td>
@@ -132,7 +132,7 @@
       <td>includes/functions/database.php</td>
     </tr>
     <tr>
-      <td>includes/languages/english.php</td>
+      <td>includes/application_top.php</td>
     </tr>
     <tr>
       <td>includes/version.php</td>
@@ -248,21 +248,29 @@ function mysqli_error($link = null) {
 
 <span id="upg3"></span>
 
-<h3 class="notoc">Language Locale (2 files)</h3>
+<h3 class="notoc">LC_NUMERIC Locale (2 files)</h3>
 
-<p><i class="icon-file"></i> <strong>admin/includes/languages/<i>(LANGUAGE)</i>.php</strong><br />
-<i class="icon-file"></i> <strong>includes/languages/<i>(LANGUAGE)</i>.php</strong></p>
+<p><i class="icon-file"></i> <strong>admin/includes/application_top.php</strong><br />
+<i class="icon-file"></i> <strong>includes/application_top.php</strong></p>
 
-<p>For all languages other than English, after the setlocale(LC_ALL, ...) line, add:
+<p>In those two files, search for the following line:</p>
 
 {code}
-@setlocale(LC_NUMERIC, array('en_US.UTF-8', 'en_US.UTF8', 'enu_usa'));
+// include the language translations
+  require(DIR_WS_LANGUAGES . $language . '.php');
 {code}
 
-<div class="note">It is important to leave LC_NUMERIC as en_US and not as your language locale.</div>
+<p>and replace with:</p>
+
+{code}
+// include the language translations
+  $_system_locale_numeric = setlocale(LC_NUMERIC, 0);
+  require(DIR_WS_LANGUAGES . $language . '.php');
+  setlocale(LC_NUMERIC, $_system_locale_numeric); // Prevent LC_ALL from setting LC_NUMERIC to a locale with 1,0 float/decimal values instead of 1.0 (see bug #634)
+{code}
 
 <p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
-<p><a href="https://github.com/osCommerce/oscommerce2/commit/23223cbca02152961f925581c137f559b962ae59" target="_blank">View online at GitHub</a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/bee1837d08d633f6090b62d74c9fffdad2c6b8b9" target="_blank">View online at GitHub</a></p>
 
 <span id="upg4"></span>
 
@@ -283,7 +291,7 @@ function mysqli_error($link = null) {
 {code}
 
 <p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
-<p><a href="https://github.com/osCommerce/oscommerce2/commit/bb2f558c6cfd7fcda82bc0933248a81105b0967f" target="_blank">View online at GitHub</a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/9b158776b7dabc57cbb4ebf9cb7a0681072bcb5d" target="_blank">View online at GitHub</a></p>
 
 <h2>Thank You!</h2>
 

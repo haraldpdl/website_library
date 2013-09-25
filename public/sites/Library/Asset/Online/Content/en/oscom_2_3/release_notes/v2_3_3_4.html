@@ -1,0 +1,334 @@
+<span id="upgtop"></span>
+
+<h1>osCommerce Online Merchant v2.3.3.4</h1>
+
+<p>osCommerce Online Merchant v2.3.3.4 is a general maintenance release focusing on improving core features and improves the UTF-8 conversion introduced in the previous release.</p>
+
+<p>If you performed the UTF-8 conversion in the previous release and it resulted in garbage text, please apply the updated conversion again and select the character set you had previously (most commonly latin1). The updated conversion also updates each record manually and detects and prevents double encodings, and detects existing character sets automatically for new conversions.</p>
+
+<p>This release is in preparation of and building up to v2.3.4.</p>
+
+<div class="visible-print">
+  <p>This document can be found online at:</p>
+
+  <p><a href="http://library.oscommerce.com/Online&amp;en&amp;oscom_2_3&amp;release_notes&amp;v2_3_3_4">http://library.oscommerce.com/Online&amp;en&amp;oscom_2_3&amp;release_notes&amp;v2_3_3_4</a></p>
+</div>
+
+<h2>Changelog <small>Changes from v2.3.3.3</small></h2>
+
+<p>The following changes have been applied:</p>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Bug</th>
+      <th>Severity</th>
+      <th>Committer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="success">
+      <td><a href="#upg1">MySQL Error Functions</a> (2 files)</td>
+      <td>Don't pass a null parameter to the MySQL error functions otherwise PHP will display a warning message.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-636-mysql-errno-supplied-argument-is-not-a-valid-mysql-link-resource/">636</a></td>
+      <td>Low</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg2">UTF-8 Conversion</a> (2 files)</td>
+      <td>Also manually convert existing data records to UTF-8 and detect encodings to prevent double encodings. Allow a dry-run to show which queries would be performed.</td>
+      <td></td>
+      <td>Low</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg3">Language Locale</a> (2 files)</td>
+      <td>As LC_ALL is now being used to set the locale, languages other than English should manually set LC_NUMERIC to en_US to avoid PHP using commas in float/decimal values.</td>
+      <td><a href="http://forums.oscommerce.com/tracker/issue-634-product-price-final-price-not-correct-when-placing-an-order-using-utf-8/">634</a></td>
+      <td>Low</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg4">Version Update</a> (1 file)</td>
+      <td>Update version to v2.3.3.4.</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>API Changes</h3>
+
+<p>The following API changes have been applied:</p>
+
+<table class="pretty">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Language Locale</td>
+      <td>As the locale is set to LC_ALL, languages other than English should manually set LC_NUMERIC to en_US to avoid PHP using commas in float/decimal values.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Language Definitions</h3>
+
+<p>The following language definitions have been modified:</p>
+
+<table class="pretty">
+  <thead>
+    <tr>
+      <th>Definitions</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>[admin] database_tables.php</strong><br /><br />
+          TABLE_HEADING_QUERIES<br />
+          ACTION_UTF8_CONVERSION_FROM_AUTODETECT<br />
+          ACTION_UTF8_CONVERSION_FROM<br />
+          ACTION_UTF8_DRY_RUN</td>
+      <td><br /><br />New<br />
+          New<br />
+          New<br />
+          New</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Modified Files</h3>
+
+<p>Files that have been modified in this release include:</p>
+
+<table class="pretty">
+  <thead>
+    <tr>
+      <th>Modified Files</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>admin/includes/functions/database.php</td>
+    </tr>
+    <tr>
+      <td>admin/includes/languages/english/database_tables.php</td>
+    </tr>
+    <tr>
+      <td>admin/includes/languages/english.php</td>
+    </tr>
+    <tr>
+      <td>admin/database_tables.php</td>
+    </tr>
+    <tr>
+      <td>includes/functions/database.php</td>
+    </tr>
+    <tr>
+      <td>includes/languages/english.php</td>
+    </tr>
+    <tr>
+      <td>includes/version.php</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>File Changes</h2>
+
+<span id="upg1"></span>
+
+<h3 class="notoc">MySQL Error Functions (2 files)</h3>
+
+<p><i class="icon-file"></i> <strong>admin/includes/functions/database.php</strong><br />
+<i class="icon-file"></i> <strong>includes/functions/database.php</strong></p>
+
+<p>in those two files, change mysqli_connect_errno() from:</p>
+
+{code}
+function mysqli_connect_errno($link = null) {
+  return mysql_errno($link);
+}
+{code}
+
+<p>to:</p>
+
+{code}
+function mysqli_connect_errno($link = null) {
+  if ( is_null($link) ) {
+    return mysql_errno();
+  }
+
+  return mysql_errno($link);
+}
+{code}
+
+<p>change mysqli_connect_error() from:</p>
+
+{code}
+function mysqli_connect_error($link = null) {
+  return mysql_error($link);
+}
+{code}
+
+<p>to:</p>
+
+{code}
+function mysqli_connect_error($link = null) {
+  if ( is_null($link) ) {
+    return mysql_error();
+  }
+
+  return mysql_error($link);
+}
+{code}
+
+<p>change mysqli_errno() from:</p>
+
+{code}
+function mysqli_errno($link = null) {
+  return mysql_errno($link);
+}
+{code}
+
+<p>to:</p>
+
+{code}
+function mysqli_errno($link = null) {
+  if ( is_null($link) ) {
+    return mysql_errno();
+  }
+
+  return mysql_errno($link);
+}
+{code}
+
+<p>change mysqli_error() from:</p>
+
+{code}
+function mysqli_error($link = null) {
+  return mysql_error($link);
+}
+{code}
+
+<p>to:</p>
+
+{code}
+function mysqli_error($link = null) {
+  if ( is_null($link) ) {
+    return mysql_error();
+  }
+
+  return mysql_error($link);
+}
+{code}
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/a46cc9d535e7cf1eb319017517da6ade5aea8adf" target="_blank">View online at GitHub</a></p>
+
+<span id="upg2"></span>
+
+<h3 class="notoc">UTF-8 Conversion (2 files)</h3>
+
+<p>Copy and replace the following files to their respective directories:</p>
+
+<p><i class="icon-file"></i> <strong>admin/includes/languages/english/database_tables.php</strong><br />
+<i class="icon-file"></i> <strong>admin/database_tables.php</strong></p>
+
+<div class="note">Please also update the language definitions for the other languages you have installed.</div>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/acb505840677ed6b26019f51763255339eb4f86f" target="_blank">View online at GitHub</a></p>
+
+<span id="upg3"></span>
+
+<h3 class="notoc">Language Locale (2 files)</h3>
+
+<p><i class="icon-file"></i> <strong>admin/includes/languages/<i>(LANGUAGE)</i>.php</strong><br />
+<i class="icon-file"></i> <strong>includes/languages/<i>(LANGUAGE)</i>.php</strong></p>
+
+<p>For all languages other than English, after the setlocale(LC_ALL, ...) line, add:
+
+{code}
+@setlocale(LC_NUMERIC, array('en_US.UTF-8', 'en_US.UTF8', 'enu_usa'));
+{code}
+
+<div class="note">It is important to leave LC_NUMERIC as en_US and not as your language locale.</div>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/23223cbca02152961f925581c137f559b962ae59" target="_blank">View online at GitHub</a></p>
+
+<span id="upg4"></span>
+
+<h3 class="notoc">Version Update (1 file)</h3>
+
+<p><i class="icon-file"></i> <strong>includes/version.php</strong></p>
+
+<p>change line 1 from:</p>
+
+{code}
+2.3.3.3
+{code}
+
+<p>to:</p>
+
+{code}
+2.3.3.4
+{code}
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/bb2f558c6cfd7fcda82bc0933248a81105b0967f" target="_blank">View online at GitHub</a></p>
+
+<h2>Thank You!</h2>
+
+<p>We'd like to thank the community for their feedback on our releases. In addition, we thank the following people who participated in the development of this release.</p>
+
+<table class="pretty">
+  <thead>
+    <tr>
+      <th>Bug Reporters</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=323143" target="_blank">ABS0lute</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=324098" target="_blank">RWork</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=273016" target="_blank">ungovernable</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="pretty">
+  <thead>
+    <tr>
+      <th>Testers</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=323143" target="_blank">ABS0lute</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=140080" target="_blank">rexxy</a></td>
+    </tr>
+    <tr>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=53509" target="_blank">Shuen</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Reference</h2>
+
+<p>A full list of source code changes can be seen at:</p>
+
+<p><a href="https://github.com/osCommerce/oscommerce2/compare/v2.3.3.3...upgrade2334" target="_blank">https://github.com/osCommerce/oscommerce2/compare/v2.3.3.3...upgrade2334</a></p>

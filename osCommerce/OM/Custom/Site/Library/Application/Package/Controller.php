@@ -2,7 +2,7 @@
 /**
  * osCommerce Website
  * 
- * @copyright Copyright (c) 2013 osCommerce; http://www.oscommerce.com
+ * @copyright Copyright (c) 2014 osCommerce; http://www.oscommerce.com
  * @license BSD License; http://www.oscommerce.com/bsdlicense.txt
  */
 
@@ -67,6 +67,10 @@
 
       if ( isset($book) ) {
         $this->_page_contents = 'chapters.html';
+
+        if ( $OSCOM_PackageBook->hasImage($book) ) {
+          $OSCOM_Template->setValue('book_image', $OSCOM_PackageBook->getImage($book));
+        }
 
         $OSCOM_Template->setValue('book_title', $OSCOM_PackageBook->getTitle($book));
         $OSCOM_Template->setValue('book_description', $OSCOM_PackageBook->getDescription($book));

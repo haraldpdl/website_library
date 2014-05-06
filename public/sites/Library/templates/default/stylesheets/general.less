@@ -62,10 +62,6 @@ footer {
   }
 }
 
-#bookPageContent {
-  clear: both;
-}
-
 /* Text selection */
 
 ::-moz-selection{ background: #36d63d; color:#fff; text-shadow: none; }
@@ -101,19 +97,15 @@ a:link { -webkit-tap-highlight-color: #36d63d; }
 
 /* toc */
 
-#toc_trichome {
-  position: fixed;
-  top: 46px;
-  right: 5px;
-  z-index: 100;
-}
-
-#toc_content {
-  position: fixed !important;
-  top: 46px !important;
+#toc {
+  float: right;
   background-color: #49afcd;
   color: #fff;
-  font-size: 0.8em;
+  font-size: 0.85em;
+  padding: 10px;
+  margin-top: 20px;
+  margin-left: 15px;
+  margin-bottom: 15px;
 
   ul {
     list-style-type: none;
@@ -167,7 +159,7 @@ a:link { -webkit-tap-highlight-color: #36d63d; }
     display: none !important;
   }
 
-  #ugarit, #wally, #toc, #toc_trichome, footer {
+  #ugarit, #wally, #toc, footer {
     display: none;
   }
 }

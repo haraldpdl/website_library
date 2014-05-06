@@ -2,7 +2,7 @@
 /**
  * osCommerce Website
  * 
- * @copyright Copyright (c) 2012 osCommerce; http://www.oscommerce.com
+ * @copyright Copyright (c) 2014 osCommerce; http://www.oscommerce.com
  * @license BSD License; http://www.oscommerce.com/bsdlicense.txt
  */
 
@@ -34,6 +34,14 @@
       }
 
       return $books;
+    }
+
+    public function hasImage($code) {
+      return isset($this->_content[$code]['image']);
+    }
+
+    public function getImage($code) {
+      return $this->_content[$code]['image'];
     }
 
     public function getTitle($code) {

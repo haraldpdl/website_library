@@ -2,7 +2,7 @@
 /**
  * osCommerce Website
  * 
- * @copyright Copyright (c) 2012 osCommerce; http://www.oscommerce.com
+ * @copyright Copyright (c) 2014 osCommerce; http://www.oscommerce.com
  * @license BSD License; http://www.oscommerce.com/bsdlicense.txt
  */
 
@@ -28,7 +28,7 @@
 
       $content = file_get_contents($OSCOM_Template->getValue('current_page_file'));
 
-      preg_match_all('/<h([2-6])[^>]*>(.*)<\/h.>/', $content, $matches);
+      preg_match_all('/<h([1-6])[^>]*>(.*)<\/h.>/', $content, $matches);
 
       $level = 0;
 
@@ -42,7 +42,11 @@
             $result .= str_repeat('</li></ul>', $level - $value) . '</li>';
           }
 
-          $result .= '<li><a href="#" onclick="$(window).scrollTop($(\'#bookPageContent :header:not(\\\'h1\\\'):eq(' . $key . ')\').position().top - 40); return false;">' . $matches[2][$key] . '</a>';
+          if ( strpos($matches[2][$key], '<small>') !== false ) {
+            $matches[2][$key] = substr($matches[2][$key], 0, strpos($matches[2][$key], '<small>'));
+          }
+
+          $result .= '<li><a href="#" onclick="$(window).scrollTop($(\'#bookPageContent :header:eq(' . $key . ')\').position().top - 40); return false;">' . $matches[2][$key] . '</a>';
 
           $level = $value;
         }
@@ -51,29 +55,7 @@
       if ( !empty($result) ) {
         $result .= str_repeat('</li></ul>', $level - 1);
 
-        $result = <<<END
-<div id="toc" style="display: none;">$result</div>
-<div id="toc_trichome"><button type="button" class="btn btn-mini btn-info"><i class="icon-th-list icon-white"></i></button></div>
-<script>
-\$(function() {
-  \$('#toc_trichome').popover({
-    html: true,
-    trigger: 'manual',
-    content: \$('#toc').html(),
-    placement: 'left',
-    template: '<div class="popover" id="toc_content" onmouseover="clearTimeout(timeoutObj);\$(this).mouseleave(function() {\$(this).hide();});"><div class="popover-inner"><div class="popover-content"><p></p></div></div></div>'
-  }).mouseenter(function(e) {
-    \$(this).popover('show');
-  }).mouseleave(function(e) {
-    var ref = \$(this);
-
-    timeoutObj = setTimeout(function() {
-      ref.popover('hide');
-    }, 50);
-  });
-});
-</script>
-END;
+        $result = '<div id="toc">' . $result . '</div>';
       }
 
       return $result;

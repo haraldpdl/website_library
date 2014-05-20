@@ -1,0 +1,2209 @@
+<span id="upgtop"></span>
+
+<h1>osCommerce Online Merchant v2.3.4</h1>
+
+<p>osCommerce Online Merchant v2.3.4 is a general maintenance release focusing on improving core features and introduces a new Content Modules feature.</p>
+
+<p>This release is based on v2.3.3.4, not on v2.3.3. It is therefore important to review the <a href="{link}Online|Library|en&oscom_2_3&release_notes{link}">v2.3.3.1 to v2.3.3.4 release notes</a> when upgrading from v2.3.3.</p>
+
+<div class="visible-print">
+  <p>This document can be found online at:</p>
+
+  <p><a href="http://library.oscommerce.com/Online&amp;en&amp;oscom_2_3&amp;release_notes&amp;v2_3_4">http://library.oscommerce.com/Online&amp;en&amp;oscom_2_3&amp;release_notes&amp;v2_3_4</a></p>
+</div>
+
+<h2>Changelog <small>Changes from v2.3.3.4</small></h2>
+
+<p>The following changes have been applied:</p>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Bug</th>
+      <th>Severity</th>
+      <th>Developer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="success">
+      <td><a href="#upg1">jQuery UI</a> (2+ files)</td>
+      <td>Update jQuery UI from 1.8.22 to 1.10.4.</td>
+      <td></td>
+      <td>Low</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg2">jQuery</a> (2+ files)</td>
+      <td>Update jQuery from 1.8.0 to 1.11.0.</td>
+      <td></td>
+      <td>Low</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg3">Flot (jQuery Library)</a> (1+ files)</td>
+      <td>Update Flot (jQuery Library) from 0.6 to 0.8.2.</td>
+      <td></td>
+      <td>Low</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg4">PhotosetGrid and ColorBox</a> (3+ files)</td>
+      <td>Replace bxGallery and FancyBox with PhotosetGrid and Colorbox.</td>
+      <td></td>
+      <td>Low</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg5">Administration Tool Boxes</a> (1 file)</td>
+      <td>Fix height of Administration Tool boxes.</td>
+      <td></td>
+      <td>Low</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg6">Improve $PHP_SELF</a> (11 files)</td>
+      <td>Improve $PHP_SELF to work in subdirectories.</td>
+      <td></td>
+      <td>Low</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg7">Session Lifetime</a> (5 files)</td>
+      <td>Change database session lifetime to match file session lifetime.</td>
+      <td></td>
+      <td>Low</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg8">Content Modules</a> (6+ files)</td>
+      <td>Introduce Content Modules for the Login, My Account, and Checkout Success pages.</td>
+      <td></td>
+      <td>Low</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg9">Block Orders With No Shipping</a> (2 files)</td>
+      <td>Block orders when no shipping modules are available for the destination.</td>
+      <td></td>
+      <td>Low</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg10">Remove Free Shipping Check On Non-Related Page</a> (1 file)</td>
+      <td>Remove check on non-existing $free_shipping variable.</td>
+      <td></td>
+      <td>Low</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg11">Checkout Confirmation MessageStack</a> (1 file)</td>
+      <td>Add message stack output to the checkout confirmation page.</td>
+      <td></td>
+      <td>Low</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
+    </tr>
+    <tr class="success">
+      <td><a href="#upg12">Version Update</a> (1 file)</td>
+      <td>Update version to v2.3.4.</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>New Modules</h3>
+
+<p>The following modules have been added:</p>
+
+<table class="pretty">
+  <thead>
+    <tr>
+      <th>Administration Tool Boxes</th>
+      <th>Description</th>
+      <th>Developer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="#upg8">Content Modules</a></td>
+      <td>Administration page to install and configure Content Modules.</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="pretty">
+  <thead>
+    <tr>
+      <th>Content Modules</th>
+      <th>Description</th>
+      <th>Developer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="#upg8">Set Password (account)</a></td>
+      <td>Replace the My Account Change Password link to My Account Set Password if the account was created without a password (eg, through Log In with PayPal).</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
+    </tr>
+    <tr>
+      <td><a href="#upg8">Downloads (checkout_success)</a></td>
+      <td>Show download links on the checkout success page if the order status allows downloads.</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
+    </tr>
+    <tr>
+      <td><a href="#upg8">Product Notifications (checkout_success)</a></td>
+      <td>Show product notifications on the checkout success page.</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
+    </tr>
+    <tr>
+      <td><a href="#upg8">Redirect Old Order (checkout_success)</a></td>
+      <td>Redirect to the My Account page if the checkout success page is called after 60 minutes from the customers last order.</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
+    </tr>
+    <tr>
+      <td><a href="#upg8">Thank You (checkout_success)</a></td>
+      <td>Show the thank you text on the checkout success page.</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
+    </tr>
+    <tr>
+      <td><a href="#upg8">Create Account Link (login)</a></td>
+      <td>Show the create account link on the login page for new customers to use.</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
+    </tr>
+    <tr>
+      <td><a href="#upg8">Login Form (login)</a></td>
+      <td>Show the login form on the login page.</td>
+      <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>External Library Updates</h3>
+
+<p>The following external libraries have been updated:</p>
+
+<table class="pretty">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="#upg2">jQuery</a></td>
+      <td>1.8.0 to 1.11.0.</td>
+    </tr>
+    <tr>
+      <td><a href="#upg1">jQuery UI</a></td>
+      <td>1.8.22 to 1.10.4.</td>
+    </tr>
+    <tr>
+      <td><a href="#upg3">Flot (jQuery)</a></td>
+      <td>0.6 to 0.8.2.</td>
+    </tr>
+    <tr>
+      <td><a href="#upg4">bxGallery -> PhotosetGrid</a></td>
+      <td>bxGallery has been replaced by PhotosetGrid.</td>
+    </tr>
+    <tr>
+      <td><a href="#upg4">FancyBox -> Colorbox</a></td>
+      <td>FancyBox has been replaced by Colorbox.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>API Changes</h3>
+
+<p>The following API changes have been applied:</p>
+
+<table class="pretty">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>$PHP_SELF</td>
+      <td>The value of $PHP_SELF is now set by parsing the requested url through parse_url() and using the 'path' value returned. This value is no longer parsed through basename() to allow pages to be linked to in subdirectories (eg, ext/).</td>
+    </tr>
+    <tr>
+      <td>Session Lifetime</td>
+      <td>The database based session lifetime now matches the file based session life time for a consistent behaviour. Old sessions are now cleaned up automatically by PHP's session garbage collection settings.</td>
+    </tr>
+    <tr>
+      <td>Cookie Based Sessions</td>
+      <td>The GET and POST session values are ignored when force cookie based sessions is enabled.</td>
+    </tr>
+    <tr>
+      <td>Content Modules</td>
+      <td>New functions have been added to the template class to manage the new Content Modules implementation.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Language Definitions</h3>
+
+<p>The following language definitions have been modified:</p>
+
+<table class="pretty">
+  <thead>
+    <tr>
+      <th>Definitions</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>[admin] modules/boxes/modules_content.php</strong><br />
+          MODULES_ADMIN_MENU_MODULES_CONTENT</td>
+      <td><br />New</td>
+    </tr>
+    <tr>
+      <td><strong>[admin] modules_content.php</strong><br />
+          HEADING_TITLE<br />
+          TABLE_HEADING_MODULES<br />
+          TABLE_HEADING_GROUP<br />
+          TABLE_HEADING_SORT_ORDER<br />
+          TABLE_HEADING_ACTION<br />
+          TEXT_INFO_VERSION<br />
+          TEXT_INFO_ONLINE_STATUS<br />
+          TEXT_INFO_API_VERSION<br />
+          TEXT_MODULE_DIRECTORY</td>
+      <td><br />New<br />
+                New<br />
+                New<br />
+                New<br />
+                New<br />
+                New<br />
+                New<br />
+                New<br />
+                New</td>
+    </tr>
+    <tr>
+      <td><strong>checkout_shipping.php</strong><br />
+          ERROR_NO_SHIPPING_AVAILABLE_TO_SHIPPING_ADDRESS</td>
+      <td><br />New</td>
+    </tr>
+    <tr>
+      <td><strong>checkout_success.php</strong><br />
+          TEXT_SUCCESS<br />
+          TEXT_NOTIFY_PRODUCTS<br />
+          TEXT_SEE_ORDERS<br />
+          TEXT_CONTACT_STORE_OWNER<br />
+          TEXT_THANKS_FOR_SHOPPING<br />
+          TABLE_HEADING_DOWNLOAD_DATE<br />
+          TABLE_HEADING_DOWNLOAD_COUNT<br />
+          HEADING_DOWNLOAD<br />
+          FOOTER_DOWNLOAD</td>
+      <td><br />Deleted<br />
+                Deleted<br />
+                Deleted<br />
+                Deleted<br />
+                Deleted<br />
+                Deleted<br />
+                Deleted<br />
+                Deleted<br />
+                Deleted</td>
+    </tr>
+    <tr>
+      <td><strong>login.php</strong><br />
+          HEADING_NEW_CUSTOMER<br />
+          TEXT_NEW_CUSTOMER<br />
+          TEXT_NEW_CUSTOMER_INTRODUCTION<br />
+          HEADING_RETURNING_CUSTOMER<br />
+          TEXT_RETURNING_CUSTOMER<br />
+          TEXT_PASSWORD_FORGOTTEN<br />
+          TEXT_LOGIN_ERROR<br />
+          TEXT_VISITORS_CART</td>
+      <td><br />Deleted<br />
+                Deleted<br />
+                Deleted<br />
+                Deleted<br />
+                Deleted<br />
+                Deleted<br />
+                Deleted<br />
+                Deleted</td>
+    </tr>
+    <tr>
+      <td><strong>modules/content/account/cm_account_set_password.php</strong><br />
+          MODULE_CONTENT_ACCOUNT_SET_PASSWORD_TITLE<br />
+          MODULE_CONTENT_ACCOUNT_SET_PASSWORD_DESCRIPTION<br />
+          MODULE_CONTENT_ACCOUNT_SET_PASSWORD_SET_PASSWORD_LINK_TITLE<br />
+          MODULE_CONTENT_ACCOUNT_SET_PASSWORD_NAVBAR_TITLE_1<br />
+          MODULE_CONTENT_ACCOUNT_SET_PASSWORD_NAVBAR_TITLE_2<br />
+          MODULE_CONTENT_ACCOUNT_SET_PASSWORD_HEADING_TITLE<br />
+          MODULE_CONTENT_ACCOUNT_SET_PASSWORD_SET_PASSWORD_TITLE<br />
+          MODULE_CONTENT_ACCOUNT_SET_PASSWORD_SUCCESS_PASSWORD_SET</td>
+      <td><br />New<br />
+                New<br />
+                New<br />
+                New<br />
+                New<br />
+                New<br />
+                New<br />
+                New</td>
+    </tr>
+    <tr>
+      <td><strong>modules/content/checkout_success/cm_cs_downloads.php</strong><br />
+          MODULE_CONTENT_CHECKOUT_SUCCESS_DOWNLOADS_TITLE<br />
+          MODULE_CONTENT_CHECKOUT_SUCCESS_DOWNLOADS_DESCRIPTION<br />
+          TABLE_HEADING_DOWNLOAD_DATE<br />
+          TABLE_HEADING_DOWNLOAD_COUNT<br />
+          HEADING_DOWNLOAD<br />
+          FOOTER_DOWNLOAD</td>
+      <td><br />New<br />
+                New<br />
+                New<br />
+                New<br />
+                New<br />
+                New</td>
+    </tr>
+    <tr>
+      <td><strong>modules/content/checkout_success/cm_cs_product_notifications.php</strong><br />
+          MODULE_CONTENT_CHECKOUT_SUCCESS_PRODUCT_NOTIFICATIONS_TITLE<br />
+          MODULE_CONTENT_CHECKOUT_SUCCESS_PRODUCT_NOTIFICATIONS_DESCRIPTION<br />
+          MODULE_CONTENT_CHECKOUT_SUCCESS_PRODUCT_NOTIFICATIONS_TEXT_NOTIFY_PRODUCTS</td>
+      <td><br />New<br />
+                New<br />
+                New</td>
+    </tr>
+    <tr>
+      <td><strong>modules/content/checkout_success/cm_cs_redirect_old_order.php</strong><br />
+          MODULE_CONTENT_CHECKOUT_SUCCESS_REDIRECT_OLD_ORDER_TITLE<br />
+          MODULE_CONTENT_CHECKOUT_SUCCESS_REDIRECT_OLD_ORDER_DESCRIPTION</td>
+      <td><br />New<br />
+                New</td>
+    </tr>
+    <tr>
+      <td><strong>modules/content/checkout_success/cm_cs_thank_you.php</strong><br />
+          MODULE_CONTENT_CHECKOUT_SUCCESS_THANK_YOU_TITLE<br />
+          MODULE_CONTENT_CHECKOUT_SUCCESS_THANK_YOU_DESCRIPTION<br />
+          MODULE_CONTENT_CHECKOUT_SUCCESS_TEXT_SUCCESS<br />
+          MODULE_CONTENT_CHECKOUT_SUCCESS_TEXT_SEE_ORDERS<br />
+          MODULE_CONTENT_CHECKOUT_SUCCESS_TEXT_CONTACT_STORE_OWNER<br />
+          MODULE_CONTENT_CHECKOUT_SUCCESS_TEXT_THANKS_FOR_SHOPPING</td>
+      <td><br />New<br />
+                New<br />
+                New<br />
+                New<br />
+                New<br />
+                New</td>
+    </tr>
+    <tr>
+      <td><strong>modules/content/login/cm_create_account_link.php</strong><br />
+          MODULE_CONTENT_CREATE_ACCOUNT_LINK_TITLE<br />
+          MODULE_CONTENT_CREATE_ACCOUNT_LINK_DESCRIPTION<br />
+          MODULE_CONTENT_LOGIN_HEADING_NEW_CUSTOMER<br />
+          MODULE_CONTENT_LOGIN_TEXT_NEW_CUSTOMER<br />
+          MODULE_CONTENT_LOGIN_TEXT_NEW_CUSTOMER_INTRODUCTION</td>
+      <td><br />New<br />
+                New<br />
+                New<br />
+                New<br />
+                New</td>
+    </tr>
+    <tr>
+      <td><strong>modules/content/login/cm_login_form.php</strong><br />
+          MODULE_CONTENT_LOGIN_FORM_TITLE<br />
+          MODULE_CONTENT_LOGIN_FORM_DESCRIPTION<br />
+          MODULE_CONTENT_LOGIN_HEADING_RETURNING_CUSTOMER<br />
+          MODULE_CONTENT_LOGIN_TEXT_RETURNING_CUSTOMER<br />
+          MODULE_CONTENT_LOGIN_TEXT_PASSWORD_FORGOTTEN<br />
+          MODULE_CONTENT_LOGIN_TEXT_LOGIN_ERROR</td>
+      <td><br />New<br />
+                New<br />
+                New<br />
+                New<br />
+                New<br />
+                New</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Modified Files</h3>
+
+<p>Files that have been modified in this release include:</p>
+
+<table class="pretty">
+  <thead>
+    <tr>
+      <th>Modified Files</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>account.php</td>
+    </tr>
+    <tr>
+      <td>admin/includes/application_top.php</td>
+    </tr>
+    <tr>
+      <td>admin/includes/classes/split_page_results.php</td>
+    </tr>
+    <tr>
+      <td>admin/includes/column_left.php</td>
+    </tr>
+    <tr>
+      <td>admin/includes/functions/sessions.php</td>
+    </tr>
+    <tr>
+      <td>admin/includes/template_top.php</td>
+    </tr>
+    <tr>
+      <td>checkout_confirmation.php</td>
+    </tr>
+    <tr>
+      <td>checkout_payment.php</td>
+    </tr>
+    <tr>
+      <td>checkout_shipping.php</td>
+    </tr>
+    <tr>
+      <td>checkout_success.php</td>
+    </tr>
+    <tr>
+      <td>includes/application_top.php</td>
+    </tr>
+    <tr>
+      <td>includes/classes/navigation_history.php</td>
+    </tr>
+    <tr>
+      <td>includes/classes/osc_template.php</td>
+    </tr>
+    <tr>
+      <td>includes/classes/split_page_results.php</td>
+    </tr>
+    <tr>
+      <td>includes/functions/general.php</td>
+    </tr>
+    <tr>
+      <td>includes/functions/sessions.php</td>
+    </tr>
+    <tr>
+      <td>includes/languages/english/checkout_shipping.php</td>
+    </tr>
+    <tr>
+      <td>includes/languages/english/checkout_success.php</td>
+    </tr>
+    <tr>
+      <td>includes/languages/english/login.php</td>
+    </tr>
+    <tr>
+      <td>includes/modules/boxes/bm_currencies.php</td>
+    </tr>
+    <tr>
+      <td>includes/modules/boxes/bm_languages.php</td>
+    </tr>
+    <tr>
+      <td>includes/modules/boxes/bm_order_history.php</td>
+    </tr>
+    <tr>
+      <td>includes/modules/boxes/bm_product_notifications.php</td>
+    </tr>
+    <tr>
+      <td>includes/modules/product_listing.php</td>
+    </tr>
+    <tr>
+      <td>includes/template_top.php</td>
+    </tr>
+    <tr>
+      <td>includes/version.php</td>
+    </tr>
+    <tr>
+      <td>login.php</td>
+    </tr>
+    <tr>
+      <td>logoff.php</td>
+    </tr>
+    <tr>
+      <td>product_info.php</td>
+    </tr>
+    <tr>
+      <td>stylesheet.css</td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="pretty">
+  <thead>
+    <tr>
+      <th>New Files</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>admin/includes/boxes/modules_content.php</td>
+    </tr>
+    <tr>
+      <td>admin/includes/languages/english/modules/boxes/modules_content.php</td>
+    </tr>
+    <tr>
+      <td>admin/includes/languages/english/modules_content.php</td>
+    </tr>
+    <tr>
+      <td>admin/modules_content.php</td>
+    </tr>
+    <tr>
+      <td>ext/modules/content/account/set_password.php</td>
+    </tr>
+    <tr>
+      <td>includes/languages/english/modules/content/account/cm_account_set_password.php</td>
+    </tr>
+    <tr>
+      <td>includes/languages/english/modules/content/checkout_success/cm_cs_downloads.php</td>
+    </tr>
+    <tr>
+      <td>includes/languages/english/modules/content/checkout_success/cm_cs_product_notifications.php</td>
+    </tr>
+    <tr>
+      <td>includes/languages/english/modules/content/checkout_success/cm_cs_redirect_old_order.php</td>
+    </tr>
+    <tr>
+      <td>includes/languages/english/modules/content/checkout_success/cm_cs_thank_you.php</td>
+    </tr>
+    <tr>
+      <td>includes/languages/english/modules/content/login/cm_create_account_link.php</td>
+    </tr>
+    <tr>
+      <td>includes/languages/english/modules/content/login/cm_login_form.php</td>
+    </tr>
+    <tr>
+      <td>includes/modules/content/account/cm_account_set_password.php</td>
+    </tr>
+    <tr>
+      <td>includes/modules/content/checkout_success/cm_cs_downloads.php</td>
+    </tr>
+    <tr>
+      <td>includes/modules/content/checkout_success/cm_cs_product_notifications.php</td>
+    </tr>
+    <tr>
+      <td>includes/modules/content/checkout_success/cm_cs_redirect_old_order.php</td>
+    </tr>
+    <tr>
+      <td>includes/modules/content/checkout_success/cm_cs_thank_you.php</td>
+    </tr>
+    <tr>
+      <td>includes/modules/content/checkout_success/templates/product_notifications.php</td>
+    </tr>
+    <tr>
+      <td>includes/modules/content/checkout_success/templates/thank_you.php</td>
+    </tr>
+    <tr>
+      <td>includes/modules/content/login/cm_create_account_link.php</td>
+    </tr>
+    <tr>
+      <td>includes/modules/content/login/cm_login_form.php</td>
+    </tr>
+    <tr>
+      <td>includes/modules/content/login/templates/create_account_link.php</td>
+    </tr>
+    <tr>
+      <td>includes/modules/content/login/templates/login_form.php</td>
+    </tr>
+    <tr>
+      <td>includes/modules/pages/tp_account.php</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>File Changes</h2>
+
+<span id="upg1"></span>
+
+<h3 class="notoc">jQuery UI (2+ files)</h3>
+
+<p>This changeset updates the jQuery UI javascript library and theme from v1.8.22 to v1.10.4 and removes a bug fix workaround the earlier version introduced.</p>
+
+<p>Delete the following directories and files:</p>
+
+<p>
+  <i class="icon-folder-open"></i> <strong>ext/jquery/ui/i18n</strong><br />
+  <i class="icon-file"></i> <strong>ext/jquery/ui/jquery-ui-1.8.22.min.js</strong><br />
+  <i class="icon-folder-open"></i> <strong>ext/jquery/ui/redmond</strong>
+</p>
+
+<p>Copy the following directories and files to their respective destination:</p>
+
+<p>
+  <i class="icon-folder-open"></i> <strong>ext/jquery/ui/i18n</strong><br />
+  <i class="icon-file"></i> <strong>ext/jquery/ui/jquery-ui-1.10.4.min.js</strong><br />
+  <i class="icon-folder-open"></i> <strong>ext/jquery/ui/redmond</strong>
+</p>
+
+<p>In:</p>
+
+<p><i class="icon-file"></i> <strong>admin/includes/template_top.php</strong></p>
+
+<p>around line 21, change from:</p>
+
+{code}
+<link rel="stylesheet" type="text/css" href="<?php echo tep_catalog_href_link('ext/jquery/ui/redmond/jquery-ui-1.8.22.css'); ?>">
+{code}
+
+<p>to:</p>
+
+{code}
+<link rel="stylesheet" type="text/css" href="<?php echo tep_catalog_href_link('ext/jquery/ui/redmond/jquery-ui-1.10.4.min.css'); ?>">
+{code}
+
+<p>around line 23, change from:</p>
+
+{code}
+<script type="text/javascript" src="<?php echo tep_catalog_href_link('ext/jquery/ui/jquery-ui-1.8.22.min.js'); ?>"></script>
+
+<script type="text/javascript">
+// fix jQuery 1.8.0 and jQuery UI 1.8.22 bug with dialog buttons; http://bugs.jqueryui.com/ticket/8484
+if ( $.attrFn ) { $.attrFn.text = true; }
+</script>
+{code}
+
+<p>to:</p>
+
+{code}
+<script type="text/javascript" src="<?php echo tep_catalog_href_link('ext/jquery/ui/jquery-ui-1.10.4.min.js'); ?>"></script>
+{code}
+
+<p><i class="icon-file"></i> <strong>includes/template_top.php</strong></p>
+
+<p>around line 29, change from:</p>
+
+{code}
+<link rel="stylesheet" type="text/css" href="ext/jquery/ui/redmond/jquery-ui-1.8.22.css" />
+{code}
+
+<p>to:</p>
+
+{code}
+<link rel="stylesheet" type="text/css" href="ext/jquery/ui/redmond/jquery-ui-1.10.4.min.css" />
+{code}
+
+<p>around line 31, change from:</p>
+
+{code}
+<script type="text/javascript" src="ext/jquery/ui/jquery-ui-1.8.22.min.js"></script>
+<script type="text/javascript">
+// fix jQuery 1.8.0 and jQuery UI 1.8.22 bug with dialog buttons; http://bugs.jqueryui.com/ticket/8484
+if ( $.attrFn ) { $.attrFn.text = true; }
+</script>
+{code}
+
+<p>to:</p>
+
+{code}
+<script type="text/javascript" src="ext/jquery/ui/jquery-ui-1.10.4.min.js"></script>
+{code}
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/5be6e6326981e1bc4d96951011145dbddc329e6e" target="_blank">View online at GitHub</a></p>
+
+<span id="upg2"></span>
+
+<h3 class="notoc">jQuery (2+ files)</h3>
+
+<p>This changeset updates the jQuery javascript library from v1.8.0 to v1.11.0.</td>
+
+<p>Delete the following file:</p>
+
+<p><i class="icon-file"></i> <strong>ext/jquery/jquery-1.8.0.min.js</strong></p>
+
+<p>Copy the following file to its respective destination:</p>
+
+<p><i class="icon-file"></i> <strong>ext/jquery/jquery-1.11.0.min.js</strong></p>
+
+<p>In:</p>
+
+<p><i class="icon-file"></i> <strong>admin/includes/template_top.php</strong></p>
+
+<p>around line 22, change from:</p>
+
+{code}
+<script type="text/javascript" src="<?php echo tep_catalog_href_link('ext/jquery/jquery-1.8.0.min.js'); ?>"></script>
+{code}
+
+<p>to:</p>
+
+{code}
+<script type="text/javascript" src="<?php echo tep_catalog_href_link('ext/jquery/jquery-1.11.0.min.js'); ?>"></script>
+{code}
+
+<p><i class="icon-file"></i> <strong>includes/template_top.php</strong></p>
+
+<p>around line 30, change from:</p>
+
+{code}
+<script type="text/javascript" src="ext/jquery/jquery-1.8.0.min.js"></script>
+{code}
+
+<p>to:</p>
+
+{code}
+<script type="text/javascript" src="ext/jquery/jquery-1.11.0.min.js"></script>
+{code}
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/d948e73a13d8e87ec4051ac3d9d5e6c4600c2cc8" target="_blank">View online at GitHub</a></p>
+
+<span id="upg3"></span>
+
+<h3 class="notoc">Flot (jQuery Library) (1+ files)</h3>
+
+<p>This changeset updates the Flot jQuery library from v0.6 to v0.8.2.</td>
+
+<p>Delete the following directory:</p>
+
+<p><i class="icon-file"></i> <strong>ext/flot</strong></p>
+
+<p>Copy the following directory to its respective destination:</p>
+
+<p><i class="icon-file"></i> <strong>ext/flot</strong></p>
+
+<p>In:</p>
+
+<p><i class="icon-file"></i> <strong>admin/includes/template_top.php</strong></p>
+
+<p>around line 36, change from:</p>
+
+{code}
+<script type="text/javascript" src="<?php echo tep_catalog_href_link('ext/flot/jquery.flot.js'); ?>"></script>
+{code}
+
+<p>to:</p>
+
+{code}
+<script type="text/javascript" src="<?php echo tep_catalog_href_link('ext/flot/jquery.flot.min.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo tep_catalog_href_link('ext/flot/jquery.flot.time.min.js'); ?>"></script>
+{code}
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/475e015e8a1ae8ae0c12ea5ab6496cac7de02764" target="_blank">View online at GitHub</a></p>
+
+<span id="upg4"></span>
+
+<h3 class="notoc">PhotosetGrid and ColorBox (3+ files)</h3>
+
+<p>This changeset replaces the bxGallery and FancyBox jQuery libraries with PhotosetGrid and Colorbox jQuery libraries.</p>
+
+<p>Delete the following directories:</p>
+
+<p>
+  <i class="icon-folder-open"></i> <strong>ext/jquery/bxGallery</strong><br />
+  <i class="icon-folder-open"></i> <strong>ext/jquery/fancybox</strong>
+</p>
+
+<p>Copy the following directories to their respective destination:</p>
+
+<p>
+  <i class="icon-folder-open"></i> <strong>ext/colorbox</strong><br />
+  <i class="icon-folder-open"></i> <strong>ext/photoset-grid</strong>
+</p>
+
+<p>In:</p>
+
+<p><i class="icon-file"></i> <strong>includes/template_top.php</strong></p>
+
+<p>around line 44, change from:</p>
+
+{code}
+<script type="text/javascript" src="ext/jquery/bxGallery/jquery.bxGallery.1.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="ext/jquery/fancybox/jquery.fancybox-1.3.4.css" />
+<script type="text/javascript" src="ext/jquery/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+{code}
+
+<p>to:</p>
+
+{code}
+<script type="text/javascript" src="ext/photoset-grid/jquery.photoset-grid.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="ext/colorbox/colorbox.css" />
+<script type="text/javascript" src="ext/colorbox/jquery.colorbox-min.js"></script>
+{code}
+
+<p><i class="icon-file"></i> <strong>product_info.php</strong></p>
+
+<p>around line 69, change from:</p>
+
+{code}
+<?php
+    if (tep_not_null($product_info['products_image'])) {
+      $pi_query = tep_db_query("select image, htmlcontent from " . TABLE_PRODUCTS_IMAGES . " where products_id = '" . (int)$product_info['products_id'] . "' order by sort_order");
+
+      if (tep_db_num_rows($pi_query) > 0) {
+?>
+
+    <div id="piGal" style="float: right;">
+      <ul>
+
+<?php
+        $pi_counter = 0;
+        while ($pi = tep_db_fetch_array($pi_query)) {
+          $pi_counter++;
+
+          $pi_entry = '        <li><a href="';
+
+          if (tep_not_null($pi['htmlcontent'])) {
+            $pi_entry .= '#piGalimg_' . $pi_counter;
+          } else {
+            $pi_entry .= tep_href_link(DIR_WS_IMAGES . $pi['image'], '', 'NONSSL', false);
+          }
+
+          $pi_entry .= '" target="_blank" rel="fancybox">' . tep_image(DIR_WS_IMAGES . $pi['image']) . '</a>';
+
+          if (tep_not_null($pi['htmlcontent'])) {
+            $pi_entry .= '<div style="display: none;"><div id="piGalimg_' . $pi_counter . '">' . $pi['htmlcontent'] . '</div></div>';
+          }
+
+          $pi_entry .= '</li>';
+
+          echo $pi_entry;
+        }
+?>
+
+      </ul>
+    </div>
+
+<script type="text/javascript">
+$('#piGal ul').bxGallery({
+  maxwidth: 300,
+  maxheight: 200,
+  thumbwidth: <?php echo (($pi_counter > 1) ? '75' : '0'); ?>,
+  thumbcontainer: 300,
+  load_image: 'ext/jquery/bxGallery/spinner.gif'
+});
+</script>
+
+<?php
+      } else {
+?>
+
+    <div id="piGal" style="float: right;">
+      <?php echo '<a href="' . tep_href_link(DIR_WS_IMAGES . $product_info['products_image'], '', 'NONSSL', false) . '" target="_blank" rel="fancybox">' . tep_image(DIR_WS_IMAGES . $product_info['products_image'], addslashes($product_info['products_name']), null, null, 'hspace="5" vspace="5"') . '</a>'; ?>
+    </div>
+
+<?php
+      }
+?>
+
+<script type="text/javascript">
+$("#piGal a[rel^='fancybox']").fancybox({
+  cyclic: true
+});
+</script>
+
+<?php
+    }
+?>
+{code}
+
+<p>to:</p>
+
+{code}
+<?php
+    if (tep_not_null($product_info['products_image'])) {
+      $photoset_layout = '1';
+
+      $pi_query = tep_db_query("select image, htmlcontent from " . TABLE_PRODUCTS_IMAGES . " where products_id = '" . (int)$product_info['products_id'] . "' order by sort_order");
+
+      if (tep_db_num_rows($pi_query) > 0) {
+        $photoset_layout = '1' . (tep_db_num_rows($pi_query) > 1 ? tep_db_num_rows($pi_query) - 1 : '');
+?>
+
+    <div id="piGal">
+
+<?php
+        $pi_counter = 0;
+        $pi_html = array();
+
+        while ($pi = tep_db_fetch_array($pi_query)) {
+          $pi_counter++;
+
+          if (tep_not_null($pi['htmlcontent'])) {
+            $pi_html[] = '<div id="piGalDiv_' . $pi_counter . '">' . $pi['htmlcontent'] . '</div>';
+          }
+
+          echo tep_image(DIR_WS_IMAGES . $pi['image'], '', '', '', 'id="piGalImg_' . $pi_counter . '"');
+        }
+?>
+
+    </div>
+
+<?php
+        if ( !empty($pi_html) ) {
+          echo '    <div style="display: none;">' . implode('', $pi_html) . '</div>';
+        }
+      } else {
+?>
+
+    <div id="piGal">
+      <?php echo tep_image(DIR_WS_IMAGES . $product_info['products_image'], addslashes($product_info['products_name'])); ?>
+    </div>
+
+<?php
+      }
+    }
+?>
+
+<script type="text/javascript">
+$(function() {
+  $('#piGal').css({
+    'visibility': 'hidden'
+  });
+
+  $('#piGal').photosetGrid({
+    layout: '<?php echo $photoset_layout; ?>',
+    width: '250px',
+    highresLinks: true,
+    rel: 'pigallery',
+    onComplete: function() {
+      $('#piGal').css({ 'visibility': 'visible'});
+
+      $('#piGal a').colorbox({
+        maxHeight: '90%',
+        maxWidth: '90%',
+        rel: 'pigallery'
+      });
+
+      $('#piGal img').each(function() {
+        var imgid = $(this).attr('id').substring(9);
+
+        if ( $('#piGalDiv_' + imgid).length ) {
+          $(this).parent().colorbox({ inline: true, href: "#piGalDiv_" + imgid });
+        }
+      });
+    }
+  });
+});
+</script>
+{code}
+
+<p><i class="icon-file"></i> <strong>stylesheet.css</strong></p>
+
+<p>change the following css definitions from:</p>
+
+{code}
+#piGal ul {
+  list-style-type: none;
+}
+
+#piGal img {
+  -webkit-box-shadow: 0px 0px 1px #000;
+  -moz-box-shadow: 0px 0px 1px #000;
+}
+
+#piGal .outer {
+  margin-left: -30px;
+}
+{code}
+
+<p>to:</p>
+
+{code}
+#piGal {
+  float: right;
+  width: 250px;
+}
+
+#piGal img {
+  max-width: 250px;
+  height: auto;
+}
+{code}
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/af36233ef1ddcfce8d739b81ddc9d615dc10ddf7" target="_blank">View online at GitHub</a></p>
+
+<span id="upg5"></span>
+
+<h3 class="notoc">Administration Tool Boxes (1 file)</h3>
+
+<p>This changeset fixes the height of the Administration Tool boxes to work with the newer jQuery UI javascript library.</p>
+
+<p><i class="icon-file"></i> <strong>admin/includes/column_left.php</strong></p>
+
+<p>around line 74, change from:</p>
+
+{code}
+autoHeight: false,
+{code}
+
+<p>to:</p>
+
+{code}
+heightStyle: 'content',
+{code}
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/95da1db85e0c431c69099efe6cdf9c7d4e82bec4" target="_blank">View online at GitHub</a></p>
+
+<span id="upg6"></span>
+
+<h3 class="notoc">Improve $PHP_SELF (11 files)</h3>
+
+<p>This changeset improves the value of $PHP_SELF and keeps the path when the value is used in subdirectories (eg, viewing pages from the ext/ directory).</p>
+
+<p><i class="icon-file"></i> <strong>admin/includes/application_top.php</strong></p>
+
+<p>around line 38, change from:</p>
+
+{code}
+$PHP_SELF = (((strlen(ini_get('cgi.fix_pathinfo')) > 0) && ((bool)ini_get('cgi.fix_pathinfo') == false)) || !isset($HTTP_SERVER_VARS['SCRIPT_NAME'])) ? basename($HTTP_SERVER_VARS['PHP_SELF']) : basename($HTTP_SERVER_VARS['SCRIPT_NAME']);
+{code}
+
+<p>to:</p>
+
+{code}
+$req = parse_url($HTTP_SERVER_VARS['SCRIPT_NAME']);
+$PHP_SELF = substr($req['path'], strlen(DIR_WS_ADMIN));
+{code}
+
+<p>around line 127, change from:</p>
+
+{code}
+$current_page = basename($PHP_SELF);
+{code}
+
+<p>to:</p>
+
+{code}
+$current_page = $PHP_SELF;
+{code}
+
+<p><i class="icon-file"></i> <strong>admin/includes/classes/split_page_results.php</strong></p>
+
+<p>around line 55, change from:</p>
+
+{code}
+$display_links = tep_draw_form('pages', basename($PHP_SELF), '', 'get');
+{code}
+
+<p>to:</p>
+
+{code}
+$display_links = tep_draw_form('pages', $PHP_SELF, '', 'get');
+{code}
+
+<p>around line 58, change from:</p>
+
+{code}
+$display_links .= '<a href="' . tep_href_link(basename($PHP_SELF), $parameters . $page_name . '=' . ($current_page_number - 1), 'NONSSL') . '" class="splitPageLink">' . PREVNEXT_BUTTON_PREV . '</a>&nbsp;&nbsp;';
+{code}
+
+<p>to:</p>
+
+{code}
+$display_links .= '<a href="' . tep_href_link($PHP_SELF, $parameters . $page_name . '=' . ($current_page_number - 1), 'NONSSL') . '" class="splitPageLink">' . PREVNEXT_BUTTON_PREV . '</a>&nbsp;&nbsp;';
+{code}
+
+<p>around line 66, change from:</p>
+
+{code}
+$display_links .= '&nbsp;&nbsp;<a href="' . tep_href_link(basename($PHP_SELF), $parameters . $page_name . '=' . ($current_page_number + 1), 'NONSSL') . '" class="splitPageLink">' . PREVNEXT_BUTTON_NEXT . '</a>';
+{code}
+
+<p>to:</p>
+
+{code}
+$display_links .= '&nbsp;&nbsp;<a href="' . tep_href_link($PHP_SELF, $parameters . $page_name . '=' . ($current_page_number + 1), 'NONSSL') . '" class="splitPageLink">' . PREVNEXT_BUTTON_NEXT . '</a>';
+{code}
+
+<p><i class="icon-file"></i> <strong>includes/application_top.php</strong></p>
+
+<p>around line 47, change from:</p>
+
+{code}
+$PHP_SELF = (((strlen(ini_get('cgi.fix_pathinfo')) > 0) && ((bool)ini_get('cgi.fix_pathinfo') == false)) || !isset($HTTP_SERVER_VARS['SCRIPT_NAME'])) ? basename($HTTP_SERVER_VARS['PHP_SELF']) : basename($HTTP_SERVER_VARS['SCRIPT_NAME']);
+{code}
+
+<p>to:</p>
+
+{code}
+$req = parse_url($HTTP_SERVER_VARS['SCRIPT_NAME']);
+$PHP_SELF = substr($req['path'], ($request_type == 'NONSSL') ? strlen(DIR_WS_HTTP_CATALOG) : strlen(DIR_WS_HTTPS_CATALOG));
+{code}
+
+<p>around line 317, change from:</p>
+
+{code}
+$goto = basename($PHP_SELF);
+{code}
+
+<p>to:</p>
+
+{code}
+$goto = $PHP_SELF;
+{code}
+
+<p>around line 367, change from:</p>
+
+{code}
+tep_redirect(tep_href_link(basename($PHP_SELF), tep_get_all_get_params(array('action', 'notify'))));
+{code}
+
+<p>to:</p>
+
+{code}
+tep_redirect(tep_href_link($PHP_SELF, tep_get_all_get_params(array('action', 'notify'))));
+{code}
+
+<p>around line 377, change from:</p>
+
+{code}
+tep_redirect(tep_href_link(basename($PHP_SELF), tep_get_all_get_params(array('action', 'notify'))));
+{code}
+
+<p>to:</p>
+
+{code}
+tep_redirect(tep_href_link($PHP_SELF, tep_get_all_get_params(array('action', 'notify'))));
+{code}
+
+<p>around line 389, change from:</p>
+
+{code}
+tep_redirect(tep_href_link(basename($PHP_SELF), tep_get_all_get_params(array('action'))));
+{code}
+
+<p>to:</p>
+
+{code}
+tep_redirect(tep_href_link($PHP_SELF, tep_get_all_get_params(array('action'))));
+{code}
+
+<p><i class="icon-file"></i> <strong>includes/classes/navigation_history.php</strong></p>
+
+<p>around line 30, change from:</p>
+
+{code}
+if ( ($this->path[$i]['page'] == basename($PHP_SELF)) ) {
+{code}
+
+<p>to:</p>
+
+{code}
+if ($this->path[$i]['page'] == $PHP_SELF) {
+{code}
+
+<p>around line 61, change from:</p>
+
+{code}
+$this->path[] = array('page' => basename($PHP_SELF),
+{code}
+
+<p>to:</p>
+
+{code}
+$this->path[] = array('page' => $PHP_SELF,
+{code}
+
+<p>around line 72, change from:</p>
+
+{code}
+if ($this->path[$last_entry_position]['page'] == basename($PHP_SELF)) {
+{code}
+
+<p>to:</p>
+
+{code}
+if ($this->path[$last_entry_position]['page'] == $PHP_SELF) {
+{code}
+
+<p>around line 86, change from:</p>
+
+{code}
+$this->snapshot = array('page' => basename($PHP_SELF),
+{code}
+
+<p>to:</p>
+
+{code}
+$this->snapshot = array('page' => $PHP_SELF,
+{code}
+
+<p><i class="icon-file"></i> <strong>includes/classes/split_page_results.php</strong></p>
+
+<p>around line 83, change from:</p>
+
+{code}
+if ($this->current_page_number > 1) $display_links_string .= '<a href="' . tep_href_link(basename($PHP_SELF), $parameters . $this->page_name . '=' . ($this->current_page_number - 1), $request_type) . '" class="pageResults" title=" ' . PREVNEXT_TITLE_PREVIOUS_PAGE . ' "><u>' . PREVNEXT_BUTTON_PREV . '</u></a>&nbsp;&nbsp;';
+{code}
+
+<p>to:</p>
+
+{code}
+if ($this->current_page_number > 1) $display_links_string .= '<a href="' . tep_href_link($PHP_SELF, $parameters . $this->page_name . '=' . ($this->current_page_number - 1), $request_type) . '" class="pageResults" title=" ' . PREVNEXT_TITLE_PREVIOUS_PAGE . ' "><u>' . PREVNEXT_BUTTON_PREV . '</u></a>&nbsp;&nbsp;';
+{code}
+
+<p>around line 93, change from:</p>
+
+{code}
+if ($cur_window_num > 1) $display_links_string .= '<a href="' . tep_href_link(basename($PHP_SELF), $parameters . $this->page_name . '=' . (($cur_window_num - 1) * $max_page_links), $request_type) . '" class="pageResults" title=" ' . sprintf(PREVNEXT_TITLE_PREV_SET_OF_NO_PAGE, $max_page_links) . ' ">...</a>';
+{code}
+
+<p>to:</p>
+
+{code}
+if ($cur_window_num > 1) $display_links_string .= '<a href="' . tep_href_link($PHP_SELF, $parameters . $this->page_name . '=' . (($cur_window_num - 1) * $max_page_links), $request_type) . '" class="pageResults" title=" ' . sprintf(PREVNEXT_TITLE_PREV_SET_OF_NO_PAGE, $max_page_links) . ' ">...</a>';
+{code}
+
+<p>around line 100, change from:</p>
+
+{code}
+$display_links_string .= '&nbsp;<a href="' . tep_href_link(basename($PHP_SELF), $parameters . $this->page_name . '=' . $jump_to_page, $request_type) . '" class="pageResults" title=" ' . sprintf(PREVNEXT_TITLE_PAGE_NO, $jump_to_page) . ' "><u>' . $jump_to_page . '</u></a>&nbsp;';
+{code}
+
+<p>to:</p>
+
+{code}
+$display_links_string .= '&nbsp;<a href="' . tep_href_link($PHP_SELF, $parameters . $this->page_name . '=' . $jump_to_page, $request_type) . '" class="pageResults" title=" ' . sprintf(PREVNEXT_TITLE_PAGE_NO, $jump_to_page) . ' "><u>' . $jump_to_page . '</u></a>&nbsp;';
+{code}
+
+<p>around line 105, change from:</p>
+
+{code}
+if ($cur_window_num < $max_window_num) $display_links_string .= '<a href="' . tep_href_link(basename($PHP_SELF), $parameters . $this->page_name . '=' . (($cur_window_num) * $max_page_links + 1), $request_type) . '" class="pageResults" title=" ' . sprintf(PREVNEXT_TITLE_NEXT_SET_OF_NO_PAGE, $max_page_links) . ' ">...</a>&nbsp;';
+{code}
+
+<p>to:</p>
+
+{code}
+if ($cur_window_num < $max_window_num) $display_links_string .= '<a href="' . tep_href_link($PHP_SELF, $parameters . $this->page_name . '=' . (($cur_window_num) * $max_page_links + 1), $request_type) . '" class="pageResults" title=" ' . sprintf(PREVNEXT_TITLE_NEXT_SET_OF_NO_PAGE, $max_page_links) . ' ">...</a>&nbsp;';
+{code}
+
+<p>around line 108, change from:</p>
+
+{code}
+if (($this->current_page_number < $this->number_of_pages) && ($this->number_of_pages != 1)) $display_links_string .= '&nbsp;<a href="' . tep_href_link(basename($PHP_SELF), $parameters . 'page=' . ($this->current_page_number + 1), $request_type) . '" class="pageResults" title=" ' . PREVNEXT_TITLE_NEXT_PAGE . ' "><u>' . PREVNEXT_BUTTON_NEXT . '</u></a>&nbsp;';
+{code}
+
+<p>to:</p>
+
+{code}
+if (($this->current_page_number < $this->number_of_pages) && ($this->number_of_pages != 1)) $display_links_string .= '&nbsp;<a href="' . tep_href_link($PHP_SELF, $parameters . 'page=' . ($this->current_page_number + 1), $request_type) . '" class="pageResults" title=" ' . PREVNEXT_TITLE_NEXT_PAGE . ' "><u>' . PREVNEXT_BUTTON_NEXT . '</u></a>&nbsp;';
+{code}
+
+<p><i class="icon-file"></i> <strong>includes/classes/general.php</strong></p>
+
+<p>around line 896, change from:</p>
+
+{code}
+$sort_prefix = '<a href="' . tep_href_link(basename($PHP_SELF), tep_get_all_get_params(array('page', 'info', 'sort')) . 'page=1&sort=' . $colnum . ($sortby == $colnum . 'a' ? 'd' : 'a')) . '" title="' . tep_output_string(TEXT_SORT_PRODUCTS . ($sortby == $colnum . 'd' || substr($sortby, 0, 1) != $colnum ? TEXT_ASCENDINGLY : TEXT_DESCENDINGLY) . TEXT_BY . $heading) . '" class="productListing-heading">' ;
+{code}
+
+<p>to:</p>
+
+{code}
+$sort_prefix = '<a href="' . tep_href_link($PHP_SELF, tep_get_all_get_params(array('page', 'info', 'sort')) . 'page=1&sort=' . $colnum . ($sortby == $colnum . 'a' ? 'd' : 'a')) . '" title="' . tep_output_string(TEXT_SORT_PRODUCTS . ($sortby == $colnum . 'd' || substr($sortby, 0, 1) != $colnum ? TEXT_ASCENDINGLY : TEXT_DESCENDINGLY) . TEXT_BY . $heading) . '" class="productListing-heading">' ;
+{code}
+
+<p><i class="icon-file"></i> <strong>includes/modules/boxes/bm_currencies.php</strong></p>
+
+<p>around line 55, change from:</p>
+
+{code}
+'    ' . tep_draw_form('currencies', tep_href_link(basename($PHP_SELF), '', $request_type, false), 'get') .
+{code}
+
+<p>to:</p>
+
+{code}
+'    ' . tep_draw_form('currencies', tep_href_link($PHP_SELF, '', $request_type, false), 'get') .
+{code}
+
+<p><i class="icon-file"></i> <strong>includes/modules/boxes/bm_languages.php</strong></p>
+
+<p>around line 46, change from:</p>
+
+{code}
+$languages_string .= ' <a href="' . tep_href_link(basename($PHP_SELF), tep_get_all_get_params(array('language', 'currency')) . 'language=' . $key, $request_type) . '">' . tep_image(DIR_WS_LANGUAGES .  $value['directory'] . '/images/' . $value['image'], $value['name']) . '</a> ';
+{code}
+
+<p>to:</p>
+
+{code}
+$languages_string .= ' <a href="' . tep_href_link($PHP_SELF, tep_get_all_get_params(array('language', 'currency')) . 'language=' . $key, $request_type) . '">' . tep_image(DIR_WS_LANGUAGES .  $value['directory'] . '/images/' . $value['image'], $value['name']) . '</a> ';
+{code}
+
+<p><i class="icon-file"></i> <strong>includes/modules/boxes/bm_order_history.php</strong></p>
+
+<p>around line 51, change from:</p>
+
+{code}
+'    <td align="right" valign="top"><a href="' . tep_href_link(basename($PHP_SELF), tep_get_all_get_params(array('action')) . 'action=cust_order&pid=' . $products['products_id']) . '">' . tep_image(DIR_WS_ICONS . 'cart.gif', ICON_CART) . '</a></td>' .
+{code}
+
+<p>to:</p>
+
+{code}
+'    <td align="right" valign="top"><a href="' . tep_href_link($PHP_SELF, tep_get_all_get_params(array('action')) . 'action=cust_order&pid=' . $products['products_id']) . '">' . tep_image(DIR_WS_ICONS . 'cart.gif', ICON_CART) . '</a></td>' .
+{code}
+
+<p><i class="icon-file"></i> <strong>includes/modules/boxes/bm_product_notifications.php</strong></p>
+
+<p>around line 48, change from:</p>
+
+{code}
+if ($notification_exists == true) {
+  $notif_contents = '<table border="0" cellspacing="0" cellpadding="2" class="ui-widget-content infoBoxContents"><tr><td><a href="' . tep_href_link(basename($PHP_SELF), tep_get_all_get_params(array('action')) . 'action=notify_remove', $request_type) . '">' . tep_image(DIR_WS_IMAGES . 'box_products_notifications_remove.gif', IMAGE_BUTTON_REMOVE_NOTIFICATIONS) . '</a></td><td><a href="' . tep_href_link(basename($PHP_SELF), tep_get_all_get_params(array('action')) . 'action=notify_remove', $request_type) . '">' . sprintf(MODULE_BOXES_PRODUCT_NOTIFICATIONS_BOX_NOTIFY_REMOVE, tep_get_products_name($HTTP_GET_VARS['products_id'])) .'</a></td></tr></table>';
+} else {
+  $notif_contents = '<table border="0" cellspacing="0" cellpadding="2" class="ui-widget-content infoBoxContents"><tr><td><a href="' . tep_href_link(basename($PHP_SELF), tep_get_all_get_params(array('action')) . 'action=notify', $request_type) . '">' . tep_image(DIR_WS_IMAGES . 'box_products_notifications.gif', IMAGE_BUTTON_NOTIFICATIONS) . '</a></td><td><a href="' . tep_href_link(basename($PHP_SELF), tep_get_all_get_params(array('action')) . 'action=notify', $request_type) . '">' . sprintf(MODULE_BOXES_PRODUCT_NOTIFICATIONS_BOX_NOTIFY, tep_get_products_name($HTTP_GET_VARS['products_id'])) .'</a></td></tr></table>';
+}
+{code}
+
+<p>to:</p>
+
+{code}
+if ($notification_exists == true) {
+  $notif_contents = '<table border="0" cellspacing="0" cellpadding="2" class="ui-widget-content infoBoxContents"><tr><td><a href="' . tep_href_link($PHP_SELF, tep_get_all_get_params(array('action')) . 'action=notify_remove', $request_type) . '">' . tep_image(DIR_WS_IMAGES . 'box_products_notifications_remove.gif', IMAGE_BUTTON_REMOVE_NOTIFICATIONS) . '</a></td><td><a href="' . tep_href_link($PHP_SELF, tep_get_all_get_params(array('action')) . 'action=notify_remove', $request_type) . '">' . sprintf(MODULE_BOXES_PRODUCT_NOTIFICATIONS_BOX_NOTIFY_REMOVE, tep_get_products_name($HTTP_GET_VARS['products_id'])) .'</a></td></tr></table>';
+} else {
+  $notif_contents = '<table border="0" cellspacing="0" cellpadding="2" class="ui-widget-content infoBoxContents"><tr><td><a href="' . tep_href_link($PHP_SELF, tep_get_all_get_params(array('action')) . 'action=notify', $request_type) . '">' . tep_image(DIR_WS_IMAGES . 'box_products_notifications.gif', IMAGE_BUTTON_NOTIFICATIONS) . '</a></td><td><a href="' . tep_href_link($PHP_SELF, tep_get_all_get_params(array('action')) . 'action=notify', $request_type) . '">' . sprintf(MODULE_BOXES_PRODUCT_NOTIFICATIONS_BOX_NOTIFY, tep_get_products_name($HTTP_GET_VARS['products_id'])) .'</a></td></tr></table>';
+}
+{code}
+
+<p><i class="icon-file"></i> <strong>includes/modules/product_listing.php</strong></p>
+
+<p>around line 135, change from:</p>
+
+{code}
+$prod_list_contents .= '        <td align="center">' . tep_draw_button(IMAGE_BUTTON_BUY_NOW, 'cart', tep_href_link(basename($PHP_SELF), tep_get_all_get_params(array('action')) . 'action=buy_now&products_id=' . $listing['products_id'])) . '</td>';
+{code}
+
+<p>to:</p>
+
+{code}
+$prod_list_contents .= '        <td align="center">' . tep_draw_button(IMAGE_BUTTON_BUY_NOW, 'cart', tep_href_link($PHP_SELF, tep_get_all_get_params(array('action')) . 'action=buy_now&products_id=' . $listing['products_id'])) . '</td>';
+{code}
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/d39b7ce4a4e6f6c129aff8d4f550d225fb358555" target="_blank">View online at GitHub</a></p>
+
+<span id="upg7"></span>
+
+<h3 class="notoc">Session Lifetime (5 files)</h3>
+
+<p>This changeset updates the lifetime of database based sessions to match the lifetime of file based sessions for consistent lifetime behaviour, and now relies on the PHP session garbage collection setting for automatic cleanup of old sessions. The security of sessions has also been improved by not accepting GET/POST session IDs if SESSION_FORCE_COOKIE_USE is enabled.</p>
+
+<p><i class="icon-file"></i> <strong>admin/includes/functions/sessions.php</strong><br />
+<i class="icon-file"></i> <strong>includes/functions/sessions.php</strong></p>
+
+<div class="achtung">Do not copy the admin sessions.php file to the catalog side as they differ slightly.</div>
+
+<p>in those two files, around line 19, remove the following lines:</p>
+
+{code}
+if (!$SESS_LIFE = get_cfg_var('session.gc_maxlifetime')) {
+  $SESS_LIFE = 1440;
+}
+{code}
+
+<p>around line 31, change from:</p>
+
+{code}
+function _sess_read($key) {
+  $value_query = tep_db_query("select value from " . TABLE_SESSIONS . " where sesskey = '" . tep_db_input($key) . "' and expiry > '" . time() . "'");
+  $value = tep_db_fetch_array($value_query);
+
+  if (isset($value['value'])) {
+    return $value['value'];
+  }
+
+  return '';
+}
+{code}
+
+<p>to:</p>
+
+{code}
+function _sess_read($key) {
+  $value_query = tep_db_query("select value from " . TABLE_SESSIONS . " where sesskey = '" . tep_db_input($key) . "'");
+  $value = tep_db_fetch_array($value_query);
+
+  if (isset($value['value'])) {
+    return $value['value'];
+  }
+
+  return '';
+}
+{code}
+
+<p>around line 42, change from:</p>
+
+{code}
+function _sess_write($key, $val) {
+  global $SESS_LIFE;
+
+  $expiry = time() + $SESS_LIFE;
+  $value = $val;
+
+  $check_query = tep_db_query("select count(*) as total from " . TABLE_SESSIONS . " where sesskey = '" . tep_db_input($key) . "'");
+  $check = tep_db_fetch_array($check_query);
+
+  if ($check['total'] > 0) {
+    return tep_db_query("update " . TABLE_SESSIONS . " set expiry = '" . tep_db_input($expiry) . "', value = '" . tep_db_input($value) . "' where sesskey = '" . tep_db_input($key) . "'");
+  } else {
+    return tep_db_query("insert into " . TABLE_SESSIONS . " values ('" . tep_db_input($key) . "', '" . tep_db_input($expiry) . "', '" . tep_db_input($value) . "')");
+  }
+}
+{code}
+
+<p>to:</p>
+
+{code}
+function _sess_write($key, $value) {
+  $check_query = tep_db_query("select 1 from " . TABLE_SESSIONS . " where sesskey = '" . tep_db_input($key) . "'");
+
+  if ( tep_db_num_rows($check_query) > 0 ) {
+    return tep_db_query("update " . TABLE_SESSIONS . " set expiry = '" . tep_db_input(time()) . "', value = '" . tep_db_input($value) . "' where sesskey = '" . tep_db_input($key) . "'");
+  } else {
+    return tep_db_query("insert into " . TABLE_SESSIONS . " values ('" . tep_db_input($key) . "', '" . tep_db_input(time()) . "', '" . tep_db_input($value) . "')");
+  }
+}
+{code}
+
+<p>around line 62, change from:</p>
+
+{code}
+function _sess_gc($maxlifetime) {
+  tep_db_query("delete from " . TABLE_SESSIONS . " where expiry < '" . time() . "'");
+
+  return true;
+}
+{code}
+
+<p>to:</p>
+
+{code}
+function _sess_gc($maxlifetime) {
+  return tep_db_query("delete from " . TABLE_SESSIONS . " where expiry < '" . (time() - $maxlifetime) . "'");
+}
+{code}
+
+<p>around line 71, change from:</p>
+
+{code}
+function tep_session_start() {
+  global $HTTP_GET_VARS, $HTTP_POST_VARS, $HTTP_COOKIE_VARS;
+
+  $sane_session_id = true;
+
+  if (isset($HTTP_GET_VARS[tep_session_name()])) {
+    if (preg_match('/^[a-zA-Z0-9,-]+$/', $HTTP_GET_VARS[tep_session_name()]) == false) {
+      unset($HTTP_GET_VARS[tep_session_name()]);
+
+      $sane_session_id = false;
+    }
+  } elseif (isset($HTTP_POST_VARS[tep_session_name()])) {
+    if (preg_match('/^[a-zA-Z0-9,-]+$/', $HTTP_POST_VARS[tep_session_name()]) == false) {
+      unset($HTTP_POST_VARS[tep_session_name()]);
+
+      $sane_session_id = false;
+    }
+  } elseif (isset($HTTP_COOKIE_VARS[tep_session_name()])) {
+    if (preg_match('/^[a-zA-Z0-9,-]+$/', $HTTP_COOKIE_VARS[tep_session_name()]) == false) {
+      $session_data = session_get_cookie_params();
+
+      setcookie(tep_session_name(), '', time()-42000, $session_data['path'], $session_data['domain']);
+
+      $sane_session_id = false;
+    }
+  }
+
+  if ($sane_session_id == false) {
+    tep_redirect(tep_href_link(FILENAME_DEFAULT, '', 'NONSSL', false));
+  }
+
+  register_shutdown_function('session_write_close');
+
+  return session_start();
+}
+{code}
+
+<p>to:</p>
+
+{code}
+function tep_session_start() {
+  global $HTTP_GET_VARS, $HTTP_POST_VARS, $HTTP_COOKIE_VARS;
+
+  $sane_session_id = true;
+
+  if ( isset($HTTP_GET_VARS[tep_session_name()]) ) {
+    if ( (SESSION_FORCE_COOKIE_USE == 'True') || (preg_match('/^[a-zA-Z0-9,-]+$/', $HTTP_GET_VARS[tep_session_name()]) == false) ) {
+      unset($HTTP_GET_VARS[tep_session_name()]);
+
+      $sane_session_id = false;
+    }
+  }
+
+  if ( isset($HTTP_POST_VARS[tep_session_name()]) ) {
+    if ( (SESSION_FORCE_COOKIE_USE == 'True') || (preg_match('/^[a-zA-Z0-9,-]+$/', $HTTP_POST_VARS[tep_session_name()]) == false) ) {
+      unset($HTTP_POST_VARS[tep_session_name()]);
+
+      $sane_session_id = false;
+    }
+  }
+
+  if ( isset($HTTP_COOKIE_VARS[tep_session_name()]) ) {
+    if ( preg_match('/^[a-zA-Z0-9,-]+$/', $HTTP_COOKIE_VARS[tep_session_name()]) == false ) {
+      $session_data = session_get_cookie_params();
+
+      setcookie(tep_session_name(), '', time()-42000, $session_data['path'], $session_data['domain']);
+      unset($HTTP_COOKIE_VARS[tep_session_name()]);
+
+      $sane_session_id = false;
+    }
+  }
+
+  if ($sane_session_id == false) {
+    tep_redirect(tep_href_link(FILENAME_DEFAULT, '', 'NONSSL', false));
+  }
+
+  register_shutdown_function('session_write_close');
+
+  return session_start();
+}
+{code}
+
+<p>around line 161, change from:</p>
+
+{code}
+function tep_session_destroy() {
+  return session_destroy();
+}
+{code}
+
+<p>to:</p>
+
+{code}
+function tep_session_destroy() {
+  global $HTTP_COOKIE_VARS;
+
+  if ( isset($HTTP_COOKIE_VARS[tep_session_name()]) ) {
+    $session_data = session_get_cookie_params();
+
+    setcookie(tep_session_name(), '', time()-42000, $session_data['path'], $session_data['domain']);
+    unset($HTTP_COOKIE_VARS[tep_session_name()]);
+  }
+
+  return session_destroy();
+}
+{code}
+
+<p><i class="icon-file"></i> <strong>includes/application_top.php</strong></p>
+
+<p>around line 151, change from:</p>
+
+{code}
+if (isset($HTTP_POST_VARS[tep_session_name()])) {
+  tep_session_id($HTTP_POST_VARS[tep_session_name()]);
+} elseif ( ($request_type == 'SSL') && isset($HTTP_GET_VARS[tep_session_name()]) ) {
+  tep_session_id($HTTP_GET_VARS[tep_session_name()]);
+}
+{code}
+
+<p>to:</p>
+
+{code}
+if ( SESSION_FORCE_COOKIE_USE == 'False' ) {
+  if ( isset($HTTP_GET_VARS[tep_session_name()]) && (!isset($HTTP_COOKIE_VARS[tep_session_name()]) || ($HTTP_COOKIE_VARS[tep_session_name()] != $HTTP_GET_VARS[tep_session_name()])) ) {
+    tep_session_id($HTTP_GET_VARS[tep_session_name()]);
+  } elseif ( isset($HTTP_POST_VARS[tep_session_name()]) && (!isset($HTTP_COOKIE_VARS[tep_session_name()]) || ($HTTP_COOKIE_VARS[tep_session_name()] != $HTTP_POST_VARS[tep_session_name()])) ) {
+    tep_session_id($HTTP_POST_VARS[tep_session_name()]);
+  }
+}
+{code}
+
+<p><i class="icon-file"></i> <strong>login.php</strong></p>
+
+<p>around line 15, change from:</p>
+
+{code}
+// redirect the customer to a friendly cookie-must-be-enabled page if cookies are disabled (or the session has not started)
+  if ($session_started == false) {
+    tep_redirect(tep_href_link(FILENAME_COOKIE_USAGE));
+  }
+{code}
+
+<p>to:</p>
+
+{code}
+// redirect the customer to a friendly cookie-must-be-enabled page if cookies are disabled (or the session has not started)
+  if ($session_started == false) {
+    if ( !isset($HTTP_GET_VARS['cookie_test']) ) {
+      $all_get = tep_get_all_get_params();
+
+      tep_redirect(tep_href_link(FILENAME_LOGIN, $all_get . (empty($all_get) ? '' : '&') . 'cookie_test=1', 'SSL'));
+    }
+
+    tep_redirect(tep_href_link(FILENAME_COOKIE_USAGE));
+  }
+{code}
+
+<p><i class="icon-file"></i> <strong>logoff.php</strong></p>
+
+<p>around line 19, change from:</p>
+
+{code}
+tep_session_unregister('customer_id');
+tep_session_unregister('customer_default_address_id');
+tep_session_unregister('customer_first_name');
+tep_session_unregister('customer_country_id');
+tep_session_unregister('customer_zone_id');
+tep_session_unregister('comments');
+{code}
+
+<p>to:</p>
+
+{code}
+tep_session_unregister('customer_id');
+tep_session_unregister('customer_default_address_id');
+tep_session_unregister('customer_first_name');
+tep_session_unregister('customer_country_id');
+tep_session_unregister('customer_zone_id');
+
+if ( tep_session_is_registered('sendto') ) {
+  tep_session_unregister('sendto');
+}
+
+if ( tep_session_is_registered('billto') ) {
+  tep_session_unregister('billto');
+}
+
+if ( tep_session_is_registered('shipping') ) {
+  tep_session_unregister('shipping');
+}
+
+if ( tep_session_is_registered('payment') ) {
+  tep_session_unregister('payment');
+}
+
+if ( tep_session_is_registered('comments') ) {
+  tep_session_unregister('comments');
+}
+{code}
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/04368ccf8b9218b06da740356103c416955968ca" target="_blank">View online at GitHub</a></p>
+
+<span id="upg8"></span>
+
+<h3 class="notoc">Content Modules (6+ files)</h3>
+
+<p>This changeset introduces a new Content Modules implementation where the content of a page is loaded through modules. This is introduced for the Login, My Account, and Checkout Success pages.</p>
+
+<div class="note">Although it is easy to add support for Content Modules to existing stores, updating the Login, My Account, and Checkout Success pages will be harder and require further source code changes the more customized those pages are. Please consult with your developer, our partners, or our community forum on how to best integrate the Content Modules feature into your existing pages.</div>
+
+<h4 class="notoc">Step 1: Content Modules Administration Page</h4>
+
+<p>Step 1 adds the content modules administration page to the Administration Tool -> Modules menu.</p>
+
+<p>Copy the following files to their respective destination:</p>
+
+<p>
+  <i class="icon-file"></i> <strong>admin/includes/boxes/modules_content.php</strong><br />
+  <i class="icon-file"></i> <strong>admin/includes/languages/english/modules/boxes/modules_content.php</strong><br />
+  <i class="icon-file"></i> <strong>admin/includes/languages/english/modules_content.php</strong><br />
+  <i class="icon-file"></i> <strong>admin/modules_content.php</strong>
+</p>
+
+<div class="info">Please copy the english language definition files to the other language directories you have installed and update the definitions for that specific language.</div>
+
+<h4 class="notoc">Step 2: Content Modules</h4>
+
+<p>Step 2 adds the actual content modules to your store installation.</p>
+
+<p>Copy the following directories to their respective destination:</p>
+
+<p>
+  <i class="icon-folder-open"></i> <strong>ext/modules/content</strong><br />
+  <i class="icon-folder-open"></i> <strong>includes/languages/english/modules/content</strong><br />
+  <i class="icon-folder-open"></i> <strong>includes/modules/content</strong><br />
+  <i class="icon-folder-open"></i> <strong>includes/modules/pages</strong>
+</p>
+
+<div class="info">Please copy the english language definition files to the other language directories you have installed and update the definitions for that specific language.</div>
+
+<p>This adds the following Content Modules which can be installed and configured on the Administration Tool -> Modules -> Content Modules -> Install page:</p>
+
+<ul>
+  <li>Account<ul>
+    <li>Set Password</li>
+  </ul></li>
+  <li>Checkout Success<ul>
+    <li>Downloads</li>
+    <li>Product Notifications</li>
+    <li>Redirect Old Order</li>
+    <li>Thank You</li>
+  </ul></li>
+  <li>Login<ul>
+    <li>Create Account</li>
+    <li>Login</li>
+  </ul></li>
+</ul>
+
+<h4 class="notoc">Step 3: Template Class</h4>
+
+<p>Step 3 adds functions to the template class to call and initialize content modules.</p>
+
+<p><i class="icon-file"></i> <strong>includes/classes/osc_template.php</strong></p>
+
+<p>around line 14, change from:</p>
+
+{code}
+var $_title;
+var $_blocks = array();
+var $_grid_container_width = 24;
+var $_grid_content_width = 16;
+var $_grid_column_width = 4;
+{code}
+
+<p>to:</p>
+
+{code}
+var $_title;
+var $_blocks = array();
+var $_content = array();
+var $_grid_container_width = 24;
+var $_grid_content_width = 16;
+var $_grid_column_width = 4;
+var $_data = array();
+{code}
+
+<p>around line 110, add the following class functions:</p>
+
+{code}
+function addContent($content, $group) {
+  $this->_content[$group][] = $content;
+}
+
+function hasContent($group) {
+  return (isset($this->_content[$group]) && !empty($this->_content[$group]));
+}
+
+function getContent($group) {
+  global $language;
+
+  if ( !class_exists('tp_' . $group) && file_exists(DIR_WS_MODULES . 'pages/tp_' . $group . '.php') ) {
+    include(DIR_WS_MODULES . 'pages/tp_' . $group . '.php');
+  }
+
+  if ( class_exists('tp_' . $group) ) {
+    $template_page_class = 'tp_' . $group;
+    $template_page = new $template_page_class();
+    $template_page->prepare();
+  }
+
+  foreach ( $this->getContentModules($group) as $module ) {
+    if ( !class_exists($module) ) {
+      if ( file_exists(DIR_WS_MODULES . 'content/' . $group . '/' . $module . '.php') ) {
+        if ( file_exists(DIR_WS_LANGUAGES . $language . '/modules/content/' . $group . '/' . $module . '.php') ) {
+          include(DIR_WS_LANGUAGES . $language . '/modules/content/' . $group . '/' . $module . '.php');
+        }
+
+        include(DIR_WS_MODULES . 'content/' . $group . '/' . $module . '.php');
+      }
+    }
+
+    if ( class_exists($module) ) {
+      $mb = new $module();
+
+      if ( $mb->isEnabled() ) {
+        $mb->execute();
+      }
+    }
+  }
+
+  if ( class_exists('tp_' . $group) ) {
+    $template_page->build();
+  }
+
+  if ($this->hasContent($group)) {
+    return implode("\n", $this->_content[$group]);
+  }
+}
+
+function getContentModules($group) {
+  $result = array();
+
+  foreach ( explode(';', MODULE_CONTENT_INSTALLED) as $m ) {
+    $module = explode('/', $m, 2);
+
+    if ( $module[0] == $group ) {
+      $result[] = $module[1];
+    }
+  }
+
+  return $result;
+}
+{code}
+
+<h4 class="notoc">Step 4: Page Updates</h4>
+
+<p>Step 4 updates the Login, My Account, and Checkout Success pages to use the installed and configured Content Modules for the page layout.</p>
+
+<h5 class="notoc">Login Page</h5>
+
+<p><i class="icon-file"></i> <strong>login.php</strong></p>
+
+<p>The code authenticating the customer and presenting the login form and create account link have moved from the login.php page to the Login Form and Create Account Link Content Modules. Due to the source code changes involved and possible customizations applied to your login page, it is recommended to review and compare your login.php page with the v2.3.4 version and apply any customizations in the login process to the Login Form Content Module.</p>
+
+<p>The Login Form Content Module assigns the global $login_customer_id variable with the customer ID when the customer has been successfully authenticated. This value is then detected in the login.php page and continues to log the customer into their session.</p>
+
+<p>The location of the Login Form Content Module files are at:</p>
+
+<ul>
+  <li>includes/languages/english/modules/content/login/cm_login_form.php <em>(language definitions)</em></li>
+  <li>includes/modules/content/login/cm_login_form.php <em>(main class which authenticates the customer)</em></li>
+  <li>includes/modules/content/login/templates/login_form.php <em>(template)</em></li>
+</ul>
+
+<p>The location of the Create Account Link Content Module files are at:</p>
+
+<ul>
+  <li>includes/languages/english/modules/content/login/cm_create_account_link.php <em>(language definitions)</em></li>
+  <li>includes/modules/content/login/cm_create_account_link.php <em>(main class)</em></li>
+  <li>includes/modules/content/login/templates/create_account_link.php <em>(template)</em></li>
+</ul>
+
+<p>The login.php file included in v2.3.4 can be found at:</p>
+
+<p><a href="https://github.com/osCommerce/oscommerce2/blob/3eaa3d1d0e9646329a1540bc3b63c192b4306f1c/catalog/login.php" target="_blank">https://github.com/osCommerce/oscommerce2/blob/3eaa3d1d0e9646329a1540bc3b63c192b4306f1c/catalog/login.php</a></p>
+
+<p><i class="icon-file"></i> <strong>includes/languages/english/login.php</strong></p>
+
+<p>The following language definitions have moved and have been replaced by definitions in the Content Modules.</p>
+
+<table class="pretty">
+  <thead>
+    <tr>
+      <th>Old Definition</th>
+      <th>Content Module</th>
+      <th>New Definition</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>HEADING_NEW_CUSTOMER</td>
+      <td>Create Account Link</td>
+      <td>MODULE_CONTENT_LOGIN_HEADING_NEW_CUSTOMER</td>
+    </tr>
+    <tr>
+      <td>TEXT_NEW_CUSTOMER</td>
+      <td>Create Account Link</td>
+      <td>MODULE_CONTENT_LOGIN_TEXT_NEW_CUSTOMER</td>
+    </tr>
+    <tr>
+      <td>TEXT_NEW_CUSTOMER_INTRODUCTION</td>
+      <td>Create Account Link</td>
+      <td>MODULE_CONTENT_LOGIN_TEXT_NEW_CUSTOMER_INTRODUCTION</td>
+    </tr>
+    <tr>
+      <td>HEADING_RETURNING_CUSTOMER</td>
+      <td>Login Form</td>
+      <td>MODULE_CONTENT_LOGIN_HEADING_RETURNING_CUSTOMER</td>
+    </tr>
+    <tr>
+      <td>TEXT_RETURNING_CUSTOMER</td>
+      <td>Login Form</td>
+      <td>MODULE_CONTENT_LOGIN_TEXT_RETURNING_CUSTOMER</td>
+    </tr>
+    <tr>
+      <td>TEXT_PASSWORD_FORGOTTEN</td>
+      <td>Login Form</td>
+      <td>MODULE_CONTENT_LOGIN_TEXT_PASSWORD_FORGOTTEN</td>
+    </tr>
+    <tr>
+      <td>TEXT_LOGIN_ERROR</td>
+      <td>Login Form</td>
+      <td>MODULE_CONTENT_LOGIN_TEXT_LOGIN_ERROR</td>
+    </tr>
+  </tbody>
+</table>
+
+<h5 class="notoc">My Account Page</h5>
+
+<p><i class="icon-file"></i> <strong>account.php</strong></p>
+
+<p>The structured links shown on the My Account page are now generated from an array which Content Modules can manipulate. Content Modules can add new sections to the My Account page, add links to existing sections, and also remove or replace links in special occassions.</p>
+
+<p>The standard links for the My Account page are defined in a Content Module Page class which the My Account Content Modules have access to.</p>
+
+<p>The location of the My Account Content Module Page class is at:</p>
+
+<ul>
+  <li>includes/modules/pages/tp_account.php</li>
+</ul>
+
+<p>The standard links for the My Account page include:</p>
+
+<ul>
+  <li>My Account<ul>
+    <li>Edit Account</li>
+    <li>Address Book</li>
+    <li>Change Password</li>
+  </ul></li>
+  <li>Orders<ul>
+    <li>Order History</li>
+  </ul></li>
+  <li>Notifications<ul>
+    <li>Newsletters</li>
+    <li>Product Notifications</li>
+  </ul></li>
+</ul>
+
+<p>This release introduces a My Account Set Password Content Module that automatically replaces the Change Password link to a Set Password link for accounts that have been created without a password (eg, accounts created through Log In with PayPal or when guests purchase an order with PayPal Express Checkout).</p>
+
+<p>The account.php file included in v2.3.4 can be found at:</p>
+
+<p><a href="https://github.com/osCommerce/oscommerce2/blob/3eaa3d1d0e9646329a1540bc3b63c192b4306f1c/catalog/account.php" target="_blank">https://github.com/osCommerce/oscommerce2/blob/3eaa3d1d0e9646329a1540bc3b63c192b4306f1c/catalog/account.php</a></p>
+
+<h5 class="notoc">Checkout Success Page</h5>
+
+<p><i class="icon-file"></i> <strong>checkout_success.php</strong></p>
+
+<p>The content of the checkout success page has moved and is now built with the following Content Modules:</p>
+
+<ul>
+  <li>Thank You</li>
+  <li>Product Notifications</li>
+  <li>Downloads</li>
+</ul>
+
+<p>The checkout success page assigns the global $order_id variable with the order ID of the customers last order which the Checkout Success Content Modules have access to.</p>
+
+<p>The location of the Thank You Content Module files are at:</p>
+
+<ul>
+  <li>includes/languages/english/modules/content/checkout_success/cm_cs_thank_you.php <em>(language definitions)</em></li>
+  <li>includes/modules/content/checkout_success/cm_cs_thank_you.php <em>(main class)</em></li>
+  <li>includes/modules/content/checkout_success/templates/thank_you.php <em>(template)</em></li>
+</ul>
+
+<p>The location of the Product Notifications Content Module files are at:</p>
+
+<ul>
+  <li>includes/languages/english/modules/content/checkout_success/cm_cs_product_notifications.php <em>(language definitions)</em></li>
+  <li>includes/modules/content/checkout_success/cm_cs_product_notifications.php <em>(main class)</em></li>
+  <li>includes/modules/content/checkout_success/templates/product_notifications.php <em>(template)</em></li>
+</ul>
+
+<p>The location of the Downloads Content Module files are at:</p>
+
+<ul>
+  <li>includes/languages/english/modules/content/checkout_success/cm_cs_downloads.php <em>(language definitions)</em></li>
+  <li>includes/modules/content/checkout_success/cm_cs_downloads.php <em>(main class)</em></li>
+</ul>
+
+<p>The checkout_success.php file included in v2.3.4 can be found at:</p>
+
+<p><a href="https://github.com/osCommerce/oscommerce2/blob/3eaa3d1d0e9646329a1540bc3b63c192b4306f1c/catalog/checkout_success.php" target="_blank">https://github.com/osCommerce/oscommerce2/blob/3eaa3d1d0e9646329a1540bc3b63c192b4306f1c/catalog/checkout_success.php</a></p>
+
+<p><i class="icon-file"></i> <strong>includes/languages/english/checkout_success.php</strong></p>
+
+<p>The following language definitions have moved and have been replaced by definitions in the Content Modules.</p>
+
+<table class="pretty">
+  <thead>
+    <tr>
+      <th>Old Definition</th>
+      <th>Content Module</th>
+      <th>New Definition</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>TEXT_SUCCESS</td>
+      <td>Thank You</td>
+      <td>MODULE_CONTENT_CHECKOUT_SUCCESS_TEXT_SUCCESS</td>
+    </tr>
+    <tr>
+      <td>TEXT_SEE_ORDERS</td>
+      <td>Thank You</td>
+      <td>MODULE_CONTENT_CHECKOUT_SUCCESS_TEXT_SEE_ORDERS</td>
+    </tr>
+    <tr>
+      <td>TEXT_CONTACT_STORE_OWNER</td>
+      <td>Thank You</td>
+      <td>MODULE_CONTENT_CHECKOUT_SUCCESS_TEXT_CONTACT_STORE_OWNER</td>
+    </tr>
+    <tr>
+      <td>TEXT_THANKS_FOR_SHOPPING</td>
+      <td>Thank You</td>
+      <td>MODULE_CONTENT_CHECKOUT_SUCCESS_TEXT_THANKS_FOR_SHOPPING</td>
+    </tr>
+    <tr>
+      <td>TEXT_NOTIFY_PRODUCTS</td>
+      <td>Product Notifications</td>
+      <td>MODULE_CONTENT_CHECKOUT_SUCCESS_PRODUCT_NOTIFICATIONS_TEXT_NOTIFY_PRODUCTS</td>
+    </tr>
+    <tr>
+      <td>TABLE_HEADING_DOWNLOAD_DATE</td>
+      <td>Downloads</td>
+      <td>TABLE_HEADING_DOWNLOAD_DATE</td>
+    </tr>
+    <tr>
+      <td>TABLE_HEADING_DOWNLOAD_COUNT</td>
+      <td>Downloads</td>
+      <td>TABLE_HEADING_DOWNLOAD_COUNT</td>
+    </tr>
+    <tr>
+      <td>HEADING_DOWNLOAD</td>
+      <td>Downloads</td>
+      <td>HEADING_DOWNLOAD</td>
+    </tr>
+    <tr>
+      <td>FOOTER_DOWNLOAD</td>
+      <td>Downloads</td>
+      <td>FOOTER_DOWNLOAD</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/3eaa3d1d0e9646329a1540bc3b63c192b4306f1c" target="_blank">View online at GitHub</a></p>
+
+<span id="upg9"></span>
+
+<h3 class="notoc">Block Orders With No Shipping (2 files)</h3>
+
+<p>This changeset allows orders to be blocked when the destination does not match any defined shipping zones and when no shipping rates are available.</p>
+
+<p><i class="icon-file"></i> <strong>checkout_shipping.php</strong></p>
+
+<p>around line 139, change from:</p>
+
+{code}
+$shipping = false;
+
+tep_redirect(tep_href_link(FILENAME_CHECKOUT_PAYMENT, '', 'SSL'));
+{code}
+
+<p>to:</p>
+
+{code}
+if ( defined('SHIPPING_ALLOW_UNDEFINED_ZONES') && (SHIPPING_ALLOW_UNDEFINED_ZONES == 'False') ) {
+  tep_session_unregister('shipping');
+} else {
+  $shipping = false;
+
+  tep_redirect(tep_href_link(FILENAME_CHECKOUT_PAYMENT, '', 'SSL'));
+}
+{code}
+
+<p>around line 156, change from:</p>
+
+{code}
+require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_CHECKOUT_SHIPPING);
+{code}
+
+<p>to:</p>
+
+{code}
+require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_CHECKOUT_SHIPPING);
+
+if ( defined('SHIPPING_ALLOW_UNDEFINED_ZONES') && (SHIPPING_ALLOW_UNDEFINED_ZONES == 'False') && !tep_session_is_registered('shipping') && ($shipping == false) ) {
+  $messageStack->add_session('checkout_address', ERROR_NO_SHIPPING_AVAILABLE_TO_SHIPPING_ADDRESS);
+
+  tep_redirect(tep_href_link(FILENAME_CHECKOUT_SHIPPING_ADDRESS, '', 'SSL'));
+}
+{code}
+
+<p><i class="icon-file"></i> <strong>includes/languages/english/checkout_shipping.php</strong></p>
+
+<p>add the following language definition:</p>
+
+{code}
+define('ERROR_NO_SHIPPING_AVAILABLE_TO_SHIPPING_ADDRESS', 'Shipping is currently not available for the selected shipping address. Please select or create a new shipping address to use with your purchase.');
+{code}
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/93deb92c23c89afc70dccf2802dce1af1003f7d1" target="_blank">View online at GitHub</a></p>
+
+<span id="upg10"></span>
+
+<h3 class="notoc">Remove Free Shipping Check On Non-Related Page (1 file)</h3>
+
+<p>This changeset removes a free shipping check on a non-related page.</p>
+
+<p><i class="icon-file"></i> <strong>checkout_payment.php</strong></p>
+
+<p>around line 176, change from:</p>
+
+{code}
+} elseif ($free_shipping == false) {
+{code}
+
+<p>to:</p>
+
+{code}
+} else {
+{code}
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/be94acb3363e6f29881f06631c3e6beece38bcdf" target="_blank">View online at GitHub</a></p>
+
+<span id="upg11"></span>
+
+<h3 class="notoc">Checkout Confirmation MessageStack (1 file)</h3>
+
+<p>This changeset allows messages added to the message stack to be shown on the checkout confirmation page.</p>
+
+<p><i class="icon-file"></i> <strong>checkout_confirmation.php</strong></p>
+
+<p>around line 96, change from:</p>
+
+{code}
+if (isset($$payment->form_action_url)) {
+  $form_action_url = $$payment->form_action_url;
+} else {
+  $form_action_url = tep_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL');
+}
+{code}
+
+<p>to:</p>
+
+{code}
+if ($messageStack->size('checkout_confirmation') > 0) {
+  echo $messageStack->output('checkout_confirmation');
+}
+
+if (isset($$payment->form_action_url)) {
+  $form_action_url = $$payment->form_action_url;
+} else {
+  $form_action_url = tep_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL');
+}
+{code}
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/6f3482d48fd864b238955d910c9ebb3da4a42980" target="_blank">View online at GitHub</a></p>
+
+<span id="upg12"></span>
+
+<h3 class="notoc">Version Update (1 file)</h3>
+
+<p><i class="icon-file"></i> <strong>includes/version.php</strong></p>
+
+<p>change line 1 from:</p>
+
+{code}
+2.3.3.4
+{code}
+
+<p>to:</p>
+
+{code}
+2.3.4
+{code}
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/9b158776b7dabc57cbb4ebf9cb7a0681072bcb5d" target="_blank">View online at GitHub</a></p>
+
+<h2>Reference</h2>
+
+<p>A full list of source code changes can be seen at:</p>
+
+<p><a href="https://github.com/osCommerce/oscommerce2/compare/v2.3.3.4...upgrade234" target="_blank">https://github.com/osCommerce/oscommerce2/compare/v2.3.3.4...upgrade234</a></p>

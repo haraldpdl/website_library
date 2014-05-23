@@ -267,7 +267,7 @@
     </tr>
     <tr>
       <td>SHIPPING_ALLOW_UNDEFINED_ZONES</td>
-      <td>New configuration parameter to control if orders can be made to destinations without defined shipping rates. (default <em>False</em>)</em></td>
+      <td>New configuration parameter to control if orders can be made to destinations without defined shipping rates. (<em>False</em> by default)</em></td>
     </tr>
     <tr>
       <td>Content Modules</td>
@@ -1830,6 +1830,10 @@ define('ERROR_NO_SHIPPING_AVAILABLE_TO_SHIPPING_ADDRESS', 'Shipping is currently
 {code sql}
 insert into configuration (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('Allow Orders Not Matching Defined Shipping Zones ', 'SHIPPING_ALLOW_UNDEFINED_ZONES', 'False', 'Should orders be allowed to shipping addresses not matching defined shipping module shipping zones?', '7', '5', 'tep_cfg_select_option(array(\'True\', \'False\'), ', now());
 {code}
+
+<p>This adds the following configuration parameter:</p>
+
+<p>Administration Tool -> Configuration -> Shipping/Packaging -> Allow Orders Not Matching Defined Shipping Zones (<em>False</em> by default)</p>
 
 <p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
 <p><a href="https://github.com/osCommerce/oscommerce2/commit/93deb92c23c89afc70dccf2802dce1af1003f7d1" target="_blank">View online at GitHub</a></p>

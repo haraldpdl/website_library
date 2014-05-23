@@ -77,7 +77,7 @@
       <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
     </tr>
     <tr class="success">
-      <td><a href="#upg8">Block Orders With No Shipping</a> (2 files)</td>
+      <td><a href="#upg8">Block Orders With No Shipping</a> (2 files + SQL)</td>
       <td>Block orders when no shipping modules are available for the destination.</td>
       <td></td>
       <td>Low</td>
@@ -264,6 +264,10 @@
     <tr>
       <td>Cookie Based Sessions</td>
       <td>The GET and POST session values are ignored when force cookie based sessions is enabled.</td>
+    </tr>
+    <tr>
+      <td>SHIPPING_ALLOW_UNDEFINED_ZONES</td>
+      <td>New configuration parameter to control if orders can be made to destinations without defined shipping rates. (default <em>False</em>)</em></td>
     </tr>
     <tr>
       <td>Content Modules</td>
@@ -1767,7 +1771,7 @@ if ( tep_session_is_registered('comments') ) {
 
 <span id="upg8"></span>
 
-<h3 class="notoc">Block Orders With No Shipping (2 files)</h3>
+<h3 class="notoc">Block Orders With No Shipping (2 files + SQL)</h3>
 
 <p>This changeset allows orders to be blocked when the destination does not match any defined shipping zones and when no shipping rates are available.</p>
 
@@ -1817,6 +1821,14 @@ if ( defined('SHIPPING_ALLOW_UNDEFINED_ZONES') && (SHIPPING_ALLOW_UNDEFINED_ZONE
 
 {code}
 define('ERROR_NO_SHIPPING_AVAILABLE_TO_SHIPPING_ADDRESS', 'Shipping is currently not available for the selected shipping address. Please select or create a new shipping address to use with your purchase.');
+{code}
+
+<p><i class="icon-list-alt"></i> <strong>Database</strong></p>
+
+<p>Perform the following SQL commands:</p>
+
+{code sql}
+insert into configuration (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('Allow Orders Not Matching Defined Shipping Zones ', 'SHIPPING_ALLOW_UNDEFINED_ZONES', 'False', 'Should orders be allowed to shipping addresses not matching defined shipping module shipping zones?', '7', '5', 'tep_cfg_select_option(array(\'True\', \'False\'), ', now());
 {code}
 
 <p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>

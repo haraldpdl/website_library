@@ -149,6 +149,19 @@ a:link { -webkit-tap-highlight-color: #36d63d; }
 @media print {
   body {
     background-image: none;
+    margin-top: 0;
+  }
+
+  h2 {
+    page-break-before: always;
+  }
+
+  h3, h4, h5, h6 {
+    page-break-after: avoid;
+  }
+
+  pre, blockquote {
+    page-break-inside: avoid;
   }
 
   .visible-print {

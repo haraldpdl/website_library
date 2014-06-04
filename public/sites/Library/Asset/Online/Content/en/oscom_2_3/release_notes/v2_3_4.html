@@ -161,7 +161,7 @@
       <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
     </tr>
     <tr class="success">
-      <td><a href="#upg20">PayPal Modules</a> (2+ files)</td>
+      <td><a href="#upg20">PayPal Modules</a> (23 files)</td>
       <td>
         Update the following modules:<br /><br />
         PayPal Express Checkout<br />
@@ -178,7 +178,7 @@
       <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
     </tr>
     <tr class="success">
-      <td><a href="#upg21">Sage Pay Modules</a> (2+ files)</td>
+      <td><a href="#upg21">Sage Pay Modules</a> (12 files)</td>
       <td>
         Update the following modules:<br /><br />
         Sage Pay Direct<br />
@@ -192,7 +192,7 @@
       <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
     </tr>
     <tr class="success">
-      <td><a href="#upg22">Authorize.net Modules</a> (2+ files)</td>
+      <td><a href="#upg22">Authorize.net Modules</a> (7 files)</td>
       <td>
         Update the following modules:<br /><br />
         Authorize.net Server Integration Method (SIM)<br />
@@ -205,7 +205,7 @@
       <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
     </tr>
     <tr class="success">
-      <td><a href="#upg23">Stripe Payment Module</a> (2+ files)</td>
+      <td><a href="#upg23">Stripe Modules</a> (5 files)</td>
       <td>
         Introduce the following modules:<br /><br />
         Stripe.js payment module<br />
@@ -216,7 +216,7 @@
       <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
     </tr>
     <tr class="success">
-      <td><a href="#upg24">Braintree Payment Module</a> (2+ files)</td>
+      <td><a href="#upg24">Braintree Modules</a> (5+ files)</td>
       <td>
         Introduce the following modules:<br /><br />
         Braintree payment module<br />
@@ -227,7 +227,7 @@
       <td><a href="http://forums.oscommerce.com/index.php?showuser=2" target="_blank">Harald</a></td>
     </tr>
     <tr class="success">
-      <td><a href="#upg25">WorldPay</a> (2+ files)</td>
+      <td><a href="#upg25">WorldPay Modules</a> (2+ files)</td>
       <td>Update the WorldPay Hosted Payment Pages payment module.</td>
       <td></td>
       <td>Low</td>
@@ -3967,6 +3967,342 @@ define('BOX_ORDERS_ORDERS', 'Orders');
 
 <p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
 <p><a href="https://github.com/osCommerce/oscommerce2/commit/2a148a182d54a09e54abf298d968cd96552e3b1a" target="_blank">View online at GitHub</a></p>
+
+<span id="upg20"></span>
+
+<h3 class="notoc">PayPal Modules (23 files)</h3>
+
+<p>This changeset updates and introduces new PayPal modules.</p>
+
+<h4 class="notoc">Payment Modules</h4>
+
+<h5 class="notoc">PayPal Express Checkout</h5>
+
+<p>Copy the following files to their respective directories:</p>
+
+<p>
+  <i class="icon-file"></i> <strong>ext/modules/payment/paypal/express.php</strong><br />
+  <i class="icon-file"></i> <strong>ext/modules/payment/paypal/paypal.com.crt</strong><br />
+  <i class="icon-file"></i> <strong>includes/languages/english/modules/payment/paypal_express.php</strong><br />
+  <i class="icon-file"></i> <strong>includes/modules/payment/paypal_express.php</strong>
+</p>
+
+<p>Delete the following file:</p>
+
+<p>
+  <i class="icon-file"></i> <strong>admin/ext/modules/payment/paypal/paypal_express.php</strong>
+</p>
+
+<h5 class="notoc">PayPal Payments Standard</h5>
+
+<p>Copy the following files to their respective directories:</p>
+
+<p>
+  <i class="icon-file"></i> <strong>ext/modules/payment/paypal/paypal.com.crt</strong><br />
+  <i class="icon-file"></i> <strong>ext/modules/payment/paypal/standard_ipn.php</strong><br />
+  <i class="icon-file"></i> <strong>includes/languages/english/modules/payment/paypal_standard.php</strong><br />
+  <i class="icon-file"></i> <strong>includes/modules/payment/paypal_standard.php</strong>
+</p>
+
+<h5 class="notoc">PayPal Payments Pro (Direct Payment)</h5>
+
+<p>Copy the following files to their respective directories:</p>
+
+<p>
+  <i class="icon-file"></i> <strong>ext/modules/payment/paypal/paypal.com.crt</strong><br />
+  <i class="icon-file"></i> <strong>includes/languages/english/modules/payment/paypal_pro_dp.php</strong><br />
+  <i class="icon-file"></i> <strong>includes/modules/payment/paypal_pro_dp.php</strong>
+</p>
+
+<h5 class="notoc">PayPal Payments Pro (Hosted Solution)</h5>
+
+<p>Copy the following files to their respective directories:</p>
+
+<p>
+  <i class="icon-file"></i> <strong>ext/modules/payment/paypal/hosted_checkout.php</strong><br />
+  <i class="icon-file"></i> <strong>ext/modules/payment/paypal/images/hss_load.gif</strong><br />
+  <i class="icon-file"></i> <strong>ext/modules/payment/paypal/paypal.com.crt</strong><br />
+  <i class="icon-file"></i> <strong>ext/modules/payment/paypal/pro_hosted_ipn.php</strong><br />
+  <i class="icon-file"></i> <strong>includes/languages/english/modules/payment/paypal_pro_hs.php</strong><br />
+  <i class="icon-file"></i> <strong>includes/modules/payment/paypal_pro_hs.php</strong>
+</p>
+
+<h5 class="notoc">PayPal Express Checkout (Payflow Edition)</h5>
+
+<p>Copy the following files to their respective directories:</p>
+
+<p>
+  <i class="icon-file"></i> <strong>ext/modules/payment/paypal/express_payflow.php</strong><br />
+  <i class="icon-file"></i> <strong>ext/modules/payment/paypal/paypal.com.crt</strong><br />
+  <i class="icon-file"></i> <strong>includes/languages/english/modules/payment/paypal_pro_payflow_ec.php</strong><br />
+  <i class="icon-file"></i> <strong>includes/modules/payment/paypal_pro_payflow_ec.php</strong>
+</p>
+
+<h5 class="notoc">PayPal Payments Pro (Payflow Edition)</h5>
+
+<p>Copy the following files to their respective directories:</p>
+
+<p>
+  <i class="icon-file"></i> <strong>ext/modules/payment/paypal/paypal.com.crt</strong><br />
+  <i class="icon-file"></i> <strong>includes/languages/english/modules/payment/paypal_pro_payflow_dp.php</strong><br />
+  <i class="icon-file"></i> <strong>includes/modules/payment/paypal_pro_payflow_dp.php</strong><br />
+</p>
+
+<div class="note">Please also copy and update the language definition file to the other languages you have installed.</div>
+
+<p>After the files have been copied, the modules can be installed from the Administration Tool -&gt; Modules -&gt; Payment -> Install page, or configured from the Administration Tool -> Modules -> Payment page if they were previously installed.</p>
+
+<div class="note">It is important to review the module configuration paramters of modules that were previously installed to make sure new parameters have been configured properly.</div>
+
+<div class="info">It is safe to overwrite existing files with the new version.</div>
+
+<h4 class="notoc">Content Modules</h4>
+
+<h5 class="notoc">Log In with PayPal</h5>
+
+<p>Copy the following files to their respective directories:</p>
+
+<p>
+  <i class="icon-file"></i> <strong>ext/modules/payment/paypal/paypal.com.crt</strong><br />
+  <i class="icon-file"></i> <strong>includes/languages/english/modules/content/login/cm_paypal_login.php</strong><br />
+  <i class="icon-file"></i> <strong>includes/modules/content/login/cm_paypal_login.php</strong><br />
+  <i class="icon-file"></i> <strong>includes/modules/content/login/templates/paypal_login.php</strong><br />
+</p>
+
+<div class="note">Please also copy and update the language definition file to the other languages you have installed.</div>
+
+<p>After the files have been copied, the module can be installed from the Administration Tool -&gt; Modules -&gt; Content -> Install page.</p>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/a425bd8522fd6c6c57785693f44b98330c1da677" target="_blank">View online at GitHub</a></p>
+
+<span id="upg21"></span>
+
+<h3 class="notoc">Sage Pay Modules (12 files)</h3>
+
+<p>This changeset updates and introduces new Sage Pay modules.</p>
+
+<h4 class="notoc">Payment Modules</h4>
+
+<h5 class="notoc">Sage Pay Direct</h5>
+
+<p>Copy the following files to their respective directories:</p>
+
+<p>
+  <i class="icon-file"></i> <strong>ext/modules/payment/sage_pay/checkout.php</strong><br />
+  <i class="icon-file"></i> <strong>ext/modules/payment/sage_pay/direct_3dauth.php</strong><br />
+  <i class="icon-file"></i> <strong>ext/modules/payment/sage_pay/errors.php</strong><br />
+  <i class="icon-file"></i> <strong>ext/modules/payment/sage_pay/redirect.php</strong><br />
+  <i class="icon-file"></i> <strong>includes/languages/english/modules/payment/sage_pay_direct.php</strong><br />
+  <i class="icon-file"></i> <strong>includes/modules/payment/sage_pay_direct.php</strong>
+</p>
+
+<h5 class="notoc">Sage Pay Form</h5>
+
+<p>Copy the following files to their respective directories:</p>
+
+<p>
+  <i class="icon-file"></i> <strong>ext/modules/payment/sage_pay/errors.php</strong><br />
+  <i class="icon-file"></i> <strong>includes/languages/english/modules/payment/sage_pay_form.php</strong><br />
+  <i class="icon-file"></i> <strong>includes/modules/payment/sage_pay_form.php</strong>
+</p>
+
+<h5 class="notoc">Sage Pay Server</h5>
+
+<p>Copy the following files to their respective directories:</p>
+
+<p>
+  <i class="icon-file"></i> <strong>ext/modules/payment/sage_pay/checkout.php</strong><br />
+  <i class="icon-file"></i> <strong>ext/modules/payment/sage_pay/errors.php</strong><br />
+  <i class="icon-file"></i> <strong>ext/modules/payment/sage_pay/redirect.php</strong><br />
+  <i class="icon-file"></i> <strong>ext/modules/payment/sage_pay/server.php</strong><br />
+  <i class="icon-file"></i> <strong>includes/languages/english/modules/payment/sage_pay_server.php</strong><br />
+  <i class="icon-file"></i> <strong>includes/modules/payment/sage_pay_server.php</strong>
+</p>
+
+<div class="note">Please also copy and update the language definition file to the other languages you have installed.</div>
+
+<p>After the files have been copied, the modules can be installed from the Administration Tool -&gt; Modules -&gt; Payment -> Install page, or configured from the Administration Tool -> Modules -> Payment page if they were previously installed.</p>
+
+<div class="note">It is important to review the module configuration paramters of modules that were previously installed to make sure new parameters have been configured properly.</div>
+
+<div class="info">It is safe to overwrite existing files with the new version.</div>
+
+<h4 class="notoc">Content Modules</h4>
+
+<h5 class="notoc">Sage Pay Cards Management Page</h5>
+
+<p>Copy the following files to their respective directories:</p>
+
+<p>
+  <i class="icon-file"></i> <strong>ext/modules/content/account/sage_pay/cards.php</strong><br />
+  <i class="icon-file"></i> <strong>includes/languages/english/modules/content/account/cm_account_sage_pay_cards.php</strong><br />
+  <i class="icon-file"></i> <strong>includes/modules/content/account/cm_account_sage_pay_cards.php</strong>
+</p>
+
+<div class="note">Please also copy and update the language definition file to the other languages you have installed.</div>
+
+<p>After the files have been copied, the module can be installed from the Administration Tool -&gt; Modules -&gt; Content -> Install page.</p>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/2ff4689d6067b1f7c6616211484f2887b2b7bd62" target="_blank">View online at GitHub</a></p>
+
+<span id="upg22"></span>
+
+<h3 class="notoc">Authorize.net Modules (7 files)</h3>
+
+<p>This changeset updates and introduces new Authorize.net modules.</p>
+
+<h4 class="notoc">Payment Modules</h4>
+
+<h5 class="notoc">Authorize.net Advanced Integration Method (AIM)</h5>
+
+<p>Copy the following files to their respective directories:</p>
+
+<p>
+  <i class="icon-file"></i> <strong>ext/modules/payment/authorizenet/authorize.net.crt</strong><br />
+  <i class="icon-file"></i> <strong>includes/languages/english/modules/payment/authorizenet_cc_aim.php</strong><br />
+  <i class="icon-file"></i> <strong>includes/modules/payment/authorizenet_cc_aim.php</strong>
+</p>
+
+<h5 class="notoc">Authorize.net Server Integration Method (SIM)</h5>
+
+<p>Copy the following files to their respective directories:</p>
+
+<p>
+  <i class="icon-file"></i> <strong>includes/languages/english/modules/payment/authorizenet_cc_sim.php</strong><br />
+  <i class="icon-file"></i> <strong>includes/modules/payment/authorizenet_cc_sim.php</strong>
+</p>
+
+<h5 class="notoc">Authorize.net Direct Post Method (DPM)</h5>
+
+<p>Copy the following files to their respective directories:</p>
+
+<p>
+  <i class="icon-file"></i> <strong>includes/languages/english/modules/payment/authorizenet_cc_dpm.php</strong><br />
+  <i class="icon-file"></i> <strong>includes/modules/payment/authorizenet_cc_dpm.php</strong>
+</p>
+
+<div class="note">Please also copy and update the language definition file to the other languages you have installed.</div>
+
+<p>After the files have been copied, the modules can be installed from the Administration Tool -&gt; Modules -&gt; Payment -> Install page, or configured from the Administration Tool -> Modules -> Payment page if they were previously installed.</p>
+
+<div class="note">It is important to review the module configuration paramters of modules that were previously installed to make sure new parameters have been configured properly.</div>
+
+<div class="info">It is safe to overwrite existing files with the new version.</div>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/8672552b6af846f40c55b77def05bf086a5b0a23" target="_blank">View online at GitHub</a></p>
+
+<span id="upg23"></span>
+
+<h3 class="notoc">Stripe Modules (5 files)</h3>
+
+<p>This changeset introduces new Stripe modules.</p>
+
+<h4 class="notoc">Payment Modules</h4>
+
+<h5 class="notoc">Stripe.js</h5>
+
+<p>Copy the following files to their respective directories:</p>
+
+<p>
+  <i class="icon-file"></i> <strong>includes/languages/english/modules/payment/stripe.php</strong><br />
+  <i class="icon-file"></i> <strong>includes/modules/payment/stripe.php</strong>
+</p>
+
+<div class="note">Please also copy and update the language definition file to the other languages you have installed.</div>
+
+<p>After the files have been copied, the modules can be installed from the Administration Tool -&gt; Modules -&gt; Payment -> Install page, or configured from the Administration Tool -> Modules -> Payment page if they were previously installed.</p>
+
+<h4 class="notoc">Content Modules</h4>
+
+<h5 class="notoc">Stripe Cards Management Page</h5>
+
+<p>Copy the following files to their respective directories:</p>
+
+<p>
+  <i class="icon-file"></i> <strong>ext/modules/content/account/stripe/cards.php</strong><br />
+  <i class="icon-file"></i> <strong>includes/languages/english/modules/content/account/cm_account_stripe_cards.php</strong><br />
+  <i class="icon-file"></i> <strong>includes/modules/content/account/cm_account_stripe_cards.php</strong>
+</p>
+
+<div class="note">Please also copy and update the language definition file to the other languages you have installed.</div>
+
+<p>After the files have been copied, the module can be installed from the Administration Tool -&gt; Modules -&gt; Content -> Install page.</p>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/64e00aabce698cf797470611b6268f91def45a37" target="_blank">View online at GitHub</a></p>
+
+<span id="upg24"></span>
+
+<h3 class="notoc">Braintree Modules (5+ files)</h3>
+
+<p>This changeset introduces new Braintree modules.</p>
+
+<h4 class="notoc">Payment Modules</h4>
+
+<h5 class="notoc">Braintree</h5>
+
+<p>Copy the following files and directories to their respective directories:</p>
+
+<p>
+  <i class="icon-file"></i> <strong>includes/languages/english/modules/payment/braintree_cc.php</strong><br />
+  <i class="icon-folder-open"></i> <strong>includes/modules/payment/braintree_cc</strong><br />
+  <i class="icon-file"></i> <strong>includes/modules/payment/braintree_cc.php</strong>
+</p>
+
+<div class="note">Please also copy and update the language definition file to the other languages you have installed.</div>
+
+<p>After the files have been copied, the modules can be installed from the Administration Tool -&gt; Modules -&gt; Payment -> Install page, or configured from the Administration Tool -> Modules -> Payment page if they were previously installed.</p>
+
+<h4 class="notoc">Content Modules</h4>
+
+<h5 class="notoc">Braintree Cards Management Page</h5>
+
+<p>Copy the following files to their respective directories:</p>
+
+<p>
+  <i class="icon-file"></i> <strong>ext/modules/content/account/braintree/cards.php</strong><br />
+  <i class="icon-file"></i> <strong>includes/languages/english/modules/content/account/cm_account_braintree_cards.php</strong><br />
+  <i class="icon-file"></i> <strong>includes/modules/content/account/cm_account_braintree_cards.php</strong>
+</p>
+
+<div class="note">Please also copy and update the language definition file to the other languages you have installed.</div>
+
+<p>After the files have been copied, the module can be installed from the Administration Tool -&gt; Modules -&gt; Content -> Install page.</p>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/953474e01ed329643a1e9a9c47f87f785edc5b3c" target="_blank">View online at GitHub</a></p>
+
+<span id="upg25"></span>
+
+<h3 class="notoc">WorldPay Modules (3 files)</h3>
+
+<p>This changeset updates the WorldPay Hosted Payment Pages module.</p>
+
+<h4 class="notoc">Payment Modules</h4>
+
+<h5 class="notoc">WorldPay Hosted Payment Pages</h5>
+
+<p>Copy the following files and directories to their respective directories:</p>
+
+<p>
+  <i class="icon-file"></i> <strong>ext/modules/payment/rbsworldpay/hosted_callback.php</strong><br />
+  <i class="icon-file"></i> <strong>includes/languages/english/modules/payment/rbsworldpay_hosted.php</strong><br />
+  <i class="icon-file"></i> <strong>includes/modules/payment/rbsworldpay_hosted.php</strong>
+</p>
+
+<div class="note">Please also copy and update the language definition file to the other languages you have installed.</div>
+
+<p>After the files have been copied, the modules can be installed from the Administration Tool -&gt; Modules -&gt; Payment -> Install page, or configured from the Administration Tool -> Modules -> Payment page if they were previously installed.</p>
+
+<div class="note">It is important to review the module configuration paramters of modules that were previously installed to make sure new parameters have been configured properly.</div>
+
+<div class="info">It is safe to overwrite existing files with the new version.</div>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/bf835e50fd0931cbd4130669a93b46e4c0fdc706" target="_blank">View online at GitHub</a></p>
 
 <h2>Thank You!</h2>
 

@@ -140,14 +140,14 @@
       <td></td>
     </tr>
     <tr class="success">
-      <td><a href="#upg17">Administration Dashboard Latest News and Add-Ons</a> (1 file)</td>
+      <td><a href="#upg17">Administration Dashboard Latest News and Add-Ons</a> (4+ files)</td>
       <td>Update the Administration Tool Dashboard Latest News and Latest Add-Ons modules.</td>
       <td></td>
       <td>Low</td>
       <td><a href="http://forums.oscommerce.com/index.php?showuser=69" target="_blank">Gary</a></td>
     </tr>
     <tr class="success">
-      <td><a href="#upg18">Administration Tool Orders Box</a> (2+ files)</td>
+      <td><a href="#upg18">Administration Tool Orders Box</a> (3 files)</td>
       <td>Please Orders in own Administration Tool menu.</td>
       <td></td>
       <td>Low</td>
@@ -3470,31 +3470,7 @@ echo '              <tr class="dataTableRow" onmouseover="rowOverEffect(this)" o
 <p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
 <p><a href="https://github.com/osCommerce/oscommerce2/commit/cf22a7ba4c1cffa0dc55f0e80e4c1d11fa001c34" target="_blank">View online at GitHub</a></p>
 
-
-
-
-<span id="upg11"></span>
-
-<h3 class="notoc">Payment Acceptance Box (2+ files)</h3>
-
-<p>This changeset introduces a new Payment Acceptance box that promotes the payment methods accepted on the store.</p>
-
-<p>Copy the following files and directories to their respective directories:</p>
-
-<p>
-  <i class="icon-folder-open"></i> <strong>images/card_acceptance</strong><br />
-  <i class="icon-file"></i> <strong>includes/languages/english/modules/boxes/bm_card_acceptance.php</strong><br />
-  <i class="icon-file"></i> <strong>includes/modules/boxes/bm_card_acceptance.php</strong>
-</p>
-
-<div class="note">Please also copy and update the language definition file to the other languages you have installed.</div>
-
-<p>After this changeset is applied, the module can be installed from the Administration Tool -&gt; Modules -&gt; Boxes -> Install page.</p>
-
-<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
-<p><a href="https://github.com/osCommerce/oscommerce2/commit/ef3a0a3e87e0b94230b0c21100854be2a73bef93" target="_blank">View online at GitHub</a></p>
-
-<span id="upg12"></span>
+<span id="upg15"></span>
 
 <h3 class="notoc">Content Modules (6+ files)</h3>
 
@@ -3537,6 +3513,9 @@ echo '              <tr class="dataTableRow" onmouseover="rowOverEffect(this)" o
 <ul>
   <li>Account<ul>
     <li>Set Password</li>
+    <li><em>Braintree Cards Management Page</em></li>
+    <li><em>Sage Pay Cards Management Page</em></li>
+    <li><em>Stripe Cards Management Page</em></li>
   </ul></li>
   <li>Checkout Success<ul>
     <li>Downloads</li>
@@ -3547,8 +3526,11 @@ echo '              <tr class="dataTableRow" onmouseover="rowOverEffect(this)" o
   <li>Login<ul>
     <li>Create Account</li>
     <li>Login</li>
+    <li><em>Log In with PayPal</em></li>
   </ul></li>
 </ul>
+
+<div class="info">The modules that are emphasized are from additional modules included in this release.</div>
 
 <h4 class="notoc">Step 3: Template Class</h4>
 
@@ -3676,7 +3658,7 @@ function getContentModules($group) {
 
 <p>The login.php file included in v2.3.4 can be found at:</p>
 
-<p><a href="https://github.com/osCommerce/oscommerce2/blob/3eaa3d1d0e9646329a1540bc3b63c192b4306f1c/catalog/login.php" target="_blank">https://github.com/osCommerce/oscommerce2/blob/3eaa3d1d0e9646329a1540bc3b63c192b4306f1c/catalog/login.php</a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/blob/f396c33ae52b11c691ae1fcae9fa17efac785bb7/catalog/login.php" target="_blank">https://github.com/osCommerce/oscommerce2/blob/3eaa3d1d0e9646329a1540bc3b63c192b4306f1c/catalog/login.php</a></p>
 
 <p><i class="icon-file"></i> <strong>includes/languages/english/login.php</strong></p>
 
@@ -3764,7 +3746,7 @@ function getContentModules($group) {
 
 <p>The account.php file included in v2.3.4 can be found at:</p>
 
-<p><a href="https://github.com/osCommerce/oscommerce2/blob/3eaa3d1d0e9646329a1540bc3b63c192b4306f1c/catalog/account.php" target="_blank">https://github.com/osCommerce/oscommerce2/blob/3eaa3d1d0e9646329a1540bc3b63c192b4306f1c/catalog/account.php</a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/blob/f396c33ae52b11c691ae1fcae9fa17efac785bb7/catalog/account.php" target="_blank">https://github.com/osCommerce/oscommerce2/blob/3eaa3d1d0e9646329a1540bc3b63c192b4306f1c/catalog/account.php</a></p>
 
 <h5 class="notoc">Checkout Success Page</h5>
 
@@ -3805,7 +3787,7 @@ function getContentModules($group) {
 
 <p>The checkout_success.php file included in v2.3.4 can be found at:</p>
 
-<p><a href="https://github.com/osCommerce/oscommerce2/blob/3eaa3d1d0e9646329a1540bc3b63c192b4306f1c/catalog/checkout_success.php" target="_blank">https://github.com/osCommerce/oscommerce2/blob/3eaa3d1d0e9646329a1540bc3b63c192b4306f1c/catalog/checkout_success.php</a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/blob/f396c33ae52b11c691ae1fcae9fa17efac785bb7/catalog/checkout_success.php" target="_blank">https://github.com/osCommerce/oscommerce2/blob/3eaa3d1d0e9646329a1540bc3b63c192b4306f1c/catalog/checkout_success.php</a></p>
 
 <p><i class="icon-file"></i> <strong>includes/languages/english/checkout_success.php</strong></p>
 
@@ -3869,11 +3851,13 @@ function getContentModules($group) {
 </table>
 
 <p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
-<p><a href="https://github.com/osCommerce/oscommerce2/commit/3eaa3d1d0e9646329a1540bc3b63c192b4306f1c" target="_blank">View online at GitHub</a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/f396c33ae52b11c691ae1fcae9fa17efac785bb7" target="_blank">View online at GitHub</a></p>
 
-<span id="upg13"></span>
+<span id="upg16"></span>
 
 <h3 class="notoc">Version Update (1 file)</h3>
+
+<p>This changeset updates the version file.</p>
 
 <p><i class="icon-file"></i> <strong>includes/version.php</strong></p>
 
@@ -3890,7 +3874,99 @@ function getContentModules($group) {
 {code}
 
 <p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
-<p><a href="https://github.com/osCommerce/oscommerce2/commit/9b158776b7dabc57cbb4ebf9cb7a0681072bcb5d" target="_blank">View online at GitHub</a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/fdd55784bd077d0f0ae1336def10b494f712bf2b" target="_blank">View online at GitHub</a></p>
+
+<span id="upg17"></span>
+
+<h3 class="notoc">Administration Dashboard Latest News and Add-Ons (4+ files)</h3>
+
+<p>This changeset updates the Administration Tool Dashboard Latest News and Latest Add-Ons modules.</p>
+
+<p>Copy the following files and directories to their respective directories:</p>
+
+<p>
+  <i class="icon-file"></i> <strong>admin/images/icon_facebook.png</strong><br />
+  <i class="icon-file"></i> <strong>admin/images/icon_google_plus.png</strong><br />
+  <i class="icon-file"></i> <strong>admin/images/icon_oscommerce.png</strong><br />
+  <i class="icon-file"></i> <strong>admin/images/icon_twitter.png</strong><br />
+  <i class="icon-file"></i> <strong>admin/includes/languages/english/modules/dashboard/d_latest_addons.php</strong><br />
+  <i class="icon-file"></i> <strong>admin/includes/languages/english/modules/dashboard/d_latest_news.php</strong><br />
+  <i class="icon-file"></i> <strong>admin/includes/modules/dashboard/d_latest_addons.php</strong><br />
+  <i class="icon-file"></i> <strong>admin/includes/modules/dashboard/d_latest_news.php</strong>
+</p>
+
+<div class="note">Please also copy and update the language definition file to the other languages you have installed.</div>
+
+<div class="info">It is safe to overwrite existing files with the new version.</div>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/5ed4e0cde6e64c136ba65d58a663ab1ff30bb69c" target="_blank">View online at GitHub</a></p>
+
+<span id="upg18"></span>
+
+<h3 class="notoc">Administration Tool Orders Box (3 files)</h3>
+
+<p>This changeset moves the Administration Tool -> Customers -> Orders page into a new Administration Tool -> Orders section.</p>
+
+<p>Copy the following files and directories to their respective directories:</p>
+
+<p>
+  <i class="icon-file"></i> <strong>admin/includes/boxes/orders.php</strong>
+</p>
+
+<p>In:</p>
+
+<p><i class="icon-file"></i> <strong>admin/includes/boxes/customers.php</strong></p>
+
+<p>around line 20, remove the following lines:</p>
+
+{code}
+),
+array(
+  'code' => FILENAME_ORDERS,
+  'title' => BOX_CUSTOMERS_ORDERS,
+  'link' => tep_href_link(FILENAME_ORDERS)
+{code}
+
+<p><i class="icon-file"></i> <strong>admin/includes/languages/english.php</strong></p>
+
+<p>around line 20, change from:</p>
+
+{code}
+define('BOX_CUSTOMERS_ORDERS', 'Orders');
+{code}
+
+<p>to:</p>
+
+{code}
+// orders box text in includes/boxes/orders.php
+define('BOX_HEADING_ORDERS', 'Orders');
+define('BOX_ORDERS_ORDERS', 'Orders');
+{code}
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/b97ed0bf7d7aaffca329cbeb46e58c7b963058ea" target="_blank">View online at GitHub</a></p>
+
+<span id="upg19"></span>
+
+<h3 class="notoc">Payment Acceptance Box (2+ files)</h3>
+
+<p>This changeset introduces a new Payment Acceptance box that promotes the payment methods accepted on the store.</p>
+
+<p>Copy the following files and directories to their respective directories:</p>
+
+<p>
+  <i class="icon-folder-open"></i> <strong>images/card_acceptance</strong><br />
+  <i class="icon-file"></i> <strong>includes/languages/english/modules/boxes/bm_card_acceptance.php</strong><br />
+  <i class="icon-file"></i> <strong>includes/modules/boxes/bm_card_acceptance.php</strong>
+</p>
+
+<div class="note">Please also copy and update the language definition file to the other languages you have installed.</div>
+
+<p>After this changeset is applied, the module can be installed from the Administration Tool -&gt; Modules -&gt; Boxes -> Install page.</p>
+
+<p class="pull-right"><a href="#upgtop"><i class="icon-circle-arrow-up"></i></a></p>
+<p><a href="https://github.com/osCommerce/oscommerce2/commit/2a148a182d54a09e54abf298d968cd96552e3b1a" target="_blank">View online at GitHub</a></p>
 
 <h2>Thank You!</h2>
 

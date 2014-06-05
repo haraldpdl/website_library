@@ -1,6 +1,6 @@
 <span id="upgtop"></span>
 
-<h1>osCommerce Online Merchant v2.3.4 -DRAFT-</h1>
+<h1>osCommerce Online Merchant v2.3.4</h1>
 
 <p>osCommerce Online Merchant v2.3.4 is a general maintenance release focusing on improving core features and introduces a new Content Modules feature.</p>
 
@@ -494,6 +494,10 @@
         DIR_WS_HTTPS_ADMIN
       </td>
     </tr>
+    <tr>
+      <td>Empty Customer Passwords</td>
+      <td>If the Set Password account content module is enabled, customer accounts created automatically through PayPal Express Checkout (guest orders) and Log In with PayPal are created with empty passwords. The Set Password account content module detects such accounts and replaces the My Account -> Change Password link to a Set Password link. It is not possible to log in locally with an empty password.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -510,183 +514,1104 @@
   </thead>
   <tbody>
     <tr>
-      <td><strong>[admin] modules/boxes/modules_content.php</strong><br />
-          MODULES_ADMIN_MENU_MODULES_CONTENT</td>
-      <td><br />New</td>
+      <td>
+        <strong>[admin english.php]</strong><br />
+        BOX_CUSTOMERS_ORDERS<br />
+        BOX_HEADING_ORDERS<br />
+        BOX_ORDERS_ORDERS
+      </td>
+      <td><br />
+        Deleted<br />
+        New<br />
+        New
+      </td>
     </tr>
     <tr>
-      <td><strong>[admin] modules_content.php</strong><br />
-          HEADING_TITLE<br />
-          TABLE_HEADING_MODULES<br />
-          TABLE_HEADING_GROUP<br />
-          TABLE_HEADING_SORT_ORDER<br />
-          TABLE_HEADING_ACTION<br />
-          TEXT_INFO_VERSION<br />
-          TEXT_INFO_ONLINE_STATUS<br />
-          TEXT_INFO_API_VERSION<br />
-          TEXT_MODULE_DIRECTORY</td>
-      <td><br />New<br />
-                New<br />
-                New<br />
-                New<br />
-                New<br />
-                New<br />
-                New<br />
-                New<br />
-                New</td>
+      <td>
+        <strong>[admin] modules/boxes/modules_content.php</strong><br />
+        MODULES_ADMIN_MENU_MODULES_CONTENT
+      </td>
+      <td><br />
+        New
+      </td>
     </tr>
     <tr>
-      <td><strong>checkout_shipping.php</strong><br />
-          ERROR_NO_SHIPPING_AVAILABLE_TO_SHIPPING_ADDRESS</td>
-      <td><br />New</td>
+      <td>
+        <strong>[admin] modules/dashboard/d_latest_addons.php</strong><br />
+        MODULE_ADMIN_DASHBOARD_LATEST_ADDONS_ICON_SITE
+      </td>
+      <td><br />
+        New
+      </td>
     </tr>
     <tr>
-      <td><strong>checkout_success.php</strong><br />
-          TEXT_SUCCESS<br />
-          TEXT_NOTIFY_PRODUCTS<br />
-          TEXT_SEE_ORDERS<br />
-          TEXT_CONTACT_STORE_OWNER<br />
-          TEXT_THANKS_FOR_SHOPPING<br />
-          TABLE_HEADING_DOWNLOAD_DATE<br />
-          TABLE_HEADING_DOWNLOAD_COUNT<br />
-          HEADING_DOWNLOAD<br />
-          FOOTER_DOWNLOAD</td>
-      <td><br />Deleted<br />
-                Deleted<br />
-                Deleted<br />
-                Deleted<br />
-                Deleted<br />
-                Deleted<br />
-                Deleted<br />
-                Deleted<br />
-                Deleted</td>
+      <td>
+        <strong>[admin] modules/dashboard/d_latest_news.php</strong><br />
+        MODULE_ADMIN_DASHBOARD_LATEST_NEWS_ICON_NEWS<br />
+        MODULE_ADMIN_DASHBOARD_LATEST_NEWS_ICON_GOOGLE_PLUS
+      </td>
+      <td><br />
+        New<br />
+        New
+      </td>
     </tr>
     <tr>
-      <td><strong>login.php</strong><br />
-          HEADING_NEW_CUSTOMER<br />
-          TEXT_NEW_CUSTOMER<br />
-          TEXT_NEW_CUSTOMER_INTRODUCTION<br />
-          HEADING_RETURNING_CUSTOMER<br />
-          TEXT_RETURNING_CUSTOMER<br />
-          TEXT_PASSWORD_FORGOTTEN<br />
-          TEXT_LOGIN_ERROR<br />
-          TEXT_VISITORS_CART</td>
-      <td><br />Deleted<br />
-                Deleted<br />
-                Deleted<br />
-                Deleted<br />
-                Deleted<br />
-                Deleted<br />
-                Deleted<br />
-                Deleted</td>
+      <td>
+        <strong>[admin] modules_content.php</strong><br />
+        HEADING_TITLE<br />
+        TABLE_HEADING_MODULES<br />
+        TABLE_HEADING_GROUP<br />
+        TABLE_HEADING_SORT_ORDER<br />
+        TABLE_HEADING_ACTION<br />
+        TEXT_INFO_VERSION<br />
+        TEXT_INFO_ONLINE_STATUS<br />
+        TEXT_INFO_API_VERSION<br />
+        TEXT_MODULE_DIRECTORY
+      </td>
+      <td><br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New
+      </td>
     </tr>
     <tr>
-      <td><strong>modules/boxes/bm_card_acceptance.php</strong><br />
-          MODULE_BOXES_CARD_ACCEPTANCE_TITLE<br />
-          MODULE_BOXES_CARD_ACCEPTANCE_DESCRIPTION<br />
-          MODULE_BOXES_CARD_ACCEPTANCE_SHOWN_CARDS<br />
-          MODULE_BOXES_CARD_ACCEPTANCE_NEW_CARDS<br />
-          MODULE_BOXES_CARD_ACCEPTANCE_DRAG_HERE<br />
-          MODULE_BOXES_CARD_ACCEPTANCE_BOX_TITLE</td>
-      <td><br />New<br />
-                New<br />
-                New<br />
-                New<br />
-                New<br />
-                New</td>
+      <td>
+        <strong>checkout_shipping.php</strong><br />
+        ERROR_NO_SHIPPING_AVAILABLE_TO_SHIPPING_ADDRESS
+      </td>
+      <td><br />
+        New
+      </td>
     </tr>
     <tr>
-      <td><strong>modules/content/account/cm_account_set_password.php</strong><br />
-          MODULE_CONTENT_ACCOUNT_SET_PASSWORD_TITLE<br />
-          MODULE_CONTENT_ACCOUNT_SET_PASSWORD_DESCRIPTION<br />
-          MODULE_CONTENT_ACCOUNT_SET_PASSWORD_SET_PASSWORD_LINK_TITLE<br />
-          MODULE_CONTENT_ACCOUNT_SET_PASSWORD_NAVBAR_TITLE_1<br />
-          MODULE_CONTENT_ACCOUNT_SET_PASSWORD_NAVBAR_TITLE_2<br />
-          MODULE_CONTENT_ACCOUNT_SET_PASSWORD_HEADING_TITLE<br />
-          MODULE_CONTENT_ACCOUNT_SET_PASSWORD_SET_PASSWORD_TITLE<br />
-          MODULE_CONTENT_ACCOUNT_SET_PASSWORD_SUCCESS_PASSWORD_SET</td>
-      <td><br />New<br />
-                New<br />
-                New<br />
-                New<br />
-                New<br />
-                New<br />
-                New<br />
-                New</td>
+      <td>
+        <strong>checkout_success.php</strong><br />
+        TEXT_SUCCESS<br />
+        TEXT_NOTIFY_PRODUCTS<br />
+        TEXT_SEE_ORDERS<br />
+        TEXT_CONTACT_STORE_OWNER<br />
+        TEXT_THANKS_FOR_SHOPPING<br />
+        TABLE_HEADING_DOWNLOAD_DATE<br />
+        TABLE_HEADING_DOWNLOAD_COUNT<br />
+        HEADING_DOWNLOAD<br />
+        FOOTER_DOWNLOAD
+      </td>
+      <td><br />
+        Deleted<br />
+        Deleted<br />
+        Deleted<br />
+        Deleted<br />
+        Deleted<br />
+        Deleted<br />
+        Deleted<br />
+        Deleted<br />
+        Deleted
+      </td>
     </tr>
     <tr>
-      <td><strong>modules/content/checkout_success/cm_cs_downloads.php</strong><br />
-          MODULE_CONTENT_CHECKOUT_SUCCESS_DOWNLOADS_TITLE<br />
-          MODULE_CONTENT_CHECKOUT_SUCCESS_DOWNLOADS_DESCRIPTION<br />
-          TABLE_HEADING_DOWNLOAD_DATE<br />
-          TABLE_HEADING_DOWNLOAD_COUNT<br />
-          HEADING_DOWNLOAD<br />
-          FOOTER_DOWNLOAD</td>
-      <td><br />New<br />
-                New<br />
-                New<br />
-                New<br />
-                New<br />
-                New</td>
+      <td>
+        <strong>login.php</strong><br />
+        HEADING_NEW_CUSTOMER<br />
+        TEXT_NEW_CUSTOMER<br />
+        TEXT_NEW_CUSTOMER_INTRODUCTION<br />
+        HEADING_RETURNING_CUSTOMER<br />
+        TEXT_RETURNING_CUSTOMER<br />
+        TEXT_PASSWORD_FORGOTTEN<br />
+        TEXT_LOGIN_ERROR<br />
+        TEXT_VISITORS_CART
+      </td>
+      <td><br />
+        Deleted<br />
+        Deleted<br />
+        Deleted<br />
+        Deleted<br />
+        Deleted<br />
+        Deleted<br />
+        Deleted<br />
+        Deleted
+      </td>
     </tr>
     <tr>
-      <td><strong>modules/content/checkout_success/cm_cs_product_notifications.php</strong><br />
-          MODULE_CONTENT_CHECKOUT_SUCCESS_PRODUCT_NOTIFICATIONS_TITLE<br />
-          MODULE_CONTENT_CHECKOUT_SUCCESS_PRODUCT_NOTIFICATIONS_DESCRIPTION<br />
-          MODULE_CONTENT_CHECKOUT_SUCCESS_PRODUCT_NOTIFICATIONS_TEXT_NOTIFY_PRODUCTS</td>
-      <td><br />New<br />
-                New<br />
-                New</td>
+      <td>
+        <strong>modules/boxes/bm_card_acceptance.php</strong><br />
+        MODULE_BOXES_CARD_ACCEPTANCE_TITLE<br />
+        MODULE_BOXES_CARD_ACCEPTANCE_DESCRIPTION<br />
+        MODULE_BOXES_CARD_ACCEPTANCE_SHOWN_CARDS<br />
+        MODULE_BOXES_CARD_ACCEPTANCE_NEW_CARDS<br />
+        MODULE_BOXES_CARD_ACCEPTANCE_DRAG_HERE<br />
+        MODULE_BOXES_CARD_ACCEPTANCE_BOX_TITLE
+      </td>
+      <td><br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New
+      </td>
     </tr>
     <tr>
-      <td><strong>modules/content/checkout_success/cm_cs_redirect_old_order.php</strong><br />
-          MODULE_CONTENT_CHECKOUT_SUCCESS_REDIRECT_OLD_ORDER_TITLE<br />
-          MODULE_CONTENT_CHECKOUT_SUCCESS_REDIRECT_OLD_ORDER_DESCRIPTION</td>
-      <td><br />New<br />
-                New</td>
+      <td>
+        <strong>modules/content/account/cm_account_braintree_cards.php</strong><br />
+        MODULE_CONTENT_ACCOUNT_BRAINTREE_CARDS_TITLE<br />
+        MODULE_CONTENT_ACCOUNT_BRAINTREE_CARDS_DESCRIPTION<br />
+        MODULE_CONTENT_ACCOUNT_BRAINTREE_CARDS_ERROR_MAIN_MODULE<br />
+        MODULE_CONTENT_ACCOUNT_BRAINTREE_CARDS_LINK_TITLE<br />
+        MODULE_CONTENT_ACCOUNT_BRAINTREE_CARDS_NAVBAR_TITLE_1<br />
+        MODULE_CONTENT_ACCOUNT_BRAINTREE_CARDS_NAVBAR_TITLE_2<br />
+        MODULE_CONTENT_ACCOUNT_BRAINTREE_CARDS_HEADING_TITLE<br />
+        MODULE_CONTENT_ACCOUNT_BRAINTREE_CARDS_TEXT_DESCRIPTION<br />
+        MODULE_CONTENT_ACCOUNT_BRAINTREE_CARDS_SAVED_CARDS_TITLE<br />
+        MODULE_CONTENT_ACCOUNT_BRAINTREE_CARDS_TEXT_NO_CARDS<br />
+        MODULE_CONTENT_ACCOUNT_BRAINTREE_CARDS_SUCCESS_DELETED
+      </td>
+      <td><br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New
+      </td>
     </tr>
     <tr>
-      <td><strong>modules/content/checkout_success/cm_cs_thank_you.php</strong><br />
-          MODULE_CONTENT_CHECKOUT_SUCCESS_THANK_YOU_TITLE<br />
-          MODULE_CONTENT_CHECKOUT_SUCCESS_THANK_YOU_DESCRIPTION<br />
-          MODULE_CONTENT_CHECKOUT_SUCCESS_TEXT_SUCCESS<br />
-          MODULE_CONTENT_CHECKOUT_SUCCESS_TEXT_SEE_ORDERS<br />
-          MODULE_CONTENT_CHECKOUT_SUCCESS_TEXT_CONTACT_STORE_OWNER<br />
-          MODULE_CONTENT_CHECKOUT_SUCCESS_TEXT_THANKS_FOR_SHOPPING</td>
-      <td><br />New<br />
-                New<br />
-                New<br />
-                New<br />
-                New<br />
-                New</td>
+      <td>
+        <strong>modules/content/account/cm_account_sage_pay_cards.php</strong><br />
+        MODULE_CONTENT_ACCOUNT_SAGE_PAY_CARDS_TITLE<br />
+        MODULE_CONTENT_ACCOUNT_SAGE_PAY_CARDS_DESCRIPTION<br />
+        MODULE_CONTENT_ACCOUNT_SAGE_PAY_CARDS_ERROR_MAIN_MODULE<br />
+        MODULE_CONTENT_ACCOUNT_SAGE_PAY_CARDS_LINK_TITLE<br />
+        MODULE_CONTENT_ACCOUNT_SAGE_PAY_CARDS_NAVBAR_TITLE_1<br />
+        MODULE_CONTENT_ACCOUNT_SAGE_PAY_CARDS_NAVBAR_TITLE_2<br />
+        MODULE_CONTENT_ACCOUNT_SAGE_PAY_CARDS_HEADING_TITLE<br />
+        MODULE_CONTENT_ACCOUNT_SAGE_PAY_CARDS_TEXT_DESCRIPTION<br />
+        MODULE_CONTENT_ACCOUNT_SAGE_PAY_CARDS_SAVED_CARDS_TITLE<br />
+        MODULE_CONTENT_ACCOUNT_SAGE_PAY_CARDS_TEXT_NO_CARDS<br />
+        MODULE_CONTENT_ACCOUNT_SAGE_PAY_CARDS_SUCCESS_DELETED
+      </td>
+      <td><br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New
+      </td>
     </tr>
     <tr>
-      <td><strong>modules/content/login/cm_create_account_link.php</strong><br />
-          MODULE_CONTENT_CREATE_ACCOUNT_LINK_TITLE<br />
-          MODULE_CONTENT_CREATE_ACCOUNT_LINK_DESCRIPTION<br />
-          MODULE_CONTENT_LOGIN_HEADING_NEW_CUSTOMER<br />
-          MODULE_CONTENT_LOGIN_TEXT_NEW_CUSTOMER<br />
-          MODULE_CONTENT_LOGIN_TEXT_NEW_CUSTOMER_INTRODUCTION</td>
-      <td><br />New<br />
-                New<br />
-                New<br />
-                New<br />
-                New</td>
+      <td>
+        <strong>modules/content/account/cm_account_set_password.php</strong><br />
+        MODULE_CONTENT_ACCOUNT_SET_PASSWORD_TITLE<br />
+        MODULE_CONTENT_ACCOUNT_SET_PASSWORD_DESCRIPTION<br />
+        MODULE_CONTENT_ACCOUNT_SET_PASSWORD_SET_PASSWORD_LINK_TITLE<br />
+        MODULE_CONTENT_ACCOUNT_SET_PASSWORD_NAVBAR_TITLE_1<br />
+        MODULE_CONTENT_ACCOUNT_SET_PASSWORD_NAVBAR_TITLE_2<br />
+        MODULE_CONTENT_ACCOUNT_SET_PASSWORD_HEADING_TITLE<br />
+        MODULE_CONTENT_ACCOUNT_SET_PASSWORD_SET_PASSWORD_TITLE<br />
+        MODULE_CONTENT_ACCOUNT_SET_PASSWORD_SUCCESS_PASSWORD_SET
+      </td>
+      <td><br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New
+      </td>
     </tr>
     <tr>
-      <td><strong>modules/content/login/cm_login_form.php</strong><br />
-          MODULE_CONTENT_LOGIN_FORM_TITLE<br />
-          MODULE_CONTENT_LOGIN_FORM_DESCRIPTION<br />
-          MODULE_CONTENT_LOGIN_HEADING_RETURNING_CUSTOMER<br />
-          MODULE_CONTENT_LOGIN_TEXT_RETURNING_CUSTOMER<br />
-          MODULE_CONTENT_LOGIN_TEXT_PASSWORD_FORGOTTEN<br />
-          MODULE_CONTENT_LOGIN_TEXT_LOGIN_ERROR</td>
-      <td><br />New<br />
-                New<br />
-                New<br />
-                New<br />
-                New<br />
-                New</td>
+      <td>
+        <strong>modules/content/account/cm_account_stripe_cards.php</strong><br />
+        MODULE_CONTENT_ACCOUNT_STRIPE_CARDS_TITLE<br />
+        MODULE_CONTENT_ACCOUNT_STRIPE_CARDS_DESCRIPTION<br />
+        MODULE_CONTENT_ACCOUNT_STRIPE_CARDS_ERROR_MAIN_MODULE<br />
+        MODULE_CONTENT_ACCOUNT_STRIPE_CARDS_LINK_TITLE<br />
+        MODULE_CONTENT_ACCOUNT_STRIPE_CARDS_NAVBAR_TITLE_1<br />
+        MODULE_CONTENT_ACCOUNT_STRIPE_CARDS_NAVBAR_TITLE_2<br />
+        MODULE_CONTENT_ACCOUNT_STRIPE_CARDS_HEADING_TITLE<br />
+        MODULE_CONTENT_ACCOUNT_STRIPE_CARDS_TEXT_DESCRIPTION<br />
+        MODULE_CONTENT_ACCOUNT_STRIPE_CARDS_SAVED_CARDS_TITLE<br />
+        MODULE_CONTENT_ACCOUNT_STRIPE_CARDS_TEXT_NO_CARDS<br />
+        MODULE_CONTENT_ACCOUNT_STRIPE_CARDS_SUCCESS_DELETED
+      </td>
+      <td><br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>modules/content/checkout_success/cm_cs_downloads.php</strong><br />
+        MODULE_CONTENT_CHECKOUT_SUCCESS_DOWNLOADS_TITLE<br />
+        MODULE_CONTENT_CHECKOUT_SUCCESS_DOWNLOADS_DESCRIPTION<br />
+        TABLE_HEADING_DOWNLOAD_DATE<br />
+        TABLE_HEADING_DOWNLOAD_COUNT<br />
+        HEADING_DOWNLOAD<br />
+        FOOTER_DOWNLOAD
+      </td>
+      <td><br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>modules/content/checkout_success/cm_cs_product_notifications.php</strong><br />
+        MODULE_CONTENT_CHECKOUT_SUCCESS_PRODUCT_NOTIFICATIONS_TITLE<br />
+        MODULE_CONTENT_CHECKOUT_SUCCESS_PRODUCT_NOTIFICATIONS_DESCRIPTION<br />
+        MODULE_CONTENT_CHECKOUT_SUCCESS_PRODUCT_NOTIFICATIONS_TEXT_NOTIFY_PRODUCTS
+      </td>
+      <td><br />
+        New<br />
+        New<br />
+        New
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>modules/content/checkout_success/cm_cs_redirect_old_order.php</strong><br />
+        MODULE_CONTENT_CHECKOUT_SUCCESS_REDIRECT_OLD_ORDER_TITLE<br />
+        MODULE_CONTENT_CHECKOUT_SUCCESS_REDIRECT_OLD_ORDER_DESCRIPTION
+      </td>
+      <td><br />
+        New<br />
+        New
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>modules/content/checkout_success/cm_cs_thank_you.php</strong><br />
+        MODULE_CONTENT_CHECKOUT_SUCCESS_THANK_YOU_TITLE<br />
+        MODULE_CONTENT_CHECKOUT_SUCCESS_THANK_YOU_DESCRIPTION<br />
+        MODULE_CONTENT_CHECKOUT_SUCCESS_TEXT_SUCCESS<br />
+        MODULE_CONTENT_CHECKOUT_SUCCESS_TEXT_SEE_ORDERS<br />
+        MODULE_CONTENT_CHECKOUT_SUCCESS_TEXT_CONTACT_STORE_OWNER<br />
+        MODULE_CONTENT_CHECKOUT_SUCCESS_TEXT_THANKS_FOR_SHOPPING
+      </td>
+      <td><br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>modules/content/login/cm_create_account_link.php</strong><br />
+        MODULE_CONTENT_CREATE_ACCOUNT_LINK_TITLE<br />
+        MODULE_CONTENT_CREATE_ACCOUNT_LINK_DESCRIPTION<br />
+        MODULE_CONTENT_LOGIN_HEADING_NEW_CUSTOMER<br />
+        MODULE_CONTENT_LOGIN_TEXT_NEW_CUSTOMER<br />
+        MODULE_CONTENT_LOGIN_TEXT_NEW_CUSTOMER_INTRODUCTION
+      </td>
+      <td><br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>modules/content/login/cm_login_form.php</strong><br />
+        MODULE_CONTENT_LOGIN_FORM_TITLE<br />
+        MODULE_CONTENT_LOGIN_FORM_DESCRIPTION<br />
+        MODULE_CONTENT_LOGIN_HEADING_RETURNING_CUSTOMER<br />
+        MODULE_CONTENT_LOGIN_TEXT_RETURNING_CUSTOMER<br />
+        MODULE_CONTENT_LOGIN_TEXT_PASSWORD_FORGOTTEN<br />
+        MODULE_CONTENT_LOGIN_TEXT_LOGIN_ERROR
+      </td>
+      <td><br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>modules/content/login/cm_paypal_login.php</strong><br />
+        MODULE_CONTENT_PAYPAL_LOGIN_TITLE<br />
+        MODULE_CONTENT_PAYPAL_LOGIN_DESCRIPTION<br />
+        MODULE_CONTENT_PAYPAL_LOGIN_TEMPLATE_TITLE<br />
+        MODULE_CONTENT_PAYPAL_LOGIN_TEMPLATE_CONTENT<br />
+        MODULE_CONTENT_PAYPAL_LOGIN_TEMPLATE_SANDBOX<br />
+        MODULE_CONTENT_PAYPAL_LOGIN_ERROR_ADMIN_CURL<br />
+        MODULE_CONTENT_PAYPAL_LOGIN_ERROR_ADMIN_CONFIGURATION<br />
+        MODULE_CONTENT_PAYPAL_LOGIN_LANGUAGE_LOCALE<br />
+        MODULE_CONTENT_PAYPAL_LOGIN_ATTR_GROUP_personal<br />
+        MODULE_CONTENT_PAYPAL_LOGIN_ATTR_GROUP_address<br />
+        MODULE_CONTENT_PAYPAL_LOGIN_ATTR_GROUP_account<br />
+        MODULE_CONTENT_PAYPAL_LOGIN_ATTR_GROUP_checkout<br />
+        MODULE_CONTENT_PAYPAL_LOGIN_ATTR_full_name<br />
+        MODULE_CONTENT_PAYPAL_LOGIN_ATTR_date_of_birth<br />
+        MODULE_CONTENT_PAYPAL_LOGIN_ATTR_age_range<br />
+        MODULE_CONTENT_PAYPAL_LOGIN_ATTR_gender<br />
+        MODULE_CONTENT_PAYPAL_LOGIN_ATTR_email_address<br />
+        MODULE_CONTENT_PAYPAL_LOGIN_ATTR_street_address<br />
+        MODULE_CONTENT_PAYPAL_LOGIN_ATTR_city<br />
+        MODULE_CONTENT_PAYPAL_LOGIN_ATTR_state<br />
+        MODULE_CONTENT_PAYPAL_LOGIN_ATTR_country<br />
+        MODULE_CONTENT_PAYPAL_LOGIN_ATTR_zip_code<br />
+        MODULE_CONTENT_PAYPAL_LOGIN_ATTR_phone<br />
+        MODULE_CONTENT_PAYPAL_LOGIN_ATTR_account_status<br />
+        MODULE_CONTENT_PAYPAL_LOGIN_ATTR_account_type<br />
+        MODULE_CONTENT_PAYPAL_LOGIN_ATTR_account_creation_date<br />
+        MODULE_CONTENT_PAYPAL_LOGIN_ATTR_time_zone<br />
+        MODULE_CONTENT_PAYPAL_LOGIN_ATTR_locale<br />
+        MODULE_CONTENT_PAYPAL_LOGIN_ATTR_language<br />
+        MODULE_CONTENT_PAYPAL_LOGIN_ATTR_seamless_checkout<br />
+        MODULE_CONTENT_PAYPAL_LOGIN_DIALOG_CONNECTION_LINK_TITLE<br />
+        MODULE_CONTENT_PAYPAL_LOGIN_DIALOG_CONNECTION_TITLE<br />
+        MODULE_CONTENT_PAYPAL_LOGIN_DIALOG_CONNECTION_GENERAL_TEXT<br />
+        MODULE_CONTENT_PAYPAL_LOGIN_DIALOG_CONNECTION_BUTTON_CLOSE<br />
+        MODULE_CONTENT_PAYPAL_LOGIN_DIALOG_CONNECTION_TIME<br />
+        MODULE_CONTENT_PAYPAL_LOGIN_DIALOG_CONNECTION_SUCCESS<br />
+        MODULE_CONTENT_PAYPAL_LOGIN_DIALOG_CONNECTION_FAILED<br />
+        MODULE_CONTENT_PAYPAL_LOGIN_DIALOG_CONNECTION_ERROR<br />
+        MODULE_CONTENT_PAYPAL_LOGIN_DIALOG_URLS_LINK_TITLE<br />
+        MODULE_CONTENT_PAYPAL_LOGIN_DIALOG_URLS_TITLE<br />
+        MODULE_CONTENT_PAYPAL_LOGIN_DIALOG_URLS_RETURN_TEXT<br />
+        MODULE_CONTENT_PAYPAL_LOGIN_DIALOG_URLS_PRIVACY_TEXT<br />
+        MODULE_CONTENT_PAYPAL_LOGIN_DIALOG_URLS_TERMS_TEXT<br />
+        MODULE_CONTENT_PAYPAL_LOGIN_DIALOG_URLS_BUTTON_CLOSE
+      </td>
+      <td><br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>modules/payment/authorizenet_cc_aim.php</strong><br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_ERROR_ADMIN_CURL<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_ERROR_ADMIN_CONFIGURATION<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_CREDIT_CARD_OWNER<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_CREDIT_CARD_OWNER_FIRSTNAME<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_CREDIT_CARD_OWNER_LASTNAME<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_CREDIT_CARD_CVC<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_CREDIT_CARD_CCV<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_TEXT_AVS_A<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_TEXT_AVS_B<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_TEXT_AVS_E<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_TEXT_AVS_G<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_TEXT_AVS_N<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_TEXT_AVS_P<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_TEXT_AVS_R<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_TEXT_AVS_S<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_TEXT_AVS_U<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_TEXT_AVS_W<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_TEXT_AVS_X<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_TEXT_AVS_Y<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_TEXT_AVS_Z<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_TEXT_CVV2_M<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_TEXT_CVV2_N<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_TEXT_CVV2_P<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_TEXT_CVV2_S<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_TEXT_CVV2_U<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_TEXT_CAVV_0<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_TEXT_CAVV_1<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_TEXT_CAVV_2<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_TEXT_CAVV_3<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_TEXT_CAVV_4<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_TEXT_CAVV_5<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_TEXT_CAVV_6<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_TEXT_CAVV_7<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_TEXT_CAVV_8<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_TEXT_CAVV_9<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_TEXT_CAVV_A<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_TEXT_CAVV_B<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_ERROR_CVC<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_ERROR_CCV<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_ERROR_MERCHANT_ACCOUNT<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_ERROR_CURRENCY<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_DIALOG_CONNECTION_LINK_TITLE<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_DIALOG_CONNECTION_TITLE<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_DIALOG_CONNECTION_GENERAL_TEXT<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_DIALOG_CONNECTION_BUTTON_CLOSE<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_DIALOG_CONNECTION_TIME<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_DIALOG_CONNECTION_SUCCESS<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_DIALOG_CONNECTION_FAILED<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_AIM_DIALOG_CONNECTION_ERROR
+      </td>
+      <td><br />
+        New<br />
+        New<br />
+        Deleted<br />
+        New<br />
+        New<br />
+        Deleted<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        Deleted<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>modules/payment/authorizenet_cc_dpm.php</strong><br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_DPM_TEXT_TITLE<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_DPM_TEXT_PUBLIC_TITLE<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_DPM_TEXT_DESCRIPTION<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_DPM_ERROR_ADMIN_CONFIGURATION<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_DPM_CREDIT_CARD_OWNER_FIRSTNAME<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_DPM_CREDIT_CARD_OWNER_LASTNAME<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_DPM_CREDIT_CARD_NUMBER<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_DPM_CREDIT_CARD_EXPIRES<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_DPM_CREDIT_CARD_CCV<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_DPM_TEXT_RETURN_BUTTON<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_DPM_TEXT_AVS_A<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_DPM_TEXT_AVS_B<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_DPM_TEXT_AVS_E<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_DPM_TEXT_AVS_G<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_DPM_TEXT_AVS_N<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_DPM_TEXT_AVS_P<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_DPM_TEXT_AVS_R<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_DPM_TEXT_AVS_S<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_DPM_TEXT_AVS_U<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_DPM_TEXT_AVS_W<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_DPM_TEXT_AVS_X<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_DPM_TEXT_AVS_Y<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_DPM_TEXT_AVS_Z<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_DPM_TEXT_CVV2_M<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_DPM_TEXT_CVV2_N<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_DPM_TEXT_CVV2_P<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_DPM_TEXT_CVV2_S<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_DPM_TEXT_CVV2_U<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_DPM_TEXT_CAVV_0<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_DPM_TEXT_CAVV_1<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_DPM_TEXT_CAVV_2<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_DPM_TEXT_CAVV_3<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_DPM_TEXT_CAVV_4<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_DPM_TEXT_CAVV_5<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_DPM_TEXT_CAVV_6<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_DPM_TEXT_CAVV_7<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_DPM_TEXT_CAVV_8<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_DPM_TEXT_CAVV_9<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_DPM_TEXT_CAVV_A<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_DPM_TEXT_CAVV_B<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_DPM_ERROR_TITLE<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_DPM_ERROR_VERIFICATION<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_DPM_ERROR_DECLINED<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_DPM_ERROR_GENERAL
+      </td>
+      <td><br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>modules/payment/authorizenet_cc_sim.php</strong><br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_SIM_ERROR_ADMIN_CONFIGURATION<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_SIM_TEXT_RETURN_BUTTON<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_SIM_TEXT_AVS_A<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_SIM_TEXT_AVS_B<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_SIM_TEXT_AVS_E<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_SIM_TEXT_AVS_G<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_SIM_TEXT_AVS_N<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_SIM_TEXT_AVS_P<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_SIM_TEXT_AVS_R<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_SIM_TEXT_AVS_S<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_SIM_TEXT_AVS_U<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_SIM_TEXT_AVS_W<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_SIM_TEXT_AVS_X<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_SIM_TEXT_AVS_Y<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_SIM_TEXT_AVS_Z<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_SIM_TEXT_CVV2_M<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_SIM_TEXT_CVV2_N<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_SIM_TEXT_CVV2_P<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_SIM_TEXT_CVV2_S<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_SIM_TEXT_CVV2_U<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_SIM_TEXT_CAVV_0<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_SIM_TEXT_CAVV_1<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_SIM_TEXT_CAVV_2<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_SIM_TEXT_CAVV_3<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_SIM_TEXT_CAVV_4<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_SIM_TEXT_CAVV_5<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_SIM_TEXT_CAVV_6<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_SIM_TEXT_CAVV_7<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_SIM_TEXT_CAVV_8<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_SIM_TEXT_CAVV_9<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_SIM_TEXT_CAVV_A<br />
+        MODULE_PAYMENT_AUTHORIZENET_CC_SIM_TEXT_CAVV_B
+      </td>
+      <td><br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>modules/payment/braintree_cc.php</strong><br />
+        MODULE_PAYMENT_BRAINTREE_CC_TEXT_TITLE<br />
+        MODULE_PAYMENT_BRAINTREE_CC_TEXT_PUBLIC_TITLE<br />
+        MODULE_PAYMENT_BRAINTREE_CC_TEXT_DESCRIPTION<br />
+        MODULE_PAYMENT_BRAINTREE_CC_ERROR_ADMIN_PHP<br />
+        MODULE_PAYMENT_BRAINTREE_CC_ERROR_ADMIN_PHP_EXTENSIONS<br />
+        MODULE_PAYMENT_BRAINTREE_CC_ERROR_ADMIN_MERCHANT_ACCOUNTS<br />
+        MODULE_PAYMENT_BRAINTREE_CC_ERROR_ADMIN_CONFIGURATION<br />
+        MODULE_PAYMENT_BRAINTREE_CC_CREDITCARD_NEW<br />
+        MODULE_PAYMENT_BRAINTREE_CC_CREDITCARD_LAST_4<br />
+        MODULE_PAYMENT_BRAINTREE_CC_CREDITCARD_OWNER<br />
+        MODULE_PAYMENT_BRAINTREE_CC_CREDITCARD_NUMBER<br />
+        MODULE_PAYMENT_BRAINTREE_CC_CREDITCARD_EXPIRY<br />
+        MODULE_PAYMENT_BRAINTREE_CC_CREDITCARD_CVV<br />
+        MODULE_PAYMENT_BRAINTREE_CC_CREDITCARD_SAVE<br />
+        MODULE_PAYMENT_BRAINTREE_CC_CURRENCY_CHARGE<br />
+        MODULE_PAYMENT_BRAINTREE_CC_ERROR_TITLE<br />
+        MODULE_PAYMENT_BRAINTREE_CC_ERROR_GENERAL<br />
+        MODULE_PAYMENT_BRAINTREE_CC_ERROR_CARDOWNER<br />
+        MODULE_PAYMENT_BRAINTREE_CC_ERROR_CARDNUMBER<br />
+        MODULE_PAYMENT_BRAINTREE_CC_ERROR_CARDEXPIRES<br />
+        MODULE_PAYMENT_BRAINTREE_CC_ERROR_CARDCVV
+      </td>
+      <td><br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>modules/payment/paypal_express.php</strong><br />
+        MODULE_PAYMENT_PAYPAL_EXPRESS_ERROR_ADMIN_CURL<br />
+        MODULE_PAYMENT_PAYPAL_EXPRESS_ERROR_ADMIN_CONFIGURATION<br />
+        MODULE_PAYMENT_PAYPAL_EXPRESS_DIALOG_CONNECTION_LINK_TITLE<br />
+        MODULE_PAYMENT_PAYPAL_EXPRESS_DIALOG_CONNECTION_TITLE<br />
+        MODULE_PAYMENT_PAYPAL_EXPRESS_DIALOG_CONNECTION_GENERAL_TEXT<br />
+        MODULE_PAYMENT_PAYPAL_EXPRESS_DIALOG_CONNECTION_BUTTON_CLOSE<br />
+        MODULE_PAYMENT_PAYPAL_EXPRESS_DIALOG_CONNECTION_TIME<br />
+        MODULE_PAYMENT_PAYPAL_EXPRESS_DIALOG_CONNECTION_SUCCESS<br />
+        MODULE_PAYMENT_PAYPAL_EXPRESS_DIALOG_CONNECTION_FAILED<br />
+        MODULE_PAYMENT_PAYPAL_EXPRESS_DIALOG_CONNECTION_ERROR<br />
+        MODULE_PAYMENT_PAYPAL_EXPRESS_ERROR_NO_SHIPPING_AVAILABLE_TO_SHIPPING_ADDRESS<br />
+        MODULE_PAYMENT_PAYPAL_EXPRESS_WARNING_LOCAL_LOGIN_REQUIRED<br />
+        MODULE_PAYMENT_PAYPAL_EXPRESS_NOTICE_CHECKOUT_CONFIRMATION
+      </td>
+      <td><br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>modules/payment/paypal_pro_dp.php</strong><br />
+MODULE_PAYMENT_PAYPAL_PRO_DP_ERROR_EXPRESS_MODULE<br />
+MODULE_PAYMENT_PAYPAL_PRO_DP_ERROR_ADMIN_CURL<br />
+MODULE_PAYMENT_PAYPAL_PRO_DP_ERROR_ADMIN_CONFIGURATION<br />
+MODULE_PAYMENT_PAYPAL_PRO_DP_DIALOG_CONNECTION_LINK_TITLE<br />
+MODULE_PAYMENT_PAYPAL_PRO_DP_DIALOG_CONNECTION_TITLE<br />
+MODULE_PAYMENT_PAYPAL_PRO_DP_DIALOG_CONNECTION_GENERAL_TEXT<br />
+MODULE_PAYMENT_PAYPAL_PRO_DP_DIALOG_CONNECTION_BUTTON_CLOSE<br />
+MODULE_PAYMENT_PAYPAL_PRO_DP_DIALOG_CONNECTION_TIME<br />
+MODULE_PAYMENT_PAYPAL_PRO_DP_DIALOG_CONNECTION_SUCCESS<br />
+MODULE_PAYMENT_PAYPAL_PRO_DP_DIALOG_CONNECTION_FAILED<br />
+MODULE_PAYMENT_PAYPAL_PRO_DP_DIALOG_CONNECTION_ERROR
+      </td>
+      <td><br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>modules/payment/paypal_pro_hs.php</strong><br />
+        MODULE_PAYMENT_PAYPAL_PRO_HS_TEXT_TITLE<br />
+        MODULE_PAYMENT_PAYPAL_PRO_HS_TEXT_PUBLIC_TITLE<br />
+        MODULE_PAYMENT_PAYPAL_PRO_HS_TEXT_DESCRIPTION<br />
+        MODULE_PAYMENT_PAYPAL_PRO_HS_ERROR_ADMIN_CURL<br />
+        MODULE_PAYMENT_PAYPAL_PRO_HS_ERROR_ADMIN_CONFIGURATION<br />
+        MODULE_PAYMENT_PAYPAL_PRO_HS_TEXT_PAYPAL_RETURN_BUTTON<br />
+        MODULE_PAYMENT_PAYPAL_PRO_HS_TEXT_INVALID_TRANSACTION<br />
+        MODULE_PAYMENT_PAYPAL_PRO_HS_ERROR_TITLE<br />
+        MODULE_PAYMENT_PAYPAL_PRO_HS_ERROR_GENERAL<br />
+        MODULE_PAYMENT_PAYPAL_PRO_HS_DIALOG_CONNECTION_LINK_TITLE<br />
+        MODULE_PAYMENT_PAYPAL_PRO_HS_DIALOG_CONNECTION_TITLE<br />
+        MODULE_PAYMENT_PAYPAL_PRO_HS_DIALOG_CONNECTION_GENERAL_TEXT<br />
+        MODULE_PAYMENT_PAYPAL_PRO_HS_DIALOG_CONNECTION_BUTTON_CLOSE<br />
+        MODULE_PAYMENT_PAYPAL_PRO_HS_DIALOG_CONNECTION_TIME<br />
+        MODULE_PAYMENT_PAYPAL_PRO_HS_DIALOG_CONNECTION_SUCCESS<br />
+        MODULE_PAYMENT_PAYPAL_PRO_HS_DIALOG_CONNECTION_FAILED<br />
+        MODULE_PAYMENT_PAYPAL_PRO_HS_DIALOG_CONNECTION_ERROR
+      </td>
+      <td><br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>modules/payment/paypal_pro_payflow_dp.php</strong><br />
+        MODULE_PAYMENT_PAYPAL_PRO_PAYFLOW_DP_ERROR_EXPRESS_MODULE<br />
+        MODULE_PAYMENT_PAYPAL_PRO_PAYFLOW_DP_ERROR_ADMIN_CURL<br />
+        MODULE_PAYMENT_PAYPAL_PRO_PAYFLOW_DP_ERROR_ADMIN_CONFIGURATION<br />
+        MODULE_PAYMENT_PAYPAL_PRO_PAYFLOW_DP_CARD_OWNER<br />
+        MODULE_PAYMENT_PAYPAL_PRO_PAYFLOW_DP_CARD_TYPE<br />
+        MODULE_PAYMENT_PAYPAL_PRO_PAYFLOW_DP_CARD_VALID_FROM<br />
+        MODULE_PAYMENT_PAYPAL_PRO_PAYFLOW_DP_CARD_VALID_FROM_INFO<br />
+        MODULE_PAYMENT_PAYPAL_PRO_PAYFLOW_DP_CARD_ISSUE_NUMBER<br />
+        MODULE_PAYMENT_PAYPAL_PRO_PAYFLOW_DP_CARD_ISSUE_NUMBER_INFO<br />
+        MODULE_PAYMENT_PAYPAL_PRO_PAYFLOW_DP_DIALOG_CONNECTION_LINK_TITLE<br />
+        MODULE_PAYMENT_PAYPAL_PRO_PAYFLOW_DP_DIALOG_CONNECTION_TITLE<br />
+        MODULE_PAYMENT_PAYPAL_PRO_PAYFLOW_DP_DIALOG_CONNECTION_GENERAL_TEXT<br />
+        MODULE_PAYMENT_PAYPAL_PRO_PAYFLOW_DP_DIALOG_CONNECTION_BUTTON_CLOSE<br />
+        MODULE_PAYMENT_PAYPAL_PRO_PAYFLOW_DP_DIALOG_CONNECTION_TIME<br />
+        MODULE_PAYMENT_PAYPAL_PRO_PAYFLOW_DP_DIALOG_CONNECTION_SUCCESS<br />
+        MODULE_PAYMENT_PAYPAL_PRO_PAYFLOW_DP_DIALOG_CONNECTION_FAILED<br />
+        MODULE_PAYMENT_PAYPAL_PRO_PAYFLOW_DP_DIALOG_CONNECTION_ERROR
+      </td>
+      <td><br />
+        New<br />
+        New<br />
+        New<br />
+        Deleted<br />
+        Deleted<br />
+        Deleted<br />
+        Deleted<br />
+        Deleted<br />
+        Deleted<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>modules/payment/paypal_pro_payflow_ec.php</strong><br />
+        MODULE_PAYMENT_PAYPAL_PRO_PAYFLOW_EC_ERROR_DIRECT_MODULE<br />
+        MODULE_PAYMENT_PAYPAL_PRO_PAYFLOW_EC_ERROR_ADMIN_CURL<br />
+        MODULE_PAYMENT_PAYPAL_PRO_PAYFLOW_EC_ERROR_ADMIN_CONFIGURATION<br />
+        MODULE_PAYMENT_PAYPAL_PRO_PAYFLOW_EC_BUTTON<br />
+        MODULE_PAYMENT_PAYPAL_PRO_PAYFLOW_EC_EMAIL_PASSWORD<br />
+        MODULE_PAYMENT_PAYPAL_PRO_PAYFLOW_EC_DIALOG_CONNECTION_LINK_TITLE<br />
+        MODULE_PAYMENT_PAYPAL_PRO_PAYFLOW_EC_DIALOG_CONNECTION_TITLE<br />
+        MODULE_PAYMENT_PAYPAL_PRO_PAYFLOW_EC_DIALOG_CONNECTION_GENERAL_TEXT<br />
+        MODULE_PAYMENT_PAYPAL_PRO_PAYFLOW_EC_DIALOG_CONNECTION_BUTTON_CLOSE<br />
+        MODULE_PAYMENT_PAYPAL_PRO_PAYFLOW_EC_DIALOG_CONNECTION_TIME<br />
+        MODULE_PAYMENT_PAYPAL_PRO_PAYFLOW_EC_DIALOG_CONNECTION_SUCCESS<br />
+        MODULE_PAYMENT_PAYPAL_PRO_PAYFLOW_EC_DIALOG_CONNECTION_FAILED<br />
+        MODULE_PAYMENT_PAYPAL_PRO_PAYFLOW_EC_DIALOG_CONNECTION_ERROR<br />
+        MODULE_PAYMENT_PAYPAL_PRO_PAYFLOW_EC_ERROR_NO_SHIPPING_AVAILABLE_TO_SHIPPING_ADDRESS<br />
+        MODULE_PAYMENT_PAYPAL_PRO_PAYFLOW_EC_WARNING_LOCAL_LOGIN_REQUIRED<br />
+        MODULE_PAYMENT_PAYPAL_PRO_PAYFLOW_EC_NOTICE_CHECKOUT_CONFIRMATION
+      </td>
+      <td><br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>modules/payment/paypal_standard.php</strong><br />
+        MODULE_PAYMENT_PAYPAL_STANDARD_ERROR_ADMIN_CURL<br />
+        MODULE_PAYMENT_PAYPAL_STANDARD_ERROR_ADMIN_CONFIGURATION<br />
+        MODULE_PAYMENT_PAYPAL_STANDARD_TEXT_PAYPAL_RETURN_BUTTON<br />
+        MODULE_PAYMENT_PAYPAL_STANDARD_TEXT_INVALID_TRANSACTION<br />
+        MODULE_PAYMENT_PAYPAL_STANDARD_DIALOG_CONNECTION_LINK_TITLE<br />
+        MODULE_PAYMENT_PAYPAL_STANDARD_DIALOG_CONNECTION_TITLE<br />
+        MODULE_PAYMENT_PAYPAL_STANDARD_DIALOG_CONNECTION_GENERAL_TEXT<br />
+        MODULE_PAYMENT_PAYPAL_STANDARD_DIALOG_CONNECTION_BUTTON_CLOSE<br />
+        MODULE_PAYMENT_PAYPAL_STANDARD_DIALOG_CONNECTION_TIME<br />
+        MODULE_PAYMENT_PAYPAL_STANDARD_DIALOG_CONNECTION_SUCCESS<br />
+        MODULE_PAYMENT_PAYPAL_STANDARD_DIALOG_CONNECTION_FAILED<br />
+        MODULE_PAYMENT_PAYPAL_STANDARD_DIALOG_CONNECTION_ERROR
+      </td>
+      <td><br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>modules/payment/sage_pay_direct.php</strong><br />
+        MODULE_PAYMENT_SAGE_PAY_DIRECT_ERROR_ADMIN_CURL<br />
+        MODULE_PAYMENT_SAGE_PAY_DIRECT_ERROR_ADMIN_CONFIGURATION<br />
+        MODULE_PAYMENT_SAGE_PAY_DIRECT_CREDIT_CARD_NEW<br />
+        MODULE_PAYMENT_SAGE_PAY_DIRECT_CREDIT_CARD_SAVE<br />
+        MODULE_PAYMENT_SAGE_PAY_DIRECT_DIALOG_CONNECTION_LINK_TITLE<br />
+        MODULE_PAYMENT_SAGE_PAY_DIRECT_DIALOG_CONNECTION_TITLE<br />
+        MODULE_PAYMENT_SAGE_PAY_DIRECT_DIALOG_CONNECTION_GENERAL_TEXT<br />
+        MODULE_PAYMENT_SAGE_PAY_DIRECT_DIALOG_CONNECTION_BUTTON_CLOSE<br />
+        MODULE_PAYMENT_SAGE_PAY_DIRECT_DIALOG_CONNECTION_TIME<br />
+        MODULE_PAYMENT_SAGE_PAY_DIRECT_DIALOG_CONNECTION_SUCCESS<br />
+        MODULE_PAYMENT_SAGE_PAY_DIRECT_DIALOG_CONNECTION_FAILED<br />
+        MODULE_PAYMENT_SAGE_PAY_DIRECT_DIALOG_CONNECTION_ERROR
+      </td>
+      <td><br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>modules/payment/sage_pay_form.php</strong><br />
+        MODULE_PAYMENT_SAGE_PAY_FORM_ERROR_ADMIN_MCRYPT<br />
+        MODULE_PAYMENT_SAGE_PAY_FORM_ERROR_ADMIN_CONFIGURATION
+      </td>
+      <td><br />
+        New<br />
+        New
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>modules/payment/sage_pay_server.php</strong><br />
+        MODULE_PAYMENT_SAGE_PAY_SERVER_ERROR_ADMIN_CURL<br />
+        MODULE_PAYMENT_SAGE_PAY_SERVER_ERROR_ADMIN_CONFIGURATION<br />
+        MODULE_PAYMENT_SAGE_PAY_SERVER_DIALOG_CONNECTION_LINK_TITLE<br />
+        MODULE_PAYMENT_SAGE_PAY_SERVER_DIALOG_CONNECTION_TITLE<br />
+        MODULE_PAYMENT_SAGE_PAY_SERVER_DIALOG_CONNECTION_GENERAL_TEXT<br />
+        MODULE_PAYMENT_SAGE_PAY_SERVER_DIALOG_CONNECTION_BUTTON_CLOSE<br />
+        MODULE_PAYMENT_SAGE_PAY_SERVER_DIALOG_CONNECTION_TIME<br />
+        MODULE_PAYMENT_SAGE_PAY_SERVER_DIALOG_CONNECTION_SUCCESS<br />
+        MODULE_PAYMENT_SAGE_PAY_SERVER_DIALOG_CONNECTION_FAILED<br />
+        MODULE_PAYMENT_SAGE_PAY_SERVER_DIALOG_CONNECTION_ERROR
+      </td>
+      <td><br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>modules/payment/stripe.php</strong><br />
+        MODULE_PAYMENT_STRIPE_TEXT_TITLE<br />
+        MODULE_PAYMENT_STRIPE_TEXT_PUBLIC_TITLE<br />
+        MODULE_PAYMENT_STRIPE_TEXT_DESCRIPTION<br />
+        MODULE_PAYMENT_STRIPE_ERROR_ADMIN_CURL<br />
+        MODULE_PAYMENT_STRIPE_ERROR_ADMIN_CONFIGURATION<br />
+        MODULE_PAYMENT_STRIPE_CREDITCARD_NEW<br />
+        MODULE_PAYMENT_STRIPE_CREDITCARD_OWNER<br />
+        MODULE_PAYMENT_STRIPE_CREDITCARD_NUMBER<br />
+        MODULE_PAYMENT_STRIPE_CREDITCARD_EXPIRY<br />
+        MODULE_PAYMENT_STRIPE_CREDITCARD_CVC<br />
+        MODULE_PAYMENT_STRIPE_CREDITCARD_SAVE<br />
+        MODULE_PAYMENT_STRIPE_ERROR_TITLE<br />
+        MODULE_PAYMENT_STRIPE_ERROR_GENERAL<br />
+        MODULE_PAYMENT_STRIPE_ERROR_CARDSTORED<br />
+        MODULE_PAYMENT_STRIPE_DIALOG_CONNECTION_LINK_TITLE<br />
+        MODULE_PAYMENT_STRIPE_DIALOG_CONNECTION_TITLE<br />
+        MODULE_PAYMENT_STRIPE_DIALOG_CONNECTION_GENERAL_TEXT<br />
+        MODULE_PAYMENT_STRIPE_DIALOG_CONNECTION_BUTTON_CLOSE<br />
+        MODULE_PAYMENT_STRIPE_DIALOG_CONNECTION_TIME<br />
+        MODULE_PAYMENT_STRIPE_DIALOG_CONNECTION_SUCCESS<br />
+        MODULE_PAYMENT_STRIPE_DIALOG_CONNECTION_FAILED<br />
+        MODULE_PAYMENT_STRIPE_DIALOG_CONNECTION_ERROR
+      </td>
+      <td><br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New<br />
+        New
+      </td>
     </tr>
   </tbody>
 </table>

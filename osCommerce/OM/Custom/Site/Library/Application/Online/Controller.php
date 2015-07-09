@@ -1,7 +1,7 @@
 <?php
 /**
  * osCommerce Website
- * 
+ *
  * @copyright Copyright (c) 2013 osCommerce; http://www.oscommerce.com
  * @license BSD License; http://www.oscommerce.com/bsdlicense.txt
  */
@@ -85,6 +85,7 @@
             $this->_page_contents = 'page.html';
 
             $OSCOM_Template->setValue('current_page_file', $OSCOM_CoreBook->getPageFile($page, $chapter, $book));
+            $OSCOM_Template->setValue('current_page_file_dir', dirname($OSCOM_Template->getValue('current_page_file')) . '/');
 
             $this->_page_title = OSCOM::getDef('html_page_title_base') . ', ' . $OSCOM_Template->getValue('book_title') . ', ' . $OSCOM_Template->getValue('chapter_title') . ', ' . $OSCOM_CoreBook->getPageTitle($page, $chapter, $book);
           }

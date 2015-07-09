@@ -1,7 +1,7 @@
 <?php
 /**
  * osCommerce Website
- * 
+ *
  * @copyright Copyright (c) 2014 osCommerce; http://www.oscommerce.com
  * @license BSD License; http://www.oscommerce.com/bsdlicense.txt
  */
@@ -59,8 +59,10 @@
     public function getAuthors($book) {
       $authors = array();
 
-      foreach ( $this->_content[$book]['authors'] as $author ) {
-        $authors[] = array('name' => $author['name']);
+      if ( isset($this->_content[$book]['authors']) ) {
+        foreach ( $this->_content[$book]['authors'] as $author ) {
+          $authors[] = array('name' => $author['name']);
+        }
       }
 
       return $authors;

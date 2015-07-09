@@ -1,0 +1,114 @@
+<h1>Hooks <small>OSC\OM\Hooks</small></h1>
+
+<h2>Introduction</h2>
+
+<p>Hooks allow action callouts to be thrown during an event to execute additional functionality. Hooks are not modules in the traditional sense of being able to be installed and configured; they are simply modular functions waiting to be executed on demand with no configuration or administration whatsoever.</p>
+
+<p>For security reasons, hooks must be defined in their Apps metadata file otherwise they will not be made available for the framework to use.</p>
+
+<p>Hooks are initialized by creating an instance of <i>OSC\OM\Hooks</i> and specifying the <i>Site</i> to call the hook action from. If no <i>Site</i> is passed, the <i>Site</i> that initialized the framework is used as default.</p>
+
+{code}
+use OSC\OM\Hooks;
+
+$OSCOM_Hooks = new Hooks();
+{code}
+
+<div class="info">Hooks() is automatically initialized on each page request and is available in the <a href="{link}Online|Library|en&oscom_2_4&developers&registry{link}">Registry</a> as <i>Hooks</i>.</div>
+
+<h2>Action Callout</h2>
+
+<p>Throwing out an action callout is performed by specifying the group the action belongs to, the actual action name, and optionally a specific function to execute. There are two types of callouts that can be peformed:</p>
+
+<table class="pretty">
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><i>call()</i></td>
+      <td>Executes the hooks and can return an array of results depending on the action.</td>
+    </tr>
+    <tr>
+      <td><i>output()</i></td>
+      <td>Executes the hooks and returns the output as a string.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 class="notoc">Hooks::call()</h3>
+
+{code}
+// no output expected
+$OSCOM_Hooks->call('Account', 'Logout');
+{code}
+
+<p><strong>Parameters</strong></p>
+
+<pre>Hooks::call($group, $hook, $action, $flatten)</pre>
+
+<table class="pretty">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>$group</td>
+      <td>The group the action call belongs to.</td>
+    </tr>
+    <tr>
+      <td>$hook</td>
+      <td>The name of the action to call.</td>
+    </tr>
+    <tr>
+      <td>$action</td>
+      <td>The hook function to execute. Default: <i>execute</i></td>
+    </tr>
+    <tr>
+      <td>$flatten</td>
+      <td>A boolean to flatten the result to a string. This is used by the alias <i>output()</i> function. Default: <i>false</i></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 class="notoc">Hooks::output()</h3>
+
+{code}
+// concatenated string output of all hooks expected
+echo $OSCOM_Hooks->output('Orders', 'PageTab', 'display');
+{code}
+
+<p><strong>Parameters</strong></p>
+
+<pre>Hooks::output($group, $hook, $action)</pre>
+
+<table class="pretty">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>$group</td>
+      <td>The group the action call belongs to.</td>
+    </tr>
+    <tr>
+      <td>$hook</td>
+      <td>The name of the action to call.</td>
+    </tr>
+    <tr>
+      <td>$action</td>
+      <td>The hook function to execute. Default: <i>execute</i></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="info">A list of hook action callouts is available on the <a href="{link}Online|Library|en&oscom_2_4&developers&hooks_callouts{link}">List of Hook Callouts</a> page.</div>

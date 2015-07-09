@@ -1,4 +1,24 @@
 {
+  "oscom_2_4": {
+    "title": "Online Merchant v2.4",
+    "description": "Documentation for osCommerce Online Merchant v2.4.",
+    "copyright": "Copyright (c) 2015 osCommerce. All rights reserved. Content may be reproduced for personal use only.",
+    "chapters": {
+      "developers": {
+        "title": "Developers",
+        "pages": {
+          "framework": "Framework",
+          "database": "Database",
+          "registry": "Registry",
+          "apps": "Apps and Modules",
+          "hooks": "Hooks",
+          "roadmap": "Roadmap",
+          "changelog": "Changelog",
+          "hooks_callouts": "List of Hook Callouts"
+        }
+      }
+    }
+  },
   "oscom_2_3": {
     "title": "Online Merchant v2.3",
     "description": "Documentation for osCommerce Online Merchant v2.3.",

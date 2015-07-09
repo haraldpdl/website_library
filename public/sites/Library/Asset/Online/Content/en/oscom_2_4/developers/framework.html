@@ -1,0 +1,191 @@
+<h1>Framework <small>OSC\OM</small></h1>
+
+<h2>Introduction</h2>
+
+<p>osCommerce Online Merchant v2.4 introduces a framework utilizing new features in PHP v5.5 and improves on the performance, security, and modularity of the codebase. Taking advantage of namespaces and autoloading, it is now possible to add new and extend existing features without the need to edit core source code files.</p>
+
+<p>The framework is located in the following directory:</p>
+
+<table class="pretty">
+  <thead>
+    <tr>
+      <th>Namespace</th>
+      <th>Location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><pre>OSC\OM</pre></td>
+      <td><pre>includes/OSC/OM</pre></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Namespaces/Autoloader</h2>
+
+<p>The framework is built utilizing the <a href="http://www.php-fig.org/psr/psr-4/" target="_blank">PHP PSR-4</a> standard recommendation specification for autoloading classes from the namespace and file paths. Classes no longer need to be included/required manually and are automatically loaded on demand.</p>
+
+<p>This is possible with the autoloader which finds the requested classes via its namespace and matching file path location. The base namespace the autoloader watches for is <i>OSC\OM</i> and tries to load the class file in the <i>includes/OSC/OM</i> directory.</p>
+
+<p><b>Examples</b></p>
+
+<table class="pretty">
+  <thead>
+    <tr>
+      <th>Class</th>
+      <th>File Location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>OSC\OM\OSCOM</td>
+      <td>includes/OSC/OM/OSCOM.php</td>
+    </tr>
+    <tr>
+      <td>OSC\OM\Db</td>
+      <td>includes/OSC/OM/Db.php</td>
+    </tr>
+    <tr>
+      <td>OSC\OM\Registry</td>
+      <td>includes/OSC/OM/Registry.php</td>
+    </tr>
+    <tr>
+      <td>OSC\OM\Modules\HooksInterface</td>
+      <td>includes/OSC/OM/Modules/HooksInterface.php</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Classes in the framework <strong>must</strong> declare their namespace as the first PHP code in the file.</p>
+
+<p><b>Example:</b></p>
+
+{code}
+<?php
+namespace OSC\OM;
+
+class NewClass
+{
+    ....
+}
+{code}
+
+<p>The full namespace to the above example would be:</p>
+
+<pre>OSC\OM\NewClass</pre>
+
+<p>and the location of the file would be:</p>
+
+<pre>includes/OSC/OM/NewClass.php</pre>
+
+<p>For another class to be able to load <i>OSC\OM\NewClass</i> automatically, it needs to be declared with PHP's <a href="http://php.net/manual/en/language.namespaces.importing.php" target="_blank"><i>use</i></a> keyword after the namespace of the class and before any other PHP code.</p>
+
+<p><b>Example:</b></p>
+
+{code}
+<?php
+namespace OSC\OM;
+
+use OSC\OM\NewClass;
+
+class AnotherNewClass
+{
+    public function __construct()
+    {
+        $NewClass = new NewClass();
+    }
+}
+{code}
+
+<p>The framework autoloader is initialized by <i>OSC\OM\OSCOM::autoload()</i> which is called from <i>includes/application_top.php</i>. The framework is automatically initialized in all main template files that include <i>includes/application_top.php</i>.</p>
+
+<p>Template files (eg, index.php, account.php, ..) do not need to have a namespace set, but still need to reference framework classes they need.</p>
+
+{code}
+<?php
+use OSC\OM\HTML;
+
+require('includes/application_top.php');
+
+echo HTML::outputProtected('Hello World!');
+?>
+{code}
+
+<div class="info">
+  More information about namespaces can be found at the <a href="http://php.net/namespace" target="_blank">PHP Namespace</a> documentation page.
+</div>
+
+<h2>Sites</h2>
+
+<p>Sites are registered in the framework to know where the framework is being initialized from and to apply specific environment parameters.</p>
+
+<p>The available sites in the core are:</p>
+
+<table class="pretty">
+  <thead>
+    <tr>
+      <th>Site</th>
+      <th>Location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Shop <i>(default)</i></td>
+      <td><i>/</i></td>
+    </tr>
+    <tr>
+      <td>Admin</td>
+      <td><i>admin/</i></td>
+    </tr>
+    <tr>
+      <td>Setup</td>
+      <td><i>install/</i></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Sites are registered and retrieved as follows:</p>
+
+{code}
+use OSC\OM\OSCOM;
+
+OSCOM::initialize();
+OSCOM::setSite('Admin');
+
+$site = OSCOM::getSite();
+{code}
+
+<h2>Apps</h2>
+
+<p>Apps are self-contained packages that add new or extend existing features through modules and hooks. Apps live in their own directory and do not need to edit core source code files.</p>
+
+<p>Apps are located in the following directory:</p>
+
+<table class="pretty">
+  <thead>
+    <tr>
+      <th>Namespace</th>
+      <th>Location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><pre>OSC\OM\Apps\APP_VENDOR</pre></td>
+      <td><pre>includes/Apps/APP_VENDOR</pre></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Apps also have a public directory for public accessible files such as stylesheets, javascript, and images, located at:</p>
+
+<pre>public/Apps/APP_VENDOR</pre>
+
+<p>More information is available in the <a href="{link}Online|Library|en&oscom_2_4&developers&apps{link}">Apps</a> chapter.</p>
+
+<div class="info">
+  Apps have a special reserved namespace of <i>OSC\OM\Apps</i> where the directory is located outside the core framework directory in <i>includes/Apps</i>, instead of <i>includes/OSC/OM/Apps</i>.
+</div>
+
+<h2>Coding Standards</h2>
+
+<p>The framework is coded with the <a href="http://www.php-fig.org/psr/psr-2/" target="_blank">PHP PSR-2</a> coding style guide.</p>

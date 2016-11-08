@@ -1,10 +1,10 @@
-<h1>Registry <small>OSC\OM\Registry</small></h1>
+<h3>Registry <small>OSC\OM\Registry</small></h3>
 
-<h2>Introduction</h2>
+<h4>Introduction</h4>
 
 <p>The registry is an object storage container strictly used to store object instances and access them by reference. It does not allow registered objects to be overwritten unless manually specified to do so.</p>
 
-<h2>Adding to the Registry</h2>
+<h4>Adding to the Registry</h4>
 
 <p>Objects can be added to the registry using <i>Registry::set()</i>.</p>
 
@@ -44,7 +44,7 @@ Registry::set('Db', $OSCOM_Db);
   </tbody>
 </table>
 
-<h2>Accessing the Registry</h2>
+<h4>Accessing the Registry</h4>
 
 <p>An object can be accessed in the registry using <i>Registry::get()</i>.</p>
 
@@ -73,7 +73,7 @@ $OSCOM_Db = Registry::get('Db');
   </tbody>
 </table>
 
-<h2>Checking the Registry</h2>
+<h4>Checking the Registry</h4>
 
 <p>An existing object can be checked for in the registry using <i>Registry::exists()</i>.</p>
 

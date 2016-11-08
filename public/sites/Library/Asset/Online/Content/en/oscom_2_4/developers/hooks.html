@@ -1,6 +1,6 @@
-<h1>Hooks <small>OSC\OM\Hooks</small></h1>
+<h3>Hooks <small>OSC\OM\Hooks</small></h3>
 
-<h2>Introduction</h2>
+<h4>Introduction</h4>
 
 <p>Hooks allow action callouts to be thrown during an event to execute additional functionality. Hooks are not modules in the traditional sense of being able to be installed and configured; they are simply modular functions waiting to be executed on demand with no configuration or administration whatsoever.</p>
 
@@ -16,7 +16,7 @@ $OSCOM_Hooks = new Hooks();
 
 <div class="info">Hooks() is automatically initialized on each page request and is available in the <a href="{link}Online|Library|en&oscom_2_4&developers&registry{link}">Registry</a> as <i>Hooks</i>.</div>
 
-<h2>Action Callout</h2>
+<h4>Action Callout</h4>
 
 <p>Throwing out an action callout is performed by specifying the group the action belongs to, the actual action name, and optionally a specific function to execute. There are two types of callouts that can be peformed:</p>
 
@@ -39,7 +39,7 @@ $OSCOM_Hooks = new Hooks();
   </tbody>
 </table>
 
-<h3 class="notoc">Hooks::call()</h3>
+<h5 class="notoc">Hooks::call()</h5>
 
 {code}
 // no output expected
@@ -48,7 +48,7 @@ $OSCOM_Hooks->call('Account', 'Logout');
 
 <p><strong>Parameters</strong></p>
 
-<pre>Hooks::call($group, $hook, $action, $flatten)</pre>
+<pre>Hooks::call($group, $hook, $parameters, $action)</pre>
 
 <table class="pretty">
   <thead>
@@ -67,48 +67,41 @@ $OSCOM_Hooks->call('Account', 'Logout');
       <td>The name of the action to call.</td>
     </tr>
     <tr>
-      <td>$action</td>
-      <td>The hook function to execute. Default: <i>execute</i></td>
+      <td>$parameters</td>
+      <td>Any parameters to pass to the hooks.</td>
     </tr>
     <tr>
-      <td>$flatten</td>
-      <td>A boolean to flatten the result to a string. This is used by the alias <i>output()</i> function. Default: <i>false</i></td>
+      <td>$action</td>
+      <td>The name of the hook function to execute. Default: <i>execute</i></td>
     </tr>
   </tbody>
 </table>
 
-<h3 class="notoc">Hooks::output()</h3>
+<h5 class="notoc">Hooks::output()</h5>
 
 {code}
-// concatenated string output of all hooks expected
-echo $OSCOM_Hooks->output('Orders', 'PageTab', 'display');
+// concatenated string output of all hooks executed
+echo $OSCOM_Hooks->output('Orders', 'Page', null, 'display')
 {code}
 
 <p><strong>Parameters</strong></p>
 
-<pre>Hooks::output($group, $hook, $action)</pre>
+<pre>Hooks::output($group, $hook, $parameters, $action)</pre>
 
-<table class="pretty">
-  <thead>
-    <tr>
-      <th>Parameter</th>
-      <th>Value</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>$group</td>
-      <td>The group the action call belongs to.</td>
-    </tr>
-    <tr>
-      <td>$hook</td>
-      <td>The name of the action to call.</td>
-    </tr>
-    <tr>
-      <td>$action</td>
-      <td>The hook function to execute. Default: <i>execute</i></td>
-    </tr>
-  </tbody>
-</table>
+<p>The <i>output()</i> method shares the same function parameters as the <i>call()</i> class method.</p>
 
 <div class="info">A list of hook action callouts is available on the <a href="{link}Online|Library|en&oscom_2_4&developers&hooks_callouts{link}">List of Hook Callouts</a> page.</div>
+
+<h4>Runtime Watches</h4>
+
+<p>Runtime watches can be defined that execute when the hook is called. This differs from hooks defined in App metadata files as they are defined in-line and execute either an existing function or are defined with an anonymous function to execute:</p>
+
+{code}
+use OSC\OM\Registry;
+
+$OSCOM_Hooks = Registry::get('Hooks');
+
+$OSCOM_Hooks->watch('Session', 'Recreated', 'execute', function($parameters) {
+    ....
+});
+{code}

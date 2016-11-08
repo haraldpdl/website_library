@@ -1,12 +1,12 @@
-<h1>Database <small>OSC\OM\Db</small></h1>
+<h3>Database <small>OSC\OM\Db</small></h3>
 
-<h2>Introduction</h2>
+<h4>Introduction</h4>
 
 <p>The <i>Db</i> class manages the connection to the database server and executes sql queries. It extends the native PHP <a href="http://php.net/pdo" target="_blank">PDO</a> class with custom functionality optimized to the framework.</p>
 
 <p>The class executes sql queries safely and securely by binding parameter values to the query via placeholders rather then having the values being injected into the sql query itself.</p>
 
-<h2>Connections</h2>
+<h4>Connections</h4>
 
 <p><i>Db::initialize()</i> opens a new connection to the database server. All parameters of the function are optional where the installation configuration values are used as default values.</p>
 
@@ -30,19 +30,19 @@ $OSCOM_Db = Db::initialize();
   <tbody>
     <tr>
       <td>$server</td>
-      <td>The address of the database server. Default: <i>DB_SERVER</i></td>
+      <td>The address of the database server. Default: <i>db_server</i></td>
     </tr>
     <tr>
       <td>$username</td>
-      <td>The username to connect to the database server with. Default: <i>DB_SERVER_USERNAME</i></td>
+      <td>The username to connect to the database server with. Default: <i>db_server_username</i></td>
     </tr>
     <tr>
       <td>$password</td>
-      <td>The password of the user account. Default: <i>DB_SERVER_PASSWORD</i></td>
+      <td>The password of the user account. Default: <i>db_server_password</i></td>
     </tr>
     <tr>
       <td>$database</td>
-      <td>The name of the database. Default: <i>DB_DATABASE</i></td>
+      <td>The name of the database. Default: <i>db_database</i></td>
     </tr>
     <tr>
       <td>$port</td>
@@ -66,6 +66,11 @@ $OSCOM_Db = Db::initialize();
           <dd>
             <p><i>OSC\OM\DbStatement</i></p>
           </dd>
+
+          <dt><i>PDO::MYSQL_ATTR_INIT_COMMAND</i></dt>
+          <dd>
+            <p><i>set session sql_mode="STRICT_ALL_TABLES,NO_ZERO_DATE,NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION"</i></p>
+          </dd>
         </dl>
       </td>
     </tr>
@@ -74,9 +79,9 @@ $OSCOM_Db = Db::initialize();
 
 <div class="info">A database connection is created on each page request and is available in the <a href="{link}Online|Library|en&oscom_2_4&developers&registry{link}">Registry</a> as <i>Db</i>.</div>
 
-<h2>Queries</h2>
+<h4>Queries</h4>
 
-<h3>Prepared Statements</h3>
+<h5>Prepared Statements</h5>
 
 <p>Queries are performed with <i>Db::prepare()</i> which securely binds values to the query using placeholders.</p>
 
@@ -97,7 +102,7 @@ while ($Qproducts->fetch()) {
 }
 {code}
 
-<h4>Binding Parameters</h4>
+<h6>Binding Parameters</h6>
 
 <p>Parameters can be binded to the query using the following functions:</p>
 
@@ -133,12 +138,12 @@ while ($Qproducts->fetch()) {
 </table>
 
 <div class="info">
-  Table names prefixed with :table_ are binded and prefixed automatically with <i>DB_TABLE_PREFIX</i>.
+  Table names prefixed with :table_ are binded and prefixed automatically with <i>db_table_prefix</i>.
 </div>
 
-<h3>Single Function Calls</h3>
+<h5>Single Function Calls</h5>
 
-<h4 class="notoc">Select Queries</h4>
+<h6 class="notoc">Select Queries</h6>
 
 <p>Simple select queries that do not need parameters to be binded can be executed with <i>Db::query()</i>. This functions returns a normal result set.</p>
 
@@ -150,7 +155,7 @@ while ($Qstates->fetch()) {
 }
 {code}
 
-<h4 class="notoc">Update/Delete Queries</h4>
+<h6 class="notoc">Update/Delete Queries</h6>
 
 <p>Simple update/delete queries that do not need parameters to be binded can be executed with <i>Db::exec()</i>. This functions returns the number of rows affected.</p>
 
@@ -160,13 +165,13 @@ $result = $OSCOM_Db->exec('delete from :table_states where country_id = 1');
 echo 'Affected rows: ' . $result;
 {code}
 
-<h2>Results</h2>
+<h4>Results</h4>
 
 <p>Results can be returned as a single result set, a multiple result set, and as an array containing all rows or columns.</p>
 
-<h3>Fetching</h3>
+<h5>Fetching</h5>
 
-<h4 class="notoc">Single Result Set</h4>
+<h6 class="notoc">Single Result Set</h6>
 
 <p>Returning a single result set is performed as:</p>
 
@@ -180,7 +185,7 @@ if ($Qstate->fetch() !== false) {
 }
 {code}
 
-<h4 class="notoc">Muiltiple Result Set</h4>
+<h6 class="notoc">Multiple Result Set</h6>
 
 <p>Returning a multiple result set is performed as:</p>
 
@@ -194,7 +199,7 @@ while ($Qstates->fetch()) {
 }
 {code}
 
-<h4 class="notoc">Array Result Set</h4>
+<h6 class="notoc">Array Result Set</h6>
 
 <p>An array can be retrieved containing either all rows of the result set or all columns of the current row:</p>
 
@@ -208,7 +213,7 @@ $states_all = $Qstates->fetchAll();
 $current_state = $Qstates->toArray();
 {code}
 
-<h3>Result Exists</h3>
+<h5>Result Exists</h5>
 
 <p>Checking to see if a result exists is performed as:</p>
 
@@ -248,7 +253,7 @@ if ($Qstates->fetch() !== false) {
   <p>as calling <i>fetch()</i> in the <i>if</i> statement to check if a row exists and looping through the results again in the <i>while</i> statement will skip the first row of the result set due to the first call to <i>fetch()</i>. The <i>do { .. } while ( .. )</i> method shown above is the correct way.</p>
 </div>
 
-<h3>Type Hinting</h3>
+<h5>Type Hinting</h5>
 
 <p>Columns can be returned as a specific variable type using the following functions:</p>
 
@@ -292,7 +297,7 @@ if ($Qproducts->fetch() !== false) {
 }
 {code}
 
-<h3>Affected Rows</h3>
+<h5>Affected Rows</h5>
 
 <p>The number of rows affected by an <i>insert</i>, <i>update</i>, or <i>delete</i> query can be returned as:</p>
 
@@ -309,7 +314,7 @@ echo 'Affected rows: ' . $Qupdate->rowCount();
   Please do not use <i>rowCount()</i> for <i>select</i> queries as this is not supported by PDO.
 </div>
 
-<h3>Total Rows</h3>
+<h5>Total Rows</h5>
 
 <p>Retrieving the total rows of a query can be performed as:</p>
 
@@ -335,7 +340,7 @@ $Qorders->execute();
 echo 'Total rows: ' . count($Qtotal->fetchAll());
 {code}
 
-<h3>Page Sets</h3>
+<h5>Page Sets</h5>
 
 <p>Returning a page set result is performed as:</p>
 
@@ -394,7 +399,7 @@ if ($Qorders->getPageSetTotalRows() > 0) {
   The parameter name of the current page value is passed as the second parameter. The default value is <i>page</i> and the value is retrieved from <i>$_GET['page']</i> if it exists.
 </div>
 
-<h3>Caching</h3>
+<h5>Caching</h5>
 
 <p>Caching of select query result sets improves performance by storing the result of the query in a cache file and subsequently reading the cached data until the cache expiration time is reached. As soon as the cache expiration time is reached, the database is queried again and the cached information is refreshed with the new result set.</p>
 
@@ -435,13 +440,13 @@ while ($Qcfg->fetch()) {
   </tbody>
 </table>
 
-<h2>Shortcuts</h2>
+<h4>Shortcuts</h4>
 
 <p>Shortcut functions wrap <i>Db::prepare()</i> into a simpler interface to help write code faster for simpler queries.</p>
 
-<h3 class="notoc">Db::get()</h3>
+<h5 class="notoc">Db::get()</h5>
 
-<i>Db::get()</i> can be used to retrieve rows from a simple query.</p>
+<p><i>Db::get()</i> can be used to retrieve rows from a simple query.</p>
 
 {code}
 $Qstates = $OSCOM_Db->get('states', [
@@ -458,7 +463,7 @@ while ($Qstates->fetch()) {
 
 <p><strong>Parameters</strong></p>
 
-<pre>Db::get($table, $fields, array $where, $order, $limit, $cache)</pre>
+<pre>Db::get($table, $fields, array $where, $order, $limit, $cache, array $options)</pre>
 
 <table class="pretty">
   <thead>
@@ -470,7 +475,7 @@ while ($Qstates->fetch()) {
   <tbody>
     <tr>
       <td>$table</td>
-      <td>One (string) or more tables (array) to retrieve the rows from. Aliases may be used as: <pre>['countries as c', 'states as s']</pre></td>
+      <td>One (string) or more tables (array) to retrieve the rows from. Aliases may be used as: <pre>['countries as c', 'states as s']</pre> Table names are automatically prefixed unless the <i>prefix_tables</i> option is set as false (see the $options parameter).</td>
     </tr>
     <tr>
       <td>$fields</td>
@@ -492,16 +497,35 @@ while ($Qstates->fetch()) {
       <td>$cache</td>
       <td>An array consisting of the parameters (in order) sent to <i>setCache()</i>.</td>
     </tr>
+    <tr>
+      <td>$options</td>
+      <td>An array containing the following options: <pre>['prefix_tables' => true]</pre></td>
+    </tr>
   </tbody>
 </table>
 
-<div class="note">
-  This shortcut function will not work with queries where conditions reference table relationships (eg, ['s.country_id' => 'c.id']) as it would treat <i>c.id</i> as a value and not as reference. For these queries the <i>prepare()</i> method must be used.
-</div>
+<p>A more complex multi-relationship query example can be performed as:</p>
 
-<h3 class="notoc">Db::save()</h3>
+{code}
+$Qproducts = $OSCOM_Db->get([
+    'products p',
+    'products_to_categories p2c'
+], [
+    'count(*) as total'
+], [
+    'p.products_id' => [
+        'rel' => 'p2c.products_id'
+    ],
+    'p.products_status' => '1',
+    'p2c.categories_id' => '1'
+]);
 
-<i>Db::save()</i> can be used to insert or update data in a table.</p>
+$products_count = $Qproducts->valueInt('total');
+{code}
+
+<h5 class="notoc">Db::save()</h5>
+
+<p><i>Db::save()</i> can be used to insert or update data in a table.</p>
 
 {code}
 $result = $OSCOM_Db->save('states', [
@@ -540,9 +564,9 @@ echo 'Affected rows: ' . $result;
   </tbody>
 </table>
 
-<h3 class="notoc">Db::delete()</h3>
+<h5 class="notoc">Db::delete()</h5>
 
-<i>Db::delete()</i> can be used to delete a single, multiple, or all records from a table.</p>
+<p><i>Db::delete()</i> can be used to delete a single, multiple, or all records from a table.</p>
 
 {code}
 $result = $OSCOM_Db->delete('states', [

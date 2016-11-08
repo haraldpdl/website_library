@@ -1,61 +1,69 @@
-<h1>Apps and Modules <small>OSC\OM\Apps</small></h1>
+<h3>Apps <small>OSC\Apps\</small></h3>
 
-<h2>Introduction</h2>
+<h4>Introduction</h4>
 
-<p>Apps are self-contained packages that add new and extend on existing features without the need to edit core source code files. All files of an App are located in one main internal directory, with an external public directory for public resources (eg, images, javascript, stylesheets, ..).</p>
+<p>Apps are self-contained packages that add new features and extend existing features without the need to edit core source code files. All files of an App are located in one main directory, with an external public directory for public resources (eg, images, javascript, stylesheets, ..).</p>
 
-<h2>Structure</h2>
+<h4>Structure</h4>
 
-<p>Apps are located internally in the following directory:</p>
+<p>Apps are located in the following directory:</p>
 
-<pre>includes/Apps/APP_VENDOR</pre>
+<pre>includes/OSC/Apps/VENDOR/APP</pre>
 
-<p>and files that need to be publicly accessible are located at:</p>
+<p>Files that need to be publicly accessible are located at:</p>
 
-<pre>public/Apps/APP_VENDOR</pre>
+<pre>public/Apps/VENDOR/APP</pre>
 
-<p>A JSON based metadata <i>oscommerce.json</i> file must exist in the top level app directory describing itself and the modules it makes available. Modules <strong>do not</strong> need to exist in a specific directory within the package - rather the namespace is defined in the metadata file which the framework uses as a reference to find out the location of the modules class file.</p>
+<p>A JSON structured <i>oscommerce.json</i> metadata file must exist in the top level App directory that describes the App and the modules it makes available. Modules <strong>do not</strong> need to exist in a specific directory within the package - rather the namespace is defined in the metadata file which the framework uses as a reference to find the location of the module class file.</p>
 
 <div class="info">
   For security reasons, modules that are not described in the App metadata file will not be loaded by the framework.
 </div>
 
-<p><b>Metadata File Example</b></p>
+<p><b>Metadata File Example: osCommerce\Core</b></p>
 
 {code}
 {
-	"title":			"osCommerce Core Modules",
-	"vendor":			"osCommerce",
-	"version":			1.0,
-	"req_core_version":	2.4,
-	"license":			"GPL",
-	"authors": [
-		{
-			"name":		"osCommerce Team",
-			"company":	"osCommerce",
-			"email":	"sales@oscommerce.com",
-			"website":	"http://www.oscommerce.com"
-		}
-	],
-	"modules": {
-		"Payment": {
-			"COD":	"Module\\Payment\\COD"
-		},
-		"Shipping": {
-			"Flat":		"Module\\Shipping\\Flat",
-			"Zones":	"Module\\Shipping\\Zones"
-		},
-		"Hooks": {
-			"Shop/Cart": {
-				"AdditionalCheckoutButtons":	"Module\\Hooks\\Shop\\Cart\\AdditionalCheckoutButtons"
-			}
-		}
-	}
+  "title":            "osCommerce Core Modules",
+  "app":              "Core",
+  "vendor":           "osCommerce",
+  "version":          1.0.0,
+  "req_core_version": 2.4.0,
+  "license":          "MIT",
+  "authors": [
+    {
+      "name":    "osCommerce",
+      "company": "osCommerce",
+      "email":   "sales@oscommerce.com",
+      "website": "https://www.oscommerce.com"
+    }
+  ],
+  "modules": {
+    "Payment": {
+      "COD": "Module\\Payment\\COD"
+    },
+    "Shipping": {
+      "Flat":  "Module\\Shipping\\Flat",
+      "Zones": "Module\\Shipping\\Zones"
+    },
+    "Hooks": {
+      "Shop/Cart": {
+        "AdditionalCheckoutButtons": "Module\\Hooks\\Shop\\Cart\\AdditionalCheckoutButtons"
+      }
+    }
+  },
+  "routes": {
+    "Admin": "Sites\\Admin\\Pages\\Home",
+    "Shop": {
+      "new-offers": "Sites\\Shop\\Pages\\NewOffers",
+      "account&coupons": "Sites\\Shop\\Pages\\Coupons"
+    }
+  }
 }
 {code}
 
 <div class="info">
-  <p>Namespaces defined in the <i>modules</i> section are based from the Apps own namespace level - a namespace of <i>Module\Payment\COD</i> has a full namespace class of <i>OSC\OM\Apps\APP_VENDOR\Module\Payment\COD</i>.</p>
+  <p>Namespaces defined in the <i>modules</i> section are based from the Apps own namespace level - a namespace of <i>Module\Payment\COD</i> has a full namespace class of <i>OSC\OM\Apps\VENDOR\APP\Module\Payment\COD</i>.</p>
   <p>Namespaces must also be escaped appropiately according to the JSON specification otherwise the metadata file will not be readable. This means the PHP namespace separator must consist of two backslash characters instead of one.</p>
 </div>
 
@@ -74,16 +82,20 @@
       <td>The public title of the App.</td>
     </tr>
     <tr>
+      <td>app</td>
+      <td>The internal name of the App. This must be one word and match the APP directory name of the App.</td>
+    </tr>
+    <tr>
       <td>vendor</td>
-      <td>The vendor / company name of the App. This must be one word and match the top level directory name of the App.</td>
+      <td>The vendor / company name of the App. This must be one word and match the VENDOR directory name of the App.</td>
     </tr>
     <tr>
       <td>version</td>
-      <td>The version of the App. This must be in X.Y format (not X.Y.Z).</td>
+      <td>The version of the App. This must be in X.Y.Z format.</td>
     </tr>
     <tr>
       <td>req_core_version</td>
-      <td>The minimum osCommerce Online Merchant version required for the App.</td>
+      <td>The minimum osCommerce Online Merchant version required for the App. This must be in X.y.Z format.</td>
     </tr>
     <tr>
       <td>license</td>
@@ -111,12 +123,16 @@
       <td>modules</td>
       <td>A list of modules the App makes available. Each module type has its own specification - please refer to the Modules section for more information.</td>
     </tr>
+    <tr>
+      <td>routes</td>
+      <td>A list of url based routes that load App Page controllers. Each Site has its own specification - please refer to the Routes section for more information.</td>
+    </tr>
   </tbody>
 </table>
 
 <p>Modules that are installed and registered in the database are not stored with their full namespace class names, rather with an alias as defined in the metadata file.</p>
 
-<p>For example, the core <i>Cash on Delivery</i> payment module is stored in the <i>MODULE_PAYMENT_INSTALLED</i> configuration parameter as <i>osCommerce\COD</i>. The payment class knows that a payment module is being requested and looks up the <i>COD</i> alias defined in the metadata file to retrieve the class as <i>Module\Payment\COD</i>. The full class name reference and file location would be:</p>
+<p>For example, the core <i>Cash on Delivery</i> payment module is stored in the <i>MODULE_PAYMENT_INSTALLED</i> configuration parameter as <i>osCommerce\Core\COD</i>. The payment class knows that a payment module is being requested and looks up the <i>COD</i> alias defined in the metadata file to retrieve the class as <i>Module\Payment\COD</i>. The full class name reference and file location would be:</p>
 
 <table class="pretty">
   <thead>
@@ -127,13 +143,13 @@
   </thead>
   <tbody>
     <tr>
-      <td>OSC\OM\Apps\osCommerce\Module\Payment\COD</td>
-      <td>includes/Apps/osCommerce/Module/Payment/COD.php</td>
+      <td>OSC\Apps\osCommerce\Core\Module\Payment\COD</td>
+      <td>includes/OSC/Apps/osCommerce/Core/Module/Payment/COD.php</td>
     </tr>
   </tbody>
 </table>
 
-<h2>Modules</h2>
+<h4>Modules</h4>
 
 <p>Modules that are to be made available to the framework <strong>must be</strong> defined in the Apps metadata file. Each module type has its own definition specification to be able to load the module class on request simply by referencing an alias.</p>
 
@@ -148,18 +164,20 @@
   </thead>
   <tbody>
     <tr>
-      <td>OSC\OM\Modules</td>
-      <td>includes/OSC/OM/Modules</td>
+      <td>OSC\OM\Modules\</td>
+      <td>includes/OSC/OM/Modules/</td>
     </tr>
   </tbody>
 </table>
+
+<h5 class="notoc">Module Types and Interfaces</h5>
 
 <p>The following Module Types are available in the core:</p>
 
 <table class="pretty">
   <thead>
     <tr>
-      <th colspan="2">Module Types and Interfaces</th>
+      <th colspan="2">Module Types</th>
     </tr>
   </thead>
   <tbody>
@@ -167,14 +185,14 @@
       <td>
         <dl>
           <dt>AdminDashboard</dt>
-          <dd>Administration Dashboard modules</dd>
+          <dd>Administration Dashboard modules.</dd>
 
           <div style="height: 15px;"></div>
 
           <dl>
             <dt>Interface</dt>
-            <dd>AdminDashboardAbstract</dd>
-            <dd>AdminDashboardInterface</dd>
+            <dd>OSC\OM\Modules\AdminDashboardAbstract</dd>
+            <dd>OSC\OM\Modules\AdminDashboardInterface</dd>
           </dl>
         </dl>
       </td>
@@ -182,45 +200,48 @@
         <p><strong>Metadata JSON</strong></p>
 
 {code}
-{
-  "vendor": "osCommerce",
-  "modules": {
-    "AdminDashboard": {
-      "NewOrders": "Module\\Admin\\Dashboard\\NewOrders",
-      "NewCustomers": "Module\\Admin\\Dashboard\\NewCustomers"
-    }
+"app": "Core",
+"vendor": "osCommerce",
+"modules": {
+  "AdminDashboard": {
+    "NewOrders": "Module\\Admin\\Dashboard\\NewOrders",
+    "NewCustomers": "Module\\Admin\\Dashboard\\NewCustomers"
   }
 }
 {code}
 
         <p><strong>Specification</strong></p>
 
-<pre>
-[
-  Alias => Namespace
-]
-</pre>
+{code}
+"modules": {
+  "AdminDashboard": {
+    "ALIAS": "CLASS"
+  }
+}
+{code}
 
         <p><strong>Reference</strong></p>
 
-        <p>APP_VENDOR \ ALIAS:</p>
-        <p>
-          osCommerce\NewOrders<br />
-          osCommerce\NewCustomers
-        </p>
+{code}
+VENDOR \ APP \ ALIAS
+
+osCommerce\Core\NewOrders
+osCommerce\Core\NewCustomers
+{code}
+
       </td>
     </tr>
     <tr>
       <td>
         <dl>
           <dt>AdminMenu</dt>
-          <dd>Administration Menu modules</dd>
+          <dd>Administration Menu modules.</dd>
 
           <div style="height: 15px;"></div>
 
           <dl>
             <dt>Interface</dt>
-            <dd>AdminMenuInterface</dd>
+            <dd>OSC\OM\Modules\AdminMenuInterface</dd>
           </dl>
         </dl>
       </td>
@@ -228,46 +249,48 @@
         <p><strong>Metadata JSON</strong></p>
 
 {code}
-{
-  "vendor": "osCommerce",
-  "modules": {
-    "AdminMenu": {
-      "Products": "Module\\Admin\\Menu\\Products",
-      "Orders": "Module\\Admin\\Menu\\Orders"
-    }
+"app": "Core",
+"vendor": "osCommerce",
+"modules": {
+  "AdminMenu": {
+    "Products": "Module\\Admin\\Menu\\Products",
+    "Orders": "Module\\Admin\\Menu\\Orders"
   }
 }
 {code}
 
         <p><strong>Specification</strong></p>
 
-<pre>
-[
-  Alias => Namespace
-]
-</pre>
+{code}
+"modules": {
+  "AdminMenu": {
+    "ALIAS": "CLASS"
+  }
+}
+{code}
 
         <p><strong>Reference</strong></p>
 
-        <p>APP_VENDOR \ ALIAS:</p>
+{code}
+VENDOR \ APP \ ALIAS
 
-        <p>
-          osCommerce\Products<br />
-          osCommerce\Orders
-        </p>
+osCommerce\Core\Products
+osCommerce\Core\Orders
+{code}
+
       </td>
     </tr>
     <tr>
       <td>
         <dl>
           <dt>Content</dt>
-          <dd>Content modules</dd>
+          <dd>Content modules.</dd>
 
           <div style="height: 15px;"></div>
 
           <dl>
             <dt>Interface</dt>
-            <dd>ContentInterface</dd>
+            <dd>OSC\OM\Modules\ContentInterface</dd>
           </dl>
         </dl>
       </td>
@@ -275,13 +298,12 @@
         <p><strong>Metadata JSON</strong></p>
 
 {code}
-{
-  "vendor": "osCommerce",
-  "modules": {
-    "Content": {
-      "login": {
-        "Social": "Module\\Content\\SocialLogin"
-      }
+"app": "Core",
+"vendor": "osCommerce",
+"modules": {
+  "Content": {
+    "login": {
+      "Social": "Module\\Content\\SocialLogin"
     }
   }
 }
@@ -289,32 +311,37 @@
 
         <p><strong>Specification</strong></p>
 
-<pre>
-[
-  Content Module Group => [
-    Alias => Namespace
-  ]
-]
-</pre>
+{code}
+"modules": {
+  "Content": {
+    "CONTENT MODULE GROUP": {
+      "ALIAS": "CLASS"
+    }
+  }
+}
+{code}
 
         <p><strong>Reference</strong></p>
 
-        <p>GROUP / APP_VENDOR \ ALIAS:</p>
+{code}
+CONTENT MODULE GROUP / VENDOR \ APP \ ALIAS
 
-        <p>login/osCommerce\Social</p>
+login/osCommerce\Core\Social
+{code}
+
       </td>
     </tr>
     <tr>
       <td>
         <dl>
           <dt>Hooks</dt>
-          <dd>Hook modules</dd>
+          <dd>Hook modules.</dd>
 
           <div style="height: 15px;"></div>
 
           <dl>
             <dt>Interface</dt>
-            <dd>HooksInterface</dd>
+            <dd>OSC\OM\Modules\HooksInterface</dd>
           </dl>
         </dl>
       </td>
@@ -322,13 +349,12 @@
         <p><strong>Metadata JSON</strong></p>
 
 {code}
-{
-  "vendor": "osCommerce",
-  "modules": {
-    "Hooks": {
-      "Shop/Account": {
-        "Logout": "Module\\Hooks\\Shop\\Account\Logout"
-      }
+"app": "Core",
+"vendor": "osCommerce",
+"modules": {
+  "Hooks": {
+    "Shop/Account": {
+      "Logout": "Module\\Hooks\\Shop\\Account\Logout"
     }
   }
 }
@@ -336,32 +362,37 @@
 
         <p><strong>Specification</strong></p>
 
-<pre>
-[
-  Site / Group => [
-    Hook Action => Namespace
-  ]
-]
-</pre>
+{code}
+"modules": {
+  "Hooks": {
+    "SITE / GROUP": {
+      "ACTION": "CLASS"
+    }
+  }
+}
+{code}
 
         <p><strong>Reference</strong></p>
 
-        <p>APP_VENDOR \ SITE/GROUP \ ACTION:</p>
+{code}
+VENDOR \ APP \ SITE / GROUP \ ACTION
 
-        <p>osCommerce\Shop/Account\Logout</p>
+osCommerce\Core\Shop/Account\Logout
+{code}
+
       </td>
     </tr>
     <tr>
       <td>
         <dl>
           <dt>Payment</dt>
-          <dd>Payment modules</dd>
+          <dd>Payment modules.</dd>
 
           <div style="height: 15px;"></div>
 
           <dl>
             <dt>Interface</dt>
-            <dd>PaymentInterface</dd>
+            <dd>OSC\OM\Modules\PaymentInterface</dd>
           </dl>
         </dl>
       </td>
@@ -369,42 +400,48 @@
         <p><strong>Metadata JSON</strong></p>
 
 {code}
-{
-  "vendor": "osCommerce",
-  "modules": {
-    "Payment": {
-      "COD": "Module\\Payment\\COD"
-    }
+"app": "Core",
+"vendor": "osCommerce",
+"modules": {
+  "Payment": {
+    "COD": "Module\\Payment\\COD"
   }
 }
 {code}
 
         <p><strong>Specification</strong></p>
 
-<pre>
-[
-  Alias => Namespace
-]
-</pre>
+{code}
+"modules": {
+  "Payment": {
+    "ALIAS": "CLASS"
+  }
+}
+{code}
 
         <p><strong>Reference</strong></p>
 
-        <p>APP_VENDOR \ ALIAS:</p>
+{code}
+VENDOR \ APP \ ALIAS
 
-        <p>osCommerce\COD</p>
+osCommerce\Core\COD
+{code}
+
       </td>
     </tr>
   </tbody>
 </table>
 
-<h3>Getting Class Names</h3>
+<h5>Getting Class Names</h5>
 
 <p>The full namespace class name of a module can be retrieved via its alias using <i>Apps::getModuleClass()</i>:</p>
 
 {code}
 use OSC\OM\Apps;
 
-$class = Apps::getModuleClass('osCommerce\COD', 'Payment');
+$class = Apps::getModuleClass('osCommerce\Core\COD', 'Payment');
+
+// $class = OSC\Apps\osCommerce\Core\Module\Payment\COD
 {code}
 
 <p><strong>Parameters</strong></p>
@@ -430,7 +467,7 @@ $class = Apps::getModuleClass('osCommerce\COD', 'Payment');
   </tbody>
 </table>
 
-<h3>Getting Modules</h3>
+<h5>Getting Modules</h5>
 
 <p>A list of available App modules can be retrieved using <i>Apps::getModules()</i>:</p>
 
@@ -442,7 +479,7 @@ $modules = Apps::getModules('Payment');
 
 <p><strong>Parameters</strong></p>
 
-<pre>Apps::getModules($type, $app, $filter)</pre>
+<pre>Apps::getModules($type, $filter_vendor_app, $filter)</pre>
 
 <table class="pretty">
   <thead>
@@ -457,8 +494,8 @@ $modules = Apps::getModules('Payment');
       <td>The module type to retrieve.</td>
     </tr>
     <tr>
-      <td>$app</td>
-      <td>If an App is provided, only modules from that App are returned, otherwise all modules from all Apps are returned.</td>
+      <td>$filter_vendor_app</td>
+      <td>If an App is provided, only modules from that App are returned, otherwise all modules from all Apps are returned. This can be limited to VENDOR for all vendor Apps, or VENDOR\APP for a specific App.</td>
     </tr>
     <tr>
       <td>$filter</td>
@@ -466,3 +503,19 @@ $modules = Apps::getModules('Payment');
     </tr>
   </tbody>
 </table>
+
+<h4>Routes</h4>
+
+<p>Routes allow Apps to load Page controllers via the Sites route resolver method. The <i>Shop</i> Site allows Apps to load Page controllers depending on the url of the page requested, and the <i>Admin</i> Site allows one main Page controller to be loaded to administrate and configure the App on the Administration Dashboard.</p>
+
+{code}
+"app": "Core",
+"vendor": "osCommerce",
+"routes": {
+  "Admin": "Sites\\Admin\\Pages\\Home",
+  "Shop": {
+    "new-offers": "Sites\\Shop\\Pages\\NewOffers",
+    "account&coupons": "Sites\\Shop\\Pages\\Coupons"
+  }
+}
+{code}

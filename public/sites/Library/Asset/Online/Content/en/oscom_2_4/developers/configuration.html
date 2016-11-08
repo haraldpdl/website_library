@@ -1,0 +1,160 @@
+<h3>Configuration</h3>
+
+<h4>Introduction</h4>
+
+<p>The main installation configuration parameters are stored in the following locations:</p>
+
+<table class="pretty">
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Global</td>
+      <td>includes/OSC/Conf/global.php</td>
+    </tr>
+    <tr>
+      <td>Per-Site</td>
+      <td>includes/OSC/Sites/SITE/site_conf.php</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The <i>global</i> configuration file and all <i>site</i> configuration files are automatically loaded into their own groups when the framework is initialized. The <i>global</i> configuration file is loaded into a <i>'global'</i> group, and the <i>site</i> configuration files are loaded into their own Site group (eg, <i>'Admin'</i>, and <i>'Shop'</i>).</p>
+
+<p>Reading a configuration value is first attempted at the <i>Site</i> level, and if the configuration key does not exist, the <i>global</i> value is returned. A <i>Site</i> level configuration parameter has priority over a <i>global</i> level parameter if a <i>global</i> level configuration parameter is also defined.</p>
+
+<h4>Custom Configuration Files</h4>
+
+<p>It's possible to create custom configuration files that have priority over the values from the core configuration files. Custom configuration files can be stored in the following locations:</p>
+
+<table class="pretty">
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Global</td>
+      <td>includes/OSC/Custom/Conf/global.php</td>
+    </tr>
+    <tr>
+      <td>Per-Site</td>
+      <td>includes/OSC/Custom/Sites/SITE/site_conf.php</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4>Configuration File Format</h4>
+
+<p>The format of the configuration parameters are stored in a "ini" style format in a PHP file that is assigned to a <i>$ini</i> PHP variable. This style of configuration was chosen over a plain text .ini file to prevent configuration parameters being read in cases of the configuration files being publicly accessible through the web server.</p>
+
+<p>An example format for the <i>global</i> configuration file is:</p>
+
+{code}
+<?php
+$ini = <<<EOD
+db_server = "localhost"
+db_server_username = "dbuser"
+db_server_password = "dbpass"
+db_database = "oscommerce"
+db_table_prefix = "osc_"
+store_sessions = "MySQL"
+time_zone = "Europe/Berlin"
+EOD;
+{code}
+
+<p>An example of a <i>Site</i> configuration file is:</p>
+
+{code}
+<?php
+$ini = <<<EOD
+dir_root = "/www/html/"
+http_server = "https://demo.oscommerce.shop"
+http_path = "/"
+http_images_path = "images/"
+http_cookie_domain = ".oscommerce.shop"
+http_cookie_path = "/"
+EOD;
+{code}
+
+<h4>External Configuration Files</h4>
+
+<p>External configuration files can be loaded using the following code:</p>
+
+{code}
+use OSC\OM\OSCOM;
+
+OSCOM::loadConfigFile($path_of_file, 'ext_group');
+{code}
+
+<p>This would load the configuration parameters of <i>$path_of_file</i> to the <i>'ext_group'</i> configuration group.</p>
+
+<p>It is important that the ini format is stored as a string to the <i>$ini</i> PHP variable otherwise the configuration parameters can not be parsed.</p>
+
+<h4>Retrieving Configuration Parameters</h4>
+
+<p>Configuration parameters can be retrieved using <i>OSCOM::getConfig()</i>:</p>
+
+{code}
+use OSC\OM\OSCOM;
+
+$value = OSCOM::getConfig('cfg_name');
+{code}
+
+<p>In this example, the <i>cfg_name</i> configuration parameter from the current Site group is returned. If the current Site group does not contain the configuration parameter, the <i>global</i> group value is returned.</p>
+
+<p>It's possible to define which group the configuration parameter should be loaded from by defining the group name:</p>
+
+{code}
+use OSC\OM\OSCOM;
+
+$value = OSCOM::getConfig('cfg_name', 'ext_group');
+{code}
+
+<p>This would load the <i>cfg_name</i> configuration parameter from the <i>ext_group</i> group.</p>
+
+<p>The following can be used to first see if a configuration parameter exists:</p>
+
+{code}
+use OSC\OM\OSCOM;
+
+if (OSCOM::configExists('cfg_name')) {
+    ....
+}
+{code}
+
+<p>This will check if <i>cfg_name</i> exists in the current Site group or the <i>global</i> group.</p>
+
+<p>Checking to see if a configuration parameter exists in a specific group is performed as follows:</p>
+
+{code}
+use OSC\OM\OSCOM;
+
+if (OSCOM::configExists('cfg_name', 'ext_group')) {
+    ....
+}
+{code}
+
+<p>Please note that if the configuration parameter does not exist in the specified group, a check is also performed in the <i>global</i> group.</p>
+
+<h4>Setting Configuration Parameters</h4>
+
+<p>Runtime configuration parameters can be set as follows:</p>
+
+{code}
+use OSC\OM\OSCOM;
+
+$value = true;
+
+OSCOM::setConfig('is_true', $value, 'ext_group');
+{code}
+
+<p>If no group is specified in the third parameter, the configuration parameter would be set in the <i>global</i> group.</p>
+
+<p>This function does not save the configuration parameter to the configuration file - it only sets a runtime configuration parameter value.</p>

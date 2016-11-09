@@ -14,7 +14,7 @@
           "apps": "Apps",
           "hooks": "Hooks",
           "roadmap": "Roadmap",
-          "changelog": "Changelog",
+          "legacy_compatibility": "Legacy Compatibility",
           "hooks_callouts": "List of Hook Callouts"
         }
       }

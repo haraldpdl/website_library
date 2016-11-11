@@ -358,7 +358,7 @@ if ($Qorders->getPageSetTotalRows() > 0) {
         echo 'Order #' . $Qorders->valueInt('order_number') . ': ' . $Qorders->valueDecimal('total_price');
     }
 
-    echo $Qorders->getPageSetLabel('Displaying <strong>%d</strong> to <strong>%d</strong> (of <strong>%d</strong> orders)');
+    echo $Qorders->getPageSetLabel('Displaying <strong>{{listing_from}}</strong> to <strong>{{listing_to}}</strong> (of <strong>{{listing_total}}</strong> orders)');
 
     echo $Qorders->getPageSetLinks();
 }

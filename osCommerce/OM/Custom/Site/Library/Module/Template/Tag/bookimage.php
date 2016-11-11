@@ -1,7 +1,7 @@
 <?php
 /**
  * osCommerce Website
- * 
+ *
  * @copyright Copyright (c) 2014 osCommerce; http://www.oscommerce.com
  * @license BSD License; http://www.oscommerce.com/bsdlicense.txt
  */
@@ -25,7 +25,7 @@
         $image = $string;
       }
 
-      return '<a href="' . OSCOM::getLink(null, 'Package', $OSCOM_Language->getCode() . '&' . $OSCOM_Template->getValue('current_book')) . '">' . HTML::image(OSCOM::getPublicSiteLink('Asset/' . OSCOM::getSiteApplication() . '/Content/' . $OSCOM_Language->getCode() . '/' . $OSCOM_Template->getValue('current_book') . '/_images/' . $image), $caption) . '</a>';
+      return '<a href="' . OSCOM::getLink(null, null, $OSCOM_Language->getCode() . '&' . $OSCOM_Template->getValue('current_book')) . '">' . HTML::image(OSCOM::getPublicSiteLink('Asset/' . OSCOM::getSiteApplication() . '/Content/' . $OSCOM_Language->getCode() . '/' . $OSCOM_Template->getValue('current_book') . '/_images/' . $image), $caption) . '</a>';
     }
   }
 ?>

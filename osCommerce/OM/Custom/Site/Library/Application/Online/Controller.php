@@ -67,6 +67,10 @@
       if ( isset($book) ) {
         $this->_page_contents = 'chapters.html';
 
+        if ( $OSCOM_CoreBook->hasImage($book) ) {
+          $OSCOM_Template->setValue('book_image', $OSCOM_CoreBook->getImage($book));
+        }
+
         $OSCOM_Template->setValue('book_title', $OSCOM_CoreBook->getTitle($book));
         $OSCOM_Template->setValue('book_description', $OSCOM_CoreBook->getDescription($book));
         $OSCOM_Template->setValue('book_chapters', $OSCOM_CoreBook->getChapters($book));

@@ -4,6 +4,10 @@
 
 {toc}{toc}
 
+{ifvalue book_image}
+  {bookimage}{value}book_image{value}|{value}book_title{value}{bookimage}
+{ifvalue}
+
 <div id="bookPageContent">
   {import}{raw}current_page_file{raw}{import}
 </div>

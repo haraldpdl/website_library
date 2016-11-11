@@ -1,6 +1,7 @@
 {
   "oscom_2_4": {
     "title": "Online Merchant v2.4 Joli",
+    "image": "logo.png",
     "description": "Documentation for osCommerce Online Merchant v2.4 Joli.",
     "copyright": "Copyright (c) 2016 osCommerce. All rights reserved. Content may be reproduced for personal use only.",
     "chapters": {

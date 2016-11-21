@@ -429,6 +429,108 @@ osCommerce\Core\COD
 
       </td>
     </tr>
+    <tr>
+      <td>
+        <dl>
+          <dt>Shipping</dt>
+          <dd>Shipping modules.</dd>
+
+          <div style="height: 15px;"></div>
+
+          <dl>
+            <dt>Interface</dt>
+            <dd>OSC\OM\Modules\ShippingInterface</dd>
+          </dl>
+        </dl>
+      </td>
+      <td>
+        <p><strong>Metadata JSON</strong></p>
+
+{code}
+"app": "Core",
+"vendor": "osCommerce",
+"modules": {
+  "Shipping": {
+    "Flat": "Module\\Shipping\\Flat"
+  }
+}
+{code}
+
+        <p><strong>Specification</strong></p>
+
+{code}
+"modules": {
+  "Shipping": {
+    "ALIAS": "CLASS"
+  }
+}
+{code}
+
+        <p><strong>Reference</strong></p>
+
+{code}
+VENDOR \ APP \ ALIAS
+
+osCommerce\Core\Flat
+{code}
+
+        <p>The selected shipping method is added to the reference appending the ALIAS with an underscore and the code of the selected shipping method. For example:</p>
+
+{code}
+VENDOR \ APP \ ALIAS _ SHIPPING_METHOD
+
+DHL\Shipping\National_Express
+{code}
+
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <dl>
+          <dt>OrderTotal</dt>
+          <dd>Order Total modules.</dd>
+
+          <div style="height: 15px;"></div>
+
+          <dl>
+            <dt>Interface</dt>
+            <dd>OSC\OM\Modules\OrderTotalInterface</dd>
+          </dl>
+        </dl>
+      </td>
+      <td>
+        <p><strong>Metadata JSON</strong></p>
+
+{code}
+"app": "Core",
+"vendor": "osCommerce",
+"modules": {
+  "OrderTotal": {
+    "Subtotal": "Module\\OrderTotal\\Subtotal"
+  }
+}
+{code}
+
+        <p><strong>Specification</strong></p>
+
+{code}
+"modules": {
+  "OrderTotal": {
+    "ALIAS": "CLASS"
+  }
+}
+{code}
+
+        <p><strong>Reference</strong></p>
+
+{code}
+VENDOR \ APP \ ALIAS
+
+osCommerce\Core\Subtotal
+{code}
+
+      </td>
+    </tr>
   </tbody>
 </table>
 

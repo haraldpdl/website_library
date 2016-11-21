@@ -1,0 +1,264 @@
+<h3>API Changelog</h3>
+
+<h4>v2.4.2 (Beta)</h4>
+
+<h5>Language Definitions</h5>
+
+<h6>Admin</h6>
+
+<table class="pretty">
+  <tbody>
+    <tr>
+      <td>categories.txt</td>
+      <td><span class="label label-success">text_products_gtin</span></td>
+    </tr>
+    <tr>
+      <td>currencies.txt</td>
+      <td><span class="label label-warning">text_info_set_as_default</span></td>
+    </tr>
+    <tr>
+      <td>main.txt</td>
+      <td>
+        <span class="label label-success">email_type_html</span><br />
+        <span class="label label-success">email_type_plain</span>
+      </td>
+    </tr>
+    <tr>
+      <td>newsletters.txt</td>
+      <td><span class="label label-success">error_newsletter_module_not_exists</span></td>
+    </tr>
+    <tr>
+      <td>orders.txt</td>
+      <td>
+        <span class="label label-success">email_separator_html</span><br />
+        <span class="label label-success">email_text_order_number_html</span><br />
+        <span class="label label-success">email_text_invoice_url_html</span><br />
+        <span class="label label-success">email_text_date_ordered_html</span><br />
+        <span class="label label-success">email_text_status_update_html</span><br />
+        <span class="label label-success">email_text_comments_update_html</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Legend: <span class="label label-success">Added</span> <span class="label label-warning">Deleted</span></p>
+
+<h6>Shop</h6>
+
+<table class="pretty">
+  <tbody>
+    <tr>
+      <td>create_account.txt</td>
+      <td>
+        <span class="label label-success">email_greet_mr_html</span><br />
+        <span class="label label-success">email_greet_ms_html</span><br />
+        <span class="label label-success">email_greet_none_html</span><br />
+        <span class="label label-success">email_welcome_html</span><br />
+        <span class="label label-success">email_text_html</span><br />
+        <span class="label label-success">email_contact_html</span><br />
+        <span class="label label-success">email_warning_html</span>
+      </td>
+    </tr>
+    <tr>
+      <td>main.txt</td>
+      <td><span class="label label-success">product_updated</span></td>
+    </tr>
+    <tr>
+      <td>password_forgotten.txt</td>
+      <td><span class="label label-success">email_password_reset_body_html</span></td>
+    </tr>
+    <tr>
+      <td>shopping_cart.txt</td>
+      <td>
+        <span class="label label-success">text_cart_button_update</span><br />
+        <span class="label label-success">text_cart_button_remove</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Legend: <span class="label label-success">Added</span> <span class="label label-warning">Deleted</span></p>
+
+<h5>OSC\OM\Db</h5>
+
+<table class="pretty">
+  <tbody>
+    <tr>
+      <td>save($table, array $data, array $where_condition = null, array $options = null)</td>
+      <td>$options parameter added:<br />['prefix_tables' => true]</td>
+    </tr>
+    <tr>
+      <td>delete($table, array $where_condition = [], array $options = null)</td>
+      <td>$options parameter added:<br />['prefix_tables' => true]</td>
+    </tr>
+  </tbody>
+</table>
+
+<h5>Newsletter Modules</h5>
+
+<p>$content_html has been added as a parameter to the constructor of newsletter modules.</p>
+
+<p>$content is used for plain text email content, and $content_html for html email content.</p>
+
+{code}
+class newsletter
+{
+    public function __construct($title, $content, $content_html = null)
+    {
+        ...
+    }
+}
+{code}
+
+<h5>Apps Support for Shipping and Order Total Modules</h5>
+
+<p>Apps can now include shipping and order total modules.</p>
+
+<h5>OSC\OM\ErrorHandler</h5>
+
+<p>The custom error handler is now only activated if the OSC/Work/Logs directory is writable.</p>
+
+<h5>OSC\OM\Mail</h5>
+
+<p>The setBody($html) method is now setBody($text, $html = null). If no html version is passed in the $html parameter, a html version of $text is formed by parsing it through nl2br().</p>
+
+<h5>OSC\OM\OSCOM</h5>
+
+<p>The link() method now replaces backslash and curly brace characters with their appropiate url encoded code.</p>
+
+<h5>Database Schema</h5>
+
+<table class="pretty">
+  <tbody>
+    <tr>
+      <td>address_format</td>
+      <td>
+        address_format varchar 128 to 255<br />
+        address_summary varchar 48 to 255
+      </td>
+    </tr>
+    <tr>
+      <td>banners</td>
+      <td>
+        banners_title varchar 64 to 255<br />
+        banners_image varchar 64 to 255<br />
+        banners_group varchar 10 to 255
+      </td>
+    </tr>
+    <tr>
+      <td>categories</td>
+      <td>categories_image varchar 64 to 255</td>
+    </tr>
+    <tr>
+      <td>categories_description</td>
+      <td>
+        categories_name varchar 32 to 255<br />
+        categories_seo_keywords varchar 128 to 255<br />
+        categories_seo_title varchar 128 to 255
+      </td>
+    </tr>
+    <tr>
+      <td>configuration_group</td>
+      <td>configuration_group_title varchar 64 to 255</td>
+    </tr>
+    <tr>
+      <td>currencies</td>
+      <td>title varchar 32 to 255</td>
+    </tr>
+    <tr>
+      <td>geo_zones</td>
+      <td>geo_zone_name varchar 32 to 255</td>
+    </tr>
+    <tr>
+      <td>languages</td>
+      <td>
+        name varchar 32 to 255<br />
+        directory varchar 32 to 255
+      </td>
+    </tr>
+    <tr>
+      <td>manufacturers</td>
+      <td>
+        manufacturers_name varchar 32 to 255<br />
+        manufacturers_image varchar 64 to 255
+      </td>
+    </tr>
+    <tr>
+      <td>manufacturers_info</td>
+      <td>
+        manufacturers_seo_keywords varchar 128 to 255<br />
+        manufacturers_seo_title varchar 128 to 255
+      </td>
+    </tr>
+    <tr>
+      <td>newsletters</td>
+      <td>added content_html text not_null</td>
+    </tr>
+    <tr>
+      <td>orders_products</td>
+      <td>
+        products_model varchar 64 to 255<br />
+        products_name varchar 64 to 255
+      </td>
+    </tr>
+    <tr>
+      <td>products_attributes</td>
+      <td>
+        products_options varchar 32 to 255<br />
+        products_options_values varchar 32 to 255
+      </td>
+    </tr>
+    <tr>
+      <td>orders_status</td>
+      <td>orders_status_name varchar 32 to 255</td>
+    </tr>
+    <tr>
+      <td>orders_total</td>
+      <td>class varchar 32 to 255</td>
+    </tr>
+    <tr>
+      <td>products</td>
+      <td>
+        products_model varchar 64 to 255<br />
+        products_image varchar 64 to 255<br />
+        added products_gtin char(14)
+      </td>
+    </tr>
+    <tr>
+      <td>products_description</td>
+      <td>
+        products_name varchar 64 to 255<br />
+        products_seo_keywords varchar 128 to 255<br />
+        products_seo_title varchar 128 to 255
+      </td>
+    </tr>
+    <tr>
+      <td>products_images</td>
+      <td>image varchar 64 to 255</td>
+    </tr>
+    <tr>
+      <td>products_options</td>
+      <td>products_options_name varchar 32 to 255</td>
+    </tr>
+    <tr>
+      <td>products_options_values</td>
+      <td>products_options_values_name varchar 64 to 255</td>
+    </tr>
+    <tr>
+      <td>sessions</td>
+      <td>sesskey varchar 128 to 255</td>
+    </tr>
+    <tr>
+      <td>tax_class</td>
+      <td>tax_class_title varchar 32 to 255</td>
+    </tr>
+    <tr>
+      <td>whos_online</td>
+      <td>session_id varchar 128 to 255</td>
+    </tr>
+    <tr>
+      <td>zones</td>
+      <td>zone_code varchar 32 to 255</td>
+    </tr>
+  </tbody>
+</table>

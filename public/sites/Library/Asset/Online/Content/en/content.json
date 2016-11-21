@@ -14,6 +14,7 @@
           "registry": "Registry",
           "apps": "Apps",
           "hooks": "Hooks",
+          "api_changelog": "API Changelog",
           "roadmap": "Roadmap",
           "legacy_compatibility": "Legacy Compatibility",
           "hooks_callouts": "List of Hook Callouts"

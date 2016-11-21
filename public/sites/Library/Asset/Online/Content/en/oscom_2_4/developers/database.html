@@ -539,7 +539,7 @@ echo 'Affected rows: ' . $result;
 
 <p><strong>Parameters</strong></p>
 
-<pre>Db::save($table, array $data, array $where_condition)</pre>
+<pre>Db::save($table, array $data, array $where_condition, array $options)</pre>
 
 <table class="pretty">
   <thead>
@@ -561,6 +561,10 @@ echo 'Affected rows: ' . $result;
       <td>$where_condition</td>
       <td>If no condition is passed, the data is inserted into the table as a new record. If an associative $key=>$value array is passed, it is used as the where condition of the query to update the data of an existing record.</td>
     </tr>
+    <tr>
+      <td>$options</td>
+      <td>An array containing the following options: <pre>['prefix_tables' => true]</pre></td>
+    </tr>
   </tbody>
 </table>
 
@@ -578,7 +582,7 @@ echo 'Affected rows: ' . $result;
 
 <p><strong>Parameters</strong></p>
 
-<pre>Db::delete($table, array $where_condition)</pre>
+<pre>Db::delete($table, array $where_condition, array $options)</pre>
 
 <table class="pretty">
   <thead>
@@ -595,6 +599,10 @@ echo 'Affected rows: ' . $result;
     <tr>
       <td>$where_condition</td>
       <td>If no condition is passed, all records in the table are deleted. If an associative $key=>$value array is passed, it is used as the where condition of the query to delete the matching records. The array keys must match the table field names the array value is matched against.</td>
+    </tr>
+    <tr>
+      <td>$options</td>
+      <td>An array containing the following options: <pre>['prefix_tables' => true]</pre></td>
     </tr>
   </tbody>
 </table>

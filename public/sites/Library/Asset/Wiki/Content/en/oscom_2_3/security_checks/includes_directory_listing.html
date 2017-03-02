@@ -1,0 +1,46 @@
+<h1>includes/ Directory Listing</h1>
+
+<p>The includes/ directory may contain public assets such as javascript libraries and module files that may need to be publicly accessible.</p>
+
+<p>It is important that Directory Listing is disabled for this directory in the web server configration to prevent unauthorized access and snooping of the contents in the directory.</p>
+
+<p>After applying the following configuration, confirm the change by accessing the includes/ directory with your browser. If you receive a Forbidden 403 error page, the configuration was applied successfully. If you receive an Internal Server 500 error page, undo the changes performed and contact your hosting provider or visit <a href="http://www.oscommerce.com/support" target="_blank">our support page</a> for further help.</p>
+
+<h2>Apache Web Server</h2>
+
+<p>Create or edit the following file and add the following rule:</p>
+
+<p><i class="icon-file"></i> <strong>includes/.htaccess</strong></p>
+
+{code}
+Options -Indexes
+{code}
+
+<h2>Microsoft Internet Information Services (IIS)</h2>
+
+<p>Create or edit the following file and add the following rule:</p>
+
+<p><i class="icon-file"></i> <strong>includes/web.config</strong></p>
+
+{code}
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <system.webServer>
+    <directoryBrowse enabled="false" />
+  </system.webServer>
+</configuration>
+{code}
+
+<h2>Nginx</h2>
+
+<p>In the server configuration, add the autoindex directive to the location block with the correct directory location:</p>
+
+{code}
+server {
+  ...
+
+  location /includes/ {
+    autoindex off;
+  }
+}
+{code}

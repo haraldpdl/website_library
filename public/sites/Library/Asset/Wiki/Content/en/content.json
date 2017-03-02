@@ -8,7 +8,11 @@
         "pages": {
           "admin_backup_directory_listing": "admin/backups Directory Listing",
           "admin_backup_file": "admin/backups File Access",
+          "admin_images_directory_listing": "admin/images/ Directory Listing",
+          "admin_includes_directory_listing": "admin/includes/ Directory Listing",
           "ext_directory_listing": "ext/ Directory Listing",
+          "images_directory_listing": "images/ Directory Listing",
+          "includes_directory_listing": "includes/ Directory Listing",
           "mysql_utf8": "MySQL UTF-8",
           "version_check": "Version Check"
         }

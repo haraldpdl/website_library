@@ -1,7 +1,7 @@
 <?php
 /**
  * osCommerce Website
- * 
+ *
  * @copyright Copyright (c) 2012 osCommerce; http://www.oscommerce.com
  * @license BSD License; http://www.oscommerce.com/bsdlicense.txt
  */
@@ -9,12 +9,13 @@
   namespace osCommerce\OM\Core\Site\Library\Application\Package;
 
   use osCommerce\OM\Core\DirectoryListing;
+  use osCommerce\OM\Core\OSCOM;
 
   class Package extends \osCommerce\OM\Core\Site\Library\BookAbstract {
     public function __construct($language) {
       $this->_language = $language;
 
-      $this->_asset_path = OSCOM_PUBLIC_BASE_DIRECTORY . 'public/sites/Library/Asset/Package/Content/' . $this->_language . '/';
+      $this->_asset_path = OSCOM::PUBLIC_DIRECTORY . 'public/sites/Library/Asset/Package/Content/' . $this->_language . '/';
 
       $DLpack = new DirectoryListing($this->_asset_path);
       $DLpack->setIncludeFiles(false);
